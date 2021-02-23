@@ -1,5 +1,4 @@
 # Specifikáció
-==============
 
 Az alkalmazást csak bejelentkezett felhasználók használhatják. Ehhez szükséges regisztráció, bejelentkezés és jelszó emlékeztető funkció. 
 Az alkalmazás három fő részből áll.
