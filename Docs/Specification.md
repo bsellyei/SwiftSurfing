@@ -1,5 +1,4 @@
 # Specifikáció
---------------
 
 #### Regisztráció
 
