@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,10 @@
 		DB834E5025E5C1B300E94268 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB834E4F25E5C1B300E94268 /* Assets.xcassets */; };
 		DB834E5325E5C1B300E94268 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB834E5225E5C1B300E94268 /* Preview Assets.xcassets */; };
 		DB834E6025E5C30900E94268 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB834E5F25E5C30900E94268 /* GoogleService-Info.plist */; };
+		DBEB14A225F952A90046CB30 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEB14A125F952A90046CB30 /* LoginInteractor.swift */; };
+		DBEB14A625F952B80046CB30 /* LoginInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEB14A525F952B80046CB30 /* LoginInterfaces.swift */; };
+		DBEB14A925F98A630046CB30 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEB14A825F98A630046CB30 /* LoginPresenter.swift */; };
+		DBEB14B025F98B760046CB30 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEB14AF25F98B760046CB30 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		DB834E5225E5C1B300E94268 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DB834E5425E5C1B300E94268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB834E5F25E5C30900E94268 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DBEB14A125F952A90046CB30 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		DBEB14A525F952B80046CB30 /* LoginInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInterfaces.swift; sourceTree = "<group>"; };
+		DBEB14A825F98A630046CB30 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		DBEB14AF25F98B760046CB30 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +62,6 @@
 				0A50F48236A6131EB4310193 /* Pods-SwiftSurfing.debug.xcconfig */,
 				D3685DD3D4951C7E45D06B29 /* Pods-SwiftSurfing.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -79,6 +86,7 @@
 		DB834E4A25E5C1B200E94268 /* SwiftSurfing */ = {
 			isa = PBXGroup;
 			children = (
+				DBEB149F25F950C10046CB30 /* Modules */,
 				DB834E5F25E5C30900E94268 /* GoogleService-Info.plist */,
 				DB834E4B25E5C1B200E94268 /* SwiftSurfingApp.swift */,
 				DB834E4D25E5C1B200E94268 /* ContentView.swift */,
@@ -95,6 +103,25 @@
 				DB834E5225E5C1B300E94268 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DBEB149F25F950C10046CB30 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				DBEB14A025F950CB0046CB30 /* LoginModule */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		DBEB14A025F950CB0046CB30 /* LoginModule */ = {
+			isa = PBXGroup;
+			children = (
+				DBEB14A125F952A90046CB30 /* LoginInteractor.swift */,
+				DBEB14A525F952B80046CB30 /* LoginInterfaces.swift */,
+				DBEB14A825F98A630046CB30 /* LoginPresenter.swift */,
+				DBEB14AF25F98B760046CB30 /* LoginView.swift */,
+			);
+			path = LoginModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,8 +238,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBEB14B025F98B760046CB30 /* LoginView.swift in Sources */,
 				DB834E4E25E5C1B200E94268 /* ContentView.swift in Sources */,
+				DBEB14A625F952B80046CB30 /* LoginInterfaces.swift in Sources */,
 				DB834E4C25E5C1B200E94268 /* SwiftSurfingApp.swift in Sources */,
+				DBEB14A225F952A90046CB30 /* LoginInteractor.swift in Sources */,
+				DBEB14A925F98A630046CB30 /* LoginPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
