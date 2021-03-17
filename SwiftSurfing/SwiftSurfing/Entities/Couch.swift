@@ -1,0 +1,81 @@
+//
+//  Couch.swift
+//  SwiftSurfing
+//
+//  Created by Séllyei Bence on 2021. 03. 15..
+//
+
+import Foundation
+import Firebase
+
+class Couch: Identifiable {
+    let ref: DatabaseReference?
+    let id: String
+    var name: String
+    var latitude: Double
+    var longitude: Double
+    var address: String
+    var city: String
+    var country: String
+    var maxGuests: Int
+    var description: String
+    var tags: String
+ 
+    init() {
+        self.ref = nil
+        self.id = UUID().uuidString
+        self.name = ""
+        self.latitude = 0.0
+        self.longitude = 0.0
+        self.address = ""
+        self.city = ""
+        self.country = ""
+        self.maxGuests = -1
+        self.description = ""
+        self.tags = ""
+    }
+    
+    init?(snapshot: DataSnapshot) {
+        guard
+            let value = snapshot.value as? [String:AnyObject],
+            let id = value["id"] as? String,
+            let name = value["name"] as? String,
+            let latitude = value["latitude"] as? Double,
+            let longitude = value["longitude"] as? Double,
+            let address = value["address"] as? String,
+            let city = value["city"] as? String,
+            let country = value["country"] as? String,
+            let maxGuests = value["maxGuests"] as? Int,
+            let description = value["description"] as? String,
+            let tags = value["tags"] as? String
+        else {
+            return nil
+        }
+        self.ref = snapshot.ref
+        self.id = id
+        self.name = name
+        self.latitude = latitude
+        self.longitude = longitude
+        self.address = address
+        self.city = city
+        self.country = country
+        self.maxGuests = maxGuests
+        self.description = description
+        self.tags = tags
+    }
+    
+    func toAnyObject() -> Any {
+        return [
+            "id": id,
+            "name": name,
+            "latitude": latitude,
+            "longitude": longitude,
+            "address": address,
+            "city": city,
+            "country": country,
+            "maxGuests": maxGuests,
+            "description": description,
+            "tags": tags
+        ]
+    }
+}

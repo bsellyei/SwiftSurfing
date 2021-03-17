@@ -6,26 +6,47 @@
 //
 
 import Foundation
+import SwiftUI
 
-class LoginPresenter: LoginPresenterInterface, ObservableObject {
-    var view: LoginView
-    var interactor: LoginPresenterToInteractor
+class LoginPresenter: ObservableObject {
+    private let interactor: LoginInteractor
+    private let router = LoginRouter()
     
-    init(interactor: LoginPresenterToInteractor) {
-        self.interactor = interactor
+    @Published var email: String
+    @Published var password: String
+    
+    var disableLogin: Bool {
+        email.isEmpty || password.isEmpty
     }
+    
+    init(interactor: LoginInteractor) {
+        self.interactor = interactor
+        
+        self.email = ""
+        self.password = ""
+    }
+    
+    lazy var emailValidation: ValidationPublisher = {
+        $email.nonEmptyValidator("There is no user registered with this email address.")
+    }()
     
     func login() {
-        interactor.login(email: email, password: password)
+        interactor.login(email: self.email, password: self.password)
     }
-}
-
-extension LoginPresenter: LoginInteractorToPresenter {
+    
     func loginDidFail() {
         
     }
     
     func loginDidSucceed() {
-        <#code#>
+        
+    }
+    
+    func linkBuilder<Content: View>(@ViewBuilder content: () -> Content)
+        -> some View
+    {
+        NavigationLink(destination: router.makeRegisterView()) {
+            content()
+        }
     }
 }

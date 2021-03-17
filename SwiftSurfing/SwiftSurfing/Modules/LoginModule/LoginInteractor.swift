@@ -8,15 +8,13 @@
 import Foundation
 import Firebase
 
-class LoginInteractor: LoginInteractorInterface {
-    var presenter: LoginInteractorToPresenter?
+class LoginInteractor {
+    //var presenter: LoginPresenter
     
     init () {
-        
+        //self.presenter = presenter
     }
-}
-
-extension LoginInteractor: LoginPresenterToInteractor {
+    
     func login(email: String, password: String) {
         Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
             if let error = error {
@@ -24,23 +22,23 @@ extension LoginInteractor: LoginPresenterToInteractor {
                 switch AuthErrorCode(rawValue: authError.code) {
                 case .operationNotAllowed:
                     print("Error: \(authError.localizedDescription)")
-                    self.presenter?.loginDidFail()
+                    //self.presenter.loginDidFail()
                 case .userDisabled:
                     print("Error: \(authError.localizedDescription)")
-                    self.presenter?.loginDidFail()
+                    //self.presenter.loginDidFail()
                 case .wrongPassword:
                     print("Error: \(authError.localizedDescription)")
-                    self.presenter?.loginDidFail()
+                    //self.presenter.loginDidFail()
                 case .invalidEmail:
                     print("Error: \(authError.localizedDescription)")
-                    self.presenter?.loginDidFail()
+                    //self.presenter.loginDidFail()
                 default:
                     print("Error: \(authError.localizedDescription)")
-                    self.presenter?.loginDidFail()
+                    //self.presenter.loginDidFail()
                 }
             } else {
                 print("User logged in")
-                self.presenter?.loginDidSucceed()
+                //self.presenter.loginDidSucceed()
             }
         }
     }
