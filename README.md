@@ -14,3 +14,6 @@ Csináltam egy térképes nézetet is, megnéztem hogyan kell ezen annotációka
 Firebase-en megcsináltam az adatbázist, a szálláshely felvételhez megcsináltam a nézeteket, és már szálláshelyet is lehet hozzáadni, ami megjelenik az adatbázisban. 
 Lekérdezéseket még nem csináltam az appban, következő lépésként szeretném majd, hogy a Couches tabon megjelenjenek a user szálláshelyei, valamint a térképen is.
 Az adatmodell diagramját is bővítettem, viszont szerintem még ez sem teljes, ezt útközben szeretném még bővíteni. 1-2 nézetet amit hiányoltál, szintén nem sikerült még befejeznem, ez is a következő hétre marad majd.
+
+### 2021. március 18.-25.:
+
