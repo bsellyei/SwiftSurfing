@@ -22,6 +22,13 @@ struct SwiftSurfingApp: App {
     class AppDelegate: NSObject, UIApplicationDelegate {
         func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
             FirebaseApp.configure()
+            
+            let container = DIContainer.instance
+            
+            container.register(
+                type: CouchServiceProtocol.self,
+                component: CouchService())
+            
             return true
         }
     }

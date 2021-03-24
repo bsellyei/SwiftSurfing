@@ -38,6 +38,6 @@ class NewCouchPresenter: ObservableObject {
         couch.maxGuests = self.maxGuests
         couch.description = self.description
         couch.tags = self.tags
-        self.interactor.addNewCouch(couch: couch)
+        self.interactor.addNew(couch: couch)
     }
 }

@@ -68,7 +68,7 @@ struct NewCouchView: View {
 
 struct NewCouchView_Previews: PreviewProvider {
     static var previews: some View {
-        let interactor = NewCouchInteractor()
+        let interactor = NewCouchInteractor(couchService: CouchService())
         let presenter = NewCouchPresenter(interactor: interactor)
         return NavigationView {
             NewCouchView(presenter: presenter)
