@@ -55,6 +55,9 @@ struct NewCouchView: View {
                 Spacer()
             }
             .padding()
+            .alert(isPresented: $presenter.showAlert) {
+                Alert(title: Text("Adding couch failed."), message: Text("Please try again."), dismissButton: .default(Text("Try again")))
+            }
         }
         .navigationTitle("New Couch")
         .toolbar(content: {

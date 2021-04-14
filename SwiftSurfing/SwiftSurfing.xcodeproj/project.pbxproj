@@ -24,6 +24,9 @@
 		DB834E5025E5C1B300E94268 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB834E4F25E5C1B300E94268 /* Assets.xcassets */; };
 		DB834E5325E5C1B300E94268 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB834E5225E5C1B300E94268 /* Preview Assets.xcassets */; };
 		DB834E6025E5C30900E94268 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB834E5F25E5C30900E94268 /* GoogleService-Info.plist */; };
+		DB8BFDF126272A4100780517 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BFDF026272A4100780517 /* SheetView.swift */; };
+		DB8BFDF526272B1600780517 /* MapViewKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BFDF426272B1600780517 /* MapViewKit.swift */; };
+		DB8BFDF82627368C00780517 /* SearchBarKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BFDF72627368C00780517 /* SearchBarKit.swift */; };
 		DBA0B9C12601469F00474B7C /* NewCouchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA0B9C02601469F00474B7C /* NewCouchInteractor.swift */; };
 		DBA0B9C5260146B600474B7C /* NewCouchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA0B9C4260146B600474B7C /* NewCouchPresenter.swift */; };
 		DBA0B9C8260146EB00474B7C /* NewCouchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA0B9C7260146EB00474B7C /* NewCouchView.swift */; };
@@ -68,6 +71,9 @@
 		DB834E5225E5C1B300E94268 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DB834E5425E5C1B300E94268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB834E5F25E5C30900E94268 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DB8BFDF026272A4100780517 /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
+		DB8BFDF426272B1600780517 /* MapViewKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewKit.swift; sourceTree = "<group>"; };
+		DB8BFDF72627368C00780517 /* SearchBarKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarKit.swift; sourceTree = "<group>"; };
 		DBA0B9C02601469F00474B7C /* NewCouchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCouchInteractor.swift; sourceTree = "<group>"; };
 		DBA0B9C4260146B600474B7C /* NewCouchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCouchPresenter.swift; sourceTree = "<group>"; };
 		DBA0B9C7260146EB00474B7C /* NewCouchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCouchView.swift; sourceTree = "<group>"; };
@@ -167,6 +173,7 @@
 		DB834E4A25E5C1B200E94268 /* SwiftSurfing */ = {
 			isa = PBXGroup;
 			children = (
+				DB8BFDEF262729F300780517 /* CommonViews */,
 				DBA0B9D1260BE5E700474B7C /* Services */,
 				DB09709E25FFC7B40052EC09 /* Entities */,
 				DBCBEA1C25FBEC3600E74A8D /* Utils */,
@@ -187,6 +194,16 @@
 				DB834E5225E5C1B300E94268 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DB8BFDEF262729F300780517 /* CommonViews */ = {
+			isa = PBXGroup;
+			children = (
+				DB8BFDF026272A4100780517 /* SheetView.swift */,
+				DB8BFDF426272B1600780517 /* MapViewKit.swift */,
+				DB8BFDF72627368C00780517 /* SearchBarKit.swift */,
+			);
+			path = CommonViews;
 			sourceTree = "<group>";
 		};
 		DBA0B9BF2601468800474B7C /* NewCouchModule */ = {
@@ -432,8 +449,10 @@
 				DB09709025FD509C0052EC09 /* MapView.swift in Sources */,
 				DB834E4E25E5C1B200E94268 /* ContentView.swift in Sources */,
 				DBCBEA2925FBF25500E74A8D /* PublisherExtension.swift in Sources */,
+				DB8BFDF526272B1600780517 /* MapViewKit.swift in Sources */,
 				DB09709925FE36020052EC09 /* RootInteractor.swift in Sources */,
 				DB0970AE2601436B0052EC09 /* CouchesRouter.swift in Sources */,
+				DB8BFDF82627368C00780517 /* SearchBarKit.swift in Sources */,
 				DBEB14B925FAD5A70046CB30 /* RegisterPresenter.swift in Sources */,
 				DBCBEA3925FD4CCA00E74A8D /* RootView.swift in Sources */,
 				DB09709325FD50A90052EC09 /* MapInteractor.swift in Sources */,
@@ -444,6 +463,7 @@
 				DB09709C25FE367C0052EC09 /* RootPresenter.swift in Sources */,
 				DBCBEA2625FBEF3300E74A8D /* ValidationPublishers.swift in Sources */,
 				DBA0B9C5260146B600474B7C /* NewCouchPresenter.swift in Sources */,
+				DB8BFDF126272A4100780517 /* SheetView.swift in Sources */,
 				DB0970A8260142080052EC09 /* CouchesPresenter.swift in Sources */,
 				DBA0B9E1260BE8D000474B7C /* DIContainerProtocol.swift in Sources */,
 				DBCBEA2325FBED2E00E74A8D /* ValidationModifier.swift in Sources */,
@@ -470,6 +490,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -531,6 +552,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

@@ -8,7 +8,13 @@
 import Foundation
 
 class MapInteractor {
-    init() {
-        
+    private let service: CouchServiceProtocol
+    
+    init(couchService: CouchServiceProtocol) {
+        self.service = couchService
+    }
+    
+    func getCouches(completion: @escaping ([Couch]) -> Void) {
+        service.getAllCouches(completion: completion)
     }
 }

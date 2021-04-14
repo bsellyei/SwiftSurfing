@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeTabView: View {
     var body: some View {
         TabView {
-            MapView(presenter: MapPresenter(interactor: MapInteractor()))
+            MapView(presenter: MapPresenter(interactor: MapInteractor(couchService: DIContainer.instance.resolve(type: CouchServiceProtocol.self)!)))
             .tabItem {
                 VStack {
                     Image(systemName: "house.fill")
@@ -18,7 +18,8 @@ struct HomeTabView: View {
                 }
             }
             
-            CouchesView(presenter: CouchesPresenter(interactor: CouchesInteractor()))
+            CouchesView(presenter: CouchesPresenter(
+                            interactor: CouchesInteractor(couchService: DIContainer.instance.resolve(type: CouchServiceProtocol.self)!)))
             .tabItem {
                 VStack {
                     Image(systemName: "house.fill")

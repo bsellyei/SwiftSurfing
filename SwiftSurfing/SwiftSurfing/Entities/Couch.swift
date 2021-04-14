@@ -51,6 +51,7 @@ class Couch: Identifiable {
         else {
             return nil
         }
+        
         self.ref = snapshot.ref
         self.id = id
         self.name = name

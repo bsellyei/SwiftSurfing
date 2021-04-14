@@ -34,6 +34,11 @@ struct CouchesView: View {
                 }
                 .padding()
                 
+                List(presenter.couches) { item in
+                    CouchRow(couch: item)
+                }
+                .onAppear(perform: presenter.getCouches)
+                
                 Spacer()
             }
             .navigationBarHidden(true)
@@ -41,9 +46,17 @@ struct CouchesView: View {
     }
 }
 
+struct CouchRow: View {
+    var couch: Couch
+    
+    var body: some View {
+        Text(couch.name)
+    }
+}
+
 struct CouchesView_Previews: PreviewProvider {
     static var previews: some View {
-        let interactor = CouchesInteractor()
+        let interactor = CouchesInteractor(couchService: CouchService())
         let presenter = CouchesPresenter(interactor: interactor)
         return CouchesView(presenter: presenter)
     }

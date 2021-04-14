@@ -18,6 +18,8 @@ class NewCouchPresenter: ObservableObject {
     @Published var description: String
     @Published var tags: String
     
+    @Published var showAlert: Bool
+    
     init(interactor: NewCouchInteractor) {
         self.interactor = interactor
         self.name = ""
@@ -27,10 +29,12 @@ class NewCouchPresenter: ObservableObject {
         self.maxGuests = 1
         self.description = ""
         self.tags = ""
+        
+        self.showAlert = false
     }
     
     func addNewCouch() {
-        var couch = Couch()
+        let couch = Couch()
         couch.name = self.name
         couch.address = self.address
         couch.city = self.city
@@ -38,6 +42,11 @@ class NewCouchPresenter: ObservableObject {
         couch.maxGuests = self.maxGuests
         couch.description = self.description
         couch.tags = self.tags
-        self.interactor.addNew(couch: couch)
+        
+        DispatchQueue.global(qos: .background).async {
+            self.interactor.addNew(couch: couch, completion: { success in
+                self.showAlert = !success
+            })
+        }
     }
 }

@@ -11,11 +11,11 @@ import Firebase
 protocol CouchServiceProtocol {
     var databaseRef: DatabaseReference? { get set }
     
-    func addNew(couch: Couch)
+    func addNew(couch: Couch, completion: @escaping (Bool) -> Void)
     
     func get(couch: Couch)
     
-    func getAllCouches()
+    func getAllCouches(completion: @escaping ([Couch]) -> Void)
     
     func update(couch: Couch)
     

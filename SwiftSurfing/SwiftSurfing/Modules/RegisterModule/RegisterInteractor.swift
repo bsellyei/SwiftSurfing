@@ -32,7 +32,7 @@ class RegisterInteractor {
                 }
             } else {
                 print("User signed up successfully")
-                let userInfo = Auth.auth().currentUser
+                _ = Auth.auth().currentUser
             }
         }
         
