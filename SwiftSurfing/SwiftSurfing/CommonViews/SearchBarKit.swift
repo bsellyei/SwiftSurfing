@@ -6,49 +6,52 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct SearchBarKit: UIViewRepresentable {
-    private var text: String
-    var searchOperation: () -> Void
+    private var searchOperation: (String) -> Void
     
-    init(text: String, searchOperation: @escaping () -> Void) {
-        self.text = text
+    init(searchOperation: @escaping (String) -> Void) {
         self.searchOperation = searchOperation
     }
     
-    func makeUIView(context: Context) -> UITextField {
-        let searchBar = UITextField(frame: .zero)
-        searchBar.keyboardType = .default
-        searchBar.returnKeyType = .search
+    func makeUIView(context: Context) -> UISearchBar {
+        let searchBar = UISearchBar(frame: .zero)
         searchBar.autocorrectionType = .no
         searchBar.delegate = context.coordinator
+        searchBar.showsCancelButton = false
         return searchBar
     }
     
-    func updateUIView(_ uiView: UIViewType, context: Context) {
-        
+    func updateUIView(_ uiView: UISearchBar, context: Context) {
     }
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
     
-    class Coordinator: NSObject, UITextFieldDelegate {
+    class Coordinator: NSObject, UISearchBarDelegate {
         var parent: SearchBarKit
         
         init(_ parent: SearchBarKit) {
             self.parent = parent
         }
         
-        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            parent.searchOperation()
-            return true
+        func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+            searchBar.showsCancelButton = true
         }
-    }
-}
-
-struct SearchBar_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchBarKit(text: "", searchOperation: { })
+        
+        func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+            parent.searchOperation(searchBar.text ?? "")
+            searchBar.text = ""
+            searchBar.showsCancelButton = false
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }
+        
+        func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+            searchBar.text = ""
+            searchBar.showsCancelButton = false
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }
     }
 }

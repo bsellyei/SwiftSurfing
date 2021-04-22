@@ -8,21 +8,11 @@
 import SwiftUI
 import MapKit
 
-class MyAnnotation: NSObject, MKAnnotation {
-    let coordinate: CLLocationCoordinate2D
-    
-    init(coordinate: CLLocationCoordinate2D) {
-        self.coordinate = coordinate
-        
-        super.init()
-    }
-}
-
 struct MapViewKit: UIViewRepresentable {
-    private var annotations: [MyAnnotation]
+    private var annotations: [CouchAnnotation]
     private var region: MKCoordinateRegion
     
-    init(region: MKCoordinateRegion, annotations: [MyAnnotation]) {
+    init(region: MKCoordinateRegion, annotations: [CouchAnnotation]) {
         self.region = region
         self.annotations = annotations
     }

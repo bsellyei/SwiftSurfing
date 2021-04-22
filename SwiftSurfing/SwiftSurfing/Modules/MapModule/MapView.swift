@@ -21,14 +21,20 @@ struct MapView: View {
                 MapViewKit(region: presenter.region, annotations: presenter.annotations)
             }
             
-            SheetView(isOpen: $sheetOpen, maxHeight: geometry.size.height * 0.5) {
-            }
-            
             VStack {
-                /*SearchBarKit(text: presenter.searchText, searchOperation: {
-                    self.presenter.search()
+                SearchBarKit(searchOperation: { searchText in
+                    presenter.search(searchText: searchText)
                 })
-                    .padding(.top, -30)*/
+                .frame(width: geometry.size.width, height: 40)
+            }
+            .padding(.top, 25)
+            
+            SheetView(isOpen: $sheetOpen, maxHeight: geometry.size.height * 0.5) {
+                List(presenter.couches) { item in
+                    Spacer()
+                    CouchListRow(couch: item)
+                    Spacer()
+                }
             }
         }
         .edgesIgnoringSafeArea(.all)

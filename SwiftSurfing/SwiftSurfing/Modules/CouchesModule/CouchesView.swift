@@ -35,22 +35,15 @@ struct CouchesView: View {
                 .padding()
                 
                 List(presenter.couches) { item in
-                    CouchRow(couch: item)
+                    CouchListRow(couch: item)
                 }
                 .onAppear(perform: presenter.getCouches)
                 
                 Spacer()
             }
+            .background(Color.white)
             .navigationBarHidden(true)
         }
-    }
-}
-
-struct CouchRow: View {
-    var couch: Couch
-    
-    var body: some View {
-        Text(couch.name)
     }
 }
 

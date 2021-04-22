@@ -19,6 +19,8 @@
 		DB0970A8260142080052EC09 /* CouchesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0970A7260142080052EC09 /* CouchesPresenter.swift */; };
 		DB0970AB260142590052EC09 /* CouchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0970AA260142590052EC09 /* CouchesView.swift */; };
 		DB0970AE2601436B0052EC09 /* CouchesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0970AD2601436A0052EC09 /* CouchesRouter.swift */; };
+		DB54DC1A263149D800B7618F /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB54DC19263149D800B7618F /* RatingView.swift */; };
+		DB5F6A9526282C6300C83F5A /* CouchListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5F6A9426282C6300C83F5A /* CouchListRow.swift */; };
 		DB834E4C25E5C1B200E94268 /* SwiftSurfingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB834E4B25E5C1B200E94268 /* SwiftSurfingApp.swift */; };
 		DB834E4E25E5C1B200E94268 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB834E4D25E5C1B200E94268 /* ContentView.swift */; };
 		DB834E5025E5C1B300E94268 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB834E4F25E5C1B300E94268 /* Assets.xcassets */; };
@@ -35,6 +37,7 @@
 		DBA0B9DD260BE86700474B7C /* CouchServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA0B9DC260BE86700474B7C /* CouchServiceProtocol.swift */; };
 		DBA0B9E1260BE8D000474B7C /* DIContainerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA0B9E0260BE8D000474B7C /* DIContainerProtocol.swift */; };
 		DBA0B9E5260BE93200474B7C /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA0B9E4260BE93200474B7C /* DIContainer.swift */; };
+		DBA264D42630C1B900C63431 /* CouchAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA264D32630C1B900C63431 /* CouchAnnotation.swift */; };
 		DBCBEA1F25FBECE600E74A8D /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCBEA1E25FBECE600E74A8D /* Validation.swift */; };
 		DBCBEA2325FBED2E00E74A8D /* ValidationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCBEA2225FBED2E00E74A8D /* ValidationModifier.swift */; };
 		DBCBEA2625FBEF3300E74A8D /* ValidationPublishers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCBEA2525FBEF3300E74A8D /* ValidationPublishers.swift */; };
@@ -64,6 +67,8 @@
 		DB0970A7260142080052EC09 /* CouchesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouchesPresenter.swift; sourceTree = "<group>"; };
 		DB0970AA260142590052EC09 /* CouchesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouchesView.swift; sourceTree = "<group>"; };
 		DB0970AD2601436A0052EC09 /* CouchesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouchesRouter.swift; sourceTree = "<group>"; };
+		DB54DC19263149D800B7618F /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		DB5F6A9426282C6300C83F5A /* CouchListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouchListRow.swift; sourceTree = "<group>"; };
 		DB834E4825E5C1B200E94268 /* SwiftSurfing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftSurfing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB834E4B25E5C1B200E94268 /* SwiftSurfingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftSurfingApp.swift; sourceTree = "<group>"; };
 		DB834E4D25E5C1B200E94268 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -81,6 +86,7 @@
 		DBA0B9DC260BE86700474B7C /* CouchServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouchServiceProtocol.swift; sourceTree = "<group>"; };
 		DBA0B9E0260BE8D000474B7C /* DIContainerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainerProtocol.swift; sourceTree = "<group>"; };
 		DBA0B9E4260BE93200474B7C /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		DBA264D32630C1B900C63431 /* CouchAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouchAnnotation.swift; sourceTree = "<group>"; };
 		DBCBEA1E25FBECE600E74A8D /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		DBCBEA2225FBED2E00E74A8D /* ValidationModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationModifier.swift; sourceTree = "<group>"; };
 		DBCBEA2525FBEF3300E74A8D /* ValidationPublishers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationPublishers.swift; sourceTree = "<group>"; };
@@ -137,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				DB09709F25FFC7C10052EC09 /* Couch.swift */,
+				DBA264D32630C1B900C63431 /* CouchAnnotation.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -202,6 +209,8 @@
 				DB8BFDF026272A4100780517 /* SheetView.swift */,
 				DB8BFDF426272B1600780517 /* MapViewKit.swift */,
 				DB8BFDF72627368C00780517 /* SearchBarKit.swift */,
+				DB5F6A9426282C6300C83F5A /* CouchListRow.swift */,
+				DB54DC19263149D800B7618F /* RatingView.swift */,
 			);
 			path = CommonViews;
 			sourceTree = "<group>";
@@ -461,9 +470,12 @@
 				DB0970A4260141E60052EC09 /* CouchesInteractor.swift in Sources */,
 				DBEB14B525FAD59A0046CB30 /* RegisterInteractor.swift in Sources */,
 				DB09709C25FE367C0052EC09 /* RootPresenter.swift in Sources */,
+				DBA264D42630C1B900C63431 /* CouchAnnotation.swift in Sources */,
+				DB54DC1A263149D800B7618F /* RatingView.swift in Sources */,
 				DBCBEA2625FBEF3300E74A8D /* ValidationPublishers.swift in Sources */,
 				DBA0B9C5260146B600474B7C /* NewCouchPresenter.swift in Sources */,
 				DB8BFDF126272A4100780517 /* SheetView.swift in Sources */,
+				DB5F6A9526282C6300C83F5A /* CouchListRow.swift in Sources */,
 				DB0970A8260142080052EC09 /* CouchesPresenter.swift in Sources */,
 				DBA0B9E1260BE8D000474B7C /* DIContainerProtocol.swift in Sources */,
 				DBCBEA2325FBED2E00E74A8D /* ValidationModifier.swift in Sources */,

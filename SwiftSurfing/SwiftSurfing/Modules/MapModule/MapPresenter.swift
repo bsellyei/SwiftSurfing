@@ -15,24 +15,43 @@ class MapPresenter: ObservableObject {
         center: CLLocationCoordinate2D(latitude: 47.497913, longitude: 19.040236),
         span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
     
-    @Published var annotations: [MyAnnotation] = []
-    
-    @Published var searchText: String
+    @Published var annotations: [CouchAnnotation] = []
+    @Published var couches: [Couch] = []
     
     init(interactor: MapInteractor) {
         self.interactor = interactor
-        searchText = ""
+        
+        getCouches()
     }
     
     func getCouches() {
-        /*DispatchQueue.global(qos: .background).async {
+        DispatchQueue.global(qos: .background).async {
             self.interactor.getCouches(completion: { couches in
-                self.annotations = couches
+                self.couches = couches
+                self.annotations = self.makeCouchAnnotations(couches: couches)
             })
-        }*/
+        }
     }
     
-    func search() -> Void {
-        print(searchText)
+    func search(searchText: String) -> Void {
+        DispatchQueue.global(qos: .background).async {
+            self.interactor.search(searchText: searchText, completion: { coordinate, error in
+                guard let coordinate = coordinate, error == nil else { return }
+                DispatchQueue.main.async {
+                    self.region.center = coordinate
+                }
+            })
+        }
+        //getCouches()
+    }
+    
+    private func makeCouchAnnotations(couches: [Couch]) -> [CouchAnnotation] {
+        var couchAnnotations: [CouchAnnotation] = []
+        for couch in couches {
+            let couchAnnotation = CouchAnnotation(coordinate: CLLocationCoordinate2D(
+                                                  latitude: couch.latitude, longitude: couch.longitude))
+            couchAnnotations.append(couchAnnotation)
+        }
+        return couchAnnotations
     }
 }
