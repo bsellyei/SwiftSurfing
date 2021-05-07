@@ -9,6 +9,7 @@ import Foundation
 import Firebase
 import CoreData
 import LMGeocoderSwift
+import FirebaseAuth
 
 class CouchService: CouchServiceProtocol {
     var databaseRef: DatabaseReference?
@@ -20,7 +21,21 @@ class CouchService: CouchServiceProtocol {
     }
     
     func addNew(couch: Couch, completion: @escaping (Bool) -> Void) {
-        Geocoder.shared.geocodeAddressString(couch.address, service: .google) { (results, error) in
+        if couch.userId.isEmpty {
+            let user = Auth.auth().currentUser
+            guard
+                let userId = user?.uid
+            else {
+                DispatchQueue.main.async {
+                    completion(false)
+                }
+                return
+            }
+            
+            couch.userId = userId
+        }
+        
+        Geocoder.shared.geocodeAddressString(couch.address, service: .google, alternativeService: .apple) { (results, error) in
             if let address = results?.first, error == nil {
                 couch.latitude = address.coordinate?.latitude ?? 0
                 couch.longitude = address.coordinate?.longitude ?? 0
@@ -31,6 +46,7 @@ class CouchService: CouchServiceProtocol {
                     completion(true)
                 }
             } else {
+                print("getting coordinates failed from addNewCouch")
                 DispatchQueue.main.async {
                     completion(false)
                 }
@@ -43,23 +59,50 @@ class CouchService: CouchServiceProtocol {
     }
     
     func getAllCouches(completion: @escaping ([Couch]) -> Void) {
-        databaseRef?.observeSingleEvent(of: .value, with: { (snapshot) in
+        let user = Auth.auth().currentUser
+        guard let userId = user?.uid else {
+            DispatchQueue.main.async {
+                completion([])
+            }
+            return
+        }
+        
+        databaseRef?.queryOrdered(byChild: "userId").queryEqual(toValue: userId).observeSingleEvent(of: .value, with: { (snapshot) in
             guard let snapshot = snapshot.children.allObjects as? [DataSnapshot] else {
                 return
             }
             
             let couches = snapshot.reversed().compactMap(Couch.init)
             DispatchQueue.main.async {
+                print(couches)
                 completion(couches)
             }
         })
     }
     
-    func update(couch: Couch) {
-        
+    func update(couch: Couch, completion: @escaping (Bool) -> Void) {
+        let couchRef = self.databaseRef?.child(couch.id)
+        couchRef?.setValue(couch.toAnyObject())
+        DispatchQueue.main.async {
+            completion(true)
+        }
     }
     
     func delete(couch: Couch) {
         
     }
+    
+    /*func getAll() {
+        /*databaseRef?.observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let snapshot = snapshot.children.allObjects as? [DataSnapshot] else {
+                return
+            }
+            
+            let couches = snapshot.reversed().compactMap(Couch.init)
+            DispatchQueue.main.async {
+                print(couches)
+                completion(couches)
+            }
+        })*/
+    }*/
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class NewCouchPresenter: ObservableObject {
     private var interactor: NewCouchInteractor
@@ -17,6 +18,7 @@ class NewCouchPresenter: ObservableObject {
     @Published var maxGuests: Int
     @Published var description: String
     @Published var tags: String
+    @Published var addedImages = [UIImage]()
     
     @Published var showAlert: Bool
     
@@ -44,7 +46,7 @@ class NewCouchPresenter: ObservableObject {
         couch.tags = self.tags
         
         DispatchQueue.global(qos: .background).async {
-            self.interactor.addNew(couch: couch, completion: { success in
+            self.interactor.addNew(couch: couch, images: self.addedImages, completion: { success in
                 self.showAlert = !success
             })
         }

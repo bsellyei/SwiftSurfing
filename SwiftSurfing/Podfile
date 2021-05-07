@@ -11,5 +11,6 @@ target 'SwiftSurfing' do
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
   pod 'LMGeocoderSwift'
+  pod 'SDWebImageSwiftUI'
 
 end

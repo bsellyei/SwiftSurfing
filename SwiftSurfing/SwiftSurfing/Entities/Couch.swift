@@ -7,11 +7,11 @@
 
 import Foundation
 import Firebase
-import MapKit
 
 class Couch: Identifiable {
     let ref: DatabaseReference?
     let id: String
+    var userId: String
     var name: String
     var latitude: Double
     var longitude: Double
@@ -20,11 +20,13 @@ class Couch: Identifiable {
     var country: String
     var maxGuests: Int
     var description: String
+    var imageURLs: [String]
     var tags: String
  
     init() {
         self.ref = nil
         self.id = UUID().uuidString
+        self.userId = ""
         self.name = ""
         self.latitude = 0.0
         self.longitude = 0.0
@@ -33,6 +35,7 @@ class Couch: Identifiable {
         self.country = ""
         self.maxGuests = -1
         self.description = ""
+        self.imageURLs = ["placeholder"]
         self.tags = ""
     }
     
@@ -40,6 +43,7 @@ class Couch: Identifiable {
         guard
             let value = snapshot.value as? [String:AnyObject],
             let id = value["id"] as? String,
+            let userId = value["userId"] as? String,
             let name = value["name"] as? String,
             let latitude = value["latitude"] as? Double,
             let longitude = value["longitude"] as? Double,
@@ -48,6 +52,7 @@ class Couch: Identifiable {
             let country = value["country"] as? String,
             let maxGuests = value["maxGuests"] as? Int,
             let description = value["description"] as? String,
+            let imageURLs = value["imageURLs"] as? [String],
             let tags = value["tags"] as? String
         else {
             return nil
@@ -55,6 +60,7 @@ class Couch: Identifiable {
         
         self.ref = snapshot.ref
         self.id = id
+        self.userId = userId
         self.name = name
         self.latitude = latitude
         self.longitude = longitude
@@ -63,12 +69,14 @@ class Couch: Identifiable {
         self.country = country
         self.maxGuests = maxGuests
         self.description = description
+        self.imageURLs = imageURLs
         self.tags = tags
     }
     
     func toAnyObject() -> Any {
         return [
             "id": id,
+            "userId": userId,
             "name": name,
             "latitude": latitude,
             "longitude": longitude,
@@ -77,6 +85,7 @@ class Couch: Identifiable {
             "country": country,
             "maxGuests": maxGuests,
             "description": description,
+            "imageURLs": imageURLs,
             "tags": tags
         ]
     }

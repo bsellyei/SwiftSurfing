@@ -35,6 +35,7 @@ struct MapView: View {
                     CouchListRow(couch: item)
                     Spacer()
                 }
+                .listStyle(PlainListStyle())
             }
         }
         .edgesIgnoringSafeArea(.all)

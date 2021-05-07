@@ -10,7 +10,7 @@ import SwiftUI
 
 class LoginRouter {
     func makeRegisterView() -> some View {
-        let interactor = RegisterInteractor()
+        let interactor = RegisterInteractor(service: DIContainer.instance.resolve(type: UserServiceProtocol.self)!)
         let presenter = RegisterPresenter(interactor: interactor)
         return RegisterView(presenter: presenter)
     }

@@ -29,6 +29,14 @@ struct SwiftSurfingApp: App {
                 type: CouchServiceProtocol.self,
                 component: CouchService())
             
+            container.register(
+                type: ImageManagerProtocol.self,
+                component: ImageManager())
+            
+            container.register(
+                type: UserServiceProtocol.self,
+                component: UserService())
+            
             return true
         }
     }

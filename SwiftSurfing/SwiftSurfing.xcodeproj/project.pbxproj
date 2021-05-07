@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,15 @@
 		DB0970A8260142080052EC09 /* CouchesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0970A7260142080052EC09 /* CouchesPresenter.swift */; };
 		DB0970AB260142590052EC09 /* CouchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0970AA260142590052EC09 /* CouchesView.swift */; };
 		DB0970AE2601436B0052EC09 /* CouchesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0970AD2601436A0052EC09 /* CouchesRouter.swift */; };
+		DB1EE434263AB2DF005C4AD1 /* ImagePickerKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1EE433263AB2DF005C4AD1 /* ImagePickerKit.swift */; };
+		DB1EE437263B0B9E005C4AD1 /* ImageManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1EE436263B0B9E005C4AD1 /* ImageManagerProtocol.swift */; };
+		DB1EE43A263B0C51005C4AD1 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1EE439263B0C51005C4AD1 /* ImageManager.swift */; };
+		DB1EE43D2643284E005C4AD1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1EE43C2643284E005C4AD1 /* User.swift */; };
+		DB1EE44026432912005C4AD1 /* UserServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1EE43F26432912005C4AD1 /* UserServiceProtocol.swift */; };
+		DB1EE44326432984005C4AD1 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1EE44226432984005C4AD1 /* UserService.swift */; };
+		DB1EE44726433DF0005C4AD1 /* CouchDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1EE44626433DF0005C4AD1 /* CouchDetailsView.swift */; };
+		DB1EE44B26433E1E005C4AD1 /* CouchDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1EE44A26433E1E005C4AD1 /* CouchDetailsPresenter.swift */; };
+		DB1EE44E26433E2D005C4AD1 /* CouchDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1EE44D26433E2D005C4AD1 /* CouchDetailsInteractor.swift */; };
 		DB54DC1A263149D800B7618F /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB54DC19263149D800B7618F /* RatingView.swift */; };
 		DB5F6A9526282C6300C83F5A /* CouchListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5F6A9426282C6300C83F5A /* CouchListRow.swift */; };
 		DB834E4C25E5C1B200E94268 /* SwiftSurfingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB834E4B25E5C1B200E94268 /* SwiftSurfingApp.swift */; };
@@ -32,7 +41,6 @@
 		DBA0B9C12601469F00474B7C /* NewCouchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA0B9C02601469F00474B7C /* NewCouchInteractor.swift */; };
 		DBA0B9C5260146B600474B7C /* NewCouchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA0B9C4260146B600474B7C /* NewCouchPresenter.swift */; };
 		DBA0B9C8260146EB00474B7C /* NewCouchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA0B9C7260146EB00474B7C /* NewCouchView.swift */; };
-		DBA0B9CC2603DB3500474B7C /* SwiftUIKitView in Frameworks */ = {isa = PBXBuildFile; productRef = DBA0B9CB2603DB3500474B7C /* SwiftUIKitView */; };
 		DBA0B9D9260BE79800474B7C /* CouchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA0B9D8260BE79800474B7C /* CouchService.swift */; };
 		DBA0B9DD260BE86700474B7C /* CouchServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA0B9DC260BE86700474B7C /* CouchServiceProtocol.swift */; };
 		DBA0B9E1260BE8D000474B7C /* DIContainerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA0B9E0260BE8D000474B7C /* DIContainerProtocol.swift */; };
@@ -67,6 +75,15 @@
 		DB0970A7260142080052EC09 /* CouchesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouchesPresenter.swift; sourceTree = "<group>"; };
 		DB0970AA260142590052EC09 /* CouchesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouchesView.swift; sourceTree = "<group>"; };
 		DB0970AD2601436A0052EC09 /* CouchesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouchesRouter.swift; sourceTree = "<group>"; };
+		DB1EE433263AB2DF005C4AD1 /* ImagePickerKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerKit.swift; sourceTree = "<group>"; };
+		DB1EE436263B0B9E005C4AD1 /* ImageManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManagerProtocol.swift; sourceTree = "<group>"; };
+		DB1EE439263B0C51005C4AD1 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		DB1EE43C2643284E005C4AD1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DB1EE43F26432912005C4AD1 /* UserServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceProtocol.swift; sourceTree = "<group>"; };
+		DB1EE44226432984005C4AD1 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		DB1EE44626433DF0005C4AD1 /* CouchDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouchDetailsView.swift; sourceTree = "<group>"; };
+		DB1EE44A26433E1E005C4AD1 /* CouchDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouchDetailsPresenter.swift; sourceTree = "<group>"; };
+		DB1EE44D26433E2D005C4AD1 /* CouchDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouchDetailsInteractor.swift; sourceTree = "<group>"; };
 		DB54DC19263149D800B7618F /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		DB5F6A9426282C6300C83F5A /* CouchListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouchListRow.swift; sourceTree = "<group>"; };
 		DB834E4825E5C1B200E94268 /* SwiftSurfing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftSurfing.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,7 +123,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DBA0B9CC2603DB3500474B7C /* SwiftUIKitView in Frameworks */,
 				6405261B81F8E4FA81D2EB26 /* Pods_SwiftSurfing.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,6 +160,7 @@
 			children = (
 				DB09709F25FFC7C10052EC09 /* Couch.swift */,
 				DBA264D32630C1B900C63431 /* CouchAnnotation.swift */,
+				DB1EE43C2643284E005C4AD1 /* User.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -157,6 +174,16 @@
 				DB0970AD2601436A0052EC09 /* CouchesRouter.swift */,
 			);
 			path = CouchesModule;
+			sourceTree = "<group>";
+		};
+		DB1EE44526433DD1005C4AD1 /* CouchDetailsModule */ = {
+			isa = PBXGroup;
+			children = (
+				DB1EE44626433DF0005C4AD1 /* CouchDetailsView.swift */,
+				DB1EE44A26433E1E005C4AD1 /* CouchDetailsPresenter.swift */,
+				DB1EE44D26433E2D005C4AD1 /* CouchDetailsInteractor.swift */,
+			);
+			name = CouchDetailsModule;
 			sourceTree = "<group>";
 		};
 		DB834E3F25E5C1B100E94268 = {
@@ -211,6 +238,7 @@
 				DB8BFDF72627368C00780517 /* SearchBarKit.swift */,
 				DB5F6A9426282C6300C83F5A /* CouchListRow.swift */,
 				DB54DC19263149D800B7618F /* RatingView.swift */,
+				DB1EE433263AB2DF005C4AD1 /* ImagePickerKit.swift */,
 			);
 			path = CommonViews;
 			sourceTree = "<group>";
@@ -238,6 +266,8 @@
 			isa = PBXGroup;
 			children = (
 				DBA0B9DC260BE86700474B7C /* CouchServiceProtocol.swift */,
+				DB1EE436263B0B9E005C4AD1 /* ImageManagerProtocol.swift */,
+				DB1EE43F26432912005C4AD1 /* UserServiceProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -246,6 +276,8 @@
 			isa = PBXGroup;
 			children = (
 				DBA0B9D8260BE79800474B7C /* CouchService.swift */,
+				DB1EE439263B0C51005C4AD1 /* ImageManager.swift */,
+				DB1EE44226432984005C4AD1 /* UserService.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -302,6 +334,7 @@
 		DBEB149F25F950C10046CB30 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				DB1EE44526433DD1005C4AD1 /* CouchDetailsModule */,
 				DBA0B9BF2601468800474B7C /* NewCouchModule */,
 				DB0970A2260141CA0052EC09 /* CouchesModule */,
 				DB09708A25FD4EA40052EC09 /* HomeModule */,
@@ -353,7 +386,6 @@
 			);
 			name = SwiftSurfing;
 			packageProductDependencies = (
-				DBA0B9CB2603DB3500474B7C /* SwiftUIKitView */,
 			);
 			productName = SwiftSurfing;
 			productReference = DB834E4825E5C1B200E94268 /* SwiftSurfing.app */;
@@ -383,7 +415,6 @@
 			);
 			mainGroup = DB834E3F25E5C1B100E94268;
 			packageReferences = (
-				DBA0B9CA2603DB3500474B7C /* XCRemoteSwiftPackageReference "SwiftUIKitView" */,
 			);
 			productRefGroup = DB834E4925E5C1B200E94268 /* Products */;
 			projectDirPath = "";
@@ -456,9 +487,11 @@
 			files = (
 				DBEB14B025F98B760046CB30 /* LoginView.swift in Sources */,
 				DB09709025FD509C0052EC09 /* MapView.swift in Sources */,
+				DB1EE43A263B0C51005C4AD1 /* ImageManager.swift in Sources */,
 				DB834E4E25E5C1B200E94268 /* ContentView.swift in Sources */,
 				DBCBEA2925FBF25500E74A8D /* PublisherExtension.swift in Sources */,
 				DB8BFDF526272B1600780517 /* MapViewKit.swift in Sources */,
+				DB1EE437263B0B9E005C4AD1 /* ImageManagerProtocol.swift in Sources */,
 				DB09709925FE36020052EC09 /* RootInteractor.swift in Sources */,
 				DB0970AE2601436B0052EC09 /* CouchesRouter.swift in Sources */,
 				DB8BFDF82627368C00780517 /* SearchBarKit.swift in Sources */,
@@ -469,14 +502,21 @@
 				DBA0B9D9260BE79800474B7C /* CouchService.swift in Sources */,
 				DB0970A4260141E60052EC09 /* CouchesInteractor.swift in Sources */,
 				DBEB14B525FAD59A0046CB30 /* RegisterInteractor.swift in Sources */,
+				DB1EE44026432912005C4AD1 /* UserServiceProtocol.swift in Sources */,
+				DB1EE44B26433E1E005C4AD1 /* CouchDetailsPresenter.swift in Sources */,
 				DB09709C25FE367C0052EC09 /* RootPresenter.swift in Sources */,
 				DBA264D42630C1B900C63431 /* CouchAnnotation.swift in Sources */,
 				DB54DC1A263149D800B7618F /* RatingView.swift in Sources */,
+				DB1EE43D2643284E005C4AD1 /* User.swift in Sources */,
+				DB1EE44E26433E2D005C4AD1 /* CouchDetailsInteractor.swift in Sources */,
+				DB1EE434263AB2DF005C4AD1 /* ImagePickerKit.swift in Sources */,
 				DBCBEA2625FBEF3300E74A8D /* ValidationPublishers.swift in Sources */,
 				DBA0B9C5260146B600474B7C /* NewCouchPresenter.swift in Sources */,
+				DB1EE44726433DF0005C4AD1 /* CouchDetailsView.swift in Sources */,
 				DB8BFDF126272A4100780517 /* SheetView.swift in Sources */,
 				DB5F6A9526282C6300C83F5A /* CouchListRow.swift in Sources */,
 				DB0970A8260142080052EC09 /* CouchesPresenter.swift in Sources */,
+				DB1EE44326432984005C4AD1 /* UserService.swift in Sources */,
 				DBA0B9E1260BE8D000474B7C /* DIContainerProtocol.swift in Sources */,
 				DBCBEA2325FBED2E00E74A8D /* ValidationModifier.swift in Sources */,
 				DB0970A025FFC7C10052EC09 /* Couch.swift in Sources */,
@@ -682,25 +722,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		DBA0B9CA2603DB3500474B7C /* XCRemoteSwiftPackageReference "SwiftUIKitView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AvdLee/SwiftUIKitView";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.2;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		DBA0B9CB2603DB3500474B7C /* SwiftUIKitView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DBA0B9CA2603DB3500474B7C /* XCRemoteSwiftPackageReference "SwiftUIKitView" */;
-			productName = SwiftUIKitView;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DB834E4025E5C1B100E94268 /* Project object */;
 }

@@ -56,12 +56,18 @@ PODS:
   - nanopb/decode (2.30907.0)
   - nanopb/encode (2.30907.0)
   - PromisesObjC (1.2.12)
+  - SDWebImage (5.11.1):
+    - SDWebImage/Core (= 5.11.1)
+  - SDWebImage/Core (5.11.1)
+  - SDWebImageSwiftUI (2.0.2):
+    - SDWebImage (~> 5.10)
 
 DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Database
   - Firebase/Storage
   - LMGeocoderSwift
+  - SDWebImageSwiftUI
 
 SPEC REPOS:
   trunk:
@@ -78,6 +84,8 @@ SPEC REPOS:
     - LMGeocoderSwift
     - nanopb
     - PromisesObjC
+    - SDWebImage
+    - SDWebImageSwiftUI
 
 SPEC CHECKSUMS:
   Firebase: cd2ab85eec8170dc260186159f21072ecb679ad5
@@ -93,7 +101,9 @@ SPEC CHECKSUMS:
   LMGeocoderSwift: 8baba3fafc7cf1bc1c3a22b95bf19a0ba855d290
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
+  SDWebImageSwiftUI: 8a3923c95108312b03a599ec1498754af55a6819
 
-PODFILE CHECKSUM: 3c7085c3bfda2dd347d5ed67e93ae6db2a4a6848
+PODFILE CHECKSUM: 8224b9570fc1e6fb50345f663846bec6ccc0bf10
 
 COCOAPODS: 1.10.1

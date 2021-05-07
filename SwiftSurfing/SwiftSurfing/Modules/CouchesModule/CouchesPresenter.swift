@@ -27,7 +27,15 @@ class CouchesPresenter: ObservableObject {
         }
     }
     
-    func linkBuilder<Content: View>(@ViewBuilder content: () -> Content)
+    func linkBuilderForCouchDetails<Content: View>(couch: Couch, @ViewBuilder content: () -> Content)
+        -> some View
+    {
+        NavigationLink(destination: router.makeCouchDetailsView(couch: couch)) {
+            content()
+        }
+    }
+    
+    func linkBuilderForNewCouch<Content: View>(@ViewBuilder content: () -> Content)
         -> some View
     {
         NavigationLink(destination: router.makeNewCouchView()) {

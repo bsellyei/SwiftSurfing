@@ -18,7 +18,7 @@ struct CouchesView: View {
         NavigationView {
             VStack {
                 HStack {
-                    self.presenter.linkBuilder(content: {
+                    self.presenter.linkBuilderForNewCouch(content: {
                         Image(systemName: "plus.circle.fill")
                             .resizable()
                             .clipped()
@@ -35,11 +35,12 @@ struct CouchesView: View {
                 .padding()
                 
                 List(presenter.couches) { item in
-                    CouchListRow(couch: item)
+                    self.presenter.linkBuilderForCouchDetails(couch: item, content: {
+                        CouchListRow(couch: item)
+                    })
                 }
+                .listStyle(PlainListStyle())
                 .onAppear(perform: presenter.getCouches)
-                
-                Spacer()
             }
             .background(Color.white)
             .navigationBarHidden(true)

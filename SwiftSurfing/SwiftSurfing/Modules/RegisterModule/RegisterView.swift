@@ -64,7 +64,7 @@ struct RegisterView: View {
 
 struct RegisterView_Previews: PreviewProvider {
     static var previews: some View {
-        let interactor = RegisterInteractor()
+        let interactor = RegisterInteractor(service: UserService())
         let presenter = RegisterPresenter(interactor: interactor)
         return NavigationView {
             RegisterView(presenter: presenter)

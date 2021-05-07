@@ -9,9 +9,10 @@ import Foundation
 import Firebase
 
 class RegisterInteractor {
+    private let service: UserServiceProtocol
     
-    init() {
-        
+    init(service: UserServiceProtocol) {
+        self.service = service
     }
     
     func register(email: String, password: String) {
@@ -32,7 +33,19 @@ class RegisterInteractor {
                 }
             } else {
                 print("User signed up successfully")
-                _ = Auth.auth().currentUser
+                let user = User()
+                if let userId = Auth.auth().currentUser?.uid,
+                   let fullName = Auth.auth().currentUser?.displayName,
+                   let email = Auth.auth().currentUser?.email
+                {
+                    user.id = userId
+                    user.fullName = fullName
+                    user.email = email
+                }
+            
+                self.service.addNew(user: user) { success in
+                    print("User added to database")
+                }
             }
         }
         
