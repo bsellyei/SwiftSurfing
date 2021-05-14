@@ -25,9 +25,6 @@
 		DB1EE43D2643284E005C4AD1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1EE43C2643284E005C4AD1 /* User.swift */; };
 		DB1EE44026432912005C4AD1 /* UserServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1EE43F26432912005C4AD1 /* UserServiceProtocol.swift */; };
 		DB1EE44326432984005C4AD1 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1EE44226432984005C4AD1 /* UserService.swift */; };
-		DB1EE44726433DF0005C4AD1 /* CouchDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1EE44626433DF0005C4AD1 /* CouchDetailsView.swift */; };
-		DB1EE44B26433E1E005C4AD1 /* CouchDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1EE44A26433E1E005C4AD1 /* CouchDetailsPresenter.swift */; };
-		DB1EE44E26433E2D005C4AD1 /* CouchDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1EE44D26433E2D005C4AD1 /* CouchDetailsInteractor.swift */; };
 		DB54DC1A263149D800B7618F /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB54DC19263149D800B7618F /* RatingView.swift */; };
 		DB5F6A9526282C6300C83F5A /* CouchListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5F6A9426282C6300C83F5A /* CouchListRow.swift */; };
 		DB834E4C25E5C1B200E94268 /* SwiftSurfingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB834E4B25E5C1B200E94268 /* SwiftSurfingApp.swift */; };
@@ -51,6 +48,9 @@
 		DBCBEA2625FBEF3300E74A8D /* ValidationPublishers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCBEA2525FBEF3300E74A8D /* ValidationPublishers.swift */; };
 		DBCBEA2925FBF25500E74A8D /* PublisherExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCBEA2825FBF25500E74A8D /* PublisherExtension.swift */; };
 		DBCBEA3925FD4CCA00E74A8D /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCBEA3825FD4CCA00E74A8D /* RootView.swift */; };
+		DBE36B0D264EFE1100755851 /* CouchDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE36B0A264EFE1100755851 /* CouchDetailsInteractor.swift */; };
+		DBE36B0E264EFE1100755851 /* CouchDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE36B0B264EFE1100755851 /* CouchDetailsView.swift */; };
+		DBE36B0F264EFE1100755851 /* CouchDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE36B0C264EFE1100755851 /* CouchDetailsPresenter.swift */; };
 		DBEB14A225F952A90046CB30 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEB14A125F952A90046CB30 /* LoginInteractor.swift */; };
 		DBEB14A925F98A630046CB30 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEB14A825F98A630046CB30 /* LoginPresenter.swift */; };
 		DBEB14B025F98B760046CB30 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEB14AF25F98B760046CB30 /* LoginView.swift */; };
@@ -81,9 +81,6 @@
 		DB1EE43C2643284E005C4AD1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DB1EE43F26432912005C4AD1 /* UserServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceProtocol.swift; sourceTree = "<group>"; };
 		DB1EE44226432984005C4AD1 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
-		DB1EE44626433DF0005C4AD1 /* CouchDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouchDetailsView.swift; sourceTree = "<group>"; };
-		DB1EE44A26433E1E005C4AD1 /* CouchDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouchDetailsPresenter.swift; sourceTree = "<group>"; };
-		DB1EE44D26433E2D005C4AD1 /* CouchDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouchDetailsInteractor.swift; sourceTree = "<group>"; };
 		DB54DC19263149D800B7618F /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		DB5F6A9426282C6300C83F5A /* CouchListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouchListRow.swift; sourceTree = "<group>"; };
 		DB834E4825E5C1B200E94268 /* SwiftSurfing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftSurfing.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +106,9 @@
 		DBCBEA2525FBEF3300E74A8D /* ValidationPublishers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationPublishers.swift; sourceTree = "<group>"; };
 		DBCBEA2825FBF25500E74A8D /* PublisherExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherExtension.swift; sourceTree = "<group>"; };
 		DBCBEA3825FD4CCA00E74A8D /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		DBE36B0A264EFE1100755851 /* CouchDetailsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CouchDetailsInteractor.swift; path = CouchDetailsModule/CouchDetailsInteractor.swift; sourceTree = "<group>"; };
+		DBE36B0B264EFE1100755851 /* CouchDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CouchDetailsView.swift; path = CouchDetailsModule/CouchDetailsView.swift; sourceTree = "<group>"; };
+		DBE36B0C264EFE1100755851 /* CouchDetailsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CouchDetailsPresenter.swift; path = CouchDetailsModule/CouchDetailsPresenter.swift; sourceTree = "<group>"; };
 		DBEB14A125F952A90046CB30 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		DBEB14A825F98A630046CB30 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		DBEB14AF25F98B760046CB30 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -179,9 +179,9 @@
 		DB1EE44526433DD1005C4AD1 /* CouchDetailsModule */ = {
 			isa = PBXGroup;
 			children = (
-				DB1EE44626433DF0005C4AD1 /* CouchDetailsView.swift */,
-				DB1EE44A26433E1E005C4AD1 /* CouchDetailsPresenter.swift */,
-				DB1EE44D26433E2D005C4AD1 /* CouchDetailsInteractor.swift */,
+				DBE36B0A264EFE1100755851 /* CouchDetailsInteractor.swift */,
+				DBE36B0C264EFE1100755851 /* CouchDetailsPresenter.swift */,
+				DBE36B0B264EFE1100755851 /* CouchDetailsView.swift */,
 			);
 			name = CouchDetailsModule;
 			sourceTree = "<group>";
@@ -503,18 +503,17 @@
 				DB0970A4260141E60052EC09 /* CouchesInteractor.swift in Sources */,
 				DBEB14B525FAD59A0046CB30 /* RegisterInteractor.swift in Sources */,
 				DB1EE44026432912005C4AD1 /* UserServiceProtocol.swift in Sources */,
-				DB1EE44B26433E1E005C4AD1 /* CouchDetailsPresenter.swift in Sources */,
 				DB09709C25FE367C0052EC09 /* RootPresenter.swift in Sources */,
 				DBA264D42630C1B900C63431 /* CouchAnnotation.swift in Sources */,
+				DBE36B0E264EFE1100755851 /* CouchDetailsView.swift in Sources */,
 				DB54DC1A263149D800B7618F /* RatingView.swift in Sources */,
 				DB1EE43D2643284E005C4AD1 /* User.swift in Sources */,
-				DB1EE44E26433E2D005C4AD1 /* CouchDetailsInteractor.swift in Sources */,
 				DB1EE434263AB2DF005C4AD1 /* ImagePickerKit.swift in Sources */,
 				DBCBEA2625FBEF3300E74A8D /* ValidationPublishers.swift in Sources */,
 				DBA0B9C5260146B600474B7C /* NewCouchPresenter.swift in Sources */,
-				DB1EE44726433DF0005C4AD1 /* CouchDetailsView.swift in Sources */,
 				DB8BFDF126272A4100780517 /* SheetView.swift in Sources */,
 				DB5F6A9526282C6300C83F5A /* CouchListRow.swift in Sources */,
+				DBE36B0D264EFE1100755851 /* CouchDetailsInteractor.swift in Sources */,
 				DB0970A8260142080052EC09 /* CouchesPresenter.swift in Sources */,
 				DB1EE44326432984005C4AD1 /* UserService.swift in Sources */,
 				DBA0B9E1260BE8D000474B7C /* DIContainerProtocol.swift in Sources */,
@@ -525,6 +524,7 @@
 				DBEB14BF25FAD7290046CB30 /* LoginRouter.swift in Sources */,
 				DBA0B9DD260BE86700474B7C /* CouchServiceProtocol.swift in Sources */,
 				DBEB14BC25FAD5B60046CB30 /* RegisterView.swift in Sources */,
+				DBE36B0F264EFE1100755851 /* CouchDetailsPresenter.swift in Sources */,
 				DBEB14A225F952A90046CB30 /* LoginInteractor.swift in Sources */,
 				DBA0B9C12601469F00474B7C /* NewCouchInteractor.swift in Sources */,
 				DBA0B9C8260146EB00474B7C /* NewCouchView.swift in Sources */,
