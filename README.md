@@ -7,7 +7,16 @@ test users:
 1. email: user1@test.com
 2. password: testuser
 
+## Tervek a 2021/2022 őszi félévre:
+
+
+
 ## Haladási napló:
+
+### 2021. szeptember 15.-22.:
+Foglalás workflow elkezdéseként kerestem egy olyan SwiftUI-os calendart/datepickert ahol lehetett intervallumot kijelölni. Találtam is egy ilyet githubon, sajnos nem volt hozzá se Swift Package, se Pod, de végül rájöttem hogy nem is baj, mert így a source-ba bele tudtam hackelni, hogy általam mondott dátumokat leszürkítsen és ne lehessen kiválasztani őket. Ez azért kellett, mert így fogom letiltani a már foglalt időpontokat a naptárban. A workflow megvalósításához kicsit átgondoltam a meglévő adatmodellt és a nézeteket, 1-2 helyre még beszúrnék az adatszerkezetbe attribútumokat, plusz szerintem még pár egyszerűbb nézetre is szükség lesz majd az alkalmazásban.
+
+--------------------------------------------------------------------
 ### 2021. március 10.-18.:
 A bejelentkezést és a regisztrációt befejeztem. Firebase-en is inicializálva vannak a funkciók, van már egy testuser is. Ez a 2 nézet össze is van kötve, viszont bejelentkezéssel nem ugrik még át a következő nézetre a Loginról. A RootView-ban szeretném majd vizsgálni, hogy van-e bejelentkezett felhasználó az induláskor, viszont ez jelenleg mindig igazzal jelez vissza, majd még körül kell járni a problémát. 
 Csináltam egy térképes nézetet is, megnéztem hogyan kell ezen annotációkat megjeleníteni. 
