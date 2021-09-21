@@ -9,7 +9,7 @@ test users:
 
 ## Tervek a 2021/2022 őszi félévre:
 
-
+Igazából szeretném az alkalmazást teljesen működőképessé tenni ebben a félévben. Szerintem elengedhetetlen funkciók: foglalás küldése, elfogadása, üzenetek küldése felhasználók között, szálláshelyek pontozása, értesítések küldése közelgő utazások és üzenetek esetén. Ez nem tudom pontosan mennyi időt fog majd igénybe venni, szerintem marad majd idő a félév során másra is. Továbbiakban szerintem egy saját backend készítésével kellene folytatni. Még elég kevés üzleti logika tartozik az alkalmazáshoz, ezeket szeretném majd kiszervezni egy saját backendbe.
 
 ## Haladási napló:
 
