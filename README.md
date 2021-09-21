@@ -14,7 +14,7 @@ Igazából szeretném az alkalmazást teljesen működőképessé tenni ebben a 
 ## Haladási napló:
 
 ### 2021. szeptember 15.-22.:
-Foglalás workflow elkezdéseként kerestem egy olyan SwiftUI-os calendart/datepickert ahol lehetett intervallumot kijelölni. Találtam is egy ilyet githubon, sajnos nem volt hozzá se Swift Package, se Pod, de végül rájöttem hogy nem is baj, mert így a source-ba bele tudtam hackelni, hogy általam mondott dátumokat leszürkítsen és ne lehessen kiválasztani őket. Ez azért kellett, mert így fogom letiltani a már foglalt időpontokat a naptárban. A workflow megvalósításához kicsit átgondoltam a meglévő adatmodellt és a nézeteket, 1-2 helyre még beszúrnék az adatszerkezetbe attribútumokat, plusz szerintem még pár egyszerűbb nézetre is szükség lesz majd az alkalmazásban.
+Foglalás workflow elkezdéseként kerestem egy olyan SwiftUI-os calendart/datepickert, ahol lehetett intervallumot kijelölni. Találtam is egy ilyet githubon, sajnos nem volt hozzá se Swift Package, se Pod, de végül rájöttem hogy nem is baj, mert így a source-ba bele tudtam hackelni, hogy általam adott dátumokat leszürkítsen és ne lehessen kiválasztani őket. Ez azért kellett, mert így fogom letiltani a már foglalt időpontokat a naptárban. A workflow megvalósításához kicsit átgondoltam a meglévő adatmodellt és a nézeteket, 1-2 helyre még beszúrnék az adatszerkezetbe attribútumokat, plusz szerintem még pár egyszerűbb nézetre is szükség lesz majd az alkalmazásban.
 
 --------------------------------------------------------------------
 ### 2021. március 10.-18.:
