@@ -44,6 +44,7 @@ struct CouchesView: View {
             }
             .background(Color.white)
             .navigationBarHidden(true)
+            //.navigationViewStyle(Stack)
         }
     }
 }

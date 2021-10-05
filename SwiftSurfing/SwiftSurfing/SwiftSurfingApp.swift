@@ -37,6 +37,18 @@ struct SwiftSurfingApp: App {
                 type: UserServiceProtocol.self,
                 component: UserService())
             
+            container.register(
+                type: ReservationServiceProtocol.self,
+                component: ReservationService())
+            
+            container.register(
+                type: ConversationServiceProtocol.self,
+                component: ConversationService())
+            
+            container.register(
+                type: MessageServiceProtocol.self,
+                component: MessageService())
+            
             return true
         }
     }

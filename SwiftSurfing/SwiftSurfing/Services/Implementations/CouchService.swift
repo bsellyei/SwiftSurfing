@@ -54,8 +54,14 @@ class CouchService: CouchServiceProtocol {
         }
     }
     
-    func get(couch: Couch) {
-        
+    func get(id: String, completion: @escaping (Couch?) -> Void) {
+        let couchRef = databaseRef?.child(id)
+        couchRef?.observeSingleEvent(of: .value, with: { snapshot in
+            let couch = Couch(snapshot: snapshot)
+            DispatchQueue.main.async {
+                completion(couch)
+            }
+        })
     }
     
     func getAllCouches(completion: @escaping ([Couch]) -> Void) {
@@ -91,18 +97,4 @@ class CouchService: CouchServiceProtocol {
     func delete(couch: Couch) {
         
     }
-    
-    /*func getAll() {
-        /*databaseRef?.observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let snapshot = snapshot.children.allObjects as? [DataSnapshot] else {
-                return
-            }
-            
-            let couches = snapshot.reversed().compactMap(Couch.init)
-            DispatchQueue.main.async {
-                print(couches)
-                completion(couches)
-            }
-        })*/
-    }*/
 }

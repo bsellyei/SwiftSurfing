@@ -13,7 +13,7 @@ protocol CouchServiceProtocol {
     
     func addNew(couch: Couch, completion: @escaping (Bool) -> Void)
     
-    func get(couch: Couch)
+    func get(id: String, completion: @escaping (Couch?) -> Void)
     
     func getAllCouches(completion: @escaping ([Couch]) -> Void)
     

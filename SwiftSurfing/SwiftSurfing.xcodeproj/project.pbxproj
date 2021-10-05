@@ -43,6 +43,27 @@
 		DBA0B9E1260BE8D000474B7C /* DIContainerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA0B9E0260BE8D000474B7C /* DIContainerProtocol.swift */; };
 		DBA0B9E5260BE93200474B7C /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA0B9E4260BE93200474B7C /* DIContainer.swift */; };
 		DBA264D42630C1B900C63431 /* CouchAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA264D32630C1B900C63431 /* CouchAnnotation.swift */; };
+		DBBF03D526FAFE7600110DEC /* MultiDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBF03D426FAFE7600110DEC /* MultiDatePicker.swift */; };
+		DBBF03D926FAFEA000110DEC /* MDPContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBF03D826FAFEA000110DEC /* MDPContentView.swift */; };
+		DBBF03DD26FAFEBA00110DEC /* MDPDayOfMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBF03DC26FAFEBA00110DEC /* MDPDayOfMonth.swift */; };
+		DBBF03E026FAFED300110DEC /* MDPDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBF03DF26FAFED300110DEC /* MDPDayView.swift */; };
+		DBBF03E326FAFEE500110DEC /* MDPModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBF03E226FAFEE500110DEC /* MDPModel.swift */; };
+		DBBF03E626FAFEF600110DEC /* MDPMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBF03E526FAFEF600110DEC /* MDPMonthView.swift */; };
+		DBBF03E926FAFF1200110DEC /* MDPMonthYearPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBF03E826FAFF1200110DEC /* MDPMonthYearPicker.swift */; };
+		DBBF03EC26FAFF2800110DEC /* MDPMonthYearPickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBF03EB26FAFF2800110DEC /* MDPMonthYearPickerButton.swift */; };
+		DBBF03EF27021D4F00110DEC /* CouchDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBF03EE27021D4F00110DEC /* CouchDetailsRouter.swift */; };
+		DBBF03F22702202000110DEC /* Reservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBF03F12702202000110DEC /* Reservation.swift */; };
+		DBBF03F627025E0200110DEC /* ReservationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBF03F527025E0200110DEC /* ReservationInteractor.swift */; };
+		DBBF03FA27025E1000110DEC /* ReservationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBF03F927025E1000110DEC /* ReservationPresenter.swift */; };
+		DBBF03FD27025E2A00110DEC /* ReservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBF03FC27025E2A00110DEC /* ReservationView.swift */; };
+		DBBF04002702648600110DEC /* ReservationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBF03FF2702648600110DEC /* ReservationServiceProtocol.swift */; };
+		DBBF0403270264B500110DEC /* ReservationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBF0402270264B500110DEC /* ReservationService.swift */; };
+		DBBF04062704B49300110DEC /* MessageServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBF04052704B49300110DEC /* MessageServiceProtocol.swift */; };
+		DBBF04092704B4A500110DEC /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBF04082704B4A500110DEC /* MessageService.swift */; };
+		DBBF040C2704B6A900110DEC /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBF040B2704B6A900110DEC /* Message.swift */; };
+		DBBF040F2704B6B500110DEC /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBF040E2704B6B500110DEC /* Conversation.swift */; };
+		DBBF04122704D1C300110DEC /* ConversationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBF04112704D1C300110DEC /* ConversationServiceProtocol.swift */; };
+		DBBF04152704D1EF00110DEC /* ConversationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBF04142704D1EF00110DEC /* ConversationService.swift */; };
 		DBCBEA1F25FBECE600E74A8D /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCBEA1E25FBECE600E74A8D /* Validation.swift */; };
 		DBCBEA2325FBED2E00E74A8D /* ValidationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCBEA2225FBED2E00E74A8D /* ValidationModifier.swift */; };
 		DBCBEA2625FBEF3300E74A8D /* ValidationPublishers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCBEA2525FBEF3300E74A8D /* ValidationPublishers.swift */; };
@@ -101,6 +122,27 @@
 		DBA0B9E0260BE8D000474B7C /* DIContainerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainerProtocol.swift; sourceTree = "<group>"; };
 		DBA0B9E4260BE93200474B7C /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		DBA264D32630C1B900C63431 /* CouchAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouchAnnotation.swift; sourceTree = "<group>"; };
+		DBBF03D426FAFE7600110DEC /* MultiDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiDatePicker.swift; sourceTree = "<group>"; };
+		DBBF03D826FAFEA000110DEC /* MDPContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDPContentView.swift; sourceTree = "<group>"; };
+		DBBF03DC26FAFEBA00110DEC /* MDPDayOfMonth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDPDayOfMonth.swift; sourceTree = "<group>"; };
+		DBBF03DF26FAFED300110DEC /* MDPDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDPDayView.swift; sourceTree = "<group>"; };
+		DBBF03E226FAFEE500110DEC /* MDPModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDPModel.swift; sourceTree = "<group>"; };
+		DBBF03E526FAFEF600110DEC /* MDPMonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDPMonthView.swift; sourceTree = "<group>"; };
+		DBBF03E826FAFF1200110DEC /* MDPMonthYearPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDPMonthYearPicker.swift; sourceTree = "<group>"; };
+		DBBF03EB26FAFF2800110DEC /* MDPMonthYearPickerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDPMonthYearPickerButton.swift; sourceTree = "<group>"; };
+		DBBF03EE27021D4F00110DEC /* CouchDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouchDetailsRouter.swift; sourceTree = "<group>"; };
+		DBBF03F12702202000110DEC /* Reservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reservation.swift; sourceTree = "<group>"; };
+		DBBF03F527025E0200110DEC /* ReservationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationInteractor.swift; sourceTree = "<group>"; };
+		DBBF03F927025E1000110DEC /* ReservationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationPresenter.swift; sourceTree = "<group>"; };
+		DBBF03FC27025E2A00110DEC /* ReservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationView.swift; sourceTree = "<group>"; };
+		DBBF03FF2702648600110DEC /* ReservationServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationServiceProtocol.swift; sourceTree = "<group>"; };
+		DBBF0402270264B500110DEC /* ReservationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationService.swift; sourceTree = "<group>"; };
+		DBBF04052704B49300110DEC /* MessageServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageServiceProtocol.swift; sourceTree = "<group>"; };
+		DBBF04082704B4A500110DEC /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
+		DBBF040B2704B6A900110DEC /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		DBBF040E2704B6B500110DEC /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
+		DBBF04112704D1C300110DEC /* ConversationServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationServiceProtocol.swift; sourceTree = "<group>"; };
+		DBBF04142704D1EF00110DEC /* ConversationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationService.swift; sourceTree = "<group>"; };
 		DBCBEA1E25FBECE600E74A8D /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		DBCBEA2225FBED2E00E74A8D /* ValidationModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationModifier.swift; sourceTree = "<group>"; };
 		DBCBEA2525FBEF3300E74A8D /* ValidationPublishers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationPublishers.swift; sourceTree = "<group>"; };
@@ -161,6 +203,9 @@
 				DB09709F25FFC7C10052EC09 /* Couch.swift */,
 				DBA264D32630C1B900C63431 /* CouchAnnotation.swift */,
 				DB1EE43C2643284E005C4AD1 /* User.swift */,
+				DBBF03F12702202000110DEC /* Reservation.swift */,
+				DBBF040B2704B6A900110DEC /* Message.swift */,
+				DBBF040E2704B6B500110DEC /* Conversation.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -182,6 +227,7 @@
 				DBE36B0A264EFE1100755851 /* CouchDetailsInteractor.swift */,
 				DBE36B0C264EFE1100755851 /* CouchDetailsPresenter.swift */,
 				DBE36B0B264EFE1100755851 /* CouchDetailsView.swift */,
+				DBBF03EE27021D4F00110DEC /* CouchDetailsRouter.swift */,
 			);
 			name = CouchDetailsModule;
 			sourceTree = "<group>";
@@ -233,6 +279,7 @@
 		DB8BFDEF262729F300780517 /* CommonViews */ = {
 			isa = PBXGroup;
 			children = (
+				DBBF03D326FAFE4700110DEC /* MultiDatePicker */,
 				DB8BFDF026272A4100780517 /* SheetView.swift */,
 				DB8BFDF426272B1600780517 /* MapViewKit.swift */,
 				DB8BFDF72627368C00780517 /* SearchBarKit.swift */,
@@ -268,6 +315,9 @@
 				DBA0B9DC260BE86700474B7C /* CouchServiceProtocol.swift */,
 				DB1EE436263B0B9E005C4AD1 /* ImageManagerProtocol.swift */,
 				DB1EE43F26432912005C4AD1 /* UserServiceProtocol.swift */,
+				DBBF03FF2702648600110DEC /* ReservationServiceProtocol.swift */,
+				DBBF04052704B49300110DEC /* MessageServiceProtocol.swift */,
+				DBBF04112704D1C300110DEC /* ConversationServiceProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -278,6 +328,9 @@
 				DBA0B9D8260BE79800474B7C /* CouchService.swift */,
 				DB1EE439263B0C51005C4AD1 /* ImageManager.swift */,
 				DB1EE44226432984005C4AD1 /* UserService.swift */,
+				DBBF0402270264B500110DEC /* ReservationService.swift */,
+				DBBF04082704B4A500110DEC /* MessageService.swift */,
+				DBBF04142704D1EF00110DEC /* ConversationService.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -289,6 +342,39 @@
 				DBA0B9E4260BE93200474B7C /* DIContainer.swift */,
 			);
 			path = DependencyInjection;
+			sourceTree = "<group>";
+		};
+		DBBF03D326FAFE4700110DEC /* MultiDatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				DBBF03D726FAFE7F00110DEC /* Components */,
+				DBBF03D426FAFE7600110DEC /* MultiDatePicker.swift */,
+			);
+			path = MultiDatePicker;
+			sourceTree = "<group>";
+		};
+		DBBF03D726FAFE7F00110DEC /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				DBBF03D826FAFEA000110DEC /* MDPContentView.swift */,
+				DBBF03DC26FAFEBA00110DEC /* MDPDayOfMonth.swift */,
+				DBBF03DF26FAFED300110DEC /* MDPDayView.swift */,
+				DBBF03E226FAFEE500110DEC /* MDPModel.swift */,
+				DBBF03E526FAFEF600110DEC /* MDPMonthView.swift */,
+				DBBF03E826FAFF1200110DEC /* MDPMonthYearPicker.swift */,
+				DBBF03EB26FAFF2800110DEC /* MDPMonthYearPickerButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		DBBF03F427025DEE00110DEC /* ReservationModule */ = {
+			isa = PBXGroup;
+			children = (
+				DBBF03F527025E0200110DEC /* ReservationInteractor.swift */,
+				DBBF03F927025E1000110DEC /* ReservationPresenter.swift */,
+				DBBF03FC27025E2A00110DEC /* ReservationView.swift */,
+			);
+			path = ReservationModule;
 			sourceTree = "<group>";
 		};
 		DBCBEA1C25FBEC3600E74A8D /* Utils */ = {
@@ -334,6 +420,7 @@
 		DBEB149F25F950C10046CB30 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				DBBF03F427025DEE00110DEC /* ReservationModule */,
 				DB1EE44526433DD1005C4AD1 /* CouchDetailsModule */,
 				DBA0B9BF2601468800474B7C /* NewCouchModule */,
 				DB0970A2260141CA0052EC09 /* CouchesModule */,
@@ -485,8 +572,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBBF03DD26FAFEBA00110DEC /* MDPDayOfMonth.swift in Sources */,
+				DBBF03E926FAFF1200110DEC /* MDPMonthYearPicker.swift in Sources */,
+				DBBF03F22702202000110DEC /* Reservation.swift in Sources */,
 				DBEB14B025F98B760046CB30 /* LoginView.swift in Sources */,
 				DB09709025FD509C0052EC09 /* MapView.swift in Sources */,
+				DBBF04092704B4A500110DEC /* MessageService.swift in Sources */,
 				DB1EE43A263B0C51005C4AD1 /* ImageManager.swift in Sources */,
 				DB834E4E25E5C1B200E94268 /* ContentView.swift in Sources */,
 				DBCBEA2925FBF25500E74A8D /* PublisherExtension.swift in Sources */,
@@ -495,12 +586,16 @@
 				DB09709925FE36020052EC09 /* RootInteractor.swift in Sources */,
 				DB0970AE2601436B0052EC09 /* CouchesRouter.swift in Sources */,
 				DB8BFDF82627368C00780517 /* SearchBarKit.swift in Sources */,
+				DBBF03EF27021D4F00110DEC /* CouchDetailsRouter.swift in Sources */,
 				DBEB14B925FAD5A70046CB30 /* RegisterPresenter.swift in Sources */,
 				DBCBEA3925FD4CCA00E74A8D /* RootView.swift in Sources */,
 				DB09709325FD50A90052EC09 /* MapInteractor.swift in Sources */,
+				DBBF04152704D1EF00110DEC /* ConversationService.swift in Sources */,
 				DB834E4C25E5C1B200E94268 /* SwiftSurfingApp.swift in Sources */,
 				DBA0B9D9260BE79800474B7C /* CouchService.swift in Sources */,
 				DB0970A4260141E60052EC09 /* CouchesInteractor.swift in Sources */,
+				DBBF03E626FAFEF600110DEC /* MDPMonthView.swift in Sources */,
+				DBBF040C2704B6A900110DEC /* Message.swift in Sources */,
 				DBEB14B525FAD59A0046CB30 /* RegisterInteractor.swift in Sources */,
 				DB1EE44026432912005C4AD1 /* UserServiceProtocol.swift in Sources */,
 				DB09709C25FE367C0052EC09 /* RootPresenter.swift in Sources */,
@@ -510,28 +605,41 @@
 				DB1EE43D2643284E005C4AD1 /* User.swift in Sources */,
 				DB1EE434263AB2DF005C4AD1 /* ImagePickerKit.swift in Sources */,
 				DBCBEA2625FBEF3300E74A8D /* ValidationPublishers.swift in Sources */,
+				DBBF04062704B49300110DEC /* MessageServiceProtocol.swift in Sources */,
 				DBA0B9C5260146B600474B7C /* NewCouchPresenter.swift in Sources */,
 				DB8BFDF126272A4100780517 /* SheetView.swift in Sources */,
 				DB5F6A9526282C6300C83F5A /* CouchListRow.swift in Sources */,
+				DBBF03D926FAFEA000110DEC /* MDPContentView.swift in Sources */,
 				DBE36B0D264EFE1100755851 /* CouchDetailsInteractor.swift in Sources */,
 				DB0970A8260142080052EC09 /* CouchesPresenter.swift in Sources */,
 				DB1EE44326432984005C4AD1 /* UserService.swift in Sources */,
+				DBBF03FD27025E2A00110DEC /* ReservationView.swift in Sources */,
 				DBA0B9E1260BE8D000474B7C /* DIContainerProtocol.swift in Sources */,
+				DBBF04002702648600110DEC /* ReservationServiceProtocol.swift in Sources */,
 				DBCBEA2325FBED2E00E74A8D /* ValidationModifier.swift in Sources */,
 				DB0970A025FFC7C10052EC09 /* Couch.swift in Sources */,
 				DB09709625FD50B50052EC09 /* MapPresenter.swift in Sources */,
 				DB0970AB260142590052EC09 /* CouchesView.swift in Sources */,
+				DBBF0403270264B500110DEC /* ReservationService.swift in Sources */,
+				DBBF03FA27025E1000110DEC /* ReservationPresenter.swift in Sources */,
 				DBEB14BF25FAD7290046CB30 /* LoginRouter.swift in Sources */,
 				DBA0B9DD260BE86700474B7C /* CouchServiceProtocol.swift in Sources */,
 				DBEB14BC25FAD5B60046CB30 /* RegisterView.swift in Sources */,
+				DBBF03D526FAFE7600110DEC /* MultiDatePicker.swift in Sources */,
 				DBE36B0F264EFE1100755851 /* CouchDetailsPresenter.swift in Sources */,
+				DBBF03E326FAFEE500110DEC /* MDPModel.swift in Sources */,
 				DBEB14A225F952A90046CB30 /* LoginInteractor.swift in Sources */,
+				DBBF03F627025E0200110DEC /* ReservationInteractor.swift in Sources */,
 				DBA0B9C12601469F00474B7C /* NewCouchInteractor.swift in Sources */,
+				DBBF04122704D1C300110DEC /* ConversationServiceProtocol.swift in Sources */,
+				DBBF03EC26FAFF2800110DEC /* MDPMonthYearPickerButton.swift in Sources */,
 				DBA0B9C8260146EB00474B7C /* NewCouchView.swift in Sources */,
+				DBBF040F2704B6B500110DEC /* Conversation.swift in Sources */,
 				DBA0B9E5260BE93200474B7C /* DIContainer.swift in Sources */,
 				DB09708C25FD4EBA0052EC09 /* HomeTabView.swift in Sources */,
 				DBCBEA1F25FBECE600E74A8D /* Validation.swift in Sources */,
 				DBEB14A925F98A630046CB30 /* LoginPresenter.swift in Sources */,
+				DBBF03E026FAFED300110DEC /* MDPDayView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

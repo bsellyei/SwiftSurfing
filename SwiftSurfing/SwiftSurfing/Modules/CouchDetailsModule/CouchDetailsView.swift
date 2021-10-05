@@ -11,6 +11,7 @@ import MapKit
 
 struct CouchDetailsView: View {
     @ObservedObject var presenter: CouchDetailsPresenter
+    @State var toolbarLinkSelected = false
     
     init(presenter: CouchDetailsPresenter) {
         self.presenter = presenter
@@ -62,36 +63,61 @@ struct CouchDetailsView: View {
             }
             .padding()
         }
+        .blur(radius: presenter.showOverlay ? 6 : 0)
+        .overlay(
+            ZStack {
+                if presenter.showOverlay {
+                    Color.black.opacity(0.25)
+                        .edgesIgnoringSafeArea(.all)
+                        .onTapGesture {
+                            withAnimation {
+                                presenter.showOverlay.toggle()
+                            }
+                        }
+                    MultiDatePicker(dateRange: $presenter.selectedDates)
+                } else {
+                    EmptyView()
+                }
+            }
+        )
         .navigationTitle("Couch Details")
         .toolbar {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                Button(action: {
+                    withAnimation {
+                        presenter.showOverlay.toggle()
+                    }
+                }) {
+                    Image(systemName: "calendar")
+                }
+            }
+            
             ToolbarItemGroup(placement: .bottomBar) {
-                Text("Selected dates")
+                Text(presenter.selectedDatesText)
                 
                 Spacer()
                 
                 Button(action: {
-                    print("reserve")
+                    toolbarLinkSelected = true
                 }) {
                     ButtonContent(text: "Reserve")
                 }
                 .disabled(presenter.disableReserve)
             }
-            
-            ToolbarItemGroup(placement: .navigationBarTrailing) {
-                Button(action: {
-                    print("Calendar tapped")
-                }) {
-                    Image(systemName: "calendar")
-                }
-            }
         }
+        .background(
+            self.presenter.linkBuilder(content: {
+                EmptyView()
+            }, isActive: $toolbarLinkSelected)
+            .hidden()
+        )
     }
     
     var imagesView: some View {
-        /*ScrollView(.horizontal, showsIndicators: false) {
+        ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                ForEach(presenter.images, id: \.self) { image in
-                    Image(uiImage: image)
+                ForEach(presenter.couch.imageURLs, id: \.self) { imageUrl in
+                    WebImage(url: URL(string: imageUrl))
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 170, height: 170)
@@ -99,12 +125,6 @@ struct CouchDetailsView: View {
                 }
             }
         }
-        .padding()*/
-        WebImage(url: URL(string: presenter.couch.imageURLs.first ?? ""))
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(width: 170, height: 170)
-            .clipped()
     }
 }
 
