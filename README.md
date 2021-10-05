@@ -13,6 +13,9 @@ Igazából szeretném az alkalmazást teljesen működőképessé tenni ebben a 
 
 ## Haladási napló:
 
+### 2021. szeptember 29. - október 6.:
+Véglegesítettem a foglalás részleteit tartalmazó nézetet, valamint a folyamathoz szükséges összes Service implementációt elkészítettem. Ezek a Reservation, Conversation és Message service-ek voltak. Interactorban elkészítettem, hogy mit miután kell beszúrni az adatbázisba. 
+
 ### 2021. szeptember 22.-29.:
 Csináltam egy új nézetet, ahol a foglalás részleteit lehet megtekinteni, illetve 1-2 adatot még módosítani rajta. Összegyűjtöttem milyen service-ek kellenek majd ehhez (User, Couch, Reservation). Couch-nál volt egy metódus ami még nem lett megírva, ezt is pótoltam. Az új nézet navigálásánál volt egy kis probléma: nálam ez úgy néz ki, hogy van egy gomb egy BottomToolBar-on az előző nézeten, amit ha megnyom a felhasználó elnavigál az új nézetre. A BottomToolBar esetén nem működik navigációra a NavigationLink, ennek olvastam utána kicsit, hogyan lehet mégis onnan megoldani a navigációt. SwiftUI View-knak van olyan modifierje, hogy background, ennek hogy ha megadunk egy tetszőleges view-t, akkor az a háttérben láthatatlanul megjelenik. Én ennek adtam meg a NavigationLinket, és a ToolBar-ra egy sima gomb került, aminek megnyomására egy Bool állítódik, ami ha igaz, akkor aktiválja a háttérben lévő NavigationLinket és átnavigál az új nézetre. Következő lépés lenne a foglalás beszúrása az adatbázisba, valamint az üzenetek megjelenítéséhez egy nézet, mert ott tudja majd a fogadó személy elfogadni a foglalást. Az üzenetes nézethez már előre kerestem egy cikket, hogy hogyan lehet szép chat view-t készíteni.
 
