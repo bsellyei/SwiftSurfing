@@ -35,7 +35,8 @@ CREATE TABLE `reservations` (
   `owner_id` int,
   `guests_number` int,
   `fromDate` datetime,
-  `toDate` datetime
+  `toDate` datetime,
+  `is_pending` bool
 );
 
 CREATE TABLE `conversations` (
@@ -50,7 +51,8 @@ CREATE TABLE `messages` (
   `conversations_id` int,
   `sender` int,
   `when` datetime,
-  `message` varchar(255)
+  `message` varchar(255),
+  `is_invitation` bool
 );
 
 ALTER TABLE `couches` ADD FOREIGN KEY (`owner_id`) REFERENCES `users` (`id`);
