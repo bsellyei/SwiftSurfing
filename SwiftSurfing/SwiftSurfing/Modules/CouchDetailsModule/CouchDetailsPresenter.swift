@@ -9,13 +9,16 @@ import Foundation
 import UIKit
 import MapKit
 import SwiftUI
+import FirebaseAuth
 
 class CouchDetailsPresenter: ObservableObject {
     private let interactor: CouchDetailsInteractor
     private let router = CouchDetailsRouter()
     
     @Published var couch: Couch
+    
     @Published var region: MKCoordinateRegion
+    
     @Published var selectedDates: ClosedRange<Date>?
     @Published var showOverlay: Bool
     
@@ -44,6 +47,7 @@ class CouchDetailsPresenter: ObservableObject {
     init(interactor: CouchDetailsInteractor, couch: Couch) {
         self.interactor = interactor
         self.couch = couch
+        
         self.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: couch.latitude, longitude: couch.longitude),
                                          span: MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25))
         self.selectedDates = nil

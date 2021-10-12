@@ -7,9 +7,11 @@
 
 import Foundation
 import MapKit
+import SwiftUI
 
 class MapPresenter: ObservableObject {
     private let interactor: MapInteractor
+    private let router: MapRouter = MapRouter()
     
     @Published var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 47.497913, longitude: 19.040236),
@@ -43,6 +45,14 @@ class MapPresenter: ObservableObject {
             })
         }
         //getCouches()
+    }
+    
+    func linkBuilderForCouchDetails<Content: View>(couch: Couch, @ViewBuilder content: () -> Content)
+        -> some View
+    {
+        NavigationLink(destination: router.makeCouchDetailsView(couch: couch)) {
+            content()
+        }
     }
     
     private func makeCouchAnnotations(couches: [Couch]) -> [CouchAnnotation] {

@@ -10,6 +10,8 @@ import SwiftUI
 struct RegisterView: View {
     @ObservedObject var presenter: RegisterPresenter
     
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     init(presenter: RegisterPresenter) {
         self.presenter = presenter
     }
@@ -52,6 +54,7 @@ struct RegisterView: View {
             
             Button(action: {
                 self.presenter.register()
+                self.presentationMode.wrappedValue.dismiss()
             }) {
                 ButtonContent(text: "Register")
             }

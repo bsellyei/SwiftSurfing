@@ -17,6 +17,8 @@ protocol CouchServiceProtocol {
     
     func getAllCouches(completion: @escaping ([Couch]) -> Void)
     
+    func getAllCouchesByCity(city: String, completion: @escaping ([Couch]) -> Void)
+    
     func update(couch: Couch, completion: @escaping (Bool) -> Void)
     
     func delete(couch: Couch)

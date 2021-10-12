@@ -58,14 +58,26 @@ class ConversationService: ConversationServiceProtocol {
             return
         }
         
-        databaseRef?.queryOrdered(byChild: "userId").queryEqual(toValue: userId).observeSingleEvent(of: .value, with: { (snapshot) in
+        let semaphore = DispatchSemaphore(value: 0)
+        var conversations: [Conversation] = []
+        databaseRef?.queryOrdered(byChild: "toId").queryEqual(toValue: userId).observeSingleEvent(of: .value, with: { (snapshot) in
             guard let snapshot = snapshot.children.allObjects as? [DataSnapshot] else {
                 return
             }
             
-            let conversations = snapshot.reversed().compactMap(Conversation.init)
+            conversations = snapshot.reversed().compactMap(Conversation.init)
+            semaphore.signal()
+        })
+        
+        databaseRef?.queryOrdered(byChild: "fromId").queryEqual(toValue: userId).observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let snapshot = snapshot.children.allObjects as? [DataSnapshot] else {
+                return
+            }
+            
+            let tempConversations = snapshot.reversed().compactMap(Conversation.init)
+            semaphore.wait()
             DispatchQueue.main.async {
-                completion(conversations)
+                completion(conversations + tempConversations)
             }
         })
     }

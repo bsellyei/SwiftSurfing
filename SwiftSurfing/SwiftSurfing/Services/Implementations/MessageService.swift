@@ -49,4 +49,18 @@ class MessageService: MessageServiceProtocol {
             }
         })
     }
+    
+    func getAllMessages(conversationId: String, completion: @escaping ([Message]) -> Void) {
+        databaseRef?.queryOrdered(byChild: "conversationId").queryEqual(toValue: conversationId)
+            .observeSingleEvent(of: .value, with: { (snapshot) in
+                guard let snapshot = snapshot.children.allObjects as? [DataSnapshot] else {
+                    return
+                }
+                
+                let messages = snapshot.reversed().compactMap(Message.init)
+                DispatchQueue.main.async {
+                    completion(messages)
+                }
+        })
+    }
 }

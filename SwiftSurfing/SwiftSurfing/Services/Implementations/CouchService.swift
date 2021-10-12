@@ -64,6 +64,7 @@ class CouchService: CouchServiceProtocol {
         })
     }
     
+    // for current user
     func getAllCouches(completion: @escaping ([Couch]) -> Void) {
         let user = Auth.auth().currentUser
         guard let userId = user?.uid else {
@@ -80,7 +81,20 @@ class CouchService: CouchServiceProtocol {
             
             let couches = snapshot.reversed().compactMap(Couch.init)
             DispatchQueue.main.async {
-                print(couches)
+                completion(couches)
+            }
+        })
+    }
+    
+    // query all but for current user
+    func getAllCouchesByCity(city: String, completion: @escaping ([Couch]) -> Void) {
+        databaseRef?.queryOrdered(byChild: "city").queryEqual(toValue: city).observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let snapshot = snapshot.children.allObjects as? [DataSnapshot] else {
+                return
+            }
+            
+            let couches = snapshot.reversed().compactMap(Couch.init)
+            DispatchQueue.main.async {
                 completion(couches)
             }
         })

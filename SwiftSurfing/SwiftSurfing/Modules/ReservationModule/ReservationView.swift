@@ -10,6 +10,8 @@ import SwiftUI
 struct ReservationView: View {
     @ObservedObject var presenter: ReservationPresenter
     
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     init(presenter: ReservationPresenter) {
         self.presenter = presenter
     }
@@ -50,12 +52,16 @@ struct ReservationView: View {
             
             Button(action: {
                 presenter.add()
+                self.presentationMode.wrappedValue.dismiss()
             }) {
                 ButtonContent(text: "Confirm")
             }
         }
         .onAppear(perform: presenter.loadData)
         .padding()
+        .alert(isPresented: $presenter.showAlert) {
+            Alert(title: Text("Creating reservation failed."), message: Text("Please try again."), dismissButton: .default(Text("Try again")))
+        }
     }
 }
 

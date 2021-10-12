@@ -11,4 +11,6 @@ protocol MessageServiceProtocol {
     func send(message: Message, completion: @escaping (Bool) -> Void)
     
     func get(id: String, completion: @escaping (Message?) -> Void)
+    
+    func getAllMessages(conversationId: String, completion: @escaping ([Message]) -> Void)
 }

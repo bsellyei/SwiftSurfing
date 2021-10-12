@@ -37,7 +37,7 @@ struct CouchDetailsView: View {
                     Label {
                         Text("User's name")
                     } icon: {
-                        Image(systemName: "keyboard")
+                        Image(systemName: "person.fill")
                     }
                     
                     Spacer()
@@ -45,7 +45,7 @@ struct CouchDetailsView: View {
                     Label {
                         Text("\(presenter.couch.maxGuests)")
                     } icon: {
-                        Image(systemName: "person.fill")
+                        Image(systemName: "person.3.fill")
                     }
                 }
                 

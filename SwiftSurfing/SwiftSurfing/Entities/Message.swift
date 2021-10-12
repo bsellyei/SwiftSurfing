@@ -17,6 +17,9 @@ class Message: Identifiable {
     var message: String
     var isInvitation: Bool
     
+    // client-only fields
+    var isSentByCurrentUser: Bool
+    
     init() {
         self.ref = nil
         self.id = UUID().uuidString
@@ -25,6 +28,8 @@ class Message: Identifiable {
         self.sendTime = Date()
         self.message = ""
         self.isInvitation = false
+        
+        self.isSentByCurrentUser = false
     }
     
     init?(snapshot: DataSnapshot) {
@@ -41,7 +46,7 @@ class Message: Identifiable {
         }
         
         let dateformatter = DateFormatter()
-        dateformatter.dateFormat = ""
+        dateformatter.dateFormat = "MM-dd-yyyy HH:mm"
         let date = dateformatter.date(from: sendTime)
         
         guard let sendDate = date
@@ -56,11 +61,13 @@ class Message: Identifiable {
         self.sendTime = sendDate
         self.message = message
         self.isInvitation = isInvitation
+        
+        self.isSentByCurrentUser = false
     }
     
     func toAnyObject() -> Any {
         let dateformatter = DateFormatter()
-        dateformatter.dateFormat = ""
+        dateformatter.dateFormat = "MM-dd-yyyy HH:mm"
         let sendTimeString = dateformatter.string(from: sendTime)
         
         return [

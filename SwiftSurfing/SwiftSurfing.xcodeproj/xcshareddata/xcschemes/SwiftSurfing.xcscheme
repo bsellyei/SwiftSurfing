@@ -29,6 +29,16 @@
       customLLDBInitFile = " $(SRCROOT)/.lldbinit"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DB5AA3B22713166E009F8E73"
+               BuildableName = "SwiftSurfingTests.xctest"
+               BlueprintName = "SwiftSurfingTests"
+               ReferencedContainer = "container:SwiftSurfing.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

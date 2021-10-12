@@ -31,23 +31,38 @@ class ReservationInteractor {
     }
     
     func addReservation(reservation: Reservation, completion: @escaping (Bool) -> Void) {
-        reservationService.add(reservation: reservation, completion: completion)
-        
-        let conversation = Conversation()
-        conversation.toId = reservation.ownerId
-        conversationService.create(conversation: conversation, completion: { success in
-            if success {
-                let message = Message()
-                message.isInvitation = true
-                message.conversationId = conversation.id
-                message.sendTime = Date()
-                self.messageService.send(message: message, completion: { success in
-                    if success {
-                        conversation.lastMessageId = message.id
-                        self.conversationService.update(conversation: conversation, completion: { _ in })
-                    }
-                })
+        reservationService.add(reservation: reservation, completion: { success in
+            if !success {
+                DispatchQueue.main.async {
+                    completion(false)
+                }
+                return
             }
+            
+            let conversation = Conversation()
+            conversation.toId = reservation.ownerId
+            self.conversationService.create(conversation: conversation, completion: { success in
+                if success {
+                    let message = Message()
+                    message.isInvitation = true
+                    message.conversationId = conversation.id
+                    message.sendTime = Date()
+                    self.messageService.send(message: message, completion: { success in
+                        if success {
+                            conversation.lastMessageId = message.id
+                            self.conversationService.update(conversation: conversation, completion: { _ in })
+                        }
+                    })
+                    
+                    DispatchQueue.main.async {
+                        completion(true)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        completion(false)
+                    }
+                }
+            })
         })
     }
 }

@@ -19,6 +19,7 @@ class ReservationService: ReservationServiceProtocol {
     }
     
     func add(reservation: Reservation, completion: @escaping (Bool) -> Void) {
+        var currentUserId = ""
         if reservation.guestId.isEmpty {
             let user = Auth.auth().currentUser
             guard
@@ -31,6 +32,15 @@ class ReservationService: ReservationServiceProtocol {
             }
             
             reservation.guestId = userId
+            currentUserId = userId
+        }
+        
+        if reservation.ownerId == currentUserId {
+            DispatchQueue.main.async {
+                print("owner and guest are the same")
+                completion(false)
+            }
+            return
         }
         
         let reservationRef = self.databaseRef?.child(reservation.id)

@@ -16,29 +16,33 @@ struct MapView: View {
     }
         
     var body: some View {
-        GeometryReader { geometry in
-            ZStack {
-                MapViewKit(region: presenter.region, annotations: presenter.annotations)
-            }
-            
-            VStack {
-                SearchBarKit(searchOperation: { searchText in
-                    presenter.search(searchText: searchText)
-                })
-                .frame(width: geometry.size.width, height: 40)
-            }
-            .padding(.top, 25)
-            
-            SheetView(isOpen: $sheetOpen, maxHeight: geometry.size.height * 0.5) {
-                List(presenter.couches) { item in
-                    Spacer()
-                    CouchListRow(couch: item)
-                    Spacer()
+        NavigationView {
+            GeometryReader { geometry in
+                ZStack {
+                    MapViewKit(region: presenter.region, annotations: presenter.annotations)
                 }
-                .listStyle(PlainListStyle())
+                
+                VStack {
+                    SearchBarKit(searchOperation: { searchText in
+                        presenter.search(searchText: searchText)
+                    })
+                    .frame(width: geometry.size.width, height: 40)
+                }
+                .padding(.top, 25)
+                
+                SheetView(isOpen: $sheetOpen, maxHeight: geometry.size.height * 0.5) {
+                    List(presenter.couches) { item in
+                        self.presenter.linkBuilderForCouchDetails(couch: item, content: {
+                            CouchListRow(couch: item)
+                        })
+                    }
+                    .listStyle(PlainListStyle())
+                }
             }
+            .navigationTitle("Map View")
+            .navigationBarHidden(true)
+            .edgesIgnoringSafeArea(.all)
         }
-        .edgesIgnoringSafeArea(.all)
     }
 }
 

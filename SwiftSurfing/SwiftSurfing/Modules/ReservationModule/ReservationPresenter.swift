@@ -15,12 +15,16 @@ class ReservationPresenter: ObservableObject {
     @Published var reservation: Reservation
     let maxGuests: Int
     
+    @Published var showAlert: Bool
+    
     init(interactor: ReservationInteractor, reservation: Reservation) {
         self.interactor = interactor
         self.owner = User()
         self.couch = Couch()
         self.reservation = reservation
         self.maxGuests = reservation.guestsNum
+        
+        self.showAlert = false
     }
     
     func loadData() {
@@ -30,8 +34,8 @@ class ReservationPresenter: ObservableObject {
     
     func add() {
         DispatchQueue.global(qos: .background).async {
-            self.interactor.addReservation(reservation: self.reservation, completion: {  _ in
-                
+            self.interactor.addReservation(reservation: self.reservation, completion: {  success in
+                self.showAlert = !success
             })
         }
     }
