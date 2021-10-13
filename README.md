@@ -16,6 +16,12 @@ Igazából szeretném az alkalmazást teljesen működőképessé tenni ebben a 
 
 ## Haladási napló:
 
+### 2021. október 13. - október 20.:
+A user kezelést alakítottam át az alkalmazásban. Rendesen működik most már a login és logout, megnyomásukra átnavigálunk a megfelelő view-kra. Ezekhez készítettem egy AuthenticationManager service-t, innen lehet majd intézni minden authentikációhoz kapcsolódó funkciót.
+
+### 2021. október 6. - október 13.:
+Unit tesztelés témában olvasgattam sokat, próbáltam találni megoldást arra, hogy hogyan kéne tesztelnem, hogy a Firebase adatbázisába bekerültek-e a megfelelő adatok. Nem tudom ez a jó irány-e majd beszélünk róla. Ezen kívül elkészítettem a beszélgetések és az üzenetek számára a view-kat. Kiegészítettem pár service-t, annak megfelelően, hogy már ne minden adatot kérjünk le az adatbázisból, csak olyat ami jelenleg bejelentkezett user számára fontos lehet (pl más szálláshelyeit ne sorolja fel ott, ahol a sajátoknak kéne lennie). Észrevettem, hogy a user kezelés még fel kéne frissítenem, login és logout-ra nem navigál át az alkalmazás, olyan mintha azokra a gombnyomásokra nem történne semmi. Az üzenetek véglegesítésével és az értesítések kezelésével folytatom majd tovább.
+
 ### 2021. szeptember 29. - október 6.:
 Véglegesítettem a foglalás részleteit tartalmazó nézetet, valamint a folyamathoz szükséges összes Service implementációt elkészítettem. Ezek a Reservation, Conversation és Message service-ek voltak. Interactorban elkészítettem, hogy mit miután kell beszúrni az adatbázisba. Még nem volt időm ezt kipróbálni, ezt szeretném majd a jövőhéten. Ha minden működik és megfelelően létrejönnek az adatbázisban az objektumok, akkor a chat view-val haladok tovább és az üzenetküldéssel. Maga az üzenetküldés rész már kész, csak be kell majd kötni a view-ba. Ezen kívül még szeretnék belekezdeni a notifikációk témakörébe és azzal egy kicsit jobban megismerkedni.
 Frissítettem még az adatmodellt is, nem történt nagy változás, 1-1 boolt vettem fel a Reservation és Message táblákba.
