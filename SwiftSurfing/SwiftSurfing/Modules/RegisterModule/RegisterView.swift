@@ -43,6 +43,9 @@ struct RegisterView: View {
                 .cornerRadius(5.0)
             
             TextField("Email", text: $presenter.email)
+                .textContentType(.emailAddress)
+                .keyboardType(.emailAddress)
+                .autocapitalization(.none)
                 .padding()
                 .background(lightGreyColor)
                 .cornerRadius(5.0)

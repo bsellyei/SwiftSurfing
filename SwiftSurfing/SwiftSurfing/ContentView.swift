@@ -7,13 +7,20 @@
 
 import SwiftUI
 
-
-
 struct ContentView: View {
+    
+    @EnvironmentObject var authManager: AuthenticationManager
+    
     var body: some View {
-        RootView(presenter:
-            RootPresenter(interactor:
-                RootInteractor()))
+        Group {
+            if authManager.loggedInUser != nil {
+                HomeTabView()
+            } else {
+                LoginView(presenter: LoginPresenter(interactor: LoginInteractor()))
+            }
+        }
+        .animation(.easeInOut)
+        .transition(.move(edge: .bottom))
     }
 }
 

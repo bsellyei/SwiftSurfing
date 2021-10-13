@@ -9,14 +9,16 @@ import Foundation
 import Firebase
 
 class LoginInteractor {
-    //var presenter: LoginPresenter
+    private var authManager: AuthenticationManager
     
     init () {
-        //self.presenter = presenter
+        self.authManager = AuthenticationManager.shared
     }
     
     func login(email: String, password: String) {
-        Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
+        authManager.login(email: email, password: password)
+        
+        /*Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
             if let error = error {
                 let authError = error as NSError
                 switch AuthErrorCode(rawValue: authError.code) {
@@ -40,6 +42,6 @@ class LoginInteractor {
                 print("User logged in")
                 //self.presenter.loginDidSucceed()
             }
-        }
+        }*/
     }
 }

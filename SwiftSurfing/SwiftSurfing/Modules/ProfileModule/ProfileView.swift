@@ -27,7 +27,7 @@ struct ProfileView: View {
                 
             List {
                 Button(action: {
-                    print("logout")
+                    presenter.logout()
                 }) {
                     ButtonContent(text: "Logout")
                 }

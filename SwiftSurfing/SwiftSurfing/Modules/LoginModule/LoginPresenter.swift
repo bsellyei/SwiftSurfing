@@ -34,14 +34,6 @@ class LoginPresenter: ObservableObject {
         interactor.login(email: self.email, password: self.password)
     }
     
-    func loginDidFail() {
-        
-    }
-    
-    func loginDidSucceed() {
-        
-    }
-    
     func linkBuilder<Content: View>(@ViewBuilder content: () -> Content)
         -> some View
     {

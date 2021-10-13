@@ -9,15 +9,13 @@ import Foundation
 import Firebase
 
 class ProfileInteractor {
+    private var authManager: AuthenticationManager
+    
     init() {
-
+        self.authManager = AuthenticationManager.shared
     }
     
     func logout() {
-        do {
-            try Auth.auth().signOut()
-        } catch let signOutError as NSError {
-            print("Error signing out: %@", signOutError)
-        }
+        authManager.signout()
     }
 }

@@ -10,44 +10,25 @@ import Firebase
 
 class RegisterInteractor {
     private let service: UserServiceProtocol
+    private var authManager: AuthenticationManager
     
     init(service: UserServiceProtocol) {
         self.service = service
+        self.authManager = AuthenticationManager.shared
     }
     
     func register(email: String, password: String) {
-        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-            if let error = error {
-                let authError = error as NSError
-                switch AuthErrorCode(rawValue: authError.code) {
-                case .operationNotAllowed:
-                    print("Error: \(authError.localizedDescription)")
-                case .emailAlreadyInUse:
-                    print("Error: \(authError.localizedDescription)")
-                case .invalidEmail:
-                    print("Error: \(authError.localizedDescription)")
-                case .weakPassword:
-                    print("Error: \(authError.localizedDescription)")
-                default:
-                    print("Error: \(authError.localizedDescription)")
-                }
-            } else {
-                print("User signed up successfully")
-                let user = User()
-                if let userId = Auth.auth().currentUser?.uid,
-                   let fullName = Auth.auth().currentUser?.displayName,
-                   let email = Auth.auth().currentUser?.email
-                {
-                    user.id = userId
-                    user.fullName = fullName
-                    user.email = email
-                }
+        authManager.signup(email: email, password: password, completion: {
+            let user = User()
             
-                self.service.addNew(user: user) { success in
-                    print("User added to database")
-                }
+            if let userId = self.authManager.loggedInUser?.uid,
+               let userEmail = self.authManager.loggedInUser?.email
+            {
+                user.id = userId
+                user.email = userEmail
+                
+                self.service.addNew(user: user, completion: { _ in })
             }
-        }
-        
+        })
     }
 }

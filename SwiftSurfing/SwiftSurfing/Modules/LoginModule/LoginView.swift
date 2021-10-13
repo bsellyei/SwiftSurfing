@@ -29,6 +29,9 @@ struct LoginView: View {
                 WelcomeText(text: "Welcome!")
                 
                 TextField("Email", text: $presenter.email)
+                    .textContentType(.emailAddress)
+                    .keyboardType(.emailAddress)
+                    .autocapitalization(.none)
                     .padding()
                     .background(lightGreyColor)
                     .cornerRadius(5.0)
@@ -45,7 +48,7 @@ struct LoginView: View {
                     print("Login Button tapped")
                     self.presenter.login()
                 }) {
-                    LoginButtonContent()
+                    ButtonContent(text: "Login")
                 }
                 .disabled(presenter.disableLogin)
                 
@@ -79,34 +82,6 @@ struct WelcomeText: View {
             .font(.largeTitle)
             .fontWeight(.semibold)
             .padding(.bottom, 10)
-    }
-}
-
-struct LoginButtonContent: View {
-    var body: some View {
-        Text("Login")
-            .font(.headline)
-            .foregroundColor(.white)
-            .frame(width: 220, height: 50)
-            .background(Color.blue)
-            .cornerRadius(15.0)
-    }
-}
-
-struct ButtonContent: View {
-    var text: String
-    
-    init(text: String) {
-        self.text = text
-    }
-    
-    var body: some View {
-        Text(text)
-            .font(.headline)
-            .foregroundColor(.white)
-            .frame(width: 220, height: 40)
-            .background(Color.blue)
-            .cornerRadius(15.0)
     }
 }
 
