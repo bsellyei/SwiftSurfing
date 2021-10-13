@@ -29,7 +29,6 @@
 		DB19FB8F2716007F001F25EB /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB19FB8E2716007F001F25EB /* MessageView.swift */; };
 		DB19FB93271721B0001F25EB /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB19FB92271721B0001F25EB /* AuthenticationManager.swift */; };
 		DB19FB97271726D7001F25EB /* ButtonContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB19FB96271726D7001F25EB /* ButtonContent.swift */; };
-		DB19FB9B27173177001F25EB /* AuthenticationManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB19FB9A27173177001F25EB /* AuthenticationManagerProtocol.swift */; };
 		DB19FB9F2717361A001F25EB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB19FB9E2717361A001F25EB /* SceneDelegate.swift */; };
 		DB1EE434263AB2DF005C4AD1 /* ImagePickerKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1EE433263AB2DF005C4AD1 /* ImagePickerKit.swift */; };
 		DB1EE437263B0B9E005C4AD1 /* ImageManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1EE436263B0B9E005C4AD1 /* ImageManagerProtocol.swift */; };
@@ -132,7 +131,6 @@
 		DB19FB8E2716007F001F25EB /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		DB19FB92271721B0001F25EB /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		DB19FB96271726D7001F25EB /* ButtonContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonContent.swift; sourceTree = "<group>"; };
-		DB19FB9A27173177001F25EB /* AuthenticationManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManagerProtocol.swift; sourceTree = "<group>"; };
 		DB19FB9E2717361A001F25EB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		DB1EE433263AB2DF005C4AD1 /* ImagePickerKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerKit.swift; sourceTree = "<group>"; };
 		DB1EE436263B0B9E005C4AD1 /* ImageManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManagerProtocol.swift; sourceTree = "<group>"; };
@@ -407,7 +405,6 @@
 				DBBF03FF2702648600110DEC /* ReservationServiceProtocol.swift */,
 				DBBF04052704B49300110DEC /* MessageServiceProtocol.swift */,
 				DBBF04112704D1C300110DEC /* ConversationServiceProtocol.swift */,
-				DB19FB9A27173177001F25EB /* AuthenticationManagerProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -718,7 +715,6 @@
 				DB0970AE2601436B0052EC09 /* CouchesRouter.swift in Sources */,
 				DB8BFDF82627368C00780517 /* SearchBarKit.swift in Sources */,
 				DBBF03EF27021D4F00110DEC /* CouchDetailsRouter.swift in Sources */,
-				DB19FB9B27173177001F25EB /* AuthenticationManagerProtocol.swift in Sources */,
 				DBEB14B925FAD5A70046CB30 /* RegisterPresenter.swift in Sources */,
 				DB19FB6227159BD1001F25EB /* MapRouter.swift in Sources */,
 				DB19FB8F2716007F001F25EB /* MessageView.swift in Sources */,
