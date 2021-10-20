@@ -17,7 +17,8 @@ Igazából szeretném az alkalmazást teljesen működőképessé tenni ebben a 
 ## Haladási napló:
 
 ### 2021. október 13. - október 20.:
-A user kezelést alakítottam át az alkalmazásban. Rendesen működik most már a login és logout, megnyomásukra átnavigálunk a megfelelő view-kra. Ezekhez készítettem egy AuthenticationManager service-t, innen lehet majd intézni minden authentikációhoz kapcsolódó funkciót.
+A user kezelést alakítottam át az alkalmazásban. Rendesen működik most már a login és logout, megnyomásukra átnavigálunk a megfelelő view-kra. Ezekhez készítettem egy AuthenticationManager service-t, innen lehet majd intézni minden authentikációhoz kapcsolódó funkciót. 
+Mással nem haladtam most a héten, elég sok beadandó meg zh volt még szerdáig. Továbbiakban a local notifikációkkal szeretnék haladni, hogy foglalásnál ütemezzen be az alkalmazás egy értesítést. Mondtam, hogy push notifikációkat is szeretnék az üzenetküldéshez, szerintem ezt egyelőre kihagyom, max a félév legvégén újra előveszem, ha lesz még rá idő.
 
 ### 2021. október 6. - október 13.:
 Unit tesztelés témában olvasgattam sokat, próbáltam találni megoldást arra, hogy hogyan kéne tesztelnem, hogy a Firebase adatbázisába bekerültek-e a megfelelő adatok. Nem tudom ez a jó irány-e majd beszélünk róla. Ezen kívül elkészítettem a beszélgetések és az üzenetek számára a view-kat. Kiegészítettem pár service-t, annak megfelelően, hogy már ne minden adatot kérjünk le az adatbázisból, csak olyat ami jelenleg bejelentkezett user számára fontos lehet (pl más szálláshelyeit ne sorolja fel ott, ahol a sajátoknak kéne lennie). Észrevettem, hogy a user kezelés még fel kéne frissítenem, login és logout-ra nem navigál át az alkalmazás, olyan mintha azokra a gombnyomásokra nem történne semmi. Az üzenetek véglegesítésével és az értesítések kezelésével folytatom majd tovább.
