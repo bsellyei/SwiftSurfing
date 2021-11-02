@@ -16,6 +16,10 @@ Igazából szeretném az alkalmazást teljesen működőképessé tenni ebben a 
 
 ## Haladási napló:
 
+### 2021. október 27. - november 2.:
+Múlthéten elkezdett értékelésekkel foglalkoztam. Csináltam egy kis nézetet, ahol az összértékelést meg lehet nézni, plusz van benne egy kis diagram hogy az értékelések hogyan oszlanak el 1-től 5-ig. Alatta van egy kis rész, ahol újat lehet hozzáadni, azalatt pedig hogy szöveges értékelések érkeztek még. Frissítettem a csillagokat mutató nézetet is, most már lehet bele kattintani, így nem csak read-only (az összes helyen ugyanúgy néz ez ki, de csak 1 helyen nem read-only). Lehet lekérdezni és hozzáadni értékeléseket. Frissítettem az adatmodellt, a gyorsabb megjelenítés miatt az értékelések számát és átlagukat mindig eltárolom a szálláshelyeknél, ez azért fontos, mert ha listanézeten van több szállás, akkor megnyitás nélkül is láthassa a user hogy hányas az értékelése. 
+A backend részre ezen a héten még nem jutott időm, de a következő héttől azzal szeretnék már foglalkozni.
+
 ### 2021. október 13. - október 20.:
 A user kezelést alakítottam át az alkalmazásban. Rendesen működik most már a login és logout, megnyomásukra átnavigálunk a megfelelő view-kra. Ezekhez készítettem egy AuthenticationManager service-t, innen lehet majd intézni minden authentikációhoz kapcsolódó funkciót. 
 Mással nem haladtam most a héten, elég sok beadandó meg zh volt még szerdáig. Továbbiakban a local notifikációkkal szeretnék haladni, hogy foglalásnál ütemezzen be az alkalmazás egy értesítést. Mondtam, hogy push notifikációkat is szeretnék az üzenetküldéshez, szerintem ezt egyelőre kihagyom, max a félév legvégén újra előveszem, ha lesz még rá idő.
