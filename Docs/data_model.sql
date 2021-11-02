@@ -16,7 +16,9 @@ CREATE TABLE `couches` (
   `max_guests` int,
   `description` varchar(255),
   `image_url` varchar(255),
-  `tags` varchar(255)
+  `tags` varchar(255),
+  `ratingsAverage` int,
+  `ratingsCount` int
 );
 
 CREATE TABLE `ratings` (
