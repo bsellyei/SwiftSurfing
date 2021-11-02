@@ -13,13 +13,16 @@ class ReservationInteractor {
     private let reservationService: ReservationServiceProtocol
     private let conversationService: ConversationServiceProtocol
     private let messageService: MessageServiceProtocol
+    private let notificationManager: NotificationManagerProtocol
     
-    init(couchService: CouchServiceProtocol, userService: UserServiceProtocol, reservationService: ReservationServiceProtocol, conversationService: ConversationServiceProtocol, messageService: MessageServiceProtocol) {
+    init(couchService: CouchServiceProtocol, userService: UserServiceProtocol, reservationService: ReservationServiceProtocol,              conversationService: ConversationServiceProtocol, messageService: MessageServiceProtocol,
+        notificationManager: NotificationManagerProtocol) {
         self.couchService = couchService
         self.userService = userService
         self.reservationService = reservationService
         self.conversationService = conversationService
         self.messageService = messageService
+        self.notificationManager = notificationManager
     }
     
     func getOwner(ownerId: String, completion: @escaping (User?) -> Void) {
@@ -38,6 +41,8 @@ class ReservationInteractor {
                 }
                 return
             }
+            
+            self.notificationManager.scheduleNotification(date: reservation.date.lowerBound)
             
             let conversation = Conversation()
             conversation.toId = reservation.ownerId

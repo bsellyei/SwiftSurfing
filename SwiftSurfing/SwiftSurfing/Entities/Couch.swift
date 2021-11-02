@@ -22,6 +22,9 @@ class Couch: Identifiable {
     var description: String
     var imageURLs: [String]
     var tags: String
+    
+    var ratingAverage: Int
+    var ratingCount: Int
  
     init() {
         self.ref = nil
@@ -37,6 +40,9 @@ class Couch: Identifiable {
         self.description = ""
         self.imageURLs = ["placeholder"]
         self.tags = ""
+        
+        self.ratingAverage = 0
+        self.ratingCount = 0
     }
     
     init?(snapshot: DataSnapshot) {
@@ -53,7 +59,9 @@ class Couch: Identifiable {
             let maxGuests = value["maxGuests"] as? Int,
             let description = value["description"] as? String,
             let imageURLs = value["imageURLs"] as? [String],
-            let tags = value["tags"] as? String
+            let tags = value["tags"] as? String,
+            let ratingAverage = value["ratingAverage"] as? Int,
+            let ratingCount = value["ratingCount"] as? Int
         else {
             return nil
         }
@@ -71,6 +79,9 @@ class Couch: Identifiable {
         self.description = description
         self.imageURLs = imageURLs
         self.tags = tags
+        
+        self.ratingAverage = ratingAverage
+        self.ratingCount = ratingCount
     }
     
     func toAnyObject() -> Any {
@@ -86,7 +97,9 @@ class Couch: Identifiable {
             "maxGuests": maxGuests,
             "description": description,
             "imageURLs": imageURLs,
-            "tags": tags
+            "tags": tags,
+            "ratingAverage": ratingAverage,
+            "ratingCount": ratingCount
         ]
     }
 }

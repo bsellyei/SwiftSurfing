@@ -16,8 +16,7 @@ CREATE TABLE `couches` (
   `max_guests` int,
   `description` varchar(255),
   `image_url` varchar(255),
-  `tags` varchar(255),
-  `rating_id` int
+  `tags` varchar(255)
 );
 
 CREATE TABLE `ratings` (
@@ -35,8 +34,7 @@ CREATE TABLE `reservations` (
   `owner_id` int,
   `guests_number` int,
   `fromDate` datetime,
-  `toDate` datetime,
-  `is_pending` bool
+  `toDate` datetime
 );
 
 CREATE TABLE `conversations` (
@@ -51,13 +49,12 @@ CREATE TABLE `messages` (
   `conversations_id` int,
   `sender` int,
   `when` datetime,
-  `message` varchar(255),
-  `is_invitation` bool
+  `message` varchar(255)
 );
 
 ALTER TABLE `couches` ADD FOREIGN KEY (`owner_id`) REFERENCES `users` (`id`);
 
-ALTER TABLE `couches` ADD FOREIGN KEY (`rating_id`) REFERENCES `ratings` (`id`);
+ALTER TABLE `ratings` ADD FOREIGN KEY (`couch_id`) REFERENCES `couches` (`id`);
 
 ALTER TABLE `ratings` ADD FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 

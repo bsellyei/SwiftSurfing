@@ -9,8 +9,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct CouchListRow: View {
-    private var couch: Couch
-    @State var rating: Int = Int.random(in: 1...5)
+    @State var couch: Couch = Couch()
     
     init(couch: Couch) {
         self.couch = couch
@@ -49,7 +48,7 @@ struct CouchListRow: View {
                     Text("Home owner's name")
                         .font(.title3)
                         .padding(.bottom, 3)
-                    RatingView(rating: $rating, numberOfRatings: Int.random(in: 1...100))
+                    RatingView(rating: $couch.ratingAverage, numberOfRatings: couch.ratingCount, isEditable: false)
                 }
             }
         }

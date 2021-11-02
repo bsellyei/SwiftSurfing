@@ -9,6 +9,9 @@ import SwiftUI
 
 struct RatingView: View {
     @Binding var rating: Int
+    var numberOfRatings: Int
+    var isEditable: Bool
+    
     var label = ""
     var maximumRating = 5
     
@@ -17,8 +20,6 @@ struct RatingView: View {
     
     var offColor = Color.gray
     var onColor = Color.yellow
-    
-    var numberOfRatings: Int
     
     var body: some View {
         HStack {
@@ -29,9 +30,11 @@ struct RatingView: View {
             ForEach(1..<maximumRating + 1) { number in
                 self.image(for: number)
                     .foregroundColor(number > self.rating ? self.offColor : self.onColor)
-                    /*.onTapGesture {
-                        self.rating = number
-                    }*/
+                    .onTapGesture {
+                        if isEditable {
+                            self.rating = number
+                        }
+                    }
             }
             
             Text("(\(numberOfRatings))")
@@ -49,6 +52,6 @@ struct RatingView: View {
 
 struct RatingView_Previews: PreviewProvider {
     static var previews: some View {
-        RatingView(rating: .constant(4), numberOfRatings: 5)
+        RatingView(rating: .constant(4), numberOfRatings: 5, isEditable: false)
     }
 }

@@ -66,4 +66,12 @@ class CouchDetailsPresenter: ObservableObject {
             content()
         }
     }
+    
+    func linkBuilder<Content: View>(@ViewBuilder content: () -> Content)
+        -> some View
+    {
+        NavigationLink(destination: router.makeRatingsView(couchId: couch.id)) {
+            content()
+        }
+    }
 }

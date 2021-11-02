@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
@@ -40,6 +40,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             type: MessageServiceProtocol.self,
             component: MessageService())
         
+        container.register(
+            type: NotificationManagerProtocol.self,
+            component: NotificationManager())
+        
+        container.register(
+            type: RatingServiceProtocol.self,
+            component: RatingService())
+        
+        configureUserNotifications()
+        
         return true
     }
     
@@ -49,5 +59,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
         
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler(.banner)
+    }
+    
+    private func configureUserNotifications() {
+      UNUserNotificationCenter.current().delegate = self
     }
 }

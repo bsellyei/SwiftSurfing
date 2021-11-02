@@ -48,8 +48,17 @@ struct CouchDetailsView: View {
                         Image(systemName: "person.3.fill")
                     }
                 }
+                .padding(.bottom, 5)
                 
-                // Ratings here
+                HStack {
+                    RatingView(rating: $presenter.couch.ratingAverage, numberOfRatings: presenter.couch.ratingCount, isEditable: false)
+                    
+                    Spacer()
+                    
+                    self.presenter.linkBuilder(content: {
+                        ButtonContent(text: "Ratings", width: 120, height: 30)
+                    })
+                }
                 
                 Text("\(presenter.couch.description)")
                 

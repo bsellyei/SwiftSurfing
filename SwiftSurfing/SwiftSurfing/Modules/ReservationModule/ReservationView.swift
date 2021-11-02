@@ -67,7 +67,7 @@ struct ReservationView: View {
 
 struct ReservationView_Previews: PreviewProvider {
     static var previews: some View {
-        let interactor = ReservationInteractor(couchService: CouchService(), userService: UserService(), reservationService: ReservationService(), conversationService: ConversationService(), messageService: MessageService())
+        let interactor = ReservationInteractor(couchService: CouchService(), userService: UserService(), reservationService: ReservationService(), conversationService: ConversationService(), messageService: MessageService(), notificationManager: NotificationManager())
         let presenter = ReservationPresenter(interactor: interactor, reservation: Reservation())
         return ReservationView(presenter: presenter)
     }

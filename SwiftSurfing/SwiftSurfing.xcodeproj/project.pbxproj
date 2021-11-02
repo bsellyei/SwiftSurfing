@@ -36,10 +36,18 @@
 		DB1EE43D2643284E005C4AD1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1EE43C2643284E005C4AD1 /* User.swift */; };
 		DB1EE44026432912005C4AD1 /* UserServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1EE43F26432912005C4AD1 /* UserServiceProtocol.swift */; };
 		DB1EE44326432984005C4AD1 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1EE44226432984005C4AD1 /* UserService.swift */; };
+		DB43445D2728291000997D93 /* RatingServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB43445C2728291000997D93 /* RatingServiceProtocol.swift */; };
+		DB4344612728296900997D93 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4344602728296900997D93 /* Rating.swift */; };
+		DB43446527282AC900997D93 /* RatingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB43446427282AC900997D93 /* RatingService.swift */; };
+		DB43446B2728329600997D93 /* RatingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB43446A2728329600997D93 /* RatingsView.swift */; };
+		DB434471272832D200997D93 /* RatingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB434470272832D200997D93 /* RatingsPresenter.swift */; };
+		DB4344752728330A00997D93 /* RatingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4344742728330A00997D93 /* RatingsInteractor.swift */; };
+		DB43447F2728356000997D93 /* RatingSummaryViewContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB43447E2728356000997D93 /* RatingSummaryViewContext.swift */; };
 		DB54DC1A263149D800B7618F /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB54DC19263149D800B7618F /* RatingView.swift */; };
 		DB5AA3B62713166E009F8E73 /* SwiftSurfingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5AA3B52713166E009F8E73 /* SwiftSurfingTests.swift */; };
 		DB5AA3C027131704009F8E73 /* CouchServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5AA3BF27131704009F8E73 /* CouchServiceTests.swift */; };
 		DB5F6A9526282C6300C83F5A /* CouchListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5F6A9426282C6300C83F5A /* CouchListRow.swift */; };
+		DB791BDE27273A1000B745F0 /* RatingSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB791BDD27273A1000B745F0 /* RatingSummaryView.swift */; };
 		DB834E4C25E5C1B200E94268 /* SwiftSurfingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB834E4B25E5C1B200E94268 /* SwiftSurfingApp.swift */; };
 		DB834E4E25E5C1B200E94268 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB834E4D25E5C1B200E94268 /* ContentView.swift */; };
 		DB834E5025E5C1B300E94268 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB834E4F25E5C1B300E94268 /* Assets.xcassets */; };
@@ -84,6 +92,8 @@
 		DBCBEA2325FBED2E00E74A8D /* ValidationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCBEA2225FBED2E00E74A8D /* ValidationModifier.swift */; };
 		DBCBEA2625FBEF3300E74A8D /* ValidationPublishers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCBEA2525FBEF3300E74A8D /* ValidationPublishers.swift */; };
 		DBCBEA2925FBF25500E74A8D /* PublisherExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCBEA2825FBF25500E74A8D /* PublisherExtension.swift */; };
+		DBD60E1A27230F8200A13AC9 /* NotificationManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD60E1927230F8200A13AC9 /* NotificationManagerProtocol.swift */; };
+		DBD60E1E27230FA200A13AC9 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD60E1D27230FA200A13AC9 /* NotificationManager.swift */; };
 		DBE36B0D264EFE1100755851 /* CouchDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE36B0A264EFE1100755851 /* CouchDetailsInteractor.swift */; };
 		DBE36B0E264EFE1100755851 /* CouchDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE36B0B264EFE1100755851 /* CouchDetailsView.swift */; };
 		DBE36B0F264EFE1100755851 /* CouchDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE36B0C264EFE1100755851 /* CouchDetailsPresenter.swift */; };
@@ -138,12 +148,20 @@
 		DB1EE43C2643284E005C4AD1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DB1EE43F26432912005C4AD1 /* UserServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceProtocol.swift; sourceTree = "<group>"; };
 		DB1EE44226432984005C4AD1 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		DB43445C2728291000997D93 /* RatingServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingServiceProtocol.swift; sourceTree = "<group>"; };
+		DB4344602728296900997D93 /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
+		DB43446427282AC900997D93 /* RatingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingService.swift; sourceTree = "<group>"; };
+		DB43446A2728329600997D93 /* RatingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingsView.swift; sourceTree = "<group>"; };
+		DB434470272832D200997D93 /* RatingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingsPresenter.swift; sourceTree = "<group>"; };
+		DB4344742728330A00997D93 /* RatingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingsInteractor.swift; sourceTree = "<group>"; };
+		DB43447E2728356000997D93 /* RatingSummaryViewContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingSummaryViewContext.swift; sourceTree = "<group>"; };
 		DB54DC19263149D800B7618F /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		DB5AA3B32713166E009F8E73 /* SwiftSurfingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftSurfingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB5AA3B52713166E009F8E73 /* SwiftSurfingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftSurfingTests.swift; sourceTree = "<group>"; };
 		DB5AA3B72713166E009F8E73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB5AA3BF27131704009F8E73 /* CouchServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouchServiceTests.swift; sourceTree = "<group>"; };
 		DB5F6A9426282C6300C83F5A /* CouchListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouchListRow.swift; sourceTree = "<group>"; };
+		DB791BDD27273A1000B745F0 /* RatingSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingSummaryView.swift; sourceTree = "<group>"; };
 		DB834E4825E5C1B200E94268 /* SwiftSurfing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftSurfing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB834E4B25E5C1B200E94268 /* SwiftSurfingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftSurfingApp.swift; sourceTree = "<group>"; };
 		DB834E4D25E5C1B200E94268 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -190,6 +208,8 @@
 		DBCBEA2225FBED2E00E74A8D /* ValidationModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationModifier.swift; sourceTree = "<group>"; };
 		DBCBEA2525FBEF3300E74A8D /* ValidationPublishers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationPublishers.swift; sourceTree = "<group>"; };
 		DBCBEA2825FBF25500E74A8D /* PublisherExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherExtension.swift; sourceTree = "<group>"; };
+		DBD60E1927230F8200A13AC9 /* NotificationManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManagerProtocol.swift; sourceTree = "<group>"; };
+		DBD60E1D27230FA200A13AC9 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		DBE36B0A264EFE1100755851 /* CouchDetailsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CouchDetailsInteractor.swift; path = CouchDetailsModule/CouchDetailsInteractor.swift; sourceTree = "<group>"; };
 		DBE36B0B264EFE1100755851 /* CouchDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CouchDetailsView.swift; path = CouchDetailsModule/CouchDetailsView.swift; sourceTree = "<group>"; };
 		DBE36B0C264EFE1100755851 /* CouchDetailsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CouchDetailsPresenter.swift; path = CouchDetailsModule/CouchDetailsPresenter.swift; sourceTree = "<group>"; };
@@ -255,6 +275,7 @@
 				DBBF03F12702202000110DEC /* Reservation.swift */,
 				DBBF040B2704B6A900110DEC /* Message.swift */,
 				DBBF040E2704B6B500110DEC /* Conversation.swift */,
+				DB4344602728296900997D93 /* Rating.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -300,6 +321,16 @@
 				DBBF03EE27021D4F00110DEC /* CouchDetailsRouter.swift */,
 			);
 			name = CouchDetailsModule;
+			sourceTree = "<group>";
+		};
+		DB4344692728328100997D93 /* RatingsModule */ = {
+			isa = PBXGroup;
+			children = (
+				DB43446A2728329600997D93 /* RatingsView.swift */,
+				DB434470272832D200997D93 /* RatingsPresenter.swift */,
+				DB4344742728330A00997D93 /* RatingsInteractor.swift */,
+			);
+			path = RatingsModule;
 			sourceTree = "<group>";
 		};
 		DB5AA3B42713166E009F8E73 /* SwiftSurfingTests */ = {
@@ -372,6 +403,8 @@
 				DB19FB7B2715B600001F25EB /* ConversationListRow.swift */,
 				DB19FB8E2716007F001F25EB /* MessageView.swift */,
 				DB19FB96271726D7001F25EB /* ButtonContent.swift */,
+				DB791BDD27273A1000B745F0 /* RatingSummaryView.swift */,
+				DB43447E2728356000997D93 /* RatingSummaryViewContext.swift */,
 			);
 			path = CommonViews;
 			sourceTree = "<group>";
@@ -405,6 +438,8 @@
 				DBBF03FF2702648600110DEC /* ReservationServiceProtocol.swift */,
 				DBBF04052704B49300110DEC /* MessageServiceProtocol.swift */,
 				DBBF04112704D1C300110DEC /* ConversationServiceProtocol.swift */,
+				DBD60E1927230F8200A13AC9 /* NotificationManagerProtocol.swift */,
+				DB43445C2728291000997D93 /* RatingServiceProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -418,6 +453,8 @@
 				DBBF0402270264B500110DEC /* ReservationService.swift */,
 				DBBF04082704B4A500110DEC /* MessageService.swift */,
 				DBBF04142704D1EF00110DEC /* ConversationService.swift */,
+				DBD60E1D27230FA200A13AC9 /* NotificationManager.swift */,
+				DB43446427282AC900997D93 /* RatingService.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -508,6 +545,7 @@
 		DBEB149F25F950C10046CB30 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				DB4344692728328100997D93 /* RatingsModule */,
 				DB19FB7F2715FB92001F25EB /* MessagesModule */,
 				DB19FB652715B02A001F25EB /* ConversationsModule */,
 				DBB559A32714AE2F009AE705 /* ProfileModule */,
@@ -697,11 +735,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBD60E1E27230FA200A13AC9 /* NotificationManager.swift in Sources */,
 				DBBF03DD26FAFEBA00110DEC /* MDPDayOfMonth.swift in Sources */,
 				DB19FB6C2715B04F001F25EB /* ConversationsPresenter.swift in Sources */,
 				DBBF03E926FAFF1200110DEC /* MDPMonthYearPicker.swift in Sources */,
+				DB791BDE27273A1000B745F0 /* RatingSummaryView.swift in Sources */,
 				DBBF03F22702202000110DEC /* Reservation.swift in Sources */,
 				DBEB14B025F98B760046CB30 /* LoginView.swift in Sources */,
+				DB43446B2728329600997D93 /* RatingsView.swift in Sources */,
 				DB19FB93271721B0001F25EB /* AuthenticationManager.swift in Sources */,
 				DB09709025FD509C0052EC09 /* MapView.swift in Sources */,
 				DB19FB8B2715FBC2001F25EB /* MessagesInteractor.swift in Sources */,
@@ -709,6 +750,7 @@
 				DB1EE43A263B0C51005C4AD1 /* ImageManager.swift in Sources */,
 				DB19FB702715B062001F25EB /* ConversationsInteractor.swift in Sources */,
 				DB834E4E25E5C1B200E94268 /* ContentView.swift in Sources */,
+				DB4344752728330A00997D93 /* RatingsInteractor.swift in Sources */,
 				DBCBEA2925FBF25500E74A8D /* PublisherExtension.swift in Sources */,
 				DB8BFDF526272B1600780517 /* MapViewKit.swift in Sources */,
 				DB1EE437263B0B9E005C4AD1 /* ImageManagerProtocol.swift in Sources */,
@@ -731,6 +773,7 @@
 				DBA264D42630C1B900C63431 /* CouchAnnotation.swift in Sources */,
 				DBE36B0E264EFE1100755851 /* CouchDetailsView.swift in Sources */,
 				DB54DC1A263149D800B7618F /* RatingView.swift in Sources */,
+				DB4344612728296900997D93 /* Rating.swift in Sources */,
 				DB1EE43D2643284E005C4AD1 /* User.swift in Sources */,
 				DB1EE434263AB2DF005C4AD1 /* ImagePickerKit.swift in Sources */,
 				DBCBEA2625FBEF3300E74A8D /* ValidationPublishers.swift in Sources */,
@@ -747,6 +790,7 @@
 				DBBF03FD27025E2A00110DEC /* ReservationView.swift in Sources */,
 				DBA0B9E1260BE8D000474B7C /* DIContainerProtocol.swift in Sources */,
 				DBBF04002702648600110DEC /* ReservationServiceProtocol.swift in Sources */,
+				DB43447F2728356000997D93 /* RatingSummaryViewContext.swift in Sources */,
 				DB19FB812715FBA7001F25EB /* MessagesView.swift in Sources */,
 				DBCBEA2325FBED2E00E74A8D /* ValidationModifier.swift in Sources */,
 				DB19FB97271726D7001F25EB /* ButtonContent.swift in Sources */,
@@ -766,9 +810,13 @@
 				DBBF03E326FAFEE500110DEC /* MDPModel.swift in Sources */,
 				DB19FB742715B06C001F25EB /* ConversationsRouter.swift in Sources */,
 				DBEB14A225F952A90046CB30 /* LoginInteractor.swift in Sources */,
+				DB43446527282AC900997D93 /* RatingService.swift in Sources */,
+				DB43445D2728291000997D93 /* RatingServiceProtocol.swift in Sources */,
 				DBBF03F627025E0200110DEC /* ReservationInteractor.swift in Sources */,
 				DBA0B9C12601469F00474B7C /* NewCouchInteractor.swift in Sources */,
+				DB434471272832D200997D93 /* RatingsPresenter.swift in Sources */,
 				DB19FB9F2717361A001F25EB /* SceneDelegate.swift in Sources */,
+				DBD60E1A27230F8200A13AC9 /* NotificationManagerProtocol.swift in Sources */,
 				DBBF04122704D1C300110DEC /* ConversationServiceProtocol.swift in Sources */,
 				DBBF03EC26FAFF2800110DEC /* MDPMonthYearPickerButton.swift in Sources */,
 				DBA0B9C8260146EB00474B7C /* NewCouchView.swift in Sources */,
