@@ -16,6 +16,10 @@ Igazából szeretném az alkalmazást teljesen működőképessé tenni ebben a 
 
 ## Haladási napló:
 
+### 2021. november 9. - november 17.:
+Elkezdtem foglalkozni a backend-es résszel. Végignyomkodtam a tutorialokat, amiket küldtél, plusz még egy párat amit én is találtam a témával kapcsolatban. Szerencsére raywenderlich-en elég sok Vaporos cikk van. Perzisztenciával, adatbázis migrációval és teszteléssel kapcsolatos cikkeket néztem végig. Szeretném már jó előre elkezdeni a funkciók tesztelését is, kb. TDD szerint, mivel a unit tesztek kimaradtak az iOS app készítésekor. Adatbázisból PostgreSQL-t fogok használni, Vapor dokumentáció szerint ez az ajánlott adatbázis a frameworkhöz. 
+Megcsináltam a User és Couch modelleket, hozzájuk migrációkat, Userhez controllert is. Nem jöttem rá eredetileg, hogy hogyan írjam meg először a teszteket és aztán a funkciót, ezért a Userhez előbb készült funkció mint teszt. Couchnál már elsőnek a teszteket írtam meg, igaz ezek most csak errorral futnak le, mert egy végpont sincsen ami a couch műveletekre mutatna.
+
 ### 2021. október 27. - november 2.:
 Múlthéten elkezdett értékelésekkel foglalkoztam. Csináltam egy kis nézetet, ahol az összértékelést meg lehet nézni, plusz van benne egy kis diagram hogy az értékelések hogyan oszlanak el 1-től 5-ig. Alatta van egy kis rész, ahol újat lehet hozzáadni, azalatt pedig hogy szöveges értékelések érkeztek még. Frissítettem a csillagokat mutató nézetet is, most már lehet bele kattintani, így nem csak read-only (az összes helyen ugyanúgy néz ez ki, de csak 1 helyen nem read-only). Lehet lekérdezni és hozzáadni értékeléseket. Frissítettem az adatmodellt, a gyorsabb megjelenítés miatt az értékelések számát és átlagukat mindig eltárolom a szálláshelyeknél, ez azért fontos, mert ha listanézeten van több szállás, akkor megnyitás nélkül is láthassa a user hogy hányas az értékelése. 
 A backend részre ezen a héten még nem jutott időm, de a következő héttől azzal szeretnék már foglalkozni.
