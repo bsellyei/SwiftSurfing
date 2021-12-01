@@ -16,6 +16,9 @@ Igazából szeretném az alkalmazást teljesen működőképessé tenni ebben a 
 
 ## Haladási napló:
 
+### 2021. november 24. - december 1.:
+Folytattam az értékelésekhez tartozó kontroller implementálását. Kipróbáltam a 2 db egy-többes kapcsolat helyett a Siblinget (több-több kapcsolat), de a korábbi probléma ugyanúgy fennállt ekkor is. További próbálkozások és google keresések során, sikerült rájönni, hogy lehet több darab egy-többes kapcsolat egy modell elemen. Az eager loading problémát pedig eleinte félreértelmeztem, a közvetlenül adatbázisba létrehozott objektumon is kell használni az eager loadingot, nem csak a controllerekben. Miután a unit tesztben is használtam az eager load-ot, utána sikeresen lefutottak a tesztek.
+
 ### 2021. november 9. - november 17.:
 Elkezdtem foglalkozni a backend-es résszel. Végignyomkodtam a tutorialokat, amiket küldtél, plusz még egy párat amit én is találtam a témával kapcsolatban. Szerencsére raywenderlich-en elég sok Vaporos cikk van. Perzisztenciával, adatbázis migrációval és teszteléssel kapcsolatos cikkeket néztem végig. Szeretném már jó előre elkezdeni a funkciók tesztelését is, kb. TDD szerint, mivel a unit tesztek kimaradtak az iOS app készítésekor. Adatbázisból PostgreSQL-t fogok használni, Vapor dokumentáció szerint ez az ajánlott adatbázis a frameworkhöz. 
 Megcsináltam a User és Couch modelleket, hozzájuk migrációkat, Userhez controllert is. Nem jöttem rá eredetileg, hogy hogyan írjam meg először a teszteket és aztán a funkciót, ezért a Userhez előbb készült funkció mint teszt. Couchnál már elsőnek a teszteket írtam meg, igaz ezek most csak errorral futnak le, mert egy végpont sincsen ami a couch műveletekre mutatna.
