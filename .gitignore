@@ -1,8 +1,20 @@
+### macOS ###
+.DS_Store
+
+### CocoaPods ###
+Pods/
+*.xcworkspace
+
+### Swift Package Manager ###
 Packages
 .build
-xcuserdata
 *.xcodeproj
-DerivedData/
-.DS_Store
 db.sqlite
 .swiftpm
+
+### Swift ###
+xcuserdata
+DerivedData/
+build/
+
+

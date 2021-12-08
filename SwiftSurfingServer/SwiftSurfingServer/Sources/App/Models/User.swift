@@ -24,6 +24,15 @@ final class User: Model, Content {
     @Children(for: \.$user)
     var couches: [Couch]
     
+    @Children(for: \.$user)
+    var ratings: [Rating]
+    
+    @Children(for: \.$user)
+    var messages: [Message]
+    
+    @Siblings(through: UserConversationPivot.self, from: \.$user, to: \.$conversation)
+    var conversations: [Conversation]
+    
     init() {}
     
     init(id: UUID? = nil, fullName: String, email: String) {

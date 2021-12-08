@@ -11,7 +11,7 @@ struct CouchMigration: Migration {
     func prepare(on database: Database) -> EventLoopFuture<Void> {
         database.schema("couches")
             .id()
-            .field("ownerId", .uuid, .required, .references("users", "id"))
+            .field("userId", .uuid, .required, .references("users", "id"))
             .field("name", .string)
             .field("address", .string, .required)
             .field("city", .string, .required)

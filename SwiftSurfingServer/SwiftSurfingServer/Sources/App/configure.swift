@@ -29,6 +29,10 @@ public func configure(_ app: Application) throws {
     app.migrations.add(CreateTodo())
     app.migrations.add(UserMigration())
     app.migrations.add(CouchMigration())
+    app.migrations.add(RatingMigration())
+    app.migrations.add(ConversationMigration())
+    app.migrations.add(MessageMigration())
+    app.migrations.add(UserConversationPivotMigration())
     
     app.logger.logLevel = .debug
     

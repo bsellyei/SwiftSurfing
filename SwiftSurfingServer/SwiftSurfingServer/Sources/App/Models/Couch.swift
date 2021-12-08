@@ -15,7 +15,7 @@ final class Couch: Model, Content {
     @ID(key: .id)
     var id: UUID?
     
-    @Parent(key: "ownerId")
+    @Parent(key: "userId")
     var user: User
     
     @Field(key: "name")
@@ -50,6 +50,9 @@ final class Couch: Model, Content {
     
     @Field(key: "ratingCount")
     var ratingCount: Int
+    
+    @Children(for: \.$couch)
+    var ratings: [Rating]
     
     init() {}
     
