@@ -16,6 +16,10 @@ Igazából szeretném az alkalmazást teljesen működőképessé tenni ebben a 
 
 ## Haladási napló:
 
+### 2021. december 1. - december 8.:
+Megcsináltam az üzenetekhez és beszélgetésekhez tartozó kontrollereket. Beszélgetéseknél több-többes kapcsolatra volt szükségem, ezzel volt bajom rendesen és még mindig nem oldódott meg minden. Unit tesztekben ha a siblinget akarom lekérdezni, akkor az eager loading-os errort kapom, mintha nem töltötte volna be a kapcsolódó entitásokat. Postmanben néztem, ott jó volt, és szerintem már a unit tesztben is jól hivatkozom a siblinget, ezért nem tudom mi csúszhatott félre. Most kikommenteztem a problémás sorokat, így a tesztek sikeresen lefutnak, de szerintem az az ellenőrzés még kéne oda. 
+Dockerrel is szívtam picit, belefutottam egy általános problémába, hogy ha frissítjük a desktop docker alkalmazást, akkor nem indul el, csak ha töröljük az összes image-t (??).
+
 ### 2021. november 24. - december 1.:
 Folytattam az értékelésekhez tartozó kontroller implementálását. Kipróbáltam a 2 db egy-többes kapcsolat helyett a Siblinget (több-több kapcsolat), de a korábbi probléma ugyanúgy fennállt ekkor is. További próbálkozások és google keresések során, sikerült rájönni, hogy lehet több darab egy-többes kapcsolat egy modell elemen. Az eager loading problémát pedig eleinte félreértelmeztem, a közvetlenül adatbázisba létrehozott objektumon is kell használni az eager loadingot, nem csak a controllerekben. Miután a unit tesztben is használtam az eager load-ot, utána sikeresen lefutottak a tesztek.
 
