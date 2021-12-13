@@ -35,7 +35,7 @@ struct CouchDetailsView: View {
                 
                 HStack {
                     Label {
-                        Text("User's name")
+                        Text(presenter.userName)
                     } icon: {
                         Image(systemName: "person.fill")
                     }
@@ -71,6 +71,7 @@ struct CouchDetailsView: View {
                 Spacer()
             }
             .padding()
+            .onAppear(perform: presenter.getUserName)
         }
         .blur(radius: presenter.showOverlay ? 6 : 0)
         .overlay(
@@ -139,7 +140,7 @@ struct CouchDetailsView: View {
 
 struct CouchDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        let interactor = CouchDetailsInteractor()
+        let interactor = CouchDetailsInteractor(userService: UserService())
         let presenter = CouchDetailsPresenter(interactor: interactor, couch: Couch())
         return CouchDetailsView(presenter: presenter)
     }

@@ -6,15 +6,33 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 class CouchesInteractor {
-    private let service: CouchServiceProtocol
+    private let couchService: CouchServiceProtocol
+    private let userService: UserServiceProtocol
     
-    init(couchService: CouchServiceProtocol) {
-        self.service = couchService
+    init(couchService: CouchServiceProtocol, userService: UserServiceProtocol) {
+        self.couchService = couchService
+        self.userService = userService
     }
     
     func getCouches(completion: @escaping ([Couch]) -> Void) {
-        service.getAllCouches(completion: completion)
+        self.couchService.getAllCouches(completion: completion)
+    }
+    
+    func getUserName(completion: @escaping (String) -> Void) {
+        let user = Auth.auth().currentUser
+        guard let userId = user?.uid else { return }
+        
+        self.userService.get(id: userId, completion: { user in
+            guard
+                let userName = user
+            else { return }
+                
+            DispatchQueue.main.async {
+                completion(userName.fullName)
+            }
+        })
     }
 }

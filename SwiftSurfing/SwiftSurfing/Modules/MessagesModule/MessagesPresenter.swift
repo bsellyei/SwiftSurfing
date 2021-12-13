@@ -13,6 +13,7 @@ class MessagesPresenter: ObservableObject {
     
     var conversation: Conversation
     
+    @Published var name: String = ""
     @Published var messages: [Message] = []
     
     @State var text: String = ""
@@ -27,8 +28,18 @@ class MessagesPresenter: ObservableObject {
     }
     
     func getMessages() {
-        interactor.getMessages(conversationId: conversation.id, completion: { messages in
+        self.interactor.getMessages(conversationId: conversation.id, completion: { messages in
             self.messages = messages
+        })
+        
+        self.interactor.getUser(userIds: [conversation.fromId, conversation.toId], completion: { user in
+            guard
+                let userName = user
+            else {
+                return
+            }
+                
+            self.name = userName.fullName
         })
     }
 }

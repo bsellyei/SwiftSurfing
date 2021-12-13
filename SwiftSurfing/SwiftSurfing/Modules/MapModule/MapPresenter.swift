@@ -20,10 +20,12 @@ class MapPresenter: ObservableObject {
     @Published var annotations: [CouchAnnotation] = []
     @Published var couches: [Couch] = []
     
+    @Published var userNames: [String:String] = [:]
+    
     init(interactor: MapInteractor) {
         self.interactor = interactor
         
-        getCouches()
+        //getCouches()
     }
     
     func getCouches() {
@@ -31,6 +33,10 @@ class MapPresenter: ObservableObject {
             self.interactor.getCouches(completion: { couches in
                 self.couches = couches
                 self.annotations = self.makeCouchAnnotations(couches: couches)
+                
+                self.interactor.getUserNames(couches: couches, completion: { couchId, userName in
+                    self.userNames[couchId] = userName
+                })
             })
         }
     }

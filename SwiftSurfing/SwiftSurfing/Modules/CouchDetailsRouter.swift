@@ -22,7 +22,8 @@ class CouchDetailsRouter {
     
     func makeRatingsView(couchId: String) -> some View {
         let interactor = RatingsInteractor(ratingsService: DIContainer.instance.resolve(type: RatingServiceProtocol.self)!,
-                                           couchService: DIContainer.instance.resolve(type: CouchServiceProtocol.self)!)
+                                           couchService: DIContainer.instance.resolve(type: CouchServiceProtocol.self)!,
+                                           userService: DIContainer.instance.resolve(type: UserServiceProtocol.self)!)
         let presenter = RatingsPresenter(interactor: interactor, couchId: couchId)
         return RatingsView(presenter: presenter)
     }

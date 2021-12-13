@@ -12,14 +12,16 @@ import CoreLocation
 import FirebaseAuth
 
 class MapInteractor {
-    private let service: CouchServiceProtocol
+    private let couchService: CouchServiceProtocol
+    private let userService: UserServiceProtocol
     
-    init(couchService: CouchServiceProtocol) {
-        self.service = couchService
+    init(couchService: CouchServiceProtocol, userService: UserServiceProtocol) {
+        self.couchService = couchService
+        self.userService = userService
     }
     
     func getCouches(completion: @escaping ([Couch]) -> Void) {
-        service.getAllCouchesByCity(city: "Budapest", completion: { couches in
+        couchService.getAllCouchesByCity(city: "Budapest", completion: { couches in
             let user = Auth.auth().currentUser
             guard let userId = user?.uid else {
                 DispatchQueue.main.async {
@@ -44,6 +46,20 @@ class MapInteractor {
     func search(searchText: String, completion: @escaping(_ coordinate: CLLocationCoordinate2D?, _ error: Error?) -> ()) {
         CLGeocoder().geocodeAddressString(searchText) {
             completion($0?.first?.location?.coordinate, $1)
+        }
+    }
+    
+    func getUserNames(couches: [Couch], completion: @escaping (String, String) -> Void) {
+        for couch in couches {
+            self.userService.get(id: couch.userId, completion: { user in
+                guard
+                    let userName = user
+                else { return }
+                    
+                DispatchQueue.main.async {
+                    completion(couch.id, userName.fullName)
+                }
+            })
         }
     }
 }

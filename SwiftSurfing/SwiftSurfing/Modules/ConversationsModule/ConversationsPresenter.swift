@@ -15,6 +15,7 @@ class ConversationsPresenter: ObservableObject {
     @Published var conversations: [Conversation] = []
     
     @Published var lastMessages: [String:Message] = [:]
+    @Published var userNames: [String:String] = [:]
     
     init(interactor: ConversationsInteractor) {
         self.interactor = interactor
@@ -32,6 +33,10 @@ class ConversationsPresenter: ObservableObject {
                         
                         self.lastMessages[conversationId] = lastMessage
                     }
+                })
+                
+                self.interactor.getUserNames(conversations: conversations, completion: { conversationId, userName in
+                    self.userNames[conversationId] = userName
                 })
             })
         }

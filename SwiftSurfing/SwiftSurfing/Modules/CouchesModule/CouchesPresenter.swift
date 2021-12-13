@@ -14,6 +14,7 @@ class CouchesPresenter: ObservableObject {
     private let router = CouchesRouter()
     
     @Published var couches: [Couch] = []
+    @Published var userName: String = ""
     
     init(interactor: CouchesInteractor) {
         self.interactor = interactor
@@ -23,6 +24,10 @@ class CouchesPresenter: ObservableObject {
         DispatchQueue.global(qos: .background).async {
             self.interactor.getCouches(completion: { couches in
                 self.couches = couches
+                
+                self.interactor.getUserName(completion: { name in
+                    self.userName = name
+                })
             })
         }
     }

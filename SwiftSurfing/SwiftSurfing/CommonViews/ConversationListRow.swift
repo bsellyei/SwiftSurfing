@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ConversationListRow: View {
-    private let conversation: Conversation
+    private let userName: String
     private let message: Message
     
     static let dateFormatter: DateFormatter = {
@@ -18,8 +18,8 @@ struct ConversationListRow: View {
         return formatter
     }()
     
-    init(conversation: Conversation, message: Message) {
-        self.conversation = conversation
+    init(userName: String, message: Message) {
+        self.userName = userName
         self.message = message
     }
     
@@ -32,7 +32,7 @@ struct ConversationListRow: View {
                 .clipped()
             
             VStack(alignment: .leading) {
-                Text("\(message.senderId)")
+                Text("\(userName)")
                     .font(.title2)
                     .bold()
                     .lineLimit(1)

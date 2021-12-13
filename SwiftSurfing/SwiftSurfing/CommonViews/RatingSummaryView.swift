@@ -23,9 +23,15 @@ struct RatingSummaryView: View {
                         Text("5")
                         Image(systemName: "star.fill")
                         
-                        Rectangle()
-                            .frame(width: geometry.size.width * CGFloat(scaleFactor) * (CGFloat(ctx.fiveRatingPercent) + CGFloat(0.5)), height: 10)
-                            .foregroundColor(.gray)
+                        if ctx.fiveRatingPercent == 0.0 {
+                            Rectangle()
+                                .frame(width: 0, height: 10)
+                                .foregroundColor(.gray)
+                        } else {
+                            Rectangle()
+                                .frame(width: geometry.size.width * CGFloat(scaleFactor) * (CGFloat(ctx.fiveRatingPercent) + CGFloat(0.5)), height: 10)
+                                .foregroundColor(.gray)
+                        }
                         
                         Spacer()
                     }
@@ -34,9 +40,15 @@ struct RatingSummaryView: View {
                         Text("4")
                         Image(systemName: "star.fill")
                         
-                        Rectangle()
-                            .frame(width: geometry.size.width * CGFloat(scaleFactor) * (CGFloat(ctx.fourRatingPercent) + CGFloat(0.5)), height: 10)
-                            .foregroundColor(.gray)
+                        if ctx.fourRatingPercent == 0.0 {
+                            Rectangle()
+                                .frame(width: 0, height: 10)
+                                .foregroundColor(.gray)
+                        } else {
+                            Rectangle()
+                                .frame(width: geometry.size.width * CGFloat(scaleFactor) * (CGFloat(ctx.fourRatingPercent) + CGFloat(0.5)), height: 10)
+                                .foregroundColor(.gray)
+                        }
                         
                         Spacer()
                     }
@@ -45,9 +57,15 @@ struct RatingSummaryView: View {
                         Text("3")
                         Image(systemName: "star.fill")
                         
-                        Rectangle()
-                            .frame(width: geometry.size.width * CGFloat(scaleFactor) * (CGFloat(ctx.threeRatingPercent) + CGFloat(0.5)), height: 10)
-                            .foregroundColor(.gray)
+                        if ctx.threeRatingPercent == 0.0 {
+                            Rectangle()
+                                .frame(width: 0, height: 10)
+                                .foregroundColor(.gray)
+                        } else {
+                            Rectangle()
+                                .frame(width: geometry.size.width * CGFloat(scaleFactor) * (CGFloat(ctx.threeRatingPercent) + CGFloat(0.5)), height: 10)
+                                .foregroundColor(.gray)
+                        }
                         
                         Spacer()
                     }
@@ -56,9 +74,15 @@ struct RatingSummaryView: View {
                         Text("2")
                         Image(systemName: "star.fill")
                         
-                        Rectangle()
-                            .frame(width: geometry.size.width * CGFloat(scaleFactor) * (CGFloat(ctx.twoRatingPercent) + CGFloat(0.5)), height: 10)
-                            .foregroundColor(.gray)
+                        if ctx.twoRatingPercent == 0.0 {
+                            Rectangle()
+                                .frame(width: 0, height: 10)
+                                .foregroundColor(.gray)
+                        } else {
+                            Rectangle()
+                                .frame(width: geometry.size.width * CGFloat(scaleFactor) * (CGFloat(ctx.twoRatingPercent) + CGFloat(0.5)), height: 10)
+                                .foregroundColor(.gray)
+                        }
                         
                         Spacer()
                     }
@@ -67,9 +91,15 @@ struct RatingSummaryView: View {
                         Text("1")
                         Image(systemName: "star.fill")
                         
-                        Rectangle()
-                            .frame(width: geometry.size.width * CGFloat(scaleFactor) * (CGFloat(ctx.oneRatingPercent) + CGFloat(0.5)), height: 10)
-                            .foregroundColor(.gray)
+                        if ctx.oneRatingPercent == 0.0 {
+                            Rectangle()
+                                .frame(width: 0, height: 10)
+                                .foregroundColor(.gray)
+                        } else {
+                            Rectangle()
+                                .frame(width: geometry.size.width * CGFloat(scaleFactor) * (CGFloat(ctx.oneRatingPercent) + CGFloat(0.5)), height: 10)
+                                .foregroundColor(.gray)
+                        }
                         
                         Spacer()
                     }
@@ -77,13 +107,5 @@ struct RatingSummaryView: View {
             }
             .padding()
         }
-    }
-}
-
-struct RatingSummaryView_Previews: PreviewProvider {
-    static var previews: some View {
-        var ctx = RatingSummaryViewContext(average: 4, oneRatingPercent: 0.0, twoRatingPercent: 0.1, threeRatingPercent: 0.2, fourRatingPercent: 0.3, fiveRatingPercent: 0.4)
-        
-        //RatingSummaryView(ctx: ctx)
     }
 }

@@ -10,6 +10,7 @@ import Foundation
 class RatingsInteractor {
     private let ratingsService: RatingServiceProtocol
     private let couchService: CouchServiceProtocol
+    private let userService: UserServiceProtocol
     
     private var sum: Int
     private var count: Int
@@ -19,9 +20,10 @@ class RatingsInteractor {
     private var fourSum: Int
     private var fiveSum: Int
     
-    init(ratingsService: RatingServiceProtocol, couchService: CouchServiceProtocol) {
+    init(ratingsService: RatingServiceProtocol, couchService: CouchServiceProtocol, userService: UserServiceProtocol) {
         self.ratingsService = ratingsService
         self.couchService = couchService
+        self.userService = userService
         self.sum = 0
         self.count = 0
         self.oneSum = 0
@@ -33,6 +35,7 @@ class RatingsInteractor {
     
     func getRatings(couchId: String, completion: @escaping ([Rating], RatingSummaryViewContext) -> Void) {
         self.ratingsService.getAllRatings(couchId: couchId, completion: { ratings in
+            self.sum = 0
             for rating in ratings {
                 self.sum += rating.value
             }
@@ -45,7 +48,15 @@ class RatingsInteractor {
             self.fourSum = ratings.filter({  $0.value == 4 }).count
             self.fiveSum = ratings.filter({  $0.value == 5 }).count
             
-            let ctx = RatingSummaryViewContext(average: self.sum / self.count, oneRatingPercent: Double(self.oneSum / self.count), twoRatingPercent: Double(self.twoSum / self.count), threeRatingPercent: Double(self.threeSum / self.count), fourRatingPercent: Double(self.fourSum / self.count), fiveRatingPercent: Double(self.fiveSum / self.count))
+            var ctx = RatingSummaryViewContext(average: 0, oneRatingPercent: 0.0, twoRatingPercent: 0.0, threeRatingPercent: 0.0, fourRatingPercent: 0.0, fiveRatingPercent: 0.0)
+            if self.count != 0 {
+                let onePercent = Double(self.oneSum) / Double(self.count)
+                let twoPercent = Double(self.twoSum) / Double(self.count)
+                let threePercent = Double(self.threeSum) / Double(self.count)
+                let fourPercent = Double(self.fourSum) / Double(self.count)
+                let fivePercent = Double(self.fiveSum) / Double(self.count)
+                ctx = RatingSummaryViewContext(average: self.sum / self.count, oneRatingPercent: onePercent, twoRatingPercent: twoPercent, threeRatingPercent: threePercent, fourRatingPercent: fourPercent, fiveRatingPercent: fivePercent)
+            }
             
             DispatchQueue.main.async {
                 completion(ratings, ctx)
@@ -55,12 +66,13 @@ class RatingsInteractor {
     
     func sendRating(rating: Rating, completion: @escaping (RatingSummaryViewContext) -> Void) {
         self.ratingsService.add(rating: rating, completion: { success in
-            var ctx = RatingSummaryViewContext(average: self.sum / self.count, oneRatingPercent: Double(self.oneSum / self.count), twoRatingPercent: Double(self.twoSum / self.count), threeRatingPercent: Double(self.threeSum / self.count), fourRatingPercent: Double(self.fourSum / self.count), fiveRatingPercent: Double(self.fiveSum / self.count))
+            var ctx = RatingSummaryViewContext(average: 0, oneRatingPercent: 0, twoRatingPercent: 0, threeRatingPercent: 0, fourRatingPercent: 0, fiveRatingPercent: 0)
             
             if success {
                 self.couchService.get(id: rating.couchId, completion: { couch in
                     if let couch = couch {
-                        let sum = couch.ratingAverage * couch.ratingCount
+                        
+                        let sum = couch.ratingCount == 0 ? rating.value : couch.ratingAverage * couch.ratingCount
                         couch.ratingCount += 1
                         couch.ratingAverage = sum / (couch.ratingCount)
                         
@@ -98,10 +110,29 @@ class RatingsInteractor {
                     }
                 })
             } else {
+                if self.count != 0 {
+                    ctx = RatingSummaryViewContext(average: self.sum / self.count, oneRatingPercent: Double(self.oneSum / self.count), twoRatingPercent: Double(self.twoSum / self.count), threeRatingPercent: Double(self.threeSum / self.count), fourRatingPercent: Double(self.fourSum / self.count), fiveRatingPercent: Double(self.fiveSum / self.count))
+                }
+                
                 DispatchQueue.main.async {
                     completion(ctx)
                 }
             }
         })
+    }
+    
+    func getUsers(ratings: [Rating], completion: @escaping ([User]) -> Void) {
+        var users: [User] = []
+        for rating in ratings {
+            self.userService.get(id: rating.userId, completion: { user in
+                if user != nil {
+                    users.append(user!)
+                }
+            })
+        }
+        
+        DispatchQueue.main.async {
+            completion(users)
+        }
     }
 }

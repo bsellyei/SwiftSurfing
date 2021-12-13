@@ -24,6 +24,6 @@ class RegisterPresenter: ObservableObject {
     }
     
     func register() {
-        interactor.register(email: email, password: password)
+        interactor.register(email: email, password: password, fullName: firstName + surname)
     }
 }

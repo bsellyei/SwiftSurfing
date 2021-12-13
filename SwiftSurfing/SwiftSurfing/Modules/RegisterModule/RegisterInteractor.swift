@@ -17,7 +17,7 @@ class RegisterInteractor {
         self.authManager = AuthenticationManager.shared
     }
     
-    func register(email: String, password: String) {
+    func register(email: String, password: String, fullName: String) {
         authManager.signup(email: email, password: password, completion: {
             let user = User()
             
@@ -26,6 +26,7 @@ class RegisterInteractor {
             {
                 user.id = userId
                 user.email = userEmail
+                user.fullName = fullName
                 
                 self.service.addNew(user: user, completion: { _ in })
             }

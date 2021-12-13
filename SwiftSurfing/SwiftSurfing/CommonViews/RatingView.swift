@@ -37,7 +37,9 @@ struct RatingView: View {
                     }
             }
             
-            Text("(\(numberOfRatings))")
+            if !isEditable {
+                Text("(\(numberOfRatings))")
+            }
         }
     }
     

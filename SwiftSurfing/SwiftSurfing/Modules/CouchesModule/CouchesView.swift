@@ -36,7 +36,7 @@ struct CouchesView: View {
                 
                 List(presenter.couches) { item in
                     self.presenter.linkBuilderForCouchDetails(couch: item, content: {
-                        CouchListRow(couch: item)
+                        CouchListRow(couch: item, userName: presenter.userName)
                     })
                 }
                 .listStyle(PlainListStyle())
@@ -50,7 +50,7 @@ struct CouchesView: View {
 
 struct CouchesView_Previews: PreviewProvider {
     static var previews: some View {
-        let interactor = CouchesInteractor(couchService: CouchService())
+        let interactor = CouchesInteractor(couchService: CouchService(), userService: UserService())
         let presenter = CouchesPresenter(interactor: interactor)
         return CouchesView(presenter: presenter)
     }

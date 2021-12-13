@@ -42,7 +42,7 @@ struct RatingsView: View {
             List(presenter.ratings) { item in
                 VStack {
                     HStack {
-                        Label("Name", systemImage: "person.fill")
+                        Label(presenter.getUserName(userId: item.userId), systemImage: "person.fill")
                         
                         Spacer()
                         
@@ -59,12 +59,13 @@ struct RatingsView: View {
             }
         }
         .onAppear(perform: presenter.getRatings)
+        .ignoresSafeArea(.keyboard, edges: .bottom)
     }
 }
 
 struct RatingsView_Previews: PreviewProvider {
     static var previews: some View {
-        let interactor = RatingsInteractor(ratingsService: RatingService(), couchService: CouchService())
+        let interactor = RatingsInteractor(ratingsService: RatingService(), couchService: CouchService(), userService: UserService())
         let presenter = RatingsPresenter(interactor: interactor, couchId: "")
         return RatingsView(presenter: presenter)
     }

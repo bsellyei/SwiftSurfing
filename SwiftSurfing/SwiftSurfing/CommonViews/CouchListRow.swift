@@ -9,10 +9,12 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct CouchListRow: View {
-    @State var couch: Couch = Couch()
+    @State var couch: Couch
+    @State var userName: String
     
-    init(couch: Couch) {
+    init(couch: Couch, userName: String) {
         self.couch = couch
+        self.userName = userName
     }
     
     var body: some View {
@@ -22,11 +24,6 @@ struct CouchListRow: View {
                 .frame(width: 20, height: 20, alignment: .topTrailing)*/
             
             HStack {
-                /*Image("placeholder")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 100, height: 100, alignment: .leading)
-                    .clipped()*/
                 if couch.imageURLs.first == "placeholder" {
                     Image(systemName: "nosign")
                         .resizable()
@@ -45,7 +42,7 @@ struct CouchListRow: View {
                     Text("\(couch.city), \(couch.country)")
                         .font(.title2)
                         .padding(.bottom, 5)
-                    Text("Home owner's name")
+                    Text("\(userName)")
                         .font(.title3)
                         .padding(.bottom, 3)
                     RatingView(rating: $couch.ratingAverage, numberOfRatings: couch.ratingCount, isEditable: false)
@@ -61,6 +58,6 @@ struct CouchListRow: View {
 
 struct CouchListRow_Previews: PreviewProvider {
     static var previews: some View {
-        CouchListRow(couch: Couch())
+        CouchListRow(couch: Couch(), userName: "")
     }
 }

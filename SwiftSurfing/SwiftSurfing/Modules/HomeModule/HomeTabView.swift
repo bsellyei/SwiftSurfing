@@ -11,7 +11,9 @@ struct HomeTabView: View {
     var body: some View {
         TabView {
             MapView(presenter: MapPresenter(interactor: MapInteractor(couchService:
-                                                                        DIContainer.instance.resolve(type: CouchServiceProtocol.self)!)))
+                                                                        DIContainer.instance.resolve(type: CouchServiceProtocol.self)!,
+                                                                      userService:
+                                                                        DIContainer.instance.resolve(type: UserServiceProtocol.self)!)))
             .tabItem {
                 VStack {
                     Image(systemName: "house.fill")
@@ -20,7 +22,8 @@ struct HomeTabView: View {
             }
             
             CouchesView(presenter: CouchesPresenter(
-                            interactor: CouchesInteractor(couchService: DIContainer.instance.resolve(type: CouchServiceProtocol.self)!)))
+                interactor: CouchesInteractor(couchService: DIContainer.instance.resolve(type: CouchServiceProtocol.self)!,
+                                              userService: DIContainer.instance.resolve(type: UserServiceProtocol.self)!)))
             .tabItem {
                 VStack {
                     Image(systemName: "house.fill")
@@ -32,7 +35,8 @@ struct HomeTabView: View {
                                 interactor: ConversationsInteractor(conversationService:
                                                                         DIContainer.instance.resolve(type: ConversationServiceProtocol.self)!,
                                                                     messageService:
-                                                                            DIContainer.instance.resolve(type: MessageServiceProtocol.self)!)))
+                                                                            DIContainer.instance.resolve(type: MessageServiceProtocol.self)!,
+                                                                    userService: DIContainer.instance.resolve(type: UserServiceProtocol.self)!)))
             .tabItem {
                 VStack {
                     Image(systemName: "message")

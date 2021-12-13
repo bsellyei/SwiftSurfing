@@ -12,6 +12,7 @@ class RatingsPresenter: ObservableObject {
     private var interactor: RatingsInteractor
     
     private let couchId: String
+    var users: [User] = []
     @Published var ratings: [Rating] = []
     @Published var summary: RatingSummaryViewContext
     
@@ -33,6 +34,10 @@ class RatingsPresenter: ObservableObject {
             self.interactor.getRatings(couchId: self.couchId, completion: { ratings, ctx in
                 self.ratings = ratings
                 self.summary = ctx
+                
+                self.interactor.getUsers(ratings: ratings, completion: { users in
+                    self.users = users
+                })
             })
         }
     }
@@ -49,5 +54,15 @@ class RatingsPresenter: ObservableObject {
                 self.summary = ctx
             })
         }
+    }
+    
+    func getUserName(userId: String) -> String {
+        for user in users {
+            if user.id == userId {
+                return user.fullName
+            }
+        }
+        
+        return ""
     }
 }

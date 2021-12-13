@@ -32,7 +32,7 @@ struct MessagesView: View {
             }
             .padding()
         }
-        .navigationBarTitle("Name")
+        .navigationBarTitle(presenter.name)
         .onAppear(perform: presenter.getMessages)
     }
 }

@@ -16,6 +16,7 @@ class CouchDetailsPresenter: ObservableObject {
     private let router = CouchDetailsRouter()
     
     @Published var couch: Couch
+    @Published var userName: String
     
     @Published var region: MKCoordinateRegion
     
@@ -34,7 +35,7 @@ class CouchDetailsPresenter: ObservableObject {
             let dayOfUpperDate = dateformatter.string(from: range.upperBound)
             let monthOfLowerDate = Calendar.current.dateComponents([.month], from: range.lowerBound)
             let monthOfUpperDate = Calendar.current.dateComponents([.month], from: range.upperBound)
-            return "\(dateformatter.shortMonthSymbols[monthOfLowerDate.month ?? 0]) \(dayOfLowerDate)" + " - " + "\(dateformatter.shortMonthSymbols[monthOfUpperDate.month ?? 0]) \(dayOfUpperDate)"
+            return "\(dateformatter.shortMonthSymbols[(monthOfLowerDate.month! - 1)]) \(dayOfLowerDate)" + " - " + "\(dateformatter.shortMonthSymbols[(monthOfUpperDate.month! - 1)]) \(dayOfUpperDate)"
         } else {
             return "No dates selected"
         }
@@ -47,6 +48,7 @@ class CouchDetailsPresenter: ObservableObject {
     init(interactor: CouchDetailsInteractor, couch: Couch) {
         self.interactor = interactor
         self.couch = couch
+        self.userName = ""
         
         self.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: couch.latitude, longitude: couch.longitude),
                                          span: MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25))
@@ -57,6 +59,18 @@ class CouchDetailsPresenter: ObservableObject {
         reservation.couchId = couch.id
         reservation.ownerId = couch.userId
         reservation.guestsNum = couch.maxGuests
+    }
+    
+    func getUserName() {
+        DispatchQueue.global(qos: .background).async {
+            self.interactor.getUser(userId: self.couch.userId, completion: { user in
+                guard
+                    let userName = user
+                else { return }
+                
+                self.userName = userName.fullName
+            })
+        }
     }
     
     func linkBuilder<Content: View>(@ViewBuilder content: () -> Content, isActive: Binding<Bool>)

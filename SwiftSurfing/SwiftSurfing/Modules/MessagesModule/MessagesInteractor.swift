@@ -10,9 +10,11 @@ import FirebaseAuth
 
 class MessagesInteractor {
     private let messageService: MessageServiceProtocol
+    private let userService: UserServiceProtocol
     
-    init(messageService: MessageServiceProtocol) {
+    init(messageService: MessageServiceProtocol, userService: UserServiceProtocol) {
         self.messageService = messageService
+        self.userService = userService
     }
     
     func getMessages(conversationId: String, completion: @escaping ([Message]) -> Void) {
@@ -32,5 +34,14 @@ class MessagesInteractor {
                 completion(messages)
             }
         })
+    }
+    
+    func getUser(userIds: [String], completion: @escaping (User?) -> Void) {
+        let user = Auth.auth().currentUser
+        if userIds[0] == user?.uid {
+            self.userService.get(id: userIds[1], completion: completion)
+        } else {
+            self.userService.get(id: userIds[0], completion: completion)
+        }
     }
 }
