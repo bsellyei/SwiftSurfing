@@ -16,4 +16,5 @@ func routes(_ app: Application) throws {
     try app.register(collection: RatingController())
     try app.register(collection: MessageController())
     try app.register(collection: ConversationController())
+    try app.register(collection: HomeController())
 }

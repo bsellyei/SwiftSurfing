@@ -37,6 +37,8 @@ public func configure(_ app: Application) throws {
     app.logger.logLevel = .debug
     
     try app.autoMigrate().wait()
+    
+    app.http.server.configuration.port = 8081
 
     // register routes
     try routes(app)
