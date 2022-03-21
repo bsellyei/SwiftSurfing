@@ -8,15 +8,17 @@
 import Foundation
 import Fluent
 
-struct ConversationMigration: Migration {
-    func prepare(on database: Database) -> EventLoopFuture<Void> {
-        database
+struct ConversationMigration: AsyncMigration {
+    func prepare(on database: Database) async throws {
+        try await database
             .schema("conversations")
             .id()
             .create()
     }
     
-    func revert(on database: Database) -> EventLoopFuture<Void> {
-        database.schema("conversations").delete()
+    func revert(on database: Database) async throws {
+        try await database
+            .schema("conversations")
+            .delete()
     }
 }

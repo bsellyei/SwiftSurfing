@@ -8,9 +8,9 @@
 import Foundation
 import Fluent
 
-struct RatingMigration: Migration {
-    func prepare(on database: Database) -> EventLoopFuture<Void> {
-        database
+struct RatingMigration: AsyncMigration {
+    func prepare(on database: Database) async throws {
+        try await database
             .schema("ratings")
             .id()
             .field("userId", .uuid, .required, .references("users", "id"))
@@ -20,7 +20,7 @@ struct RatingMigration: Migration {
             .create()
     }
     
-    func revert(on database: Database) -> EventLoopFuture<Void> {
-        database.schema("ratings").delete()
+    func revert(on database: Database) async throws {
+        try await database.schema("ratings").delete()
     }
 }

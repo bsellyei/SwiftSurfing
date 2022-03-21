@@ -7,9 +7,10 @@
 
 import Fluent
 
-struct CouchMigration: Migration {
-    func prepare(on database: Database) -> EventLoopFuture<Void> {
-        database.schema("couches")
+struct CouchMigration: AsyncMigration {
+    func prepare(on database: Database) async throws {
+        try await database
+            .schema("couches")
             .id()
             .field("userId", .uuid, .required, .references("users", "id"))
             .field("name", .string)
@@ -26,7 +27,9 @@ struct CouchMigration: Migration {
             .create()
     }
     
-    func revert(on database: Database) -> EventLoopFuture<Void> {
-        database.schema("couches").delete()
+    func revert(on database: Database) async throws {
+        try await database
+            .schema("couches")
+            .delete()
     }
 }

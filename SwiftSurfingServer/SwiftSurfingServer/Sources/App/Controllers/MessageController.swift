@@ -17,25 +17,28 @@ struct MessageController: RouteCollection {
         messages.delete(":id", use: deleteMessage)
     }
     
-    func getMessages(req: Request) throws -> EventLoopFuture<[Message]> {
+    func getMessages(req: Request) async throws -> [Message] {
         let parameter = req.parameters.get("conversationId")!
         let conversationId = UUID(uuidString: parameter)
-        return Message.query(on: req.db)
+        return try await Message.query(on: req.db)
                 .filter(\.$conversation.$id == conversationId!)
                 .all()
     }
     
-    func createMessage(req: Request) throws -> EventLoopFuture<Message> {
+    func createMessage(req: Request) async throws -> Message {
         let data = try req.content.decode(CreateMessageData.self)
         let message = Message(userId: data.userId, conversationId: data.conversationId, text: data.text, date: Date())
-        return message.save(on: req.db).map { message }
+        try await message.save(on: req.db)
+        
+        return message
     }
     
-    func deleteMessage(req: Request) throws -> EventLoopFuture<HTTPStatus> {
-        Message.find(req.parameters.get("id"), on: req.db)
-            .unwrap(or: Abort(.notFound))
-            .flatMap { $0.delete(on: req.db) }
-            .transform(to: .noContent)
+    func deleteMessage(req: Request) async throws -> HTTPStatus {
+        let found = try await Message.find(req.parameters.get("id"), on: req.db)
+        guard let message = found else { throw Abort(.notFound) }
+        try await message.delete(on: req.db)
+        
+        return .noContent
     }
 }
 

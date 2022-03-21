@@ -17,25 +17,28 @@ struct RatingController: RouteCollection {
         ratings.delete(":id", use: deleteRating)
     }
     
-    func getRatings(req: Request) throws -> EventLoopFuture<[Rating]> {
+    func getRatings(req: Request) async throws -> [Rating] {
         let parameter = req.parameters.get("couchId")!
         let couchId = UUID(uuidString: parameter)
-        return Rating.query(on: req.db)
+        return try await Rating.query(on: req.db)
                 .filter(\.$couch.$id == couchId!)
                 .all()
     }
     
-    func createRating(req: Request) throws -> EventLoopFuture<Rating> {
+    func createRating(req: Request) async throws -> Rating {
         let data = try req.content.decode(CreateRatingData.self)
         let rating = Rating(userId: data.userId, couchId: data.couchId, value: data.value, comment: data.comment)
-        return rating.save(on: req.db).map { rating }
+        try await rating.save(on: req.db)
+        
+        return rating
     }
     
-    func deleteRating(req: Request) throws -> EventLoopFuture<HTTPStatus> {
-        Rating.find(req.parameters.get("id"), on: req.db)
-            .unwrap(or: Abort(.notFound))
-            .flatMap { $0.delete(on: req.db) }
-            .transform(to: .noContent)
+    func deleteRating(req: Request) async throws -> HTTPStatus {
+        let found = try await Rating.find(req.parameters.get("id"), on: req.db)
+        guard let rating = found else { throw Abort(.notFound) }
+        try await rating.delete(on: req.db)
+        
+        return .noContent
     }
 }
 

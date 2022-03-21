@@ -8,9 +8,9 @@
 import Foundation
 import Fluent
 
-struct UserMigration: Migration {
-    func prepare(on database: Database) -> EventLoopFuture<Void> {
-        return database
+struct UserMigration: AsyncMigration {
+    func prepare(on database: Database) async throws {
+        try await database
             .schema("users")
             .id()
             .field("fullName", .string, .required)
@@ -18,7 +18,9 @@ struct UserMigration: Migration {
             .create()
     }
     
-    func revert(on database: Database) -> EventLoopFuture<Void> {
-        return database.schema("users").delete()
+    func revert(on database: Database) async throws {
+        try await database
+            .schema("users")
+            .delete()
     }
 }

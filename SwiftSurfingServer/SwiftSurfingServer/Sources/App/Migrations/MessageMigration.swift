@@ -8,9 +8,9 @@
 import Foundation
 import Fluent
 
-struct MessageMigration: Migration {
-    func prepare(on database: Database) -> EventLoopFuture<Void> {
-        return database
+struct MessageMigration: AsyncMigration {
+    func prepare(on database: Database) async throws {
+        try await database
             .schema("messages")
             .id()
             .field("userId", .uuid, .required, .references("users", "id"))
@@ -20,7 +20,7 @@ struct MessageMigration: Migration {
             .create()
     }
     
-    func revert(on database: Database) -> EventLoopFuture<Void> {
-        return database.schema("messages").delete()
+    func revert(on database: Database) async throws {
+        try await database.schema("messages").delete()
     }
 }

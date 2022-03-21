@@ -17,37 +17,38 @@ struct ConversationController: RouteCollection {
         conversations.delete(":id", use: deleteConversation)
     }
     
-    func getConversations(req: Request) throws -> EventLoopFuture<[Conversation]> {
-        User.find(req.parameters.get("userId"), on: req.db)
-            .unwrap(or: Abort(.notFound))
-            .flatMap { user in
-                //user.$conversations.get(on: req.db)
-                user.$conversations.query(on: req.db).all()
-            }
+    func getConversations(req: Request) async throws -> [Conversation] {
+        let found = try await User.find(req.parameters.get("userId"), on: req.db)
+        guard let user = found else { throw Abort(.notFound) }
+        return try await user.$conversations.query(on: req.db).all()
     }
     
-    func createConversation(req: Request) throws -> EventLoopFuture<Conversation> {
+    func createConversation(req: Request) async throws -> Conversation {
         let data = try req.content.decode(CreateConversationData.self)
         let conversation = Conversation()
-        _ = conversation.save(on: req.db)
+        try await conversation.save(on: req.db)
         
-        let fromUser = User.find(data.fromUserId, on: req.db).unwrap(or: Abort(.notFound))
-        let conversationQuery = Conversation.find(conversation.id, on: req.db).unwrap(or: Abort(.notFound))
-        _ = conversationQuery.and(fromUser).flatMap { conversation, user in
-            conversation.$users.attach(user, on: req.db).transform(to: conversation)
-        }
+        let foundUser1 = try await User.find(data.fromUserId, on: req.db)
+        guard let user1 = foundUser1 else { throw Abort(.notFound) }
+        var users = [user1]
         
-        let toUser = User.find(data.toUserId, on: req.db).unwrap(or: Abort(.notFound))
-        return conversationQuery.and(toUser).flatMap { conversation, user in
-            conversation.$users.attach(user, on: req.db).transform(to: conversation)
-        }
+        let foundUser2 = try await User.find(data.fromUserId, on: req.db)
+        guard let user2 = foundUser2 else { throw Abort(.notFound) }
+        users.append(user2)
+        
+        let conversationFromDb = try await Conversation.find(conversation.id, on: req.db)
+        guard let queriedConversation = conversationFromDb else { throw Abort(.notFound) }
+        try await queriedConversation.$users.attach(users, on: req.db)
+        
+        return queriedConversation
     }
     
-    func deleteConversation(req: Request) throws -> EventLoopFuture<HTTPStatus> {
-        Conversation.find(req.parameters.get("id"), on: req.db)
-            .unwrap(or: Abort(.notFound))
-            .flatMap { $0.delete(on: req.db) }
-            .transform(to: .noContent)
+    func deleteConversation(req: Request) async throws -> HTTPStatus {
+        let found = try await Conversation.find(req.parameters.get("id"), on: req.db)
+        guard let conversation = found else { throw Abort(.notFound) }
+        try await conversation.delete(on: req.db)
+        
+        return .noContent
     }
 }
 
