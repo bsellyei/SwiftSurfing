@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  HomeTests.swift
 //  
 //
 //  Created by Séllyei Bence on 2022. 03. 19..

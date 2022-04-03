@@ -4,13 +4,15 @@ import PackageDescription
 let package = Package(
     name: "SwiftSurfingServer",
     platforms: [
-       .macOS(.v12)
+        .macOS(.v12)
     ],
     dependencies: [
         // 💧 A server-side Swift web framework.
         .package(url: "https://github.com/vapor/vapor.git", from: "4.52.0"),
         .package(url: "https://github.com/vapor/fluent.git", from: "4.0.0"),
         .package(url: "https://github.com/vapor/fluent-postgres-driver.git", from: "2.0.0"),
+        .package(url: "https://github.com/vapor/queues-redis-driver.git", from: "1.0.0"),
+        .package(url: "https://github.com/MakeAWishFoundation/SwiftyMocky", from: "4.1.0"),
     ],
     targets: [
         .target(
@@ -18,6 +20,7 @@ let package = Package(
             dependencies: [
                 .product(name: "Fluent", package: "fluent"),
                 .product(name: "FluentPostgresDriver", package: "fluent-postgres-driver"),
+                .product(name: "QueuesRedisDriver", package: "queues-redis-driver"),
                 .product(name: "Vapor", package: "vapor")
             ],
             swiftSettings: [
@@ -31,6 +34,11 @@ let package = Package(
         .testTarget(name: "AppTests", dependencies: [
             .target(name: "App"),
             .product(name: "XCTVapor", package: "vapor"),
+        ]),
+        .testTarget(name: "ServiceTests", dependencies: [
+            .target(name: "App"),
+            .product(name: "XCTVapor", package: "vapor"),
+            .product(name: "SwiftyMocky", package: "SwiftyMocky")
         ])
     ]
 )

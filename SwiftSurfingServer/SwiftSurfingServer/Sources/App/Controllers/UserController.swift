@@ -9,6 +9,12 @@ import Foundation
 import Vapor
 
 struct UserController: RouteCollection {
+    let userService: IUserService
+    
+    init(userService: IUserService) {
+        self.userService = userService
+    }
+    
     func boot(routes: RoutesBuilder) throws {
         let users = routes.grouped("users")
         users.get(use: getAllUsers)
@@ -18,26 +24,26 @@ struct UserController: RouteCollection {
     }
     
     func getAllUsers(req: Request) async throws -> [User] {
-        return try await User.query(on: req.db).all()
+        return try await userService.getAllUsers()
     }
     
     func getUser(req: Request) async throws -> User {
-        let found = try await User.find(req.parameters.get("id"), on: req.db)
+        let found = try await userService.getUser(id: req.parameters.get("id"))
         guard let user = found else { throw Abort(.notFound) }
+
         return user
     }
     
     func createUser(req: Request) async throws -> User {
         let user = try req.content.decode(User.self)
-        try await user.save(on: req.db)
+        _ = try await userService.createUser(user: user)
         
         return user
     }
     
     func deleteUser(req: Request) async throws -> HTTPStatus {
-        let found = try await User.find(req.parameters.get("id"), on: req.db)
-        guard let user = found else { throw Abort(.notFound) }
-        try await user.delete(on: req.db)
+        let success = try await userService.deleteUser(id: req.parameters.get("id"))
+        if !success { throw Abort(.notFound) }
         
         return .noContent
     }

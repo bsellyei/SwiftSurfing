@@ -54,6 +54,9 @@ final class Couch: Model, Content {
     @Children(for: \.$couch)
     var ratings: [Rating]
     
+    @Children(for: \.$couch)
+    var configuration: [HomeConfiguration]
+    
     init() {}
     
     init(id: UUID? = nil, userId: User.IDValue, name: String = "", address: String, city: String, country: String,

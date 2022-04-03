@@ -1,12 +1,16 @@
 import Fluent
 import FluentPostgresDriver
+import Queues
+import QueuesRedisDriver
 import Vapor
 
 // configures your application
 public func configure(_ app: Application) throws {
+    // Middlewares
     // uncomment to serve files from /Public folder
     // app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
 
+    // DB & Migrations
     let databaseName: String
     let databasePort: Int
     
@@ -26,20 +30,25 @@ public func configure(_ app: Application) throws {
         database: Environment.get("DATABASE_NAME") ?? databaseName
     ), as: .psql)
 
-    app.migrations.add(CreateTodo())
     app.migrations.add(UserMigration())
     app.migrations.add(CouchMigration())
     app.migrations.add(RatingMigration())
     app.migrations.add(ConversationMigration())
     app.migrations.add(MessageMigration())
     app.migrations.add(UserConversationPivotMigration())
-    
-    app.logger.logLevel = .debug
-    
     try app.autoMigrate().wait()
     
+    // Logging
+    app.logger.logLevel = .debug
+    
+    // Jobs
+    try app.queues.use(.redis(url: "redis://127.0.0.1:6379"))
+    app.queues.schedule(WeatherJob(weatherService: WeatherService())).minutely().at(5)
+    try app.queues.startScheduledJobs()
+    
+    // Other
     app.http.server.configuration.port = 8081
 
-    // register routes
+    // Routes
     try routes(app)
 }

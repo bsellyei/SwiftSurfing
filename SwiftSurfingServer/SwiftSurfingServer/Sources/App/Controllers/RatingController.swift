@@ -10,6 +10,12 @@ import Vapor
 import Fluent
 
 struct RatingController: RouteCollection {
+    let ratingService: IRatingService
+    
+    init(ratingService: IRatingService) {
+        self.ratingService = ratingService
+    }
+    
     func boot(routes: RoutesBuilder) throws {
         let ratings = routes.grouped("ratings")
         ratings.get(":couchId", use: getRatings)
@@ -18,26 +24,20 @@ struct RatingController: RouteCollection {
     }
     
     func getRatings(req: Request) async throws -> [Rating] {
-        let parameter = req.parameters.get("couchId")!
-        let couchId = UUID(uuidString: parameter)
-        return try await Rating.query(on: req.db)
-                .filter(\.$couch.$id == couchId!)
-                .all()
+        return try await ratingService.getRatings(couchId: req.parameters.get("couchId"))
     }
     
     func createRating(req: Request) async throws -> Rating {
         let data = try req.content.decode(CreateRatingData.self)
         let rating = Rating(userId: data.userId, couchId: data.couchId, value: data.value, comment: data.comment)
-        try await rating.save(on: req.db)
         
+        _ = try await ratingService.createRating(rating: rating)
         return rating
     }
     
     func deleteRating(req: Request) async throws -> HTTPStatus {
-        let found = try await Rating.find(req.parameters.get("id"), on: req.db)
-        guard let rating = found else { throw Abort(.notFound) }
-        try await rating.delete(on: req.db)
-        
+        let success = try await ratingService.deleteRating(id: req.parameters.get("id"))
+        if !success { throw Abort(.notFound) }
         return .noContent
     }
 }

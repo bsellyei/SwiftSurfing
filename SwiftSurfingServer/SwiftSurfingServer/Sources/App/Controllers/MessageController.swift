@@ -10,6 +10,12 @@ import Fluent
 import Vapor
 
 struct MessageController: RouteCollection {
+    let messageService: IMessageService
+    
+    init(messageService: IMessageService) {
+        self.messageService = messageService
+    }
+    
     func boot(routes: RoutesBuilder) throws {
         let messages = routes.grouped("messages")
         messages.get(":conversationId", use: getMessages)
@@ -18,25 +24,20 @@ struct MessageController: RouteCollection {
     }
     
     func getMessages(req: Request) async throws -> [Message] {
-        let parameter = req.parameters.get("conversationId")!
-        let conversationId = UUID(uuidString: parameter)
-        return try await Message.query(on: req.db)
-                .filter(\.$conversation.$id == conversationId!)
-                .all()
+        return try await messageService.getMessages(conversationId: req.parameters.get("conversationId"))
     }
     
     func createMessage(req: Request) async throws -> Message {
         let data = try req.content.decode(CreateMessageData.self)
         let message = Message(userId: data.userId, conversationId: data.conversationId, text: data.text, date: Date())
-        try await message.save(on: req.db)
+        _ = try await messageService.createMessage(message: message)
         
         return message
     }
     
     func deleteMessage(req: Request) async throws -> HTTPStatus {
-        let found = try await Message.find(req.parameters.get("id"), on: req.db)
-        guard let message = found else { throw Abort(.notFound) }
-        try await message.delete(on: req.db)
+        let success = try await messageService.deleteMessage(id: req.parameters.get("messageId"))
+        if !success { throw Abort(.notFound) }
         
         return .noContent
     }
