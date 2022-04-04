@@ -17,7 +17,7 @@ class WeatherJob: AsyncScheduledJob {
     }
     
     func run(context: QueueContext) async throws {
-        let weatherResponse = weatherService.getWeather()
-        print(weatherResponse)
+        let weatherResponse = try await weatherService.getWeather(cityName: "Budapest")
+        print("Weather in Budapest is \(weatherResponse)")
     }
 }

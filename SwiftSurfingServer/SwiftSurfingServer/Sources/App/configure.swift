@@ -43,7 +43,7 @@ public func configure(_ app: Application) throws {
     
     // Jobs
     try app.queues.use(.redis(url: "redis://127.0.0.1:6379"))
-    app.queues.schedule(WeatherJob(weatherService: WeatherService())).minutely().at(5)
+    app.queues.schedule(WeatherJob(weatherService: WeatherService(httpClient: app.client))).minutely().at(5)
     try app.queues.startScheduledJobs()
     
     // Other

@@ -8,5 +8,5 @@
 import Foundation
 
 protocol IWeatherService {
-    func getWeather() -> Int
+    func getWeather(cityName: String) async throws -> Int
 }

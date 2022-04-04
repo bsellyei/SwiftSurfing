@@ -21,7 +21,6 @@ struct Item: Codable, Content {
   var groupNames : [String]? = []
 
   enum CodingKeys: String, CodingKey {
-
     case link       = "link"
     case state      = "state"
     case editable   = "editable"
@@ -31,7 +30,6 @@ struct Item: Codable, Content {
     case category   = "category"
     case tags       = "tags"
     case groupNames = "groupNames"
-        
   }
 
     init(from decoder: Decoder) throws {
@@ -48,5 +46,4 @@ struct Item: Codable, Content {
     }
 
     init() { }
-
 }

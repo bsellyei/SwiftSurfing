@@ -19,7 +19,6 @@ struct Thing: Codable, Content {
     case bridgeUID  = "bridgeUID"
     case UID        = "UID"
     case statusInfo = "statusInfo"
-  
   }
 
   init(from decoder: Decoder) throws {
@@ -29,11 +28,7 @@ struct Thing: Codable, Content {
     bridgeUID  = try values.decodeIfPresent(String.self     , forKey: .bridgeUID  )
     UID        = try values.decodeIfPresent(String.self     , forKey: .UID        )
     statusInfo = try values.decodeIfPresent(StatusInfo.self , forKey: .statusInfo )
- 
   }
 
-  init() {
-
-  }
-
+  init() { }
 }

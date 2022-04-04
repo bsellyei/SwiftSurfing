@@ -6,11 +6,9 @@
 //
 
 import Foundation
+import Vapor
 
 class HomeService: IHomeService {
-    let accessToken = "oh.token1.OeBR0gE05A01XKRIz7DnYVl5BMMMRQLLGMk0nvA7D1QQXp0TkH3gjpcHkd5lorQAdeyWT3xpzyiUsds3bGKA"
-    let baseURL = "http://localhost:8080/rest/"
-    
     let homeConfigurationService: IHomeConfigurationService
     
     init(homeConfigurationService: IHomeConfigurationService) {
