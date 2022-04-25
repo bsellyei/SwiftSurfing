@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (4.9.0)
   - Firebase/Auth (7.7.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 7.7.0)
@@ -63,6 +64,7 @@ PODS:
     - SDWebImage (~> 5.10)
 
 DEPENDENCIES:
+  - Alamofire (= 4.9.0)
   - Firebase/Auth
   - Firebase/Database
   - Firebase/Storage
@@ -71,6 +73,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - Firebase
     - FirebaseAuth
     - FirebaseCore
@@ -88,6 +91,7 @@ SPEC REPOS:
     - SDWebImageSwiftUI
 
 SPEC CHECKSUMS:
+  Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
   Firebase: cd2ab85eec8170dc260186159f21072ecb679ad5
   FirebaseAuth: 76aa97ecd51e20ecd21321d08474d25f5d2b7b9f
   FirebaseCore: ac35d680a0bf32319a59966a1478e0741536b97b
@@ -104,6 +108,6 @@ SPEC CHECKSUMS:
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageSwiftUI: 8a3923c95108312b03a599ec1498754af55a6819
 
-PODFILE CHECKSUM: 8224b9570fc1e6fb50345f663846bec6ccc0bf10
+PODFILE CHECKSUM: afaa6e2acfce1ca25a8373204183b5aa4218e826
 
 COCOAPODS: 1.10.1

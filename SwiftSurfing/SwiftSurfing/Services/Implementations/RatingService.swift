@@ -32,16 +32,15 @@ class RatingService: RatingServiceProtocol {
             rating.userId = userId
         }
         
-        let ratingRef = self.databaseRef?.child(rating.id)
-        ratingRef?.setValue(rating.toAnyObject())
-        
-        DispatchQueue.main.async {
-            completion(true)
-        }
+        RatingAPI.createRating(body: RatingTransformator.transformToAPIModel(rating: rating), completion: { _, _ in
+            DispatchQueue.main.async {
+                completion(true)
+            }
+        })
     }
     
     func getAllRatings(couchId: String, completion: @escaping ([Rating]) -> Void) {
-        databaseRef?.queryOrdered(byChild: "couchId").queryEqual(toValue: couchId).observeSingleEvent(of: .value, with: { (snapshot) in
+        /*databaseRef?.queryOrdered(byChild: "couchId").queryEqual(toValue: couchId).observeSingleEvent(of: .value, with: { (snapshot) in
             guard let snapshot = snapshot.children.allObjects as? [DataSnapshot] else {
                 return
             }
@@ -50,8 +49,38 @@ class RatingService: RatingServiceProtocol {
             DispatchQueue.main.async {
                 completion(ratings)
             }
+        })*/
+        
+        RatingAPI.getRatings(_id: couchId, completion: { ratings, _ in
+            DispatchQueue.main.async {
+                completion(RatingTransformator.transformToClientModel(ratings: ratings!))
+            }
         })
     }
     
-    
+    class RatingTransformator {
+        static func transformToClientModel(rating: GeneratedRating) -> Rating {
+            let result = Rating()
+            result.id = rating._id!
+            result.userId = rating.userId!
+            result.couchId = rating.couchId!
+            result.value = rating.value!
+            result.comment = rating.comment!
+            return result
+        }
+        
+        static func transformToAPIModel(rating: Rating) -> GeneratedRating {
+            let result = GeneratedRating(_id: rating.id, userId: rating.userId, couchId: rating.couchId, value: rating.value, comment: rating.comment)
+            return result
+        }
+        
+        static func transformToClientModel(ratings: [GeneratedRating]) -> [Rating] {
+            var result: [Rating] = []
+            for rating in ratings {
+                result.append(RatingTransformator.transformToClientModel(rating: rating))
+            }
+            
+            return result
+        }
+    }
 }

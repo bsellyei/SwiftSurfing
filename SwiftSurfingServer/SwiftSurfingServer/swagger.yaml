@@ -1,0 +1,310 @@
+swagger: "2.0"
+info:
+  description: "This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters."
+  version: "1.0.0"
+  title: "SwiftCouch"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "127.0.0.1:8081"
+basePath: "/"
+tags:
+- name: "couch"
+  description: "Couch operations"
+- name: "rating"
+  description: "Rating operations"
+- name: "user"
+  description: "User operations"
+schemes:
+- "https"
+- "http"
+paths:
+  /couches:
+    post:
+      tags:
+      - "couch"
+      summary: "Add a new couch"
+      description: ""
+      operationId: "addCouch"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Couch object that needs to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/Couch"
+      responses:
+        "405":
+          description: "Invalid input"
+  /couches/user/{userId}:
+    get:
+      tags:
+      - "couch"
+      summary: "Find all couch for user"
+      description: ""
+      operationId: "findAllCouchForUser"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "userId"
+        in: "path"
+        description: "ID of user whose couches to return"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Couch"
+  /couches/{cityName}/{userId}:
+    get:
+      tags:
+      - "couch"
+      summary: "Find all couch by city excluding userId's couch"
+      description: ""
+      operationId: "findAllCouchByCityExceptUserId"
+      produces: 
+      - "application/json"
+      parameters:
+      - name: "cityName"
+        in: "path"
+        description: "name of a city"
+        required: true
+        type: "string"
+      - name: "userId"
+        in: "path"
+        description: "userId whose couches need to be excluded"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Couch"
+  /couches/{Id}:
+    get:
+      tags:
+      - "couch"
+      summary: "Find couch by ID"
+      description: "Returns a single couch"
+      operationId: "getCouchById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "Id"
+        in: "path"
+        description: "ID of couch to return"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Couch"
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Couch not found"
+    delete:
+      tags:
+      - "couch"
+      summary: "Deletes a couch"
+      description: ""
+      operationId: "deleteCouch"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "Id"
+        in: "path"
+        description: "Couch id to delete"
+        required: true
+        type: "string"
+      responses:
+        "204":
+          description: "Delete succeeded"
+        "404":
+          description: "Couch not found"
+  
+  /ratings/{Id}:
+    get:
+      tags:
+      - "rating"
+      summary: "Returns ratings related to couch"
+      description: ""
+      operationId: "getRatings"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "Id"
+        in: "path"
+        description: "ID of couch whose ratings to return"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Rating"
+    delete:
+      tags:
+      - "rating"
+      summary: "Delete rating by ID"
+      description: ""
+      operationId: "deleteRating"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "Id"
+        in: "path"
+        description: "Rating ID to delete"
+        required: true
+        type: "string"
+      responses:
+        "204":
+          description: "Delete succeeded"
+        "404":
+          description: "Rating not found"
+  /ratings:
+    post:
+      tags:
+      - "rating"
+      summary: "Create new rating"
+      description: ""
+      operationId: "createRating"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Rating object that needs to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/Rating"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Rating"
+            
+  /users:
+    post:
+      tags:
+      - "user"
+      summary: "Add a new user"
+      description: ""
+      operationId: "addUser"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "User object that needs to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        "405":
+          description: "Invalid input"
+  /users/{Id}:
+    get:
+      tags:
+      - "user"
+      summary: "Find user by ID"
+      description: "Returns a single user"
+      operationId: "getUserById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "Id"
+        in: "path"
+        description: "ID of user to return"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/User"
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Couch not found"
+            
+definitions:
+  Rating:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      userId:
+        type: "string"
+      couchId:
+        type: "string"
+      value:
+        type: "integer"
+        format: "int32"
+      comment:
+        type: "string"
+  Couch:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      name:
+        type: "string"
+      address:
+        type: "string"
+      city:
+        type: "string"
+      country:
+        type: "string"
+      latitude:
+        type: "number"
+        format: "double"
+      longitude:
+        type: "number"
+        format: "double"
+      maxGuests:
+        type: "integer"
+        format: "int32"
+      description:
+        type: "string"
+      imageUrls:
+        type: "array"
+        items:
+          type: "string"
+      ratingAverage:
+        type: "integer"
+        format: "int32"
+      ratingCount:
+        type: "integer"
+        format: "int32"
+      user:
+        $ref: "#/definitions/User"
+  User:
+    type: "object"
+    properties:
+      id: 
+        type: "string"
+      fullName: 
+        type: "string"
+      email: 
+        type: "string"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"

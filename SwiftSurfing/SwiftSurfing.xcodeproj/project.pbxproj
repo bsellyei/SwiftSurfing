@@ -12,7 +12,6 @@
 		DB09709025FD509C0052EC09 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB09708F25FD509C0052EC09 /* MapView.swift */; };
 		DB09709325FD50A90052EC09 /* MapInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB09709225FD50A90052EC09 /* MapInteractor.swift */; };
 		DB09709625FD50B50052EC09 /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB09709525FD50B50052EC09 /* MapPresenter.swift */; };
-		DB0970A025FFC7C10052EC09 /* Couch.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB09709F25FFC7C10052EC09 /* Couch.swift */; };
 		DB0970A4260141E60052EC09 /* CouchesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0970A3260141E60052EC09 /* CouchesInteractor.swift */; };
 		DB0970A8260142080052EC09 /* CouchesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0970A7260142080052EC09 /* CouchesPresenter.swift */; };
 		DB0970AB260142590052EC09 /* CouchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0970AA260142590052EC09 /* CouchesView.swift */; };
@@ -33,11 +32,28 @@
 		DB1EE434263AB2DF005C4AD1 /* ImagePickerKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1EE433263AB2DF005C4AD1 /* ImagePickerKit.swift */; };
 		DB1EE437263B0B9E005C4AD1 /* ImageManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1EE436263B0B9E005C4AD1 /* ImageManagerProtocol.swift */; };
 		DB1EE43A263B0C51005C4AD1 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1EE439263B0C51005C4AD1 /* ImageManager.swift */; };
-		DB1EE43D2643284E005C4AD1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1EE43C2643284E005C4AD1 /* User.swift */; };
 		DB1EE44026432912005C4AD1 /* UserServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1EE43F26432912005C4AD1 /* UserServiceProtocol.swift */; };
 		DB1EE44326432984005C4AD1 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1EE44226432984005C4AD1 /* UserService.swift */; };
+		DB404FAA2816B90800AE5CC9 /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404F982816B90700AE5CC9 /* APIHelper.swift */; };
+		DB404FAB2816B90800AE5CC9 /* AlamofireImplementations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404F992816B90700AE5CC9 /* AlamofireImplementations.swift */; };
+		DB404FAC2816B90800AE5CC9 /* JSONValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404F9A2816B90700AE5CC9 /* JSONValue.swift */; };
+		DB404FAD2816B90800AE5CC9 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404F9C2816B90800AE5CC9 /* UserAPI.swift */; };
+		DB404FAE2816B90800AE5CC9 /* CouchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404F9D2816B90800AE5CC9 /* CouchAPI.swift */; };
+		DB404FAF2816B90800AE5CC9 /* RatingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404F9E2816B90800AE5CC9 /* RatingAPI.swift */; };
+		DB404FB02816B90800AE5CC9 /* CodableHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404F9F2816B90800AE5CC9 /* CodableHelper.swift */; };
+		DB404FB12816B90800AE5CC9 /* JSONEncodableEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404FA02816B90800AE5CC9 /* JSONEncodableEncoding.swift */; };
+		DB404FB22816B90800AE5CC9 /* APIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404FA12816B90800AE5CC9 /* APIs.swift */; };
+		DB404FB32816B90800AE5CC9 /* GeneratedCouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404FA32816B90800AE5CC9 /* GeneratedCouch.swift */; };
+		DB404FB42816B90800AE5CC9 /* GeneratedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404FA42816B90800AE5CC9 /* GeneratedUser.swift */; };
+		DB404FB52816B90800AE5CC9 /* GeneratedRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404FA52816B90800AE5CC9 /* GeneratedRating.swift */; };
+		DB404FB62816B90800AE5CC9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404FA62816B90800AE5CC9 /* Extensions.swift */; };
+		DB404FB72816B90800AE5CC9 /* JSONEncodingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404FA72816B90800AE5CC9 /* JSONEncodingHelper.swift */; };
+		DB404FB82816B90800AE5CC9 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404FA82816B90800AE5CC9 /* Models.swift */; };
+		DB404FB92816B90800AE5CC9 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404FA92816B90800AE5CC9 /* Configuration.swift */; };
+		DB404FBB2816BE7A00AE5CC9 /* Couch.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404FBA2816BE7A00AE5CC9 /* Couch.swift */; };
+		DB404FBE2816BE8400AE5CC9 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404FBC2816BE8400AE5CC9 /* Rating.swift */; };
+		DB404FBF2816BE8400AE5CC9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404FBD2816BE8400AE5CC9 /* User.swift */; };
 		DB43445D2728291000997D93 /* RatingServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB43445C2728291000997D93 /* RatingServiceProtocol.swift */; };
-		DB4344612728296900997D93 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4344602728296900997D93 /* Rating.swift */; };
 		DB43446527282AC900997D93 /* RatingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB43446427282AC900997D93 /* RatingService.swift */; };
 		DB43446B2728329600997D93 /* RatingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB43446A2728329600997D93 /* RatingsView.swift */; };
 		DB434471272832D200997D93 /* RatingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB434470272832D200997D93 /* RatingsPresenter.swift */; };
@@ -124,7 +140,6 @@
 		DB09708F25FD509C0052EC09 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		DB09709225FD50A90052EC09 /* MapInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInteractor.swift; sourceTree = "<group>"; };
 		DB09709525FD50B50052EC09 /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
-		DB09709F25FFC7C10052EC09 /* Couch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Couch.swift; sourceTree = "<group>"; };
 		DB0970A3260141E60052EC09 /* CouchesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouchesInteractor.swift; sourceTree = "<group>"; };
 		DB0970A7260142080052EC09 /* CouchesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouchesPresenter.swift; sourceTree = "<group>"; };
 		DB0970AA260142590052EC09 /* CouchesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouchesView.swift; sourceTree = "<group>"; };
@@ -145,11 +160,28 @@
 		DB1EE433263AB2DF005C4AD1 /* ImagePickerKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerKit.swift; sourceTree = "<group>"; };
 		DB1EE436263B0B9E005C4AD1 /* ImageManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManagerProtocol.swift; sourceTree = "<group>"; };
 		DB1EE439263B0C51005C4AD1 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
-		DB1EE43C2643284E005C4AD1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DB1EE43F26432912005C4AD1 /* UserServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceProtocol.swift; sourceTree = "<group>"; };
 		DB1EE44226432984005C4AD1 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		DB404F982816B90700AE5CC9 /* APIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
+		DB404F992816B90700AE5CC9 /* AlamofireImplementations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireImplementations.swift; sourceTree = "<group>"; };
+		DB404F9A2816B90700AE5CC9 /* JSONValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONValue.swift; sourceTree = "<group>"; };
+		DB404F9C2816B90800AE5CC9 /* UserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
+		DB404F9D2816B90800AE5CC9 /* CouchAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouchAPI.swift; sourceTree = "<group>"; };
+		DB404F9E2816B90800AE5CC9 /* RatingAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingAPI.swift; sourceTree = "<group>"; };
+		DB404F9F2816B90800AE5CC9 /* CodableHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableHelper.swift; sourceTree = "<group>"; };
+		DB404FA02816B90800AE5CC9 /* JSONEncodableEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONEncodableEncoding.swift; sourceTree = "<group>"; };
+		DB404FA12816B90800AE5CC9 /* APIs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIs.swift; sourceTree = "<group>"; };
+		DB404FA32816B90800AE5CC9 /* GeneratedCouch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedCouch.swift; sourceTree = "<group>"; };
+		DB404FA42816B90800AE5CC9 /* GeneratedUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedUser.swift; sourceTree = "<group>"; };
+		DB404FA52816B90800AE5CC9 /* GeneratedRating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedRating.swift; sourceTree = "<group>"; };
+		DB404FA62816B90800AE5CC9 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		DB404FA72816B90800AE5CC9 /* JSONEncodingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONEncodingHelper.swift; sourceTree = "<group>"; };
+		DB404FA82816B90800AE5CC9 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		DB404FA92816B90800AE5CC9 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		DB404FBA2816BE7A00AE5CC9 /* Couch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Couch.swift; sourceTree = "<group>"; };
+		DB404FBC2816BE8400AE5CC9 /* Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
+		DB404FBD2816BE8400AE5CC9 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DB43445C2728291000997D93 /* RatingServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingServiceProtocol.swift; sourceTree = "<group>"; };
-		DB4344602728296900997D93 /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		DB43446427282AC900997D93 /* RatingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingService.swift; sourceTree = "<group>"; };
 		DB43446A2728329600997D93 /* RatingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingsView.swift; sourceTree = "<group>"; };
 		DB434470272832D200997D93 /* RatingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingsPresenter.swift; sourceTree = "<group>"; };
@@ -269,13 +301,13 @@
 		DB09709E25FFC7B40052EC09 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				DB09709F25FFC7C10052EC09 /* Couch.swift */,
+				DB404FBC2816BE8400AE5CC9 /* Rating.swift */,
+				DB404FBD2816BE8400AE5CC9 /* User.swift */,
+				DB404FBA2816BE7A00AE5CC9 /* Couch.swift */,
 				DBA264D32630C1B900C63431 /* CouchAnnotation.swift */,
-				DB1EE43C2643284E005C4AD1 /* User.swift */,
 				DBBF03F12702202000110DEC /* Reservation.swift */,
 				DBBF040B2704B6A900110DEC /* Message.swift */,
 				DBBF040E2704B6B500110DEC /* Conversation.swift */,
-				DB4344602728296900997D93 /* Rating.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -323,6 +355,45 @@
 			name = CouchDetailsModule;
 			sourceTree = "<group>";
 		};
+		DB404F972816B90700AE5CC9 /* Swaggers */ = {
+			isa = PBXGroup;
+			children = (
+				DB404F982816B90700AE5CC9 /* APIHelper.swift */,
+				DB404F992816B90700AE5CC9 /* AlamofireImplementations.swift */,
+				DB404F9A2816B90700AE5CC9 /* JSONValue.swift */,
+				DB404F9B2816B90700AE5CC9 /* APIs */,
+				DB404F9F2816B90800AE5CC9 /* CodableHelper.swift */,
+				DB404FA02816B90800AE5CC9 /* JSONEncodableEncoding.swift */,
+				DB404FA12816B90800AE5CC9 /* APIs.swift */,
+				DB404FA22816B90800AE5CC9 /* Models */,
+				DB404FA62816B90800AE5CC9 /* Extensions.swift */,
+				DB404FA72816B90800AE5CC9 /* JSONEncodingHelper.swift */,
+				DB404FA82816B90800AE5CC9 /* Models.swift */,
+				DB404FA92816B90800AE5CC9 /* Configuration.swift */,
+			);
+			path = Swaggers;
+			sourceTree = "<group>";
+		};
+		DB404F9B2816B90700AE5CC9 /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+				DB404F9C2816B90800AE5CC9 /* UserAPI.swift */,
+				DB404F9D2816B90800AE5CC9 /* CouchAPI.swift */,
+				DB404F9E2816B90800AE5CC9 /* RatingAPI.swift */,
+			);
+			path = APIs;
+			sourceTree = "<group>";
+		};
+		DB404FA22816B90800AE5CC9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DB404FA32816B90800AE5CC9 /* GeneratedCouch.swift */,
+				DB404FA42816B90800AE5CC9 /* GeneratedUser.swift */,
+				DB404FA52816B90800AE5CC9 /* GeneratedRating.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		DB4344692728328100997D93 /* RatingsModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,6 +437,7 @@
 		DB834E4A25E5C1B200E94268 /* SwiftSurfing */ = {
 			isa = PBXGroup;
 			children = (
+				DB404F972816B90700AE5CC9 /* Swaggers */,
 				DB8BFDEF262729F300780517 /* CommonViews */,
 				DBA0B9D1260BE5E700474B7C /* Services */,
 				DB09709E25FFC7B40052EC09 /* Entities */,
@@ -738,9 +810,12 @@
 				DBD60E1E27230FA200A13AC9 /* NotificationManager.swift in Sources */,
 				DBBF03DD26FAFEBA00110DEC /* MDPDayOfMonth.swift in Sources */,
 				DB19FB6C2715B04F001F25EB /* ConversationsPresenter.swift in Sources */,
+				DB404FAD2816B90800AE5CC9 /* UserAPI.swift in Sources */,
 				DBBF03E926FAFF1200110DEC /* MDPMonthYearPicker.swift in Sources */,
+				DB404FAA2816B90800AE5CC9 /* APIHelper.swift in Sources */,
 				DB791BDE27273A1000B745F0 /* RatingSummaryView.swift in Sources */,
 				DBBF03F22702202000110DEC /* Reservation.swift in Sources */,
+				DB404FB72816B90800AE5CC9 /* JSONEncodingHelper.swift in Sources */,
 				DBEB14B025F98B760046CB30 /* LoginView.swift in Sources */,
 				DB43446B2728329600997D93 /* RatingsView.swift in Sources */,
 				DB19FB93271721B0001F25EB /* AuthenticationManager.swift in Sources */,
@@ -754,6 +829,7 @@
 				DBCBEA2925FBF25500E74A8D /* PublisherExtension.swift in Sources */,
 				DB8BFDF526272B1600780517 /* MapViewKit.swift in Sources */,
 				DB1EE437263B0B9E005C4AD1 /* ImageManagerProtocol.swift in Sources */,
+				DB404FBE2816BE8400AE5CC9 /* Rating.swift in Sources */,
 				DB0970AE2601436B0052EC09 /* CouchesRouter.swift in Sources */,
 				DB8BFDF82627368C00780517 /* SearchBarKit.swift in Sources */,
 				DBBF03EF27021D4F00110DEC /* CouchDetailsRouter.swift in Sources */,
@@ -768,17 +844,18 @@
 				DB0970A4260141E60052EC09 /* CouchesInteractor.swift in Sources */,
 				DBBF03E626FAFEF600110DEC /* MDPMonthView.swift in Sources */,
 				DBBF040C2704B6A900110DEC /* Message.swift in Sources */,
+				DB404FBF2816BE8400AE5CC9 /* User.swift in Sources */,
 				DBEB14B525FAD59A0046CB30 /* RegisterInteractor.swift in Sources */,
 				DB1EE44026432912005C4AD1 /* UserServiceProtocol.swift in Sources */,
 				DBA264D42630C1B900C63431 /* CouchAnnotation.swift in Sources */,
 				DBE36B0E264EFE1100755851 /* CouchDetailsView.swift in Sources */,
 				DB54DC1A263149D800B7618F /* RatingView.swift in Sources */,
-				DB4344612728296900997D93 /* Rating.swift in Sources */,
-				DB1EE43D2643284E005C4AD1 /* User.swift in Sources */,
+				DB404FB82816B90800AE5CC9 /* Models.swift in Sources */,
 				DB1EE434263AB2DF005C4AD1 /* ImagePickerKit.swift in Sources */,
 				DBCBEA2625FBEF3300E74A8D /* ValidationPublishers.swift in Sources */,
 				DBBF04062704B49300110DEC /* MessageServiceProtocol.swift in Sources */,
 				DBA0B9C5260146B600474B7C /* NewCouchPresenter.swift in Sources */,
+				DB404FAC2816B90800AE5CC9 /* JSONValue.swift in Sources */,
 				DB8BFDF126272A4100780517 /* SheetView.swift in Sources */,
 				DB5F6A9526282C6300C83F5A /* CouchListRow.swift in Sources */,
 				DBBF03D926FAFEA000110DEC /* MDPContentView.swift in Sources */,
@@ -790,12 +867,13 @@
 				DBBF03FD27025E2A00110DEC /* ReservationView.swift in Sources */,
 				DBA0B9E1260BE8D000474B7C /* DIContainerProtocol.swift in Sources */,
 				DBBF04002702648600110DEC /* ReservationServiceProtocol.swift in Sources */,
+				DB404FB22816B90800AE5CC9 /* APIs.swift in Sources */,
 				DB43447F2728356000997D93 /* RatingSummaryViewContext.swift in Sources */,
+				DB404FAB2816B90800AE5CC9 /* AlamofireImplementations.swift in Sources */,
 				DB19FB812715FBA7001F25EB /* MessagesView.swift in Sources */,
 				DBCBEA2325FBED2E00E74A8D /* ValidationModifier.swift in Sources */,
 				DB19FB97271726D7001F25EB /* ButtonContent.swift in Sources */,
 				DBB559AF2714AF62009AE705 /* ProfileInteractor.swift in Sources */,
-				DB0970A025FFC7C10052EC09 /* Couch.swift in Sources */,
 				DB19FB872715FBB5001F25EB /* MessagesPresenter.swift in Sources */,
 				DB09709625FD50B50052EC09 /* MapPresenter.swift in Sources */,
 				DB0970AB260142590052EC09 /* CouchesView.swift in Sources */,
@@ -807,25 +885,35 @@
 				DBEB14BC25FAD5B60046CB30 /* RegisterView.swift in Sources */,
 				DBBF03D526FAFE7600110DEC /* MultiDatePicker.swift in Sources */,
 				DBE36B0F264EFE1100755851 /* CouchDetailsPresenter.swift in Sources */,
+				DB404FBB2816BE7A00AE5CC9 /* Couch.swift in Sources */,
 				DBBF03E326FAFEE500110DEC /* MDPModel.swift in Sources */,
 				DB19FB742715B06C001F25EB /* ConversationsRouter.swift in Sources */,
+				DB404FB02816B90800AE5CC9 /* CodableHelper.swift in Sources */,
 				DBEB14A225F952A90046CB30 /* LoginInteractor.swift in Sources */,
 				DB43446527282AC900997D93 /* RatingService.swift in Sources */,
 				DB43445D2728291000997D93 /* RatingServiceProtocol.swift in Sources */,
+				DB404FB32816B90800AE5CC9 /* GeneratedCouch.swift in Sources */,
 				DBBF03F627025E0200110DEC /* ReservationInteractor.swift in Sources */,
+				DB404FB52816B90800AE5CC9 /* GeneratedRating.swift in Sources */,
 				DBA0B9C12601469F00474B7C /* NewCouchInteractor.swift in Sources */,
 				DB434471272832D200997D93 /* RatingsPresenter.swift in Sources */,
 				DB19FB9F2717361A001F25EB /* SceneDelegate.swift in Sources */,
+				DB404FAE2816B90800AE5CC9 /* CouchAPI.swift in Sources */,
 				DBD60E1A27230F8200A13AC9 /* NotificationManagerProtocol.swift in Sources */,
 				DBBF04122704D1C300110DEC /* ConversationServiceProtocol.swift in Sources */,
 				DBBF03EC26FAFF2800110DEC /* MDPMonthYearPickerButton.swift in Sources */,
+				DB404FB42816B90800AE5CC9 /* GeneratedUser.swift in Sources */,
+				DB404FB12816B90800AE5CC9 /* JSONEncodableEncoding.swift in Sources */,
 				DBA0B9C8260146EB00474B7C /* NewCouchView.swift in Sources */,
 				DBBF040F2704B6B500110DEC /* Conversation.swift in Sources */,
 				DBA0B9E5260BE93200474B7C /* DIContainer.swift in Sources */,
 				DB09708C25FD4EBA0052EC09 /* HomeTabView.swift in Sources */,
+				DB404FB62816B90800AE5CC9 /* Extensions.swift in Sources */,
 				DBCBEA1F25FBECE600E74A8D /* Validation.swift in Sources */,
 				DBEB14A925F98A630046CB30 /* LoginPresenter.swift in Sources */,
+				DB404FAF2816B90800AE5CC9 /* RatingAPI.swift in Sources */,
 				DBBF03E026FAFED300110DEC /* MDPDayView.swift in Sources */,
+				DB404FB92816B90800AE5CC9 /* Configuration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

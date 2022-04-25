@@ -10,7 +10,7 @@ import Firebase
 
 class Couch: Identifiable {
     let ref: DatabaseReference?
-    let id: String
+    var id: String
     var userId: String
     var name: String
     var latitude: Double

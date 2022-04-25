@@ -12,5 +12,6 @@ target 'SwiftSurfing' do
   pod 'Firebase/Storage'
   pod 'LMGeocoderSwift'
   pod 'SDWebImageSwiftUI'
+  pod 'Alamofire', '4.9.0'
 
 end
