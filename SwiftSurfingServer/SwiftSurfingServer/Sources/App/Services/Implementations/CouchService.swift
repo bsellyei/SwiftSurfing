@@ -15,8 +15,19 @@ class CouchService: ICouchService {
         self.db = db
     }
     
-    func getAllCouches() async throws -> [Couch] {
-        return try await Couch.query(on: db).all()
+    func getAllCouchesForUser(userId: String?) async throws -> [Couch] {
+        let uuid = UUID(uuidString: userId!)
+        return try await Couch.query(on: db)
+            .filter(\.$user.$id == uuid!)
+            .all()
+    }
+    
+    func getAllCouchesByCity(city: String?, userId: String?) async throws -> [Couch] {
+        let uuid = UUID(uuidString: userId!)
+        return try await Couch.query(on: db)
+            .filter(\.$city == city!)
+            .filter(\.$user.$id != uuid!)
+            .all()
     }
     
     func getCouch(id: String?) async throws -> Couch? {

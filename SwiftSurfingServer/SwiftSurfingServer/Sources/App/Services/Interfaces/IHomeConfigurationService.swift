@@ -14,4 +14,6 @@ protocol IHomeConfigurationService {
     func createHomeConfigurations(configuration: HomeConfiguration) async throws -> HomeConfiguration
     
     func switchState(id: String?) async throws -> HomeConfiguration
+    
+    func getHomeConfigurationsByType(type: ConfigurationType, state: State) async throws -> [HomeConfiguration]
 }

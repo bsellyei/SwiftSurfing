@@ -34,6 +34,7 @@ let package = Package(
         .testTarget(name: "AppTests", dependencies: [
             .target(name: "App"),
             .product(name: "XCTVapor", package: "vapor"),
+            .product(name: "SwiftyMocky", package: "SwiftyMocky")
         ]),
         .testTarget(name: "ServiceTests", dependencies: [
             .target(name: "App"),

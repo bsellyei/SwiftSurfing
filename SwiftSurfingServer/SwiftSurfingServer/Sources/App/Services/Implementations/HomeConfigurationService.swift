@@ -45,4 +45,11 @@ class HomeConfigurationService: IHomeConfigurationService {
         try await configuration.save(on: db)
         return configuration
     }
+    
+    func getHomeConfigurationsByType(type: ConfigurationType, state: State) async throws -> [HomeConfiguration] {
+        return try await HomeConfiguration.query(on: db)
+            .filter(\.$type == type)
+            .filter(\.$state == state)
+            .all()
+    }
 }

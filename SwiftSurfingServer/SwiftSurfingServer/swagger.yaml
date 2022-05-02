@@ -2,7 +2,7 @@ swagger: "2.0"
 info:
   description: "This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters."
   version: "1.0.0"
-  title: "SwiftCouch"
+  title: "SwiftSurfing"
   termsOfService: "http://swagger.io/terms/"
   contact:
     email: "apiteam@swagger.io"
@@ -244,8 +244,120 @@ paths:
           description: "Invalid ID supplied"
         "404":
           description: "Couch not found"
-            
+          
+  /conversations/{userId}:
+    get:
+      tags:
+      - "conversation"
+      summary: "Find all conversations for user"
+      description: ""
+      operationId: "getAllConversationsForUser"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "userId"
+        in: "path"
+        description: "ID of user whose conversations to return"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Conversation"
+  /conversations:
+    post:
+      tags:
+      - "conversation"
+      summary: "Add a new conversation"
+      description: ""
+      operationId: "addConversation"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Conversation object that needs to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/Conversation"
+      responses:
+        "405":
+          description: "Invalid input"
+          
+  /messages:
+    post:
+      tags:
+      - "message"
+      summary: "Add a new message"
+      description: ""
+      operationId: "addMessage"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Message object that needs to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/Message"
+      responses:
+        "405":
+          description: "Invalid input"
+  /messages/{conversationId}:
+    get:
+      tags:
+      - "messages"
+      summary: "Find all messages in conversation"
+      description: ""
+      operationId: "getAllMessagesInConversation"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "conversationId"
+        in: "path"
+        description: "ID of conversation whose messages to return"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Message"
+      
 definitions:
+  Conversation:
+    type: "object"
+    properties:
+      id: 
+        type: "string"
+      users:
+        type: "array"
+        items:
+          $ref: "#/definitions/User"
+      messages:
+        type: "array"
+        items:
+          $ref: "#/definitions/Message"
+  Message:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      user:
+        $ref: "#/definitions/User"
+      conversation:
+        $ref: "#/definitions/Conversation"
+      text:
+        type: "string"
   Rating:
     type: "object"
     properties:

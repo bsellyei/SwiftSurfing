@@ -18,14 +18,19 @@ struct CouchController: RouteCollection {
     
     func boot(routes: RoutesBuilder) throws {
         let couches = routes.grouped("couches")
-        couches.get("user", ":userId", use: getAllCouches)
+        couches.get("user", ":userId", use: getAllCouchesForUser)
+        couches.get("city", ":city", ":userId", use: getAllCouchesByCityExceptUserId)
         couches.get(":id", use: getCouch)
         couches.post(use: createCouch)
         couches.delete(":id", use: deleteCouch)
     }
     
-    func getAllCouches(req: Request) async throws -> [Couch] {
-        return try await couchService.getAllCouches()
+    func getAllCouchesForUser(req: Request) async throws -> [Couch] {
+        return try await couchService.getAllCouchesForUser(userId: req.parameters.get("userId"))
+    }
+    
+    func getAllCouchesByCityExceptUserId(req: Request) async throws -> [Couch] {
+        return try await couchService.getAllCouchesByCity(city: req.parameters.get("city"), userId: req.parameters.get("userId"))
     }
     
     func getCouch(req: Request) async throws -> Couch {

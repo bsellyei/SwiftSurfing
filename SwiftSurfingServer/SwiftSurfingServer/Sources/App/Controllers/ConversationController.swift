@@ -34,8 +34,7 @@ struct ConversationController: RouteCollection {
     func createConversation(req: Request) async throws -> Conversation {
         let data = try req.content.decode(CreateConversationData.self)
         let conversation = Conversation()
-        _ = try await conversationService.createConversation(conversation: conversation)
-        
+       
         let foundUser1 = try await userService.getUser(id: data.toUserId.uuidString)
         guard let user1 = foundUser1 else { throw Abort(.notFound) }
         var users = [user1]
@@ -44,8 +43,7 @@ struct ConversationController: RouteCollection {
         guard let user2 = foundUser2 else { throw Abort(.notFound) }
         users.append(user2)
         
-        let success = try await conversationService.connectUsers(id: conversation.id?.uuidString, users: users)
-        if !success { throw Abort(.notFound) }
+        _ = try await conversationService.createConversation(conversation: conversation, users: users)
         
         return conversation
     }

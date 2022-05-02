@@ -30,6 +30,9 @@ final class User: Model, Content {
     @Children(for: \.$user)
     var messages: [Message]
     
+    @Children(for: \.$user)
+    var reservations: [Reservation]
+    
     @Siblings(through: UserConversationPivot.self, from: \.$user, to: \.$conversation)
     var conversations: [Conversation]
     

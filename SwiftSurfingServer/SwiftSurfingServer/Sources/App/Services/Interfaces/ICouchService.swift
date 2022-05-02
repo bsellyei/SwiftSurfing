@@ -10,7 +10,9 @@ import Fluent
 
 //sourcery: AutoMockable
 protocol ICouchService {
-    func getAllCouches() async throws -> [Couch]
+    func getAllCouchesForUser(userId: String?) async throws -> [Couch]
+    
+    func getAllCouchesByCity(city: String?, userId: String?) async throws -> [Couch]
     
     func getCouch(id: String?) async throws -> Couch?
     

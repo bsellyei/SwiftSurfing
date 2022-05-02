@@ -10,7 +10,7 @@ import FluentKit
 
 struct HomeConfigurationMigration: AsyncMigration {
     func prepare(on database: Database) async throws {
-        let type = try await database.enum("type")
+        let type = try await database.enum("configType")
             .case("heating")
             .case("cooling")
             .case("weatherWatcher")
@@ -25,7 +25,7 @@ struct HomeConfigurationMigration: AsyncMigration {
             .schema("homeConfigurations")
             .id()
             .field("couchId", .uuid, .required, .references("couches", "id"))
-            .field("type", type, .required)
+            .field("configType", type, .required)
             .field("status", status, .required)
             .create()
     }

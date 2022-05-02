@@ -55,7 +55,10 @@ final class Couch: Model, Content {
     var ratings: [Rating]
     
     @Children(for: \.$couch)
-    var configuration: [HomeConfiguration]
+    var reservations: [Reservation]
+    
+    @Children(for: \.$couch)
+    var configurations: [HomeConfiguration]
     
     init() {}
     
@@ -74,5 +77,57 @@ final class Couch: Model, Content {
         self.imageUrls = []
         self.ratingAverage = 0
         self.ratingCount = 0
+    }
+}
+
+extension Couch {
+    func isHeatingOn() -> Bool {
+        for config in configurations {
+            if config.type == .heating && config.state == .on {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+    func isCoolingOn() -> Bool {
+        for config in configurations {
+            if config.type == .cooling && config.state == .on {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+    func isWeatherWatcherOn() -> Bool {
+        for config in configurations {
+            if config.type == .weatherWatcher && config.state == .on {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+    func getHeatingId() -> String? {
+        for config in configurations {
+            if config.type == .heating {
+                return config.id?.uuidString
+            }
+        }
+        
+        return ""
+    }
+    
+    func getCoolingId() -> String? {
+        for config in configurations {
+            if config.type == .cooling {
+                return config.id?.uuidString
+            }
+        }
+        
+        return ""
     }
 }

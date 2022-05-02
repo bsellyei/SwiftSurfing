@@ -1,4 +1,4 @@
-// Generated using Sourcery 1.8.0 — https://github.com/krzysztofzablocki/Sourcery
+// Generated using Sourcery 1.8.1 — https://github.com/krzysztofzablocki/Sourcery
 // DO NOT EDIT
 
 
@@ -72,16 +72,16 @@ open class IConversationServiceMock: IConversationService, Mock {
 		return __value
     }
 
-    open func createConversation(conversation: Conversation) throws -> Conversation {
-        addInvocation(.m_createConversation__conversation_conversation(Parameter<Conversation>.value(`conversation`)))
-		let perform = methodPerformValue(.m_createConversation__conversation_conversation(Parameter<Conversation>.value(`conversation`))) as? (Conversation) -> Void
-		perform?(`conversation`)
+    open func createConversation(conversation: Conversation, users: [User]) throws -> Conversation {
+        addInvocation(.m_createConversation__conversation_conversationusers_users(Parameter<Conversation>.value(`conversation`), Parameter<[User]>.value(`users`)))
+		let perform = methodPerformValue(.m_createConversation__conversation_conversationusers_users(Parameter<Conversation>.value(`conversation`), Parameter<[User]>.value(`users`))) as? (Conversation, [User]) -> Void
+		perform?(`conversation`, `users`)
 		var __value: Conversation
 		do {
-		    __value = try methodReturnValue(.m_createConversation__conversation_conversation(Parameter<Conversation>.value(`conversation`))).casted()
+		    __value = try methodReturnValue(.m_createConversation__conversation_conversationusers_users(Parameter<Conversation>.value(`conversation`), Parameter<[User]>.value(`users`))).casted()
 		} catch MockError.notStubed {
-			onFatalFailure("Stub return value not specified for createConversation(conversation: Conversation). Use given")
-			Failure("Stub return value not specified for createConversation(conversation: Conversation). Use given")
+			onFatalFailure("Stub return value not specified for createConversation(conversation: Conversation, users: [User]). Use given")
+			Failure("Stub return value not specified for createConversation(conversation: Conversation, users: [User]). Use given")
 		} catch {
 		    throw error
 		}
@@ -104,28 +104,11 @@ open class IConversationServiceMock: IConversationService, Mock {
 		return __value
     }
 
-    open func connectUsers(id: String?, users: [User]) throws -> Bool {
-        addInvocation(.m_connectUsers__id_idusers_users(Parameter<String?>.value(`id`), Parameter<[User]>.value(`users`)))
-		let perform = methodPerformValue(.m_connectUsers__id_idusers_users(Parameter<String?>.value(`id`), Parameter<[User]>.value(`users`))) as? (String?, [User]) -> Void
-		perform?(`id`, `users`)
-		var __value: Bool
-		do {
-		    __value = try methodReturnValue(.m_connectUsers__id_idusers_users(Parameter<String?>.value(`id`), Parameter<[User]>.value(`users`))).casted()
-		} catch MockError.notStubed {
-			onFatalFailure("Stub return value not specified for connectUsers(id: String?, users: [User]). Use given")
-			Failure("Stub return value not specified for connectUsers(id: String?, users: [User]). Use given")
-		} catch {
-		    throw error
-		}
-		return __value
-    }
-
 
     fileprivate enum MethodType {
         case m_getConversations__user_user(Parameter<User>)
-        case m_createConversation__conversation_conversation(Parameter<Conversation>)
+        case m_createConversation__conversation_conversationusers_users(Parameter<Conversation>, Parameter<[User]>)
         case m_deleteConversation__id_id(Parameter<String?>)
-        case m_connectUsers__id_idusers_users(Parameter<String?>, Parameter<[User]>)
 
         static func compareParameters(lhs: MethodType, rhs: MethodType, matcher: Matcher) -> Matcher.ComparisonResult {
             switch (lhs, rhs) {
@@ -134,20 +117,15 @@ open class IConversationServiceMock: IConversationService, Mock {
 				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsUser, rhs: rhsUser, with: matcher), lhsUser, rhsUser, "user"))
 				return Matcher.ComparisonResult(results)
 
-            case (.m_createConversation__conversation_conversation(let lhsConversation), .m_createConversation__conversation_conversation(let rhsConversation)):
+            case (.m_createConversation__conversation_conversationusers_users(let lhsConversation, let lhsUsers), .m_createConversation__conversation_conversationusers_users(let rhsConversation, let rhsUsers)):
 				var results: [Matcher.ParameterComparisonResult] = []
 				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsConversation, rhs: rhsConversation, with: matcher), lhsConversation, rhsConversation, "conversation"))
+				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsUsers, rhs: rhsUsers, with: matcher), lhsUsers, rhsUsers, "users"))
 				return Matcher.ComparisonResult(results)
 
             case (.m_deleteConversation__id_id(let lhsId), .m_deleteConversation__id_id(let rhsId)):
 				var results: [Matcher.ParameterComparisonResult] = []
 				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsId, rhs: rhsId, with: matcher), lhsId, rhsId, "id"))
-				return Matcher.ComparisonResult(results)
-
-            case (.m_connectUsers__id_idusers_users(let lhsId, let lhsUsers), .m_connectUsers__id_idusers_users(let rhsId, let rhsUsers)):
-				var results: [Matcher.ParameterComparisonResult] = []
-				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsId, rhs: rhsId, with: matcher), lhsId, rhsId, "id"))
-				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsUsers, rhs: rhsUsers, with: matcher), lhsUsers, rhsUsers, "users"))
 				return Matcher.ComparisonResult(results)
             default: return .none
             }
@@ -156,17 +134,15 @@ open class IConversationServiceMock: IConversationService, Mock {
         func intValue() -> Int {
             switch self {
             case let .m_getConversations__user_user(p0): return p0.intValue
-            case let .m_createConversation__conversation_conversation(p0): return p0.intValue
+            case let .m_createConversation__conversation_conversationusers_users(p0, p1): return p0.intValue + p1.intValue
             case let .m_deleteConversation__id_id(p0): return p0.intValue
-            case let .m_connectUsers__id_idusers_users(p0, p1): return p0.intValue + p1.intValue
             }
         }
         func assertionName() -> String {
             switch self {
             case .m_getConversations__user_user: return ".getConversations(user:)"
-            case .m_createConversation__conversation_conversation: return ".createConversation(conversation:)"
+            case .m_createConversation__conversation_conversationusers_users: return ".createConversation(conversation:users:)"
             case .m_deleteConversation__id_id: return ".deleteConversation(id:)"
-            case .m_connectUsers__id_idusers_users: return ".connectUsers(id:users:)"
             }
         }
     }
@@ -183,14 +159,11 @@ open class IConversationServiceMock: IConversationService, Mock {
         public static func getConversations(user: Parameter<User>, willReturn: [Conversation]...) -> MethodStub {
             return Given(method: .m_getConversations__user_user(`user`), products: willReturn.map({ StubProduct.return($0 as Any) }))
         }
-        public static func createConversation(conversation: Parameter<Conversation>, willReturn: Conversation...) -> MethodStub {
-            return Given(method: .m_createConversation__conversation_conversation(`conversation`), products: willReturn.map({ StubProduct.return($0 as Any) }))
+        public static func createConversation(conversation: Parameter<Conversation>, users: Parameter<[User]>, willReturn: Conversation...) -> MethodStub {
+            return Given(method: .m_createConversation__conversation_conversationusers_users(`conversation`, `users`), products: willReturn.map({ StubProduct.return($0 as Any) }))
         }
         public static func deleteConversation(id: Parameter<String?>, willReturn: Bool...) -> MethodStub {
             return Given(method: .m_deleteConversation__id_id(`id`), products: willReturn.map({ StubProduct.return($0 as Any) }))
-        }
-        public static func connectUsers(id: Parameter<String?>, users: Parameter<[User]>, willReturn: Bool...) -> MethodStub {
-            return Given(method: .m_connectUsers__id_idusers_users(`id`, `users`), products: willReturn.map({ StubProduct.return($0 as Any) }))
         }
         public static func getConversations(user: Parameter<User>, willThrow: Error...) -> MethodStub {
             return Given(method: .m_getConversations__user_user(`user`), products: willThrow.map({ StubProduct.throw($0) }))
@@ -202,12 +175,12 @@ open class IConversationServiceMock: IConversationService, Mock {
 			willProduce(stubber)
 			return given
         }
-        public static func createConversation(conversation: Parameter<Conversation>, willThrow: Error...) -> MethodStub {
-            return Given(method: .m_createConversation__conversation_conversation(`conversation`), products: willThrow.map({ StubProduct.throw($0) }))
+        public static func createConversation(conversation: Parameter<Conversation>, users: Parameter<[User]>, willThrow: Error...) -> MethodStub {
+            return Given(method: .m_createConversation__conversation_conversationusers_users(`conversation`, `users`), products: willThrow.map({ StubProduct.throw($0) }))
         }
-        public static func createConversation(conversation: Parameter<Conversation>, willProduce: (StubberThrows<Conversation>) -> Void) -> MethodStub {
+        public static func createConversation(conversation: Parameter<Conversation>, users: Parameter<[User]>, willProduce: (StubberThrows<Conversation>) -> Void) -> MethodStub {
             let willThrow: [Error] = []
-			let given: Given = { return Given(method: .m_createConversation__conversation_conversation(`conversation`), products: willThrow.map({ StubProduct.throw($0) })) }()
+			let given: Given = { return Given(method: .m_createConversation__conversation_conversationusers_users(`conversation`, `users`), products: willThrow.map({ StubProduct.throw($0) })) }()
 			let stubber = given.stubThrows(for: (Conversation).self)
 			willProduce(stubber)
 			return given
@@ -222,25 +195,14 @@ open class IConversationServiceMock: IConversationService, Mock {
 			willProduce(stubber)
 			return given
         }
-        public static func connectUsers(id: Parameter<String?>, users: Parameter<[User]>, willThrow: Error...) -> MethodStub {
-            return Given(method: .m_connectUsers__id_idusers_users(`id`, `users`), products: willThrow.map({ StubProduct.throw($0) }))
-        }
-        public static func connectUsers(id: Parameter<String?>, users: Parameter<[User]>, willProduce: (StubberThrows<Bool>) -> Void) -> MethodStub {
-            let willThrow: [Error] = []
-			let given: Given = { return Given(method: .m_connectUsers__id_idusers_users(`id`, `users`), products: willThrow.map({ StubProduct.throw($0) })) }()
-			let stubber = given.stubThrows(for: (Bool).self)
-			willProduce(stubber)
-			return given
-        }
     }
 
     public struct Verify {
         fileprivate var method: MethodType
 
         public static func getConversations(user: Parameter<User>) -> Verify { return Verify(method: .m_getConversations__user_user(`user`))}
-        public static func createConversation(conversation: Parameter<Conversation>) -> Verify { return Verify(method: .m_createConversation__conversation_conversation(`conversation`))}
+        public static func createConversation(conversation: Parameter<Conversation>, users: Parameter<[User]>) -> Verify { return Verify(method: .m_createConversation__conversation_conversationusers_users(`conversation`, `users`))}
         public static func deleteConversation(id: Parameter<String?>) -> Verify { return Verify(method: .m_deleteConversation__id_id(`id`))}
-        public static func connectUsers(id: Parameter<String?>, users: Parameter<[User]>) -> Verify { return Verify(method: .m_connectUsers__id_idusers_users(`id`, `users`))}
     }
 
     public struct Perform {
@@ -250,14 +212,11 @@ open class IConversationServiceMock: IConversationService, Mock {
         public static func getConversations(user: Parameter<User>, perform: @escaping (User) -> Void) -> Perform {
             return Perform(method: .m_getConversations__user_user(`user`), performs: perform)
         }
-        public static func createConversation(conversation: Parameter<Conversation>, perform: @escaping (Conversation) -> Void) -> Perform {
-            return Perform(method: .m_createConversation__conversation_conversation(`conversation`), performs: perform)
+        public static func createConversation(conversation: Parameter<Conversation>, users: Parameter<[User]>, perform: @escaping (Conversation, [User]) -> Void) -> Perform {
+            return Perform(method: .m_createConversation__conversation_conversationusers_users(`conversation`, `users`), performs: perform)
         }
         public static func deleteConversation(id: Parameter<String?>, perform: @escaping (String?) -> Void) -> Perform {
             return Perform(method: .m_deleteConversation__id_id(`id`), performs: perform)
-        }
-        public static func connectUsers(id: Parameter<String?>, users: Parameter<[User]>, perform: @escaping (String?, [User]) -> Void) -> Perform {
-            return Perform(method: .m_connectUsers__id_idusers_users(`id`, `users`), performs: perform)
         }
     }
 
@@ -378,16 +337,32 @@ open class ICouchServiceMock: ICouchService, Mock {
 
 
 
-    open func getAllCouches() throws -> [Couch] {
-        addInvocation(.m_getAllCouches)
-		let perform = methodPerformValue(.m_getAllCouches) as? () -> Void
-		perform?()
+    open func getAllCouchesForUser(userId: String?) throws -> [Couch] {
+        addInvocation(.m_getAllCouchesForUser__userId_userId(Parameter<String?>.value(`userId`)))
+		let perform = methodPerformValue(.m_getAllCouchesForUser__userId_userId(Parameter<String?>.value(`userId`))) as? (String?) -> Void
+		perform?(`userId`)
 		var __value: [Couch]
 		do {
-		    __value = try methodReturnValue(.m_getAllCouches).casted()
+		    __value = try methodReturnValue(.m_getAllCouchesForUser__userId_userId(Parameter<String?>.value(`userId`))).casted()
 		} catch MockError.notStubed {
-			onFatalFailure("Stub return value not specified for getAllCouches(). Use given")
-			Failure("Stub return value not specified for getAllCouches(). Use given")
+			onFatalFailure("Stub return value not specified for getAllCouchesForUser(userId: String?). Use given")
+			Failure("Stub return value not specified for getAllCouchesForUser(userId: String?). Use given")
+		} catch {
+		    throw error
+		}
+		return __value
+    }
+
+    open func getAllCouchesByCity(city: String?, userId: String?) throws -> [Couch] {
+        addInvocation(.m_getAllCouchesByCity__city_cityuserId_userId(Parameter<String?>.value(`city`), Parameter<String?>.value(`userId`)))
+		let perform = methodPerformValue(.m_getAllCouchesByCity__city_cityuserId_userId(Parameter<String?>.value(`city`), Parameter<String?>.value(`userId`))) as? (String?, String?) -> Void
+		perform?(`city`, `userId`)
+		var __value: [Couch]
+		do {
+		    __value = try methodReturnValue(.m_getAllCouchesByCity__city_cityuserId_userId(Parameter<String?>.value(`city`), Parameter<String?>.value(`userId`))).casted()
+		} catch MockError.notStubed {
+			onFatalFailure("Stub return value not specified for getAllCouchesByCity(city: String?, userId: String?). Use given")
+			Failure("Stub return value not specified for getAllCouchesByCity(city: String?, userId: String?). Use given")
 		} catch {
 		    throw error
 		}
@@ -443,14 +418,24 @@ open class ICouchServiceMock: ICouchService, Mock {
 
 
     fileprivate enum MethodType {
-        case m_getAllCouches
+        case m_getAllCouchesForUser__userId_userId(Parameter<String?>)
+        case m_getAllCouchesByCity__city_cityuserId_userId(Parameter<String?>, Parameter<String?>)
         case m_getCouch__id_id(Parameter<String?>)
         case m_createCouch__couch_couch(Parameter<Couch>)
         case m_deleteCouch__id_id(Parameter<String?>)
 
         static func compareParameters(lhs: MethodType, rhs: MethodType, matcher: Matcher) -> Matcher.ComparisonResult {
             switch (lhs, rhs) {
-            case (.m_getAllCouches, .m_getAllCouches): return .match
+            case (.m_getAllCouchesForUser__userId_userId(let lhsUserid), .m_getAllCouchesForUser__userId_userId(let rhsUserid)):
+				var results: [Matcher.ParameterComparisonResult] = []
+				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsUserid, rhs: rhsUserid, with: matcher), lhsUserid, rhsUserid, "userId"))
+				return Matcher.ComparisonResult(results)
+
+            case (.m_getAllCouchesByCity__city_cityuserId_userId(let lhsCity, let lhsUserid), .m_getAllCouchesByCity__city_cityuserId_userId(let rhsCity, let rhsUserid)):
+				var results: [Matcher.ParameterComparisonResult] = []
+				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsCity, rhs: rhsCity, with: matcher), lhsCity, rhsCity, "city"))
+				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsUserid, rhs: rhsUserid, with: matcher), lhsUserid, rhsUserid, "userId"))
+				return Matcher.ComparisonResult(results)
 
             case (.m_getCouch__id_id(let lhsId), .m_getCouch__id_id(let rhsId)):
 				var results: [Matcher.ParameterComparisonResult] = []
@@ -472,7 +457,8 @@ open class ICouchServiceMock: ICouchService, Mock {
 
         func intValue() -> Int {
             switch self {
-            case .m_getAllCouches: return 0
+            case let .m_getAllCouchesForUser__userId_userId(p0): return p0.intValue
+            case let .m_getAllCouchesByCity__city_cityuserId_userId(p0, p1): return p0.intValue + p1.intValue
             case let .m_getCouch__id_id(p0): return p0.intValue
             case let .m_createCouch__couch_couch(p0): return p0.intValue
             case let .m_deleteCouch__id_id(p0): return p0.intValue
@@ -480,7 +466,8 @@ open class ICouchServiceMock: ICouchService, Mock {
         }
         func assertionName() -> String {
             switch self {
-            case .m_getAllCouches: return ".getAllCouches()"
+            case .m_getAllCouchesForUser__userId_userId: return ".getAllCouchesForUser(userId:)"
+            case .m_getAllCouchesByCity__city_cityuserId_userId: return ".getAllCouchesByCity(city:userId:)"
             case .m_getCouch__id_id: return ".getCouch(id:)"
             case .m_createCouch__couch_couch: return ".createCouch(couch:)"
             case .m_deleteCouch__id_id: return ".deleteCouch(id:)"
@@ -497,8 +484,11 @@ open class ICouchServiceMock: ICouchService, Mock {
         }
 
 
-        public static func getAllCouches(willReturn: [Couch]...) -> MethodStub {
-            return Given(method: .m_getAllCouches, products: willReturn.map({ StubProduct.return($0 as Any) }))
+        public static func getAllCouchesForUser(userId: Parameter<String?>, willReturn: [Couch]...) -> MethodStub {
+            return Given(method: .m_getAllCouchesForUser__userId_userId(`userId`), products: willReturn.map({ StubProduct.return($0 as Any) }))
+        }
+        public static func getAllCouchesByCity(city: Parameter<String?>, userId: Parameter<String?>, willReturn: [Couch]...) -> MethodStub {
+            return Given(method: .m_getAllCouchesByCity__city_cityuserId_userId(`city`, `userId`), products: willReturn.map({ StubProduct.return($0 as Any) }))
         }
         public static func getCouch(id: Parameter<String?>, willReturn: Couch?...) -> MethodStub {
             return Given(method: .m_getCouch__id_id(`id`), products: willReturn.map({ StubProduct.return($0 as Any) }))
@@ -509,12 +499,22 @@ open class ICouchServiceMock: ICouchService, Mock {
         public static func deleteCouch(id: Parameter<String?>, willReturn: Bool...) -> MethodStub {
             return Given(method: .m_deleteCouch__id_id(`id`), products: willReturn.map({ StubProduct.return($0 as Any) }))
         }
-        public static func getAllCouches(willThrow: Error...) -> MethodStub {
-            return Given(method: .m_getAllCouches, products: willThrow.map({ StubProduct.throw($0) }))
+        public static func getAllCouchesForUser(userId: Parameter<String?>, willThrow: Error...) -> MethodStub {
+            return Given(method: .m_getAllCouchesForUser__userId_userId(`userId`), products: willThrow.map({ StubProduct.throw($0) }))
         }
-        public static func getAllCouches(willProduce: (StubberThrows<[Couch]>) -> Void) -> MethodStub {
+        public static func getAllCouchesForUser(userId: Parameter<String?>, willProduce: (StubberThrows<[Couch]>) -> Void) -> MethodStub {
             let willThrow: [Error] = []
-			let given: Given = { return Given(method: .m_getAllCouches, products: willThrow.map({ StubProduct.throw($0) })) }()
+			let given: Given = { return Given(method: .m_getAllCouchesForUser__userId_userId(`userId`), products: willThrow.map({ StubProduct.throw($0) })) }()
+			let stubber = given.stubThrows(for: ([Couch]).self)
+			willProduce(stubber)
+			return given
+        }
+        public static func getAllCouchesByCity(city: Parameter<String?>, userId: Parameter<String?>, willThrow: Error...) -> MethodStub {
+            return Given(method: .m_getAllCouchesByCity__city_cityuserId_userId(`city`, `userId`), products: willThrow.map({ StubProduct.throw($0) }))
+        }
+        public static func getAllCouchesByCity(city: Parameter<String?>, userId: Parameter<String?>, willProduce: (StubberThrows<[Couch]>) -> Void) -> MethodStub {
+            let willThrow: [Error] = []
+			let given: Given = { return Given(method: .m_getAllCouchesByCity__city_cityuserId_userId(`city`, `userId`), products: willThrow.map({ StubProduct.throw($0) })) }()
 			let stubber = given.stubThrows(for: ([Couch]).self)
 			willProduce(stubber)
 			return given
@@ -554,7 +554,8 @@ open class ICouchServiceMock: ICouchService, Mock {
     public struct Verify {
         fileprivate var method: MethodType
 
-        public static func getAllCouches() -> Verify { return Verify(method: .m_getAllCouches)}
+        public static func getAllCouchesForUser(userId: Parameter<String?>) -> Verify { return Verify(method: .m_getAllCouchesForUser__userId_userId(`userId`))}
+        public static func getAllCouchesByCity(city: Parameter<String?>, userId: Parameter<String?>) -> Verify { return Verify(method: .m_getAllCouchesByCity__city_cityuserId_userId(`city`, `userId`))}
         public static func getCouch(id: Parameter<String?>) -> Verify { return Verify(method: .m_getCouch__id_id(`id`))}
         public static func createCouch(couch: Parameter<Couch>) -> Verify { return Verify(method: .m_createCouch__couch_couch(`couch`))}
         public static func deleteCouch(id: Parameter<String?>) -> Verify { return Verify(method: .m_deleteCouch__id_id(`id`))}
@@ -564,8 +565,11 @@ open class ICouchServiceMock: ICouchService, Mock {
         fileprivate var method: MethodType
         var performs: Any
 
-        public static func getAllCouches(perform: @escaping () -> Void) -> Perform {
-            return Perform(method: .m_getAllCouches, performs: perform)
+        public static func getAllCouchesForUser(userId: Parameter<String?>, perform: @escaping (String?) -> Void) -> Perform {
+            return Perform(method: .m_getAllCouchesForUser__userId_userId(`userId`), performs: perform)
+        }
+        public static func getAllCouchesByCity(city: Parameter<String?>, userId: Parameter<String?>, perform: @escaping (String?, String?) -> Void) -> Perform {
+            return Perform(method: .m_getAllCouchesByCity__city_cityuserId_userId(`city`, `userId`), performs: perform)
         }
         public static func getCouch(id: Parameter<String?>, perform: @escaping (String?) -> Void) -> Perform {
             return Perform(method: .m_getCouch__id_id(`id`), performs: perform)
@@ -743,11 +747,28 @@ open class IHomeConfigurationServiceMock: IHomeConfigurationService, Mock {
 		return __value
     }
 
+    open func getHomeConfigurationsByType(type: ConfigurationType, state: State) throws -> [HomeConfiguration] {
+        addInvocation(.m_getHomeConfigurationsByType__type_typestate_state(Parameter<ConfigurationType>.value(`type`), Parameter<State>.value(`state`)))
+		let perform = methodPerformValue(.m_getHomeConfigurationsByType__type_typestate_state(Parameter<ConfigurationType>.value(`type`), Parameter<State>.value(`state`))) as? (ConfigurationType, State) -> Void
+		perform?(`type`, `state`)
+		var __value: [HomeConfiguration]
+		do {
+		    __value = try methodReturnValue(.m_getHomeConfigurationsByType__type_typestate_state(Parameter<ConfigurationType>.value(`type`), Parameter<State>.value(`state`))).casted()
+		} catch MockError.notStubed {
+			onFatalFailure("Stub return value not specified for getHomeConfigurationsByType(type: ConfigurationType, state: State). Use given")
+			Failure("Stub return value not specified for getHomeConfigurationsByType(type: ConfigurationType, state: State). Use given")
+		} catch {
+		    throw error
+		}
+		return __value
+    }
+
 
     fileprivate enum MethodType {
         case m_getHomeConfigurations__couchId_couchId(Parameter<String?>)
         case m_createHomeConfigurations__configuration_configuration(Parameter<HomeConfiguration>)
         case m_switchState__id_id(Parameter<String?>)
+        case m_getHomeConfigurationsByType__type_typestate_state(Parameter<ConfigurationType>, Parameter<State>)
 
         static func compareParameters(lhs: MethodType, rhs: MethodType, matcher: Matcher) -> Matcher.ComparisonResult {
             switch (lhs, rhs) {
@@ -765,6 +786,12 @@ open class IHomeConfigurationServiceMock: IHomeConfigurationService, Mock {
 				var results: [Matcher.ParameterComparisonResult] = []
 				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsId, rhs: rhsId, with: matcher), lhsId, rhsId, "id"))
 				return Matcher.ComparisonResult(results)
+
+            case (.m_getHomeConfigurationsByType__type_typestate_state(let lhsType, let lhsState), .m_getHomeConfigurationsByType__type_typestate_state(let rhsType, let rhsState)):
+				var results: [Matcher.ParameterComparisonResult] = []
+				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsType, rhs: rhsType, with: matcher), lhsType, rhsType, "type"))
+				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsState, rhs: rhsState, with: matcher), lhsState, rhsState, "state"))
+				return Matcher.ComparisonResult(results)
             default: return .none
             }
         }
@@ -774,6 +801,7 @@ open class IHomeConfigurationServiceMock: IHomeConfigurationService, Mock {
             case let .m_getHomeConfigurations__couchId_couchId(p0): return p0.intValue
             case let .m_createHomeConfigurations__configuration_configuration(p0): return p0.intValue
             case let .m_switchState__id_id(p0): return p0.intValue
+            case let .m_getHomeConfigurationsByType__type_typestate_state(p0, p1): return p0.intValue + p1.intValue
             }
         }
         func assertionName() -> String {
@@ -781,6 +809,7 @@ open class IHomeConfigurationServiceMock: IHomeConfigurationService, Mock {
             case .m_getHomeConfigurations__couchId_couchId: return ".getHomeConfigurations(couchId:)"
             case .m_createHomeConfigurations__configuration_configuration: return ".createHomeConfigurations(configuration:)"
             case .m_switchState__id_id: return ".switchState(id:)"
+            case .m_getHomeConfigurationsByType__type_typestate_state: return ".getHomeConfigurationsByType(type:state:)"
             }
         }
     }
@@ -802,6 +831,9 @@ open class IHomeConfigurationServiceMock: IHomeConfigurationService, Mock {
         }
         public static func switchState(id: Parameter<String?>, willReturn: HomeConfiguration...) -> MethodStub {
             return Given(method: .m_switchState__id_id(`id`), products: willReturn.map({ StubProduct.return($0 as Any) }))
+        }
+        public static func getHomeConfigurationsByType(type: Parameter<ConfigurationType>, state: Parameter<State>, willReturn: [HomeConfiguration]...) -> MethodStub {
+            return Given(method: .m_getHomeConfigurationsByType__type_typestate_state(`type`, `state`), products: willReturn.map({ StubProduct.return($0 as Any) }))
         }
         public static func getHomeConfigurations(couchId: Parameter<String?>, willThrow: Error...) -> MethodStub {
             return Given(method: .m_getHomeConfigurations__couchId_couchId(`couchId`), products: willThrow.map({ StubProduct.throw($0) }))
@@ -833,6 +865,16 @@ open class IHomeConfigurationServiceMock: IHomeConfigurationService, Mock {
 			willProduce(stubber)
 			return given
         }
+        public static func getHomeConfigurationsByType(type: Parameter<ConfigurationType>, state: Parameter<State>, willThrow: Error...) -> MethodStub {
+            return Given(method: .m_getHomeConfigurationsByType__type_typestate_state(`type`, `state`), products: willThrow.map({ StubProduct.throw($0) }))
+        }
+        public static func getHomeConfigurationsByType(type: Parameter<ConfigurationType>, state: Parameter<State>, willProduce: (StubberThrows<[HomeConfiguration]>) -> Void) -> MethodStub {
+            let willThrow: [Error] = []
+			let given: Given = { return Given(method: .m_getHomeConfigurationsByType__type_typestate_state(`type`, `state`), products: willThrow.map({ StubProduct.throw($0) })) }()
+			let stubber = given.stubThrows(for: ([HomeConfiguration]).self)
+			willProduce(stubber)
+			return given
+        }
     }
 
     public struct Verify {
@@ -841,6 +883,7 @@ open class IHomeConfigurationServiceMock: IHomeConfigurationService, Mock {
         public static func getHomeConfigurations(couchId: Parameter<String?>) -> Verify { return Verify(method: .m_getHomeConfigurations__couchId_couchId(`couchId`))}
         public static func createHomeConfigurations(configuration: Parameter<HomeConfiguration>) -> Verify { return Verify(method: .m_createHomeConfigurations__configuration_configuration(`configuration`))}
         public static func switchState(id: Parameter<String?>) -> Verify { return Verify(method: .m_switchState__id_id(`id`))}
+        public static func getHomeConfigurationsByType(type: Parameter<ConfigurationType>, state: Parameter<State>) -> Verify { return Verify(method: .m_getHomeConfigurationsByType__type_typestate_state(`type`, `state`))}
     }
 
     public struct Perform {
@@ -855,6 +898,9 @@ open class IHomeConfigurationServiceMock: IHomeConfigurationService, Mock {
         }
         public static func switchState(id: Parameter<String?>, perform: @escaping (String?) -> Void) -> Perform {
             return Perform(method: .m_switchState__id_id(`id`), performs: perform)
+        }
+        public static func getHomeConfigurationsByType(type: Parameter<ConfigurationType>, state: Parameter<State>, perform: @escaping (ConfigurationType, State) -> Void) -> Perform {
+            return Perform(method: .m_getHomeConfigurationsByType__type_typestate_state(`type`, `state`), performs: perform)
         }
     }
 
@@ -1415,6 +1461,286 @@ open class IRatingServiceMock: IRatingService, Mock {
         }
         public static func deleteRating(id: Parameter<String?>, perform: @escaping (String?) -> Void) -> Perform {
             return Perform(method: .m_deleteRating__id_id(`id`), performs: perform)
+        }
+    }
+
+    public func given(_ method: Given) {
+        methodReturnValues.append(method)
+    }
+
+    public func perform(_ method: Perform) {
+        methodPerformValues.append(method)
+        methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
+    }
+
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+        let fullMatches = matchingCalls(method, file: file, line: line)
+        let success = count.matches(fullMatches)
+        let assertionName = method.method.assertionName()
+        let feedback: String = {
+            guard !success else { return "" }
+            return Utils.closestCallsMessage(
+                for: self.invocations.map { invocation in
+                    matcher.set(file: file, line: line)
+                    defer { matcher.clearFileAndLine() }
+                    return MethodType.compareParameters(lhs: invocation, rhs: method.method, matcher: matcher)
+                },
+                name: assertionName
+            )
+        }()
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+    }
+
+    private func addInvocation(_ call: MethodType) {
+        self.queue.sync { invocations.append(call) }
+    }
+    private func methodReturnValue(_ method: MethodType) throws -> StubProduct {
+        matcher.set(file: self.file, line: self.line)
+        defer { matcher.clearFileAndLine() }
+        let candidates = sequencingPolicy.sorted(methodReturnValues, by: { $0.method.intValue() > $1.method.intValue() })
+        let matched = candidates.first(where: { $0.isValid && MethodType.compareParameters(lhs: $0.method, rhs: method, matcher: matcher).isFullMatch })
+        guard let product = matched?.getProduct(policy: self.stubbingPolicy) else { throw MockError.notStubed }
+        return product
+    }
+    private func methodPerformValue(_ method: MethodType) -> Any? {
+        matcher.set(file: self.file, line: self.line)
+        defer { matcher.clearFileAndLine() }
+        let matched = methodPerformValues.reversed().first { MethodType.compareParameters(lhs: $0.method, rhs: method, matcher: matcher).isFullMatch }
+        return matched?.performs
+    }
+    private func matchingCalls(_ method: MethodType, file: StaticString?, line: UInt?) -> [MethodType] {
+        matcher.set(file: file ?? self.file, line: line ?? self.line)
+        defer { matcher.clearFileAndLine() }
+        return invocations.filter { MethodType.compareParameters(lhs: $0, rhs: method, matcher: matcher).isFullMatch }
+    }
+    private func matchingCalls(_ method: Verify, file: StaticString?, line: UInt?) -> Int {
+        return matchingCalls(method.method, file: file, line: line).count
+    }
+    private func givenGetterValue<T>(_ method: MethodType, _ message: String) -> T {
+        do {
+            return try methodReturnValue(method).casted()
+        } catch {
+            onFatalFailure(message)
+            Failure(message)
+        }
+    }
+    private func optionalGivenGetterValue<T>(_ method: MethodType, _ message: String) -> T? {
+        do {
+            return try methodReturnValue(method).casted()
+        } catch {
+            return nil
+        }
+    }
+    private func onFatalFailure(_ message: String) {
+        guard let file = self.file, let line = self.line else { return } // Let if fail if cannot handle gratefully
+        SwiftyMockyTestObserver.handleFatalError(message: message, file: file, line: line)
+    }
+}
+
+// MARK: - IReservationService
+
+open class IReservationServiceMock: IReservationService, Mock {
+    public init(sequencing sequencingPolicy: SequencingPolicy = .lastWrittenResolvedFirst, stubbing stubbingPolicy: StubbingPolicy = .wrap, file: StaticString = #file, line: UInt = #line) {
+        SwiftyMockyTestObserver.setup()
+        self.sequencingPolicy = sequencingPolicy
+        self.stubbingPolicy = stubbingPolicy
+        self.file = file
+        self.line = line
+    }
+
+    var matcher: Matcher = Matcher.default
+    var stubbingPolicy: StubbingPolicy = .wrap
+    var sequencingPolicy: SequencingPolicy = .lastWrittenResolvedFirst
+
+    private var queue = DispatchQueue(label: "com.swiftymocky.invocations", qos: .userInteractive)
+    private var invocations: [MethodType] = []
+    private var methodReturnValues: [Given] = []
+    private var methodPerformValues: [Perform] = []
+    private var file: StaticString?
+    private var line: UInt?
+
+    public typealias PropertyStub = Given
+    public typealias MethodStub = Given
+    public typealias SubscriptStub = Given
+
+    /// Convenience method - call setupMock() to extend debug information when failure occurs
+    public func setupMock(file: StaticString = #file, line: UInt = #line) {
+        self.file = file
+        self.line = line
+    }
+
+    /// Clear mock internals. You can specify what to reset (invocations aka verify, givens or performs) or leave it empty to clear all mock internals
+    public func resetMock(_ scopes: MockScope...) {
+        let scopes: [MockScope] = scopes.isEmpty ? [.invocation, .given, .perform] : scopes
+        if scopes.contains(.invocation) { invocations = [] }
+        if scopes.contains(.given) { methodReturnValues = [] }
+        if scopes.contains(.perform) { methodPerformValues = [] }
+    }
+
+
+
+
+
+    open func createReservation(reservation: Reservation) throws -> Reservation {
+        addInvocation(.m_createReservation__reservation_reservation(Parameter<Reservation>.value(`reservation`)))
+		let perform = methodPerformValue(.m_createReservation__reservation_reservation(Parameter<Reservation>.value(`reservation`))) as? (Reservation) -> Void
+		perform?(`reservation`)
+		var __value: Reservation
+		do {
+		    __value = try methodReturnValue(.m_createReservation__reservation_reservation(Parameter<Reservation>.value(`reservation`))).casted()
+		} catch MockError.notStubed {
+			onFatalFailure("Stub return value not specified for createReservation(reservation: Reservation). Use given")
+			Failure("Stub return value not specified for createReservation(reservation: Reservation). Use given")
+		} catch {
+		    throw error
+		}
+		return __value
+    }
+
+    open func getReservations(user: User) throws -> [Reservation] {
+        addInvocation(.m_getReservations__user_user(Parameter<User>.value(`user`)))
+		let perform = methodPerformValue(.m_getReservations__user_user(Parameter<User>.value(`user`))) as? (User) -> Void
+		perform?(`user`)
+		var __value: [Reservation]
+		do {
+		    __value = try methodReturnValue(.m_getReservations__user_user(Parameter<User>.value(`user`))).casted()
+		} catch MockError.notStubed {
+			onFatalFailure("Stub return value not specified for getReservations(user: User). Use given")
+			Failure("Stub return value not specified for getReservations(user: User). Use given")
+		} catch {
+		    throw error
+		}
+		return __value
+    }
+
+    open func getReservations(couchId: String?) throws -> [Reservation] {
+        addInvocation(.m_getReservations__couchId_couchId(Parameter<String?>.value(`couchId`)))
+		let perform = methodPerformValue(.m_getReservations__couchId_couchId(Parameter<String?>.value(`couchId`))) as? (String?) -> Void
+		perform?(`couchId`)
+		var __value: [Reservation]
+		do {
+		    __value = try methodReturnValue(.m_getReservations__couchId_couchId(Parameter<String?>.value(`couchId`))).casted()
+		} catch MockError.notStubed {
+			onFatalFailure("Stub return value not specified for getReservations(couchId: String?). Use given")
+			Failure("Stub return value not specified for getReservations(couchId: String?). Use given")
+		} catch {
+		    throw error
+		}
+		return __value
+    }
+
+
+    fileprivate enum MethodType {
+        case m_createReservation__reservation_reservation(Parameter<Reservation>)
+        case m_getReservations__user_user(Parameter<User>)
+        case m_getReservations__couchId_couchId(Parameter<String?>)
+
+        static func compareParameters(lhs: MethodType, rhs: MethodType, matcher: Matcher) -> Matcher.ComparisonResult {
+            switch (lhs, rhs) {
+            case (.m_createReservation__reservation_reservation(let lhsReservation), .m_createReservation__reservation_reservation(let rhsReservation)):
+				var results: [Matcher.ParameterComparisonResult] = []
+				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsReservation, rhs: rhsReservation, with: matcher), lhsReservation, rhsReservation, "reservation"))
+				return Matcher.ComparisonResult(results)
+
+            case (.m_getReservations__user_user(let lhsUser), .m_getReservations__user_user(let rhsUser)):
+				var results: [Matcher.ParameterComparisonResult] = []
+				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsUser, rhs: rhsUser, with: matcher), lhsUser, rhsUser, "user"))
+				return Matcher.ComparisonResult(results)
+
+            case (.m_getReservations__couchId_couchId(let lhsCouchid), .m_getReservations__couchId_couchId(let rhsCouchid)):
+				var results: [Matcher.ParameterComparisonResult] = []
+				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsCouchid, rhs: rhsCouchid, with: matcher), lhsCouchid, rhsCouchid, "couchId"))
+				return Matcher.ComparisonResult(results)
+            default: return .none
+            }
+        }
+
+        func intValue() -> Int {
+            switch self {
+            case let .m_createReservation__reservation_reservation(p0): return p0.intValue
+            case let .m_getReservations__user_user(p0): return p0.intValue
+            case let .m_getReservations__couchId_couchId(p0): return p0.intValue
+            }
+        }
+        func assertionName() -> String {
+            switch self {
+            case .m_createReservation__reservation_reservation: return ".createReservation(reservation:)"
+            case .m_getReservations__user_user: return ".getReservations(user:)"
+            case .m_getReservations__couchId_couchId: return ".getReservations(couchId:)"
+            }
+        }
+    }
+
+    open class Given: StubbedMethod {
+        fileprivate var method: MethodType
+
+        private init(method: MethodType, products: [StubProduct]) {
+            self.method = method
+            super.init(products)
+        }
+
+
+        public static func createReservation(reservation: Parameter<Reservation>, willReturn: Reservation...) -> MethodStub {
+            return Given(method: .m_createReservation__reservation_reservation(`reservation`), products: willReturn.map({ StubProduct.return($0 as Any) }))
+        }
+        public static func getReservations(user: Parameter<User>, willReturn: [Reservation]...) -> MethodStub {
+            return Given(method: .m_getReservations__user_user(`user`), products: willReturn.map({ StubProduct.return($0 as Any) }))
+        }
+        public static func getReservations(couchId: Parameter<String?>, willReturn: [Reservation]...) -> MethodStub {
+            return Given(method: .m_getReservations__couchId_couchId(`couchId`), products: willReturn.map({ StubProduct.return($0 as Any) }))
+        }
+        public static func createReservation(reservation: Parameter<Reservation>, willThrow: Error...) -> MethodStub {
+            return Given(method: .m_createReservation__reservation_reservation(`reservation`), products: willThrow.map({ StubProduct.throw($0) }))
+        }
+        public static func createReservation(reservation: Parameter<Reservation>, willProduce: (StubberThrows<Reservation>) -> Void) -> MethodStub {
+            let willThrow: [Error] = []
+			let given: Given = { return Given(method: .m_createReservation__reservation_reservation(`reservation`), products: willThrow.map({ StubProduct.throw($0) })) }()
+			let stubber = given.stubThrows(for: (Reservation).self)
+			willProduce(stubber)
+			return given
+        }
+        public static func getReservations(user: Parameter<User>, willThrow: Error...) -> MethodStub {
+            return Given(method: .m_getReservations__user_user(`user`), products: willThrow.map({ StubProduct.throw($0) }))
+        }
+        public static func getReservations(user: Parameter<User>, willProduce: (StubberThrows<[Reservation]>) -> Void) -> MethodStub {
+            let willThrow: [Error] = []
+			let given: Given = { return Given(method: .m_getReservations__user_user(`user`), products: willThrow.map({ StubProduct.throw($0) })) }()
+			let stubber = given.stubThrows(for: ([Reservation]).self)
+			willProduce(stubber)
+			return given
+        }
+        public static func getReservations(couchId: Parameter<String?>, willThrow: Error...) -> MethodStub {
+            return Given(method: .m_getReservations__couchId_couchId(`couchId`), products: willThrow.map({ StubProduct.throw($0) }))
+        }
+        public static func getReservations(couchId: Parameter<String?>, willProduce: (StubberThrows<[Reservation]>) -> Void) -> MethodStub {
+            let willThrow: [Error] = []
+			let given: Given = { return Given(method: .m_getReservations__couchId_couchId(`couchId`), products: willThrow.map({ StubProduct.throw($0) })) }()
+			let stubber = given.stubThrows(for: ([Reservation]).self)
+			willProduce(stubber)
+			return given
+        }
+    }
+
+    public struct Verify {
+        fileprivate var method: MethodType
+
+        public static func createReservation(reservation: Parameter<Reservation>) -> Verify { return Verify(method: .m_createReservation__reservation_reservation(`reservation`))}
+        public static func getReservations(user: Parameter<User>) -> Verify { return Verify(method: .m_getReservations__user_user(`user`))}
+        public static func getReservations(couchId: Parameter<String?>) -> Verify { return Verify(method: .m_getReservations__couchId_couchId(`couchId`))}
+    }
+
+    public struct Perform {
+        fileprivate var method: MethodType
+        var performs: Any
+
+        public static func createReservation(reservation: Parameter<Reservation>, perform: @escaping (Reservation) -> Void) -> Perform {
+            return Perform(method: .m_createReservation__reservation_reservation(`reservation`), performs: perform)
+        }
+        public static func getReservations(user: Parameter<User>, perform: @escaping (User) -> Void) -> Perform {
+            return Perform(method: .m_getReservations__user_user(`user`), performs: perform)
+        }
+        public static func getReservations(couchId: Parameter<String?>, perform: @escaping (String?) -> Void) -> Perform {
+            return Perform(method: .m_getReservations__couchId_couchId(`couchId`), performs: perform)
         }
     }
 

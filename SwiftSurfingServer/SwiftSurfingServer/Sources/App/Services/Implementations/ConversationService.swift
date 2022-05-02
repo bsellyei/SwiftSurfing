@@ -27,8 +27,10 @@ class ConversationService: IConversationService {
         return conversation
     }
     
-    func createConversation(conversation: Conversation) async throws -> Conversation {
+    func createConversation(conversation: Conversation, users: [User]) async throws -> Conversation {
         try await conversation.save(on: db)
+        let _ = try await connectUsers(id: conversation.id?.uuidString, users: users)
+        
         return conversation
     }
     

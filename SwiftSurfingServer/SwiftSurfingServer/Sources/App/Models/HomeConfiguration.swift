@@ -18,7 +18,7 @@ final class HomeConfiguration: Model, Content {
     @Parent(key: "couchId")
     var couch: Couch
     
-    @Enum(key: "type")
+    @Enum(key: "configType")
     var type: ConfigurationType
     
     @Enum(key: "state")

@@ -36,7 +36,7 @@ struct MessageController: RouteCollection {
     }
     
     func deleteMessage(req: Request) async throws -> HTTPStatus {
-        let success = try await messageService.deleteMessage(id: req.parameters.get("messageId"))
+        let success = try await messageService.deleteMessage(id: req.parameters.get("id"))
         if !success { throw Abort(.notFound) }
         
         return .noContent
