@@ -34,22 +34,6 @@
 		DB1EE43A263B0C51005C4AD1 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1EE439263B0C51005C4AD1 /* ImageManager.swift */; };
 		DB1EE44026432912005C4AD1 /* UserServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1EE43F26432912005C4AD1 /* UserServiceProtocol.swift */; };
 		DB1EE44326432984005C4AD1 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1EE44226432984005C4AD1 /* UserService.swift */; };
-		DB404FAA2816B90800AE5CC9 /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404F982816B90700AE5CC9 /* APIHelper.swift */; };
-		DB404FAB2816B90800AE5CC9 /* AlamofireImplementations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404F992816B90700AE5CC9 /* AlamofireImplementations.swift */; };
-		DB404FAC2816B90800AE5CC9 /* JSONValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404F9A2816B90700AE5CC9 /* JSONValue.swift */; };
-		DB404FAD2816B90800AE5CC9 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404F9C2816B90800AE5CC9 /* UserAPI.swift */; };
-		DB404FAE2816B90800AE5CC9 /* CouchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404F9D2816B90800AE5CC9 /* CouchAPI.swift */; };
-		DB404FAF2816B90800AE5CC9 /* RatingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404F9E2816B90800AE5CC9 /* RatingAPI.swift */; };
-		DB404FB02816B90800AE5CC9 /* CodableHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404F9F2816B90800AE5CC9 /* CodableHelper.swift */; };
-		DB404FB12816B90800AE5CC9 /* JSONEncodableEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404FA02816B90800AE5CC9 /* JSONEncodableEncoding.swift */; };
-		DB404FB22816B90800AE5CC9 /* APIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404FA12816B90800AE5CC9 /* APIs.swift */; };
-		DB404FB32816B90800AE5CC9 /* GeneratedCouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404FA32816B90800AE5CC9 /* GeneratedCouch.swift */; };
-		DB404FB42816B90800AE5CC9 /* GeneratedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404FA42816B90800AE5CC9 /* GeneratedUser.swift */; };
-		DB404FB52816B90800AE5CC9 /* GeneratedRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404FA52816B90800AE5CC9 /* GeneratedRating.swift */; };
-		DB404FB62816B90800AE5CC9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404FA62816B90800AE5CC9 /* Extensions.swift */; };
-		DB404FB72816B90800AE5CC9 /* JSONEncodingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404FA72816B90800AE5CC9 /* JSONEncodingHelper.swift */; };
-		DB404FB82816B90800AE5CC9 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404FA82816B90800AE5CC9 /* Models.swift */; };
-		DB404FB92816B90800AE5CC9 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404FA92816B90800AE5CC9 /* Configuration.swift */; };
 		DB404FBB2816BE7A00AE5CC9 /* Couch.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404FBA2816BE7A00AE5CC9 /* Couch.swift */; };
 		DB404FBE2816BE8400AE5CC9 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404FBC2816BE8400AE5CC9 /* Rating.swift */; };
 		DB404FBF2816BE8400AE5CC9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB404FBD2816BE8400AE5CC9 /* User.swift */; };
@@ -80,6 +64,32 @@
 		DBA0B9E1260BE8D000474B7C /* DIContainerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA0B9E0260BE8D000474B7C /* DIContainerProtocol.swift */; };
 		DBA0B9E5260BE93200474B7C /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA0B9E4260BE93200474B7C /* DIContainer.swift */; };
 		DBA264D42630C1B900C63431 /* CouchAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA264D32630C1B900C63431 /* CouchAnnotation.swift */; };
+		DBA5F881282936AC00E66ABB /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA5F865282936AC00E66ABB /* APIHelper.swift */; };
+		DBA5F882282936AC00E66ABB /* AlamofireImplementations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA5F866282936AC00E66ABB /* AlamofireImplementations.swift */; };
+		DBA5F883282936AC00E66ABB /* JSONValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA5F867282936AC00E66ABB /* JSONValue.swift */; };
+		DBA5F884282936AC00E66ABB /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA5F869282936AC00E66ABB /* UserAPI.swift */; };
+		DBA5F885282936AC00E66ABB /* CouchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA5F86A282936AC00E66ABB /* CouchAPI.swift */; };
+		DBA5F886282936AC00E66ABB /* RatingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA5F86B282936AC00E66ABB /* RatingAPI.swift */; };
+		DBA5F887282936AC00E66ABB /* ConversationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA5F86C282936AC00E66ABB /* ConversationAPI.swift */; };
+		DBA5F888282936AC00E66ABB /* ReservationsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA5F86D282936AC00E66ABB /* ReservationsAPI.swift */; };
+		DBA5F889282936AC00E66ABB /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA5F86E282936AC00E66ABB /* HomeAPI.swift */; };
+		DBA5F88A282936AC00E66ABB /* MessagesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA5F86F282936AC00E66ABB /* MessagesAPI.swift */; };
+		DBA5F88B282936AC00E66ABB /* CodableHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA5F870282936AC00E66ABB /* CodableHelper.swift */; };
+		DBA5F88C282936AC00E66ABB /* JSONEncodableEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA5F871282936AC00E66ABB /* JSONEncodableEncoding.swift */; };
+		DBA5F88D282936AC00E66ABB /* APIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA5F872282936AC00E66ABB /* APIs.swift */; };
+		DBA5F88E282936AC00E66ABB /* APIUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA5F874282936AC00E66ABB /* APIUser.swift */; };
+		DBA5F88F282936AC00E66ABB /* APIMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA5F875282936AC00E66ABB /* APIMessage.swift */; };
+		DBA5F890282936AC00E66ABB /* APICouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA5F876282936AC00E66ABB /* APICouch.swift */; };
+		DBA5F891282936AC00E66ABB /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA5F877282936AC00E66ABB /* State.swift */; };
+		DBA5F892282936AC00E66ABB /* HomeConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA5F878282936AC00E66ABB /* HomeConfiguration.swift */; };
+		DBA5F893282936AC00E66ABB /* ConfigurationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA5F879282936AC00E66ABB /* ConfigurationType.swift */; };
+		DBA5F894282936AC00E66ABB /* APIRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA5F87A282936AC00E66ABB /* APIRating.swift */; };
+		DBA5F895282936AC00E66ABB /* APIConversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA5F87B282936AC00E66ABB /* APIConversation.swift */; };
+		DBA5F896282936AC00E66ABB /* APIReservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA5F87C282936AC00E66ABB /* APIReservation.swift */; };
+		DBA5F897282936AC00E66ABB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA5F87D282936AC00E66ABB /* Extensions.swift */; };
+		DBA5F898282936AC00E66ABB /* JSONEncodingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA5F87E282936AC00E66ABB /* JSONEncodingHelper.swift */; };
+		DBA5F899282936AC00E66ABB /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA5F87F282936AC00E66ABB /* Models.swift */; };
+		DBA5F89A282936AC00E66ABB /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA5F880282936AC00E66ABB /* Configuration.swift */; };
 		DBB559A52714AE42009AE705 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB559A42714AE42009AE705 /* ProfileView.swift */; };
 		DBB559AB2714AF56009AE705 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB559AA2714AF56009AE705 /* ProfilePresenter.swift */; };
 		DBB559AF2714AF62009AE705 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB559AE2714AF62009AE705 /* ProfileInteractor.swift */; };
@@ -162,22 +172,6 @@
 		DB1EE439263B0C51005C4AD1 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		DB1EE43F26432912005C4AD1 /* UserServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceProtocol.swift; sourceTree = "<group>"; };
 		DB1EE44226432984005C4AD1 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
-		DB404F982816B90700AE5CC9 /* APIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
-		DB404F992816B90700AE5CC9 /* AlamofireImplementations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireImplementations.swift; sourceTree = "<group>"; };
-		DB404F9A2816B90700AE5CC9 /* JSONValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONValue.swift; sourceTree = "<group>"; };
-		DB404F9C2816B90800AE5CC9 /* UserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
-		DB404F9D2816B90800AE5CC9 /* CouchAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouchAPI.swift; sourceTree = "<group>"; };
-		DB404F9E2816B90800AE5CC9 /* RatingAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingAPI.swift; sourceTree = "<group>"; };
-		DB404F9F2816B90800AE5CC9 /* CodableHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableHelper.swift; sourceTree = "<group>"; };
-		DB404FA02816B90800AE5CC9 /* JSONEncodableEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONEncodableEncoding.swift; sourceTree = "<group>"; };
-		DB404FA12816B90800AE5CC9 /* APIs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIs.swift; sourceTree = "<group>"; };
-		DB404FA32816B90800AE5CC9 /* GeneratedCouch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedCouch.swift; sourceTree = "<group>"; };
-		DB404FA42816B90800AE5CC9 /* GeneratedUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedUser.swift; sourceTree = "<group>"; };
-		DB404FA52816B90800AE5CC9 /* GeneratedRating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedRating.swift; sourceTree = "<group>"; };
-		DB404FA62816B90800AE5CC9 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		DB404FA72816B90800AE5CC9 /* JSONEncodingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONEncodingHelper.swift; sourceTree = "<group>"; };
-		DB404FA82816B90800AE5CC9 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		DB404FA92816B90800AE5CC9 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		DB404FBA2816BE7A00AE5CC9 /* Couch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Couch.swift; sourceTree = "<group>"; };
 		DB404FBC2816BE8400AE5CC9 /* Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		DB404FBD2816BE8400AE5CC9 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -212,6 +206,32 @@
 		DBA0B9E0260BE8D000474B7C /* DIContainerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainerProtocol.swift; sourceTree = "<group>"; };
 		DBA0B9E4260BE93200474B7C /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		DBA264D32630C1B900C63431 /* CouchAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouchAnnotation.swift; sourceTree = "<group>"; };
+		DBA5F865282936AC00E66ABB /* APIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
+		DBA5F866282936AC00E66ABB /* AlamofireImplementations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireImplementations.swift; sourceTree = "<group>"; };
+		DBA5F867282936AC00E66ABB /* JSONValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONValue.swift; sourceTree = "<group>"; };
+		DBA5F869282936AC00E66ABB /* UserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
+		DBA5F86A282936AC00E66ABB /* CouchAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouchAPI.swift; sourceTree = "<group>"; };
+		DBA5F86B282936AC00E66ABB /* RatingAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingAPI.swift; sourceTree = "<group>"; };
+		DBA5F86C282936AC00E66ABB /* ConversationAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationAPI.swift; sourceTree = "<group>"; };
+		DBA5F86D282936AC00E66ABB /* ReservationsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservationsAPI.swift; sourceTree = "<group>"; };
+		DBA5F86E282936AC00E66ABB /* HomeAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
+		DBA5F86F282936AC00E66ABB /* MessagesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesAPI.swift; sourceTree = "<group>"; };
+		DBA5F870282936AC00E66ABB /* CodableHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableHelper.swift; sourceTree = "<group>"; };
+		DBA5F871282936AC00E66ABB /* JSONEncodableEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONEncodableEncoding.swift; sourceTree = "<group>"; };
+		DBA5F872282936AC00E66ABB /* APIs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIs.swift; sourceTree = "<group>"; };
+		DBA5F874282936AC00E66ABB /* APIUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIUser.swift; sourceTree = "<group>"; };
+		DBA5F875282936AC00E66ABB /* APIMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIMessage.swift; sourceTree = "<group>"; };
+		DBA5F876282936AC00E66ABB /* APICouch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APICouch.swift; sourceTree = "<group>"; };
+		DBA5F877282936AC00E66ABB /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		DBA5F878282936AC00E66ABB /* HomeConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeConfiguration.swift; sourceTree = "<group>"; };
+		DBA5F879282936AC00E66ABB /* ConfigurationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationType.swift; sourceTree = "<group>"; };
+		DBA5F87A282936AC00E66ABB /* APIRating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRating.swift; sourceTree = "<group>"; };
+		DBA5F87B282936AC00E66ABB /* APIConversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConversation.swift; sourceTree = "<group>"; };
+		DBA5F87C282936AC00E66ABB /* APIReservation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIReservation.swift; sourceTree = "<group>"; };
+		DBA5F87D282936AC00E66ABB /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		DBA5F87E282936AC00E66ABB /* JSONEncodingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONEncodingHelper.swift; sourceTree = "<group>"; };
+		DBA5F87F282936AC00E66ABB /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		DBA5F880282936AC00E66ABB /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		DBB559A42714AE42009AE705 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		DBB559AA2714AF56009AE705 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		DBB559AE2714AF62009AE705 /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
@@ -355,45 +375,6 @@
 			name = CouchDetailsModule;
 			sourceTree = "<group>";
 		};
-		DB404F972816B90700AE5CC9 /* Swaggers */ = {
-			isa = PBXGroup;
-			children = (
-				DB404F982816B90700AE5CC9 /* APIHelper.swift */,
-				DB404F992816B90700AE5CC9 /* AlamofireImplementations.swift */,
-				DB404F9A2816B90700AE5CC9 /* JSONValue.swift */,
-				DB404F9B2816B90700AE5CC9 /* APIs */,
-				DB404F9F2816B90800AE5CC9 /* CodableHelper.swift */,
-				DB404FA02816B90800AE5CC9 /* JSONEncodableEncoding.swift */,
-				DB404FA12816B90800AE5CC9 /* APIs.swift */,
-				DB404FA22816B90800AE5CC9 /* Models */,
-				DB404FA62816B90800AE5CC9 /* Extensions.swift */,
-				DB404FA72816B90800AE5CC9 /* JSONEncodingHelper.swift */,
-				DB404FA82816B90800AE5CC9 /* Models.swift */,
-				DB404FA92816B90800AE5CC9 /* Configuration.swift */,
-			);
-			path = Swaggers;
-			sourceTree = "<group>";
-		};
-		DB404F9B2816B90700AE5CC9 /* APIs */ = {
-			isa = PBXGroup;
-			children = (
-				DB404F9C2816B90800AE5CC9 /* UserAPI.swift */,
-				DB404F9D2816B90800AE5CC9 /* CouchAPI.swift */,
-				DB404F9E2816B90800AE5CC9 /* RatingAPI.swift */,
-			);
-			path = APIs;
-			sourceTree = "<group>";
-		};
-		DB404FA22816B90800AE5CC9 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				DB404FA32816B90800AE5CC9 /* GeneratedCouch.swift */,
-				DB404FA42816B90800AE5CC9 /* GeneratedUser.swift */,
-				DB404FA52816B90800AE5CC9 /* GeneratedRating.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		DB4344692728328100997D93 /* RatingsModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -437,7 +418,7 @@
 		DB834E4A25E5C1B200E94268 /* SwiftSurfing */ = {
 			isa = PBXGroup;
 			children = (
-				DB404F972816B90700AE5CC9 /* Swaggers */,
+				DBA5F864282936AC00E66ABB /* Swaggers */,
 				DB8BFDEF262729F300780517 /* CommonViews */,
 				DBA0B9D1260BE5E700474B7C /* Services */,
 				DB09709E25FFC7B40052EC09 /* Entities */,
@@ -538,6 +519,55 @@
 				DBA0B9E4260BE93200474B7C /* DIContainer.swift */,
 			);
 			path = DependencyInjection;
+			sourceTree = "<group>";
+		};
+		DBA5F864282936AC00E66ABB /* Swaggers */ = {
+			isa = PBXGroup;
+			children = (
+				DBA5F865282936AC00E66ABB /* APIHelper.swift */,
+				DBA5F866282936AC00E66ABB /* AlamofireImplementations.swift */,
+				DBA5F867282936AC00E66ABB /* JSONValue.swift */,
+				DBA5F868282936AC00E66ABB /* APIs */,
+				DBA5F870282936AC00E66ABB /* CodableHelper.swift */,
+				DBA5F871282936AC00E66ABB /* JSONEncodableEncoding.swift */,
+				DBA5F872282936AC00E66ABB /* APIs.swift */,
+				DBA5F873282936AC00E66ABB /* Models */,
+				DBA5F87D282936AC00E66ABB /* Extensions.swift */,
+				DBA5F87E282936AC00E66ABB /* JSONEncodingHelper.swift */,
+				DBA5F87F282936AC00E66ABB /* Models.swift */,
+				DBA5F880282936AC00E66ABB /* Configuration.swift */,
+			);
+			path = Swaggers;
+			sourceTree = "<group>";
+		};
+		DBA5F868282936AC00E66ABB /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+				DBA5F869282936AC00E66ABB /* UserAPI.swift */,
+				DBA5F86A282936AC00E66ABB /* CouchAPI.swift */,
+				DBA5F86B282936AC00E66ABB /* RatingAPI.swift */,
+				DBA5F86C282936AC00E66ABB /* ConversationAPI.swift */,
+				DBA5F86D282936AC00E66ABB /* ReservationsAPI.swift */,
+				DBA5F86E282936AC00E66ABB /* HomeAPI.swift */,
+				DBA5F86F282936AC00E66ABB /* MessagesAPI.swift */,
+			);
+			path = APIs;
+			sourceTree = "<group>";
+		};
+		DBA5F873282936AC00E66ABB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DBA5F874282936AC00E66ABB /* APIUser.swift */,
+				DBA5F875282936AC00E66ABB /* APIMessage.swift */,
+				DBA5F876282936AC00E66ABB /* APICouch.swift */,
+				DBA5F877282936AC00E66ABB /* State.swift */,
+				DBA5F878282936AC00E66ABB /* HomeConfiguration.swift */,
+				DBA5F879282936AC00E66ABB /* ConfigurationType.swift */,
+				DBA5F87A282936AC00E66ABB /* APIRating.swift */,
+				DBA5F87B282936AC00E66ABB /* APIConversation.swift */,
+				DBA5F87C282936AC00E66ABB /* APIReservation.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		DBB559A32714AE2F009AE705 /* ProfileModule */ = {
@@ -810,12 +840,12 @@
 				DBD60E1E27230FA200A13AC9 /* NotificationManager.swift in Sources */,
 				DBBF03DD26FAFEBA00110DEC /* MDPDayOfMonth.swift in Sources */,
 				DB19FB6C2715B04F001F25EB /* ConversationsPresenter.swift in Sources */,
-				DB404FAD2816B90800AE5CC9 /* UserAPI.swift in Sources */,
+				DBA5F884282936AC00E66ABB /* UserAPI.swift in Sources */,
 				DBBF03E926FAFF1200110DEC /* MDPMonthYearPicker.swift in Sources */,
-				DB404FAA2816B90800AE5CC9 /* APIHelper.swift in Sources */,
+				DBA5F881282936AC00E66ABB /* APIHelper.swift in Sources */,
 				DB791BDE27273A1000B745F0 /* RatingSummaryView.swift in Sources */,
+				DBA5F897282936AC00E66ABB /* Extensions.swift in Sources */,
 				DBBF03F22702202000110DEC /* Reservation.swift in Sources */,
-				DB404FB72816B90800AE5CC9 /* JSONEncodingHelper.swift in Sources */,
 				DBEB14B025F98B760046CB30 /* LoginView.swift in Sources */,
 				DB43446B2728329600997D93 /* RatingsView.swift in Sources */,
 				DB19FB93271721B0001F25EB /* AuthenticationManager.swift in Sources */,
@@ -842,34 +872,44 @@
 				DB834E4C25E5C1B200E94268 /* SwiftSurfingApp.swift in Sources */,
 				DBA0B9D9260BE79800474B7C /* CouchService.swift in Sources */,
 				DB0970A4260141E60052EC09 /* CouchesInteractor.swift in Sources */,
+				DBA5F888282936AC00E66ABB /* ReservationsAPI.swift in Sources */,
+				DBA5F88C282936AC00E66ABB /* JSONEncodableEncoding.swift in Sources */,
 				DBBF03E626FAFEF600110DEC /* MDPMonthView.swift in Sources */,
 				DBBF040C2704B6A900110DEC /* Message.swift in Sources */,
+				DBA5F893282936AC00E66ABB /* ConfigurationType.swift in Sources */,
 				DB404FBF2816BE8400AE5CC9 /* User.swift in Sources */,
 				DBEB14B525FAD59A0046CB30 /* RegisterInteractor.swift in Sources */,
 				DB1EE44026432912005C4AD1 /* UserServiceProtocol.swift in Sources */,
 				DBA264D42630C1B900C63431 /* CouchAnnotation.swift in Sources */,
 				DBE36B0E264EFE1100755851 /* CouchDetailsView.swift in Sources */,
+				DBA5F890282936AC00E66ABB /* APICouch.swift in Sources */,
 				DB54DC1A263149D800B7618F /* RatingView.swift in Sources */,
-				DB404FB82816B90800AE5CC9 /* Models.swift in Sources */,
 				DB1EE434263AB2DF005C4AD1 /* ImagePickerKit.swift in Sources */,
 				DBCBEA2625FBEF3300E74A8D /* ValidationPublishers.swift in Sources */,
 				DBBF04062704B49300110DEC /* MessageServiceProtocol.swift in Sources */,
+				DBA5F88B282936AC00E66ABB /* CodableHelper.swift in Sources */,
+				DBA5F88A282936AC00E66ABB /* MessagesAPI.swift in Sources */,
+				DBA5F88E282936AC00E66ABB /* APIUser.swift in Sources */,
 				DBA0B9C5260146B600474B7C /* NewCouchPresenter.swift in Sources */,
-				DB404FAC2816B90800AE5CC9 /* JSONValue.swift in Sources */,
+				DBA5F895282936AC00E66ABB /* APIConversation.swift in Sources */,
+				DBA5F899282936AC00E66ABB /* Models.swift in Sources */,
+				DBA5F883282936AC00E66ABB /* JSONValue.swift in Sources */,
 				DB8BFDF126272A4100780517 /* SheetView.swift in Sources */,
 				DB5F6A9526282C6300C83F5A /* CouchListRow.swift in Sources */,
 				DBBF03D926FAFEA000110DEC /* MDPContentView.swift in Sources */,
 				DBB559AB2714AF56009AE705 /* ProfilePresenter.swift in Sources */,
 				DBE36B0D264EFE1100755851 /* CouchDetailsInteractor.swift in Sources */,
 				DB0970A8260142080052EC09 /* CouchesPresenter.swift in Sources */,
+				DBA5F891282936AC00E66ABB /* State.swift in Sources */,
+				DBA5F898282936AC00E66ABB /* JSONEncodingHelper.swift in Sources */,
 				DBB559A52714AE42009AE705 /* ProfileView.swift in Sources */,
 				DB1EE44326432984005C4AD1 /* UserService.swift in Sources */,
 				DBBF03FD27025E2A00110DEC /* ReservationView.swift in Sources */,
 				DBA0B9E1260BE8D000474B7C /* DIContainerProtocol.swift in Sources */,
 				DBBF04002702648600110DEC /* ReservationServiceProtocol.swift in Sources */,
-				DB404FB22816B90800AE5CC9 /* APIs.swift in Sources */,
 				DB43447F2728356000997D93 /* RatingSummaryViewContext.swift in Sources */,
-				DB404FAB2816B90800AE5CC9 /* AlamofireImplementations.swift in Sources */,
+				DBA5F882282936AC00E66ABB /* AlamofireImplementations.swift in Sources */,
+				DBA5F892282936AC00E66ABB /* HomeConfiguration.swift in Sources */,
 				DB19FB812715FBA7001F25EB /* MessagesView.swift in Sources */,
 				DBCBEA2325FBED2E00E74A8D /* ValidationModifier.swift in Sources */,
 				DB19FB97271726D7001F25EB /* ButtonContent.swift in Sources */,
@@ -880,7 +920,9 @@
 				DBBF0403270264B500110DEC /* ReservationService.swift in Sources */,
 				DBBF03FA27025E1000110DEC /* ReservationPresenter.swift in Sources */,
 				DBEB14BF25FAD7290046CB30 /* LoginRouter.swift in Sources */,
+				DBA5F894282936AC00E66ABB /* APIRating.swift in Sources */,
 				DB19FB7C2715B600001F25EB /* ConversationListRow.swift in Sources */,
+				DBA5F887282936AC00E66ABB /* ConversationAPI.swift in Sources */,
 				DBA0B9DD260BE86700474B7C /* CouchServiceProtocol.swift in Sources */,
 				DBEB14BC25FAD5B60046CB30 /* RegisterView.swift in Sources */,
 				DBBF03D526FAFE7600110DEC /* MultiDatePicker.swift in Sources */,
@@ -888,32 +930,30 @@
 				DB404FBB2816BE7A00AE5CC9 /* Couch.swift in Sources */,
 				DBBF03E326FAFEE500110DEC /* MDPModel.swift in Sources */,
 				DB19FB742715B06C001F25EB /* ConversationsRouter.swift in Sources */,
-				DB404FB02816B90800AE5CC9 /* CodableHelper.swift in Sources */,
 				DBEB14A225F952A90046CB30 /* LoginInteractor.swift in Sources */,
 				DB43446527282AC900997D93 /* RatingService.swift in Sources */,
 				DB43445D2728291000997D93 /* RatingServiceProtocol.swift in Sources */,
-				DB404FB32816B90800AE5CC9 /* GeneratedCouch.swift in Sources */,
 				DBBF03F627025E0200110DEC /* ReservationInteractor.swift in Sources */,
-				DB404FB52816B90800AE5CC9 /* GeneratedRating.swift in Sources */,
 				DBA0B9C12601469F00474B7C /* NewCouchInteractor.swift in Sources */,
+				DBA5F896282936AC00E66ABB /* APIReservation.swift in Sources */,
 				DB434471272832D200997D93 /* RatingsPresenter.swift in Sources */,
 				DB19FB9F2717361A001F25EB /* SceneDelegate.swift in Sources */,
-				DB404FAE2816B90800AE5CC9 /* CouchAPI.swift in Sources */,
+				DBA5F88D282936AC00E66ABB /* APIs.swift in Sources */,
+				DBA5F889282936AC00E66ABB /* HomeAPI.swift in Sources */,
+				DBA5F885282936AC00E66ABB /* CouchAPI.swift in Sources */,
 				DBD60E1A27230F8200A13AC9 /* NotificationManagerProtocol.swift in Sources */,
 				DBBF04122704D1C300110DEC /* ConversationServiceProtocol.swift in Sources */,
 				DBBF03EC26FAFF2800110DEC /* MDPMonthYearPickerButton.swift in Sources */,
-				DB404FB42816B90800AE5CC9 /* GeneratedUser.swift in Sources */,
-				DB404FB12816B90800AE5CC9 /* JSONEncodableEncoding.swift in Sources */,
 				DBA0B9C8260146EB00474B7C /* NewCouchView.swift in Sources */,
+				DBA5F88F282936AC00E66ABB /* APIMessage.swift in Sources */,
 				DBBF040F2704B6B500110DEC /* Conversation.swift in Sources */,
 				DBA0B9E5260BE93200474B7C /* DIContainer.swift in Sources */,
+				DBA5F89A282936AC00E66ABB /* Configuration.swift in Sources */,
 				DB09708C25FD4EBA0052EC09 /* HomeTabView.swift in Sources */,
-				DB404FB62816B90800AE5CC9 /* Extensions.swift in Sources */,
 				DBCBEA1F25FBECE600E74A8D /* Validation.swift in Sources */,
 				DBEB14A925F98A630046CB30 /* LoginPresenter.swift in Sources */,
-				DB404FAF2816B90800AE5CC9 /* RatingAPI.swift in Sources */,
+				DBA5F886282936AC00E66ABB /* RatingAPI.swift in Sources */,
 				DBBF03E026FAFED300110DEC /* MDPDayView.swift in Sources */,
-				DB404FB92816B90800AE5CC9 /* Configuration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

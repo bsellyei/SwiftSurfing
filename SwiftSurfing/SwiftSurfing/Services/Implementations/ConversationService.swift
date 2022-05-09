@@ -33,12 +33,14 @@ class ConversationService: ConversationServiceProtocol {
             conversation.fromId = userId
         }
         
-        let conversationRef = self.databaseRef?.child(conversation.id)
-        conversationRef?.setValue(conversation.toAnyObject())
+        //let conversationRef = self.databaseRef?.child(conversation.id)
+        //conversationRef?.setValue(conversation.toAnyObject())
         
-        DispatchQueue.main.async {
-            completion(true)
-        }
+        ConversationAPI.addConversation(body: ConversationTransformator.transformToAPIModel(conversation: conversation), completion: { _, _ in
+            DispatchQueue.main.async {
+                completion(true)
+            }
+        })
     }
     
     func update(conversation: Conversation, completion: @escaping (Bool) -> Void) {
@@ -58,27 +60,62 @@ class ConversationService: ConversationServiceProtocol {
             return
         }
         
-        let semaphore = DispatchSemaphore(value: 0)
+        //let semaphore = DispatchSemaphore(value: 0)
         var conversations: [Conversation] = []
-        databaseRef?.queryOrdered(byChild: "toId").queryEqual(toValue: userId).observeSingleEvent(of: .value, with: { (snapshot) in
+        ConversationAPI.getAllConversationsForUser(userId: userId, completion: { result, _ in
+            conversations = ConversationTransformator.transformToClientModel(conversations: result!)
+            //semaphore.signal()
+            
+            DispatchQueue.main.async {
+                completion(conversations)
+            }
+        })
+        
+        /*databaseRef?.queryOrdered(byChild: "toId").queryEqual(toValue: userId).observeSingleEvent(of: .value, with: { (snapshot) in
             guard let snapshot = snapshot.children.allObjects as? [DataSnapshot] else {
                 return
             }
             
             conversations = snapshot.reversed().compactMap(Conversation.init)
             semaphore.signal()
-        })
+        })*/
         
-        databaseRef?.queryOrdered(byChild: "fromId").queryEqual(toValue: userId).observeSingleEvent(of: .value, with: { (snapshot) in
+        /*databaseRef?.queryOrdered(byChild: "fromId").queryEqual(toValue: userId).observeSingleEvent(of: .value, with: { (snapshot) in
             guard let snapshot = snapshot.children.allObjects as? [DataSnapshot] else {
                 return
             }
+            
+            
             
             let tempConversations = snapshot.reversed().compactMap(Conversation.init)
             semaphore.wait()
             DispatchQueue.main.async {
                 completion(conversations + tempConversations)
             }
-        })
+        })*/
+    }
+    
+    class ConversationTransformator {
+        static func transformToClientModel(conversation: APIConversation) -> Conversation {
+            let result = Conversation()
+            result.id = conversation._id!
+            
+            return result
+        }
+        
+        static func transformToAPIModel(conversation: Conversation) -> APIConversation {
+            let result = APIConversation(_id: conversation.id, users: [APIUser(_id: conversation.fromId, fullName: "", email: ""), APIUser(_id: conversation.toId, fullName: "", email: "")], messages: [])
+            
+            return result
+        }
+        
+        static func transformToClientModel(conversations: [APIConversation]) -> [Conversation] {
+            var result: [Conversation] = []
+            for conversation in conversations {
+                result.append(ConversationTransformator.transformToClientModel(conversation: conversation))
+            }
+            
+            return result
+        }
     }
 }

@@ -141,7 +141,7 @@ class CouchService: CouchServiceProtocol {
     }
     
     class CouchTransformator {
-        static func transformToClientModel(couch: GeneratedCouch) -> Couch {
+        static func transformToClientModel(couch: APICouch) -> Couch {
             let result = Couch()
             result.id = couch._id!
             result.userId = couch.user?._id! ?? ""
@@ -159,13 +159,13 @@ class CouchService: CouchServiceProtocol {
             return result
         }
         
-        static func transformToAPIModel(couch: Couch) -> GeneratedCouch {
-            let result = GeneratedCouch(_id: couch.id, name: couch.name, address: couch.address, city: couch.city, country: couch.country, latitude: couch.latitude, longitude: couch.longitude, maxGuests: couch.maxGuests, _description: couch.description, imageUrls: couch.imageURLs, ratingAverage: couch.ratingAverage, ratingCount: couch.ratingCount, user: GeneratedUser(_id: couch.userId, fullName: "", email: ""))
+        static func transformToAPIModel(couch: Couch) -> APICouch {
+            let result = APICouch(_id: couch.id, name: couch.name, address: couch.address, city: couch.city, country: couch.country, latitude: couch.latitude, longitude: couch.longitude, maxGuests: couch.maxGuests, _description: couch.description, imageUrls: couch.imageURLs, ratingAverage: couch.ratingAverage, ratingCount: couch.ratingCount, user: APIUser(_id: couch.userId, fullName: "", email: ""))
             
             return result
         }
         
-        static func transformToClientModel(couches: [GeneratedCouch]) -> [Couch] {
+        static func transformToClientModel(couches: [APICouch]) -> [Couch] {
             var result: [Couch] = []
             for couch in couches {
                 result.append(CouchTransformator.transformToClientModel(couch: couch))

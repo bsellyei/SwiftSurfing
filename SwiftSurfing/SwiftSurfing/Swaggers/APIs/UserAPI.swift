@@ -17,7 +17,7 @@ open class UserAPI {
      - parameter body: (body) User object that needs to be added 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addUser(body: GeneratedUser, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func addUser(body: APIUser, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
         addUserWithRequestBuilder(body: body).execute { (response, error) -> Void in
             if error == nil {
                 completion((), error)
@@ -37,7 +37,7 @@ open class UserAPI {
 
      - returns: RequestBuilder<Void> 
      */
-    open class func addUserWithRequestBuilder(body: GeneratedUser) -> RequestBuilder<Void> {
+    open class func addUserWithRequestBuilder(body: APIUser) -> RequestBuilder<Void> {
         let path = "/users"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
@@ -55,7 +55,7 @@ open class UserAPI {
      - parameter _id: (path) ID of user to return 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getUserById(_id: String, completion: @escaping ((_ data: GeneratedUser?,_ error: Error?) -> Void)) {
+    open class func getUserById(_id: String, completion: @escaping ((_ data: APIUser?,_ error: Error?) -> Void)) {
         getUserByIdWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -70,9 +70,9 @@ open class UserAPI {
      
      - parameter _id: (path) ID of user to return 
 
-     - returns: RequestBuilder<User> 
+     - returns: RequestBuilder<APIUser> 
      */
-    open class func getUserByIdWithRequestBuilder(_id: String) -> RequestBuilder<GeneratedUser> {
+    open class func getUserByIdWithRequestBuilder(_id: String) -> RequestBuilder<APIUser> {
         var path = "/users/{Id}"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -82,7 +82,7 @@ open class UserAPI {
         
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<GeneratedUser>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<APIUser>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }

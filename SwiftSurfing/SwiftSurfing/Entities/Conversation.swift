@@ -10,7 +10,7 @@ import Firebase
 
 class Conversation: Identifiable {
     let ref: DatabaseReference?
-    let id: String
+    var id: String
     var fromId: String
     var toId: String
     var lastMessageId: String

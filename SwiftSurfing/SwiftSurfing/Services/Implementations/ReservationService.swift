@@ -43,12 +43,14 @@ class ReservationService: ReservationServiceProtocol {
             return
         }
         
-        let reservationRef = self.databaseRef?.child(reservation.id)
-        reservationRef?.setValue(reservation.toAnyObject())
+        //let reservationRef = self.databaseRef?.child(reservation.id)
+        //reservationRef?.setValue(reservation.toAnyObject())
         
-        DispatchQueue.main.async {
-            completion(true)
-        }
+        ReservationsAPI.addReservation(body: ReservationTransformator.transformToAPIModel(reservation: reservation), completion: { _, _ in
+            DispatchQueue.main.async {
+                completion(true)
+            }
+        })
     }
     
     func get(id: String, completion: @escaping (Reservation?) -> Void) {
@@ -59,5 +61,32 @@ class ReservationService: ReservationServiceProtocol {
                 completion(reservation)
             }
         })
+    }
+    
+    class ReservationTransformator {
+        static func transformToClientModel(reservation: APIReservation) -> Reservation {
+            let result = Reservation()
+            result.id = reservation._id!
+            result.guestId = reservation.user?._id ?? ""
+            result.couchId = reservation.couch?._id! ?? ""
+            result.guestsNum = reservation.guestsNum!
+            result.date = ClosedRange<Date>(uncheckedBounds: (lower: reservation.start!, upper: reservation.end!))
+            return result
+        }
+        
+        static func transformToAPIModel(reservation: Reservation) -> APIReservation {
+            let result = APIReservation(_id: reservation.id, user: APIUser(_id: reservation.guestId, fullName: "", email: ""), couch: APICouch(_id: reservation.couchId, name: "", address: "", city: "", country: "", latitude: 0, longitude: 0, maxGuests: 0, _description: "", imageUrls: [], ratingAverage: 0, ratingCount: 0, user: APIUser(_id: "", fullName: "", email: "")), guestsNum: reservation.guestsNum, start: reservation.date.lowerBound, end: reservation.date.upperBound)
+            
+            return result
+        }
+        
+        static func transformToClientModel(reservations: [APIReservation]) -> [Reservation] {
+            var result: [Reservation] = []
+            for reservation in reservations {
+                result.append(ReservationTransformator.transformToClientModel(reservation: reservation))
+            }
+            
+            return result
+        }
     }
 }

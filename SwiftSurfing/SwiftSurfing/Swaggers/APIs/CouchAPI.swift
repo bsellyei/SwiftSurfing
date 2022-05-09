@@ -17,7 +17,7 @@ open class CouchAPI {
      - parameter body: (body) Couch object that needs to be added 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addCouch(body: GeneratedCouch, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func addCouch(body: APICouch, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
         addCouchWithRequestBuilder(body: body).execute { (response, error) -> Void in
             if error == nil {
                 completion((), error)
@@ -37,7 +37,7 @@ open class CouchAPI {
 
      - returns: RequestBuilder<Void> 
      */
-    open class func addCouchWithRequestBuilder(body: GeneratedCouch) -> RequestBuilder<Void> {
+    open class func addCouchWithRequestBuilder(body: APICouch) -> RequestBuilder<Void> {
         let path = "/couches"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
@@ -97,7 +97,7 @@ open class CouchAPI {
      - parameter userId: (path) userId whose couches need to be excluded 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func findAllCouchByCityExceptUserId(cityName: String, userId: String, completion: @escaping ((_ data: [GeneratedCouch]?,_ error: Error?) -> Void)) {
+    open class func findAllCouchByCityExceptUserId(cityName: String, userId: String, completion: @escaping ((_ data: [APICouch]?,_ error: Error?) -> Void)) {
         findAllCouchByCityExceptUserIdWithRequestBuilder(cityName: cityName, userId: userId).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -113,9 +113,9 @@ open class CouchAPI {
      - parameter cityName: (path) name of a city 
      - parameter userId: (path) userId whose couches need to be excluded 
 
-     - returns: RequestBuilder<[Couch]> 
+     - returns: RequestBuilder<[APICouch]> 
      */
-    open class func findAllCouchByCityExceptUserIdWithRequestBuilder(cityName: String, userId: String) -> RequestBuilder<[GeneratedCouch]> {
+    open class func findAllCouchByCityExceptUserIdWithRequestBuilder(cityName: String, userId: String) -> RequestBuilder<[APICouch]> {
         var path = "/couches/{cityName}/{userId}"
         let cityNamePreEscape = "\(cityName)"
         let cityNamePostEscape = cityNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -128,7 +128,7 @@ open class CouchAPI {
         
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<[GeneratedCouch]>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<[APICouch]>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -139,7 +139,7 @@ open class CouchAPI {
      - parameter userId: (path) ID of user whose couches to return 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func findAllCouchForUser(userId: String, completion: @escaping ((_ data: [GeneratedCouch]?,_ error: Error?) -> Void)) {
+    open class func findAllCouchForUser(userId: String, completion: @escaping ((_ data: [APICouch]?,_ error: Error?) -> Void)) {
         findAllCouchForUserWithRequestBuilder(userId: userId).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -154,9 +154,9 @@ open class CouchAPI {
      
      - parameter userId: (path) ID of user whose couches to return 
 
-     - returns: RequestBuilder<[Couch]> 
+     - returns: RequestBuilder<[APICouch]> 
      */
-    open class func findAllCouchForUserWithRequestBuilder(userId: String) -> RequestBuilder<[GeneratedCouch]> {
+    open class func findAllCouchForUserWithRequestBuilder(userId: String) -> RequestBuilder<[APICouch]> {
         var path = "/couches/user/{userId}"
         let userIdPreEscape = "\(userId)"
         let userIdPostEscape = userIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -166,7 +166,7 @@ open class CouchAPI {
         
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<[GeneratedCouch]>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<[APICouch]>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -177,7 +177,7 @@ open class CouchAPI {
      - parameter _id: (path) ID of couch to return 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getCouchById(_id: String, completion: @escaping ((_ data: GeneratedCouch?,_ error: Error?) -> Void)) {
+    open class func getCouchById(_id: String, completion: @escaping ((_ data: APICouch?,_ error: Error?) -> Void)) {
         getCouchByIdWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -192,9 +192,9 @@ open class CouchAPI {
      
      - parameter _id: (path) ID of couch to return 
 
-     - returns: RequestBuilder<Couch> 
+     - returns: RequestBuilder<APICouch> 
      */
-    open class func getCouchByIdWithRequestBuilder(_id: String) -> RequestBuilder<GeneratedCouch> {
+    open class func getCouchByIdWithRequestBuilder(_id: String) -> RequestBuilder<APICouch> {
         var path = "/couches/{Id}"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -204,7 +204,7 @@ open class CouchAPI {
         
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<GeneratedCouch>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<APICouch>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }

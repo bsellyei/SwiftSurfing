@@ -98,3 +98,36 @@ extension Message {
         return message
     }
 }
+
+extension Reservation {
+    static func create(user: User? = nil, couch: Couch? = nil, guestsNum: Int = 2, start: Date = Date(), end: Date = Date(), on database: Database) throws -> Reservation {
+        var guest = user
+        var home = couch
+        
+        if guest == nil {
+            guest = try User.create(on: database)
+        }
+        
+        if home == nil {
+            home = try Couch.create(on: database)
+        }
+        
+        let endDate = Calendar.current.date(byAdding: .day, value: 7, to: start)
+        let reservation = Reservation(guestId: guest!.id!, couchId: couch!.id!, guestsNum: guestsNum, start: start, end: endDate!)
+        try reservation.save(on: database).wait()
+        return reservation
+    }
+}
+
+extension HomeConfiguration {
+    static func create(couch: Couch? = nil, type: ConfigurationType = .heating, state: State = .off, on database: Database) throws -> HomeConfiguration {
+        var place = couch
+        if place == nil {
+            place = try Couch.create(on: database)
+        }
+        
+        let configuration = HomeConfiguration(couchId: place!.id!, type: type, state: state)
+        try configuration.save(on: database).wait()
+        return configuration
+    }
+}

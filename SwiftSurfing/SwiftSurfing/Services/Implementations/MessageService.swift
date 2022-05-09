@@ -32,12 +32,14 @@ class MessageService: MessageServiceProtocol {
             message.senderId = userId
         }
         
-        let messageRef = self.databaseRef?.child(message.id)
-        messageRef?.setValue(message.toAnyObject())
+        //let messageRef = self.databaseRef?.child(message.id)
+        //messageRef?.setValue(message.toAnyObject())
         
-        DispatchQueue.main.async {
-            completion(true)
-        }
+        MessagesAPI.addMessage(body: MessageTransformator.transformToAPIModel(message: message), completion: { _, _ in
+            DispatchQueue.main.async {
+                completion(true)
+            }
+        })
     }
     
     func get(id: String, completion: @escaping (Message?) -> Void) {
@@ -51,16 +53,45 @@ class MessageService: MessageServiceProtocol {
     }
     
     func getAllMessages(conversationId: String, completion: @escaping ([Message]) -> Void) {
-        databaseRef?.queryOrdered(byChild: "conversationId").queryEqual(toValue: conversationId)
+        MessagesAPI.getAllMessagesInConversation(conversationId: conversationId, completion: { messages, _ in
+            DispatchQueue.main.async {
+                completion(MessageTransformator.transformToClientModel(messages: messages!))
+            }
+        })
+        
+        /*databaseRef?.queryOrdered(byChild: "conversationId").queryEqual(toValue: conversationId)
             .observeSingleEvent(of: .value, with: { (snapshot) in
                 guard let snapshot = snapshot.children.allObjects as? [DataSnapshot] else {
                     return
                 }
                 
                 let messages = snapshot.reversed().compactMap(Message.init)
-                DispatchQueue.main.async {
-                    completion(messages)
-                }
-        })
+        })*/
+    }
+    
+    class MessageTransformator {
+        static func transformToClientModel(message: APIMessage) -> Message {
+            let result = Message()
+            result.id = message._id!
+            result.conversationId = message.conversation?._id! ?? ""
+            result.senderId = message.user?._id! ?? ""
+            result.message = message.text!
+            return result
+        }
+        
+        static func transformToAPIModel(message: Message) -> APIMessage {
+            let result = APIMessage(_id: message.id, user: APIUser(_id: message.senderId, fullName: "", email: ""), conversation: APIConversation(_id: message.conversationId, users: [], messages: []), text: message.message)
+            
+            return result
+        }
+        
+        static func transformToClientModel(messages: [APIMessage]) -> [Message] {
+            var result: [Message] = []
+            for message in messages {
+                result.append(MessageTransformator.transformToClientModel(message: message))
+            }
+            
+            return result
+        }
     }
 }

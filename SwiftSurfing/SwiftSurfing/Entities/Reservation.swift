@@ -10,7 +10,7 @@ import Firebase
 
 class Reservation: Identifiable {
     let ref: DatabaseReference?
-    let id: String
+    var id: String
     var ownerId: String
     var guestId: String
     var couchId: String

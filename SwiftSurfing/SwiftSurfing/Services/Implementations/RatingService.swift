@@ -59,7 +59,7 @@ class RatingService: RatingServiceProtocol {
     }
     
     class RatingTransformator {
-        static func transformToClientModel(rating: GeneratedRating) -> Rating {
+        static func transformToClientModel(rating: APIRating) -> Rating {
             let result = Rating()
             result.id = rating._id!
             result.userId = rating.userId!
@@ -69,12 +69,12 @@ class RatingService: RatingServiceProtocol {
             return result
         }
         
-        static func transformToAPIModel(rating: Rating) -> GeneratedRating {
-            let result = GeneratedRating(_id: rating.id, userId: rating.userId, couchId: rating.couchId, value: rating.value, comment: rating.comment)
+        static func transformToAPIModel(rating: Rating) -> APIRating {
+            let result = APIRating(_id: rating.id, userId: rating.userId, couchId: rating.couchId, value: rating.value, comment: rating.comment)
             return result
         }
         
-        static func transformToClientModel(ratings: [GeneratedRating]) -> [Rating] {
+        static func transformToClientModel(ratings: [APIRating]) -> [Rating] {
             var result: [Rating] = []
             for rating in ratings {
                 result.append(RatingTransformator.transformToClientModel(rating: rating))

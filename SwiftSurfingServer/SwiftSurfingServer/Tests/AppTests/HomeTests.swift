@@ -10,7 +10,7 @@ import XCTVapor
 import Foundation
 
 final class HomeTests: XCTestCase {
-    let homeURI = "/home"
+    let homeURI = "/home/"
     var app: Application!
     
     override func setUpWithError() throws {
@@ -21,13 +21,19 @@ final class HomeTests: XCTestCase {
         app.shutdown()
     }
     
-    func testGetAllThings() throws {
-        try app.test(.GET, "\(homeURI)/things", afterResponse: { response in
-            XCTAssertEqual(response.status, .ok)
+    func testGetHomeConfigurations() throws {
+        let couch = try Couch.create(on: app.db)
+        let _ = try HomeConfiguration.create(couch: couch, type: .heating, state: .off, on: app.db)
+        let _ = try HomeConfiguration.create(couch: couch, type: .cooling, state: .off, on: app.db)
+        let _ = try HomeConfiguration.create(couch: couch, type: .weatherWatcher, state: .off, on: app.db)
+        
+        try app.test(.GET, "\(homeURI)items/\(couch.id!)", afterResponse: { response in
+            let configurations = try response.content.decode([HomeConfiguration].self)
             
-            let things = try response.content.decode([Thing].self)
-            
-            XCTAssertEqual(things.count, 0)
+            XCTAssertEqual(configurations.count, 3)
+            XCTAssertEqual(configurations[0].type, .heating)
+            XCTAssertEqual(configurations[1].type, .cooling)
+            XCTAssertEqual(configurations[2].type, .weatherWatcher)
         })
     }
 }

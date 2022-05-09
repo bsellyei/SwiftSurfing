@@ -35,12 +35,12 @@ final class HomeConfiguration: Model, Content {
 }
 
 enum ConfigurationType: String, Codable {
-    case heating
-    case cooling
-    case weatherWatcher
+    case heating = "heating"
+    case cooling = "cooling"
+    case weatherWatcher = "weatherWatcher"
 }
 
 enum State: String, Codable {
-    case on
-    case off
+    case on = "on"
+    case off = "off"
 }

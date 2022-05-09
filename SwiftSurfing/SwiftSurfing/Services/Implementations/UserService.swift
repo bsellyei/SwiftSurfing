@@ -57,7 +57,7 @@ class UserService: UserServiceProtocol {
     }
     
     class UserTransformator {
-        static func transformToClientModel(user: GeneratedUser) -> User {
+        static func transformToClientModel(user: APIUser) -> User {
             let result = User()
             result.id = user._id!
             result.fullName = user.fullName!
@@ -65,8 +65,8 @@ class UserService: UserServiceProtocol {
             return result
         }
         
-        static func transformToAPIModel(user: User) -> GeneratedUser {
-            let result = GeneratedUser(_id: user.id, fullName: user.fullName, email: user.email)
+        static func transformToAPIModel(user: User) -> APIUser {
+            let result = APIUser(_id: user.id, fullName: user.fullName, email: user.email)
             return result
         }
     }

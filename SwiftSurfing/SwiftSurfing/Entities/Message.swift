@@ -10,7 +10,7 @@ import Firebase
 
 class Message: Identifiable {
     let ref: DatabaseReference?
-    let id: String
+    var id: String
     var conversationId: String
     var senderId: String
     var sendTime: Date

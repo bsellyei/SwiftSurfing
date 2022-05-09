@@ -24,10 +24,10 @@ final class Reservation: Model, Content {
     @Field(key: "guestsNum")
     var guestsNum: Int
     
-    @Field(key: "startDate")
+    @Field(key: "start")
     var start: Date
     
-    @Field(key: "endDate")
+    @Field(key: "end")
     var end: Date
     
     init() {}

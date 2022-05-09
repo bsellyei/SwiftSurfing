@@ -50,7 +50,9 @@ final class ReservationTests: XCTestCase {
             let conversations = try response.content.decode([Conversation].self)
             
             XCTAssertEqual(conversations.count, 1)
-            conversationId = conversations[0].id!.uuidString
+            if conversations.count > 0 {
+                conversationId = conversations[0].id!.uuidString
+            }
         })
         
         try app.test(.GET, "\(messagesURI)\(conversationId)", afterResponse: { response in
@@ -58,6 +60,53 @@ final class ReservationTests: XCTestCase {
             
             XCTAssertEqual(messages.count, 1)
             XCTAssertEqual(messages[0].$user.id, guest.id)
+        })
+    }
+    
+    func testGetReservationForUser() throws {
+        let guest = try User.create(on: app.db)
+        let couch1 = try Couch.create(on: app.db)
+        let couch2 = try Couch.create(on: app.db)
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        let date1 = formatter.date(from: "2022/05/10")
+        let date2 = formatter.date(from: "2022/05/13")
+        
+        let reservation1 = try Reservation.create(user: guest, couch: couch1, guestsNum: 2, start: date1!, end: date2!, on: app.db)
+        let reservation2 = try Reservation.create(user: guest, couch: couch2, guestsNum: 2, start: date1!, end: date2!, on: app.db)
+        
+        try app.test(.GET, "\(reservationsURI)user/\(guest.id!)", afterResponse: { response in
+            let reservations = try response.content.decode([Reservation].self)
+            
+            XCTAssertEqual(reservations.count, 2)
+            
+            XCTAssertEqual(reservations[0].start, reservation1.start)
+            XCTAssertEqual(reservations[1].start, reservation2.start)
+        })
+    }
+    
+    func testGetReservationsForCouch() throws {
+        let guest = try User.create(on: app.db)
+        let couch1 = try Couch.create(on: app.db)
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        let date1 = formatter.date(from: "2022/05/10")
+        let date2 = formatter.date(from: "2022/05/13")
+        let reservation1 = try Reservation.create(user: guest, couch: couch1, guestsNum: 2, start: date1!, end: date2!, on: app.db)
+        
+        let date3 = formatter.date(from: "2022/05/18")
+        let date4 = formatter.date(from: "2022/05/20")
+        let reservation2 = try Reservation.create(user: guest, couch: couch1, guestsNum: 2, start: date3!, end: date4!, on: app.db)
+        
+        try app.test(.GET, "\(reservationsURI)\(couch1.id!)", afterResponse: { response in
+            let reservations = try response.content.decode([Reservation].self)
+            
+            XCTAssertEqual(reservations.count, 2)
+            
+            XCTAssertEqual(reservations[0].start, reservation1.start)
+            XCTAssertEqual(reservations[1].start, reservation2.start)
         })
     }
 }

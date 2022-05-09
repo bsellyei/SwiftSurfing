@@ -70,6 +70,8 @@ final class CouchTests: XCTestCase {
         let user1 = try User.create(on: app.db)
         let couch1 = CreateCouchData(userId: user1.id!, name: couchName, address: address, city: city, country: country, latitude: latitude, longitude: longitude, maxGuests: maxGuests, description: "")
         
+        var couchId = UUID()
+        
         try app.test(.POST, couchesURI, beforeRequest: { request in
             try request.content.encode(couch1)
         }, afterResponse: { response in
@@ -84,6 +86,17 @@ final class CouchTests: XCTestCase {
             XCTAssertEqual(couch.latitude, latitude)
             XCTAssertEqual(couch.longitude, longitude)
             XCTAssertEqual(couch.maxGuests, maxGuests)
+            
+            couchId = couch.id!
+        })
+        
+        try app.test(.GET, "/home/items/\(couchId)", afterResponse: { response in
+            let configurations = try response.content.decode([HomeConfiguration].self)
+            
+            XCTAssertEqual(configurations.count, 3)
+            XCTAssertEqual(configurations[0].type, .heating)
+            XCTAssertEqual(configurations[1].type, .cooling)
+            XCTAssertEqual(configurations[2].type, .weatherWatcher)
         })
     }
     

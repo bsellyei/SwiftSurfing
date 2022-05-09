@@ -17,7 +17,7 @@ open class RatingAPI {
      - parameter body: (body) Rating object that needs to be added 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func createRating(body: GeneratedRating, completion: @escaping ((_ data: GeneratedRating?,_ error: Error?) -> Void)) {
+    open class func createRating(body: APIRating, completion: @escaping ((_ data: APIRating?,_ error: Error?) -> Void)) {
         createRatingWithRequestBuilder(body: body).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -32,16 +32,16 @@ open class RatingAPI {
      
      - parameter body: (body) Rating object that needs to be added 
 
-     - returns: RequestBuilder<Rating> 
+     - returns: RequestBuilder<APIRating> 
      */
-    open class func createRatingWithRequestBuilder(body: GeneratedRating) -> RequestBuilder<GeneratedRating> {
+    open class func createRatingWithRequestBuilder(body: APIRating) -> RequestBuilder<APIRating> {
         let path = "/ratings"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
 
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<GeneratedRating>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<APIRating>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
@@ -93,7 +93,7 @@ open class RatingAPI {
      - parameter _id: (path) ID of couch whose ratings to return 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getRatings(_id: String, completion: @escaping ((_ data: [GeneratedRating]?,_ error: Error?) -> Void)) {
+    open class func getRatings(_id: String, completion: @escaping ((_ data: [APIRating]?,_ error: Error?) -> Void)) {
         getRatingsWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -108,9 +108,9 @@ open class RatingAPI {
      
      - parameter _id: (path) ID of couch whose ratings to return 
 
-     - returns: RequestBuilder<[Rating]> 
+     - returns: RequestBuilder<[APIRating]> 
      */
-    open class func getRatingsWithRequestBuilder(_id: String) -> RequestBuilder<[GeneratedRating]> {
+    open class func getRatingsWithRequestBuilder(_id: String) -> RequestBuilder<[APIRating]> {
         var path = "/ratings/{Id}"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -120,7 +120,7 @@ open class RatingAPI {
         
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<[GeneratedRating]>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<[APIRating]>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
