@@ -16,23 +16,31 @@ struct ProfileView: View {
     }
     
     var body: some View {
-        VStack {
-            Image("placeholder")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 100, height: 100)
-                .clipped()
-                .cornerRadius(150)
-                .padding(.bottom, 5)
-                
-            List {
-                Button(action: {
-                    presenter.logout()
-                }) {
-                    ButtonContent(text: "Logout")
+        NavigationView {
+            VStack {
+                HStack {
+                    Image("placeholder")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 100, height: 100)
+                        .clipped()
+                        .cornerRadius(150)
+                        .padding(.bottom, 5)
                 }
+                .padding()
+                    
+                List {
+                    self.presenter.linkBuilder(content: {
+                        Text("Smart devices")
+                    })
+                    Text("Logout")
+                        .onTapGesture { presenter.logout() }
+                }
+                .listStyle(PlainListStyle())
             }
+            .background(Color.white)
         }
+        .navigationBarHidden(true)
     }
 }
 

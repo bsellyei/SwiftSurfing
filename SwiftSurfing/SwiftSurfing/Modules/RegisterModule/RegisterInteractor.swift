@@ -24,11 +24,16 @@ class RegisterInteractor {
             if let userId = self.authManager.loggedInUser?.uid,
                let userEmail = self.authManager.loggedInUser?.email
             {
-                user.id = userId
                 user.email = userEmail
                 user.fullName = fullName
                 
-                self.service.addNew(user: user, completion: { _ in })
+                self.service.addNew(user: user, completion: { success in
+                    if success {
+                        self.service.getByExternalId(id: userId, completion: { user in
+                            self.authManager.apiUser = user
+                        })
+                    }
+                })
             }
         })
     }

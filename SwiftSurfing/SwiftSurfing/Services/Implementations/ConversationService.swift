@@ -20,17 +20,22 @@ class ConversationService: ConversationServiceProtocol {
     
     func create(conversation: Conversation, completion: @escaping (Bool) -> Void) {
         if conversation.fromId.isEmpty {
-            let user = Auth.auth().currentUser
-            guard
-                let userId = user?.uid
-            else {
-                DispatchQueue.main.async {
-                    completion(false)
+            AuthenticationManager.shared.getCurrentUserId(completion: { userId in
+                if userId == nil {
+                    DispatchQueue.main.async {
+                        completion(false)
+                    }
+                    return
                 }
-                return
-            }
+                
+                conversation.fromId = userId!
+            })
             
-            conversation.fromId = userId
+            ConversationAPI.addConversation(body: ConversationTransformator.transformToAPIModel(conversation: conversation), completion: { _, _ in
+                DispatchQueue.main.async {
+                    completion(true)
+                }
+            })
         }
         
         //let conversationRef = self.databaseRef?.child(conversation.id)
@@ -52,23 +57,24 @@ class ConversationService: ConversationServiceProtocol {
     }
     
     func getAllConversations(completion: @escaping ([Conversation]) -> Void) {
-        let user = Auth.auth().currentUser
-        guard let userId = user?.uid else {
-            DispatchQueue.main.async {
-                completion([])
+        AuthenticationManager.shared.getCurrentUserId(completion: { userId in
+            if userId == nil {
+                DispatchQueue.main.async {
+                    completion([])
+                }
+                return
             }
-            return
-        }
-        
-        //let semaphore = DispatchSemaphore(value: 0)
-        var conversations: [Conversation] = []
-        ConversationAPI.getAllConversationsForUser(userId: userId, completion: { result, _ in
-            conversations = ConversationTransformator.transformToClientModel(conversations: result!)
-            //semaphore.signal()
             
-            DispatchQueue.main.async {
-                completion(conversations)
-            }
+            //let semaphore = DispatchSemaphore(value: 0)
+            var conversations: [Conversation] = []
+            ConversationAPI.getAllConversationsForUser(userId: userId!, completion: { result, _ in
+                conversations = ConversationTransformator.transformToClientModel(conversations: result!)
+                //semaphore.signal()
+                
+                DispatchQueue.main.async {
+                    completion(conversations)
+                }
+            })
         })
         
         /*databaseRef?.queryOrdered(byChild: "toId").queryEqual(toValue: userId).observeSingleEvent(of: .value, with: { (snapshot) in

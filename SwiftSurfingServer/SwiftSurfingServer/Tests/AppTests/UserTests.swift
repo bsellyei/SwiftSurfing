@@ -50,8 +50,21 @@ final class UserTests: XCTestCase {
         })
     }
     
+    func testGetSingleUserByExternalId() throws {
+        _ = try User.create(fullName: usersFullName, email: usersEmail, on: app.db)
+        
+        try app.test(.GET, "\(usersURI)external/ext", afterResponse: { response in
+            let user = try response.content.decode(User.self)
+            
+            XCTAssertEqual(user.fullName, usersFullName)
+            XCTAssertEqual(user.email, usersEmail)
+            XCTAssertEqual(user.id, user.id)
+            XCTAssertEqual(user.externalId, "ext")
+        })
+    }
+    
     func testCreateUser() throws {
-        let user = User(fullName: usersFullName, email: usersEmail)
+        let user = User(fullName: usersFullName, email: usersEmail, externalId: "ext")
         
         try app.test(.POST, usersURI, beforeRequest: { request in
             try request.content.encode(user)

@@ -11,7 +11,7 @@ import Foundation
 
 extension User {
     static func create(fullName: String = "Luke", email: String = "luke@test.com", on database: Database) throws -> User {
-        let user = User(fullName: fullName, email: email)
+        let user = User(fullName: fullName, email: email, externalId: "ext")
         try user.save(on: database).wait()
         return user
     }

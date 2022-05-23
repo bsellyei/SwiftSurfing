@@ -56,6 +56,14 @@ class UserService: UserServiceProtocol {
         })
     }
     
+    func getByExternalId(id: String, completion: @escaping (User?) -> Void) {
+        UserAPI.getUserByExternalId(externalId: id, completion: { user, _ in
+            DispatchQueue.main.async {
+                completion(UserTransformator.transformToClientModel(user: user!))
+            }
+        })
+    }
+    
     class UserTransformator {
         static func transformToClientModel(user: APIUser) -> User {
             let result = User()

@@ -106,7 +106,7 @@ open class CouchAPI {
 
     /**
      Find all couch by city excluding userId's couch
-     - GET /couches/{cityName}/{userId}
+     - GET /couches/city/{cityName}/{userId}
      - 
      - examples: [{contentType=application/json, example={}}]
      
@@ -116,7 +116,7 @@ open class CouchAPI {
      - returns: RequestBuilder<[APICouch]> 
      */
     open class func findAllCouchByCityExceptUserIdWithRequestBuilder(cityName: String, userId: String) -> RequestBuilder<[APICouch]> {
-        var path = "/couches/{cityName}/{userId}"
+        var path = "/couches/city/{cityName}/{userId}"
         let cityNamePreEscape = "\(cityName)"
         let cityNamePostEscape = cityNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{cityName}", with: cityNamePostEscape, options: .literal, range: nil)

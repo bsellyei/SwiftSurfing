@@ -18,6 +18,8 @@ class LoginInteractor {
     func login(email: String, password: String) {
         authManager.login(email: email, password: password)
         
+        
+        
         /*Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
             if let error = error {
                 let authError = error as NSError

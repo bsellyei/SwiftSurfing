@@ -19,17 +19,22 @@ class RatingService: RatingServiceProtocol {
     
     func add(rating: Rating, completion: @escaping (Bool) -> Void) {
         if rating.userId.isEmpty {
-            let user = Auth.auth().currentUser
-            guard
-                let userId = user?.uid
-            else {
-                DispatchQueue.main.async {
-                    completion(false)
+            AuthenticationManager.shared.getCurrentUserId(completion: { userId in
+                if userId == nil {
+                    DispatchQueue.main.async {
+                        completion(false)
+                    }
+                    return
                 }
-                return
-            }
-            
-            rating.userId = userId
+                
+                rating.userId = userId!
+                
+                RatingAPI.createRating(body: RatingTransformator.transformToAPIModel(rating: rating), completion: { _, _ in
+                    DispatchQueue.main.async {
+                        completion(true)
+                    }
+                })
+            })
         }
         
         RatingAPI.createRating(body: RatingTransformator.transformToAPIModel(rating: rating), completion: { _, _ in

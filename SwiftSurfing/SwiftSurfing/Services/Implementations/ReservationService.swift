@@ -21,18 +21,30 @@ class ReservationService: ReservationServiceProtocol {
     func add(reservation: Reservation, completion: @escaping (Bool) -> Void) {
         var currentUserId = ""
         if reservation.guestId.isEmpty {
-            let user = Auth.auth().currentUser
-            guard
-                let userId = user?.uid
-            else {
-                DispatchQueue.main.async {
-                    completion(false)
+            AuthenticationManager.shared.getCurrentUserId(completion: { userId in
+                if userId == nil {
+                    DispatchQueue.main.async {
+                        completion(false)
+                    }
                 }
-                return
-            }
-            
-            reservation.guestId = userId
-            currentUserId = userId
+                
+                reservation.guestId = userId!
+                currentUserId = userId!
+                
+                if reservation.ownerId == currentUserId {
+                    DispatchQueue.main.async {
+                        print("owner and guest are the same")
+                        completion(false)
+                    }
+                    return
+                }
+                
+                ReservationsAPI.addReservation(body: ReservationTransformator.transformToAPIModel(reservation: reservation), completion: { _, _ in
+                    DispatchQueue.main.async {
+                        completion(true)
+                    }
+                })
+            })
         }
         
         if reservation.ownerId == currentUserId {
@@ -43,14 +55,14 @@ class ReservationService: ReservationServiceProtocol {
             return
         }
         
-        //let reservationRef = self.databaseRef?.child(reservation.id)
-        //reservationRef?.setValue(reservation.toAnyObject())
-        
         ReservationsAPI.addReservation(body: ReservationTransformator.transformToAPIModel(reservation: reservation), completion: { _, _ in
             DispatchQueue.main.async {
                 completion(true)
             }
         })
+        
+        //let reservationRef = self.databaseRef?.child(reservation.id)
+        //reservationRef?.setValue(reservation.toAnyObject())
     }
     
     func get(id: String, completion: @escaping (Reservation?) -> Void) {

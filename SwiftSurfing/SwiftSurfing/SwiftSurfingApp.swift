@@ -48,6 +48,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             type: RatingServiceProtocol.self,
             component: RatingService())
         
+        container.register(
+            type: HomeServiceProtocol.self,
+            component: HomeService())
+        
         configureUserNotifications()
         
         return true

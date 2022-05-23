@@ -19,6 +19,7 @@ struct UserController: RouteCollection {
         let users = routes.grouped("users")
         users.get(use: getAllUsers)
         users.get(":id", use: getUser)
+        users.get("external", ":externalId", use: getUserByExternalId)
         users.post(use: createUser)
         users.delete(":id", use: deleteUser)
     }
@@ -31,6 +32,13 @@ struct UserController: RouteCollection {
         let found = try await userService.getUser(id: req.parameters.get("id"))
         guard let user = found else { throw Abort(.notFound) }
 
+        return user
+    }
+    
+    func getUserByExternalId(req: Request) async throws -> User {
+        let found = try await userService.getUser(externalId: req.parameters.get("externalId"))
+        guard let user = found else { throw Abort(.notFound) }
+        
         return user
     }
     

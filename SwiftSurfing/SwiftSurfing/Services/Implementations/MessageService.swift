@@ -19,27 +19,32 @@ class MessageService: MessageServiceProtocol {
     
     func send(message: Message, completion: @escaping (Bool) -> Void) {
         if message.senderId.isEmpty {
-            let user = Auth.auth().currentUser
-            guard
-                let userId = user?.uid
-            else {
-                DispatchQueue.main.async {
-                    completion(false)
+            AuthenticationManager.shared.getCurrentUserId(completion: { userId in
+                if userId == nil {
+                    DispatchQueue.main.async {
+                        completion(false)
+                    }
+                    return
                 }
-                return
-            }
-            
-            message.senderId = userId
+                
+                message.senderId = userId!
+                
+                MessagesAPI.addMessage(body: MessageTransformator.transformToAPIModel(message: message), completion: { _, _ in
+                    DispatchQueue.main.async {
+                        completion(true)
+                    }
+                })
+            })
         }
-        
-        //let messageRef = self.databaseRef?.child(message.id)
-        //messageRef?.setValue(message.toAnyObject())
         
         MessagesAPI.addMessage(body: MessageTransformator.transformToAPIModel(message: message), completion: { _, _ in
             DispatchQueue.main.async {
                 completion(true)
             }
         })
+        
+        //let messageRef = self.databaseRef?.child(message.id)
+        //messageRef?.setValue(message.toAnyObject())
     }
     
     func get(id: String, completion: @escaping (Message?) -> Void) {

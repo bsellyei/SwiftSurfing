@@ -27,6 +27,13 @@ class UserService: IUserService {
         return user
     }
     
+    func getUser(externalId: String?) async throws -> User? {
+        let found = try await User.query(on: db).filter(\.$externalId == externalId!).first()
+        guard let user = found else { return nil }
+        
+        return user
+    }
+    
     func createUser(user: User) async throws -> User {
         try await user.save(on: db)
         return user

@@ -13,4 +13,5 @@ protocol UserServiceProtocol {
     
     func get(id: String, completion: @escaping (User?) -> Void)
     
+    func getByExternalId(id: String, completion: @escaping (User?) -> Void)
 }

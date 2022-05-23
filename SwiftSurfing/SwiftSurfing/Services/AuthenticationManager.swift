@@ -14,15 +14,32 @@ class AuthenticationManager: NSObject, ObservableObject {
     @Published var isAuthenticating = false
     @Published var error: NSError?
     
+    @Published var apiUser: User?
+    
     static let shared = AuthenticationManager()
     
     private let auth = Auth.auth()
     
+    private let userService: UserServiceProtocol
+    
     override private init() {
+        userService = DIContainer.instance.resolve(type: UserServiceProtocol.self)!
         loggedInUser = auth.currentUser
         super.init()
         
         auth.addStateDidChangeListener(authStateChanged)
+    }
+    
+    func getCurrentUserId(completion: @escaping (String?) -> Void) {
+        if apiUser == nil {
+            let externalId = auth.currentUser?.uid
+            userService.getByExternalId(id: externalId!, completion: { user in
+                self.apiUser = user
+                completion(self.apiUser!.id)
+            })
+        } else {
+            completion(apiUser!.id)
+        }
     }
     
     func login(email: String, password: String) {

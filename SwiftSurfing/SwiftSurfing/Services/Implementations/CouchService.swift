@@ -23,34 +23,51 @@ class CouchService: CouchServiceProtocol {
     
     func addNew(couch: Couch, completion: @escaping (Bool) -> Void) {
         if couch.userId == "" {
-            let user = Auth.auth().currentUser
-            guard
-                let userId = user?.uid
-            else {
-                DispatchQueue.main.async {
-                    completion(false)
-                }
-                return
-            }
-        
-            couch.userId = userId
-        
-            Geocoder.shared.geocodeAddressString(couch.address, service: .google, alternativeService: .apple) { (results, error) in
-                if let address = results?.first, error == nil {
-                    couch.latitude = address.coordinate?.latitude ?? 0
-                    couch.longitude = address.coordinate?.longitude ?? 0
-                    
-                    let newCouch = CouchTransformator.transformToAPIModel(couch: couch)
-                    CouchAPI.addCouch(body: newCouch, completion: { _, _ in
-                        DispatchQueue.main.async {
-                            completion(true)
-                        }
-                    })
-                } else {
-                    print("getting coordinates failed from addNewCouch")
+            AuthenticationManager.shared.getCurrentUserId(completion: { userId in
+                if userId == nil {
                     DispatchQueue.main.async {
                         completion(false)
                     }
+                }
+                
+                couch.userId = userId!
+            
+                Geocoder.shared.geocodeAddressString(couch.address, service: .google, alternativeService: .apple) { (results, error) in
+                    if let address = results?.first, error == nil {
+                        couch.latitude = address.coordinate?.latitude ?? 0
+                        couch.longitude = address.coordinate?.longitude ?? 0
+                        
+                        let newCouch = CouchTransformator.transformToAPIModel(couch: couch)
+                        CouchAPI.addCouch(body: newCouch, completion: { _, _ in
+                            DispatchQueue.main.async {
+                                completion(true)
+                            }
+                        })
+                    } else {
+                        print("getting coordinates failed from addNewCouch")
+                        DispatchQueue.main.async {
+                            completion(false)
+                        }
+                    }
+                }
+            })
+        }
+        
+        Geocoder.shared.geocodeAddressString(couch.address, service: .google, alternativeService: .apple) { (results, error) in
+            if let address = results?.first, error == nil {
+                couch.latitude = address.coordinate?.latitude ?? 0
+                couch.longitude = address.coordinate?.longitude ?? 0
+                
+                let newCouch = CouchTransformator.transformToAPIModel(couch: couch)
+                CouchAPI.addCouch(body: newCouch, completion: { _, _ in
+                    DispatchQueue.main.async {
+                        completion(true)
+                    }
+                })
+            } else {
+                print("getting coordinates failed from addNewCouch")
+                DispatchQueue.main.async {
+                    completion(false)
                 }
             }
         }
@@ -74,18 +91,18 @@ class CouchService: CouchServiceProtocol {
     
     // for current user
     func getAllCouches(completion: @escaping ([Couch]) -> Void) {
-        let user = Auth.auth().currentUser
-        guard let userId = user?.uid else {
-            DispatchQueue.main.async {
-                completion([])
+        AuthenticationManager.shared.getCurrentUserId(completion: { userId in
+            if userId == nil {
+                DispatchQueue.main.async {
+                    completion([])
+                }
             }
-            return
-        }
-        
-        CouchAPI.findAllCouchForUser(userId: userId, completion: { couches, _ in
-            DispatchQueue.main.async {
-                completion(CouchTransformator.transformToClientModel(couches: couches!))
-            }
+            
+            CouchAPI.findAllCouchForUser(userId: userId!, completion: { couches, _ in
+                DispatchQueue.main.async {
+                    completion(CouchTransformator.transformToClientModel(couches: couches!))
+                }
+            })
         })
         
         /*databaseRef?.queryOrdered(byChild: "userId").queryEqual(toValue: userId).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -113,18 +130,18 @@ class CouchService: CouchServiceProtocol {
             }
         })*/
         
-        let user = Auth.auth().currentUser
-        guard let userId = user?.uid else {
-            DispatchQueue.main.async {
-                completion([])
+        AuthenticationManager.shared.getCurrentUserId(completion: { userId in
+            if userId == nil {
+                DispatchQueue.main.async {
+                    completion([])
+                }
             }
-            return
-        }
-        
-        CouchAPI.findAllCouchByCityExceptUserId(cityName: city, userId: userId, completion: { couches, _ in
-            DispatchQueue.main.async {
-                completion(CouchTransformator.transformToClientModel(couches: couches!))
-            }
+            
+            CouchAPI.findAllCouchByCityExceptUserId(cityName: city, userId: userId!, completion: { couches, _ in
+                DispatchQueue.main.async {
+                    completion(CouchTransformator.transformToClientModel(couches: couches!))
+                }
+            })
         })
     }
     

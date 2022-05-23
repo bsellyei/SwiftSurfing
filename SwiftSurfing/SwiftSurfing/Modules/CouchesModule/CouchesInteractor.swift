@@ -22,16 +22,23 @@ class CouchesInteractor {
     }
     
     func getUserName(completion: @escaping (String) -> Void) {
-        let user = Auth.auth().currentUser
-        guard let userId = user?.uid else { return }
-        
-        self.userService.get(id: userId, completion: { user in
-            guard
-                let userName = user
-            else { return }
-                
-            DispatchQueue.main.async {
-                completion(userName.fullName)
+        AuthenticationManager.shared.getCurrentUserId(completion: { userId in
+            if userId == nil {
+                DispatchQueue.main.async {
+                    completion("")
+                }
+            } else {
+                self.userService.get(id: userId!, completion: { user in
+                    if user == nil {
+                        DispatchQueue.main.async {
+                            completion("")
+                        }
+                    }
+                        
+                    DispatchQueue.main.async {
+                        completion(user!.fullName)
+                    }
+                })
             }
         })
     }

@@ -21,6 +21,9 @@ final class User: Model, Content {
     @Field(key: "email")
     var email: String
     
+    @Field(key: "externalId")
+    var externalId: String
+    
     @Children(for: \.$user)
     var couches: [Couch]
     
@@ -38,9 +41,10 @@ final class User: Model, Content {
     
     init() {}
     
-    init(id: UUID? = nil, fullName: String, email: String) {
+    init(id: UUID? = nil, fullName: String, email: String, externalId: String) {
         self.id = id
         self.fullName = fullName
         self.email = email
+        self.externalId = externalId
     }
 }

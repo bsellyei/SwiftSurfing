@@ -14,6 +14,8 @@ protocol IUserService {
     
     func getUser(id: String?) async throws -> User?
     
+    func getUser(externalId: String?) async throws -> User? 
+    
     func createUser(user: User) async throws -> User
     
     func deleteUser(id: String?) async throws -> Bool

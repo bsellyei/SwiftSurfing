@@ -63,7 +63,7 @@ final class Couch: Model, Content {
     init() {}
     
     init(id: UUID? = nil, userId: User.IDValue, name: String = "", address: String, city: String, country: String,
-         latitude: Double, longitude: Double, maxGuests: Int, description: String = "") {
+         latitude: Double, longitude: Double, maxGuests: Int, description: String = "", imageUrls: [String] = []) {
         self.id = id
         self.$user.id = userId
         self.name = name
@@ -74,7 +74,7 @@ final class Couch: Model, Content {
         self.longitude = longitude
         self.maxGuests = maxGuests
         self.description = description
-        self.imageUrls = []
+        self.imageUrls = imageUrls
         self.ratingAverage = 0
         self.ratingCount = 0
     }

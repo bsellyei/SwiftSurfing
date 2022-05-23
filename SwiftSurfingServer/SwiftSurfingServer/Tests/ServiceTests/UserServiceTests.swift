@@ -12,7 +12,7 @@ import SwiftyMocky
 
 let uuid1 = UUID()
 let uuidString1 = uuid1.uuidString
-let user1 = User(id: uuid1, fullName: "user1", email: "user1@test.com")
+let user1 = User(id: uuid1, fullName: "user1", email: "user1@test.com", externalId: "ext")
 
 final class UserServiceTests: XCTestCase {
     
@@ -29,7 +29,7 @@ final class UserServiceTests: XCTestCase {
     
     func testGetAllUsers() async throws {
         let userServiceMock = IUserServiceMock()
-        let user2 = User(fullName: "user2", email: "user2@test.com")
+        let user2 = User(fullName: "user2", email: "user2@test.com", externalId: "ext")
         
         Given(userServiceMock, .getAllUsers(willReturn: [user1]))
         var users = try userServiceMock.getAllUsers()

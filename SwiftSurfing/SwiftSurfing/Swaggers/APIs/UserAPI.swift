@@ -50,6 +50,44 @@ open class UserAPI {
     }
 
     /**
+     Find user by external ID
+     
+     - parameter externalId: (path) ID of user to return 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getUserByExternalId(externalId: String, completion: @escaping ((_ data: APIUser?,_ error: Error?) -> Void)) {
+        getUserByExternalIdWithRequestBuilder(externalId: externalId).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Find user by external ID
+     - GET /users/external/{externalId}
+     - Returns a single user
+     - examples: [{contentType=application/json, example={"empty": false}}]
+     
+     - parameter externalId: (path) ID of user to return 
+
+     - returns: RequestBuilder<APIUser> 
+     */
+    open class func getUserByExternalIdWithRequestBuilder(externalId: String) -> RequestBuilder<APIUser> {
+        var path = "/users/external/{externalId}"
+        let externalIdPreEscape = "\(externalId)"
+        let externalIdPostEscape = externalIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{externalId}", with: externalIdPostEscape, options: .literal, range: nil)
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<APIUser>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
      Find user by ID
      
      - parameter _id: (path) ID of user to return 

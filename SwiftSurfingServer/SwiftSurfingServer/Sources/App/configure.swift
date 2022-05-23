@@ -38,6 +38,7 @@ public func configure(_ app: Application) throws {
     app.migrations.add(UserConversationPivotMigration())
     app.migrations.add(ReservationMigration())
     app.migrations.add(HomeConfigurationMigration())
+    app.migrations.add(SeedMigration())
     try app.autoMigrate().wait()
     
     // Logging

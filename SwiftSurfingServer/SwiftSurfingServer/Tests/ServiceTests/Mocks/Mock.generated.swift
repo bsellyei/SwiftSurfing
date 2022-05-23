@@ -1892,6 +1892,21 @@ open class IUserServiceMock: IUserService, Mock {
 		return __value
     }
 
+    open func getUser(externalId: String?) throws -> User? {
+        addInvocation(.m_getUser__externalId_externalId(Parameter<String?>.value(`externalId`)))
+		let perform = methodPerformValue(.m_getUser__externalId_externalId(Parameter<String?>.value(`externalId`))) as? (String?) -> Void
+		perform?(`externalId`)
+		var __value: User? = nil
+		do {
+		    __value = try methodReturnValue(.m_getUser__externalId_externalId(Parameter<String?>.value(`externalId`))).casted()
+		} catch MockError.notStubed {
+			// do nothing
+		} catch {
+		    throw error
+		}
+		return __value
+    }
+
     open func createUser(user: User) throws -> User {
         addInvocation(.m_createUser__user_user(Parameter<User>.value(`user`)))
 		let perform = methodPerformValue(.m_createUser__user_user(Parameter<User>.value(`user`))) as? (User) -> Void
@@ -1928,6 +1943,7 @@ open class IUserServiceMock: IUserService, Mock {
     fileprivate enum MethodType {
         case m_getAllUsers
         case m_getUser__id_id(Parameter<String?>)
+        case m_getUser__externalId_externalId(Parameter<String?>)
         case m_createUser__user_user(Parameter<User>)
         case m_deleteUser__id_id(Parameter<String?>)
 
@@ -1938,6 +1954,11 @@ open class IUserServiceMock: IUserService, Mock {
             case (.m_getUser__id_id(let lhsId), .m_getUser__id_id(let rhsId)):
 				var results: [Matcher.ParameterComparisonResult] = []
 				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsId, rhs: rhsId, with: matcher), lhsId, rhsId, "id"))
+				return Matcher.ComparisonResult(results)
+
+            case (.m_getUser__externalId_externalId(let lhsExternalid), .m_getUser__externalId_externalId(let rhsExternalid)):
+				var results: [Matcher.ParameterComparisonResult] = []
+				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsExternalid, rhs: rhsExternalid, with: matcher), lhsExternalid, rhsExternalid, "externalId"))
 				return Matcher.ComparisonResult(results)
 
             case (.m_createUser__user_user(let lhsUser), .m_createUser__user_user(let rhsUser)):
@@ -1957,6 +1978,7 @@ open class IUserServiceMock: IUserService, Mock {
             switch self {
             case .m_getAllUsers: return 0
             case let .m_getUser__id_id(p0): return p0.intValue
+            case let .m_getUser__externalId_externalId(p0): return p0.intValue
             case let .m_createUser__user_user(p0): return p0.intValue
             case let .m_deleteUser__id_id(p0): return p0.intValue
             }
@@ -1965,6 +1987,7 @@ open class IUserServiceMock: IUserService, Mock {
             switch self {
             case .m_getAllUsers: return ".getAllUsers()"
             case .m_getUser__id_id: return ".getUser(id:)"
+            case .m_getUser__externalId_externalId: return ".getUser(externalId:)"
             case .m_createUser__user_user: return ".createUser(user:)"
             case .m_deleteUser__id_id: return ".deleteUser(id:)"
             }
@@ -1985,6 +2008,9 @@ open class IUserServiceMock: IUserService, Mock {
         }
         public static func getUser(id: Parameter<String?>, willReturn: User?...) -> MethodStub {
             return Given(method: .m_getUser__id_id(`id`), products: willReturn.map({ StubProduct.return($0 as Any) }))
+        }
+        public static func getUser(externalId: Parameter<String?>, willReturn: User?...) -> MethodStub {
+            return Given(method: .m_getUser__externalId_externalId(`externalId`), products: willReturn.map({ StubProduct.return($0 as Any) }))
         }
         public static func createUser(user: Parameter<User>, willReturn: User...) -> MethodStub {
             return Given(method: .m_createUser__user_user(`user`), products: willReturn.map({ StubProduct.return($0 as Any) }))
@@ -2008,6 +2034,16 @@ open class IUserServiceMock: IUserService, Mock {
         public static func getUser(id: Parameter<String?>, willProduce: (StubberThrows<User?>) -> Void) -> MethodStub {
             let willThrow: [Error] = []
 			let given: Given = { return Given(method: .m_getUser__id_id(`id`), products: willThrow.map({ StubProduct.throw($0) })) }()
+			let stubber = given.stubThrows(for: (User?).self)
+			willProduce(stubber)
+			return given
+        }
+        public static func getUser(externalId: Parameter<String?>, willThrow: Error...) -> MethodStub {
+            return Given(method: .m_getUser__externalId_externalId(`externalId`), products: willThrow.map({ StubProduct.throw($0) }))
+        }
+        public static func getUser(externalId: Parameter<String?>, willProduce: (StubberThrows<User?>) -> Void) -> MethodStub {
+            let willThrow: [Error] = []
+			let given: Given = { return Given(method: .m_getUser__externalId_externalId(`externalId`), products: willThrow.map({ StubProduct.throw($0) })) }()
 			let stubber = given.stubThrows(for: (User?).self)
 			willProduce(stubber)
 			return given
@@ -2039,6 +2075,7 @@ open class IUserServiceMock: IUserService, Mock {
 
         public static func getAllUsers() -> Verify { return Verify(method: .m_getAllUsers)}
         public static func getUser(id: Parameter<String?>) -> Verify { return Verify(method: .m_getUser__id_id(`id`))}
+        public static func getUser(externalId: Parameter<String?>) -> Verify { return Verify(method: .m_getUser__externalId_externalId(`externalId`))}
         public static func createUser(user: Parameter<User>) -> Verify { return Verify(method: .m_createUser__user_user(`user`))}
         public static func deleteUser(id: Parameter<String?>) -> Verify { return Verify(method: .m_deleteUser__id_id(`id`))}
     }
@@ -2052,6 +2089,9 @@ open class IUserServiceMock: IUserService, Mock {
         }
         public static func getUser(id: Parameter<String?>, perform: @escaping (String?) -> Void) -> Perform {
             return Perform(method: .m_getUser__id_id(`id`), performs: perform)
+        }
+        public static func getUser(externalId: Parameter<String?>, perform: @escaping (String?) -> Void) -> Perform {
+            return Perform(method: .m_getUser__externalId_externalId(`externalId`), performs: perform)
         }
         public static func createUser(user: Parameter<User>, perform: @escaping (User) -> Void) -> Perform {
             return Perform(method: .m_createUser__user_user(`user`), performs: perform)

@@ -15,6 +15,7 @@ struct UserMigration: AsyncMigration {
             .id()
             .field("fullName", .string, .required)
             .field("email", .string, .required)
+            .field("externalId", .string, .required)
             .create()
     }
     
