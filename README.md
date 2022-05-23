@@ -16,6 +16,9 @@ test users:
 1. email: teszt.elek@test.com
 2. password: tesztelek
 
+1. email: dev@test.com
+2. password: devtest
+
 generate mocks:
 mint run swiftymocky generate
 
