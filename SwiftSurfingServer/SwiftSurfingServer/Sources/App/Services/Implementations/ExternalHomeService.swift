@@ -73,6 +73,30 @@ class ExternalHomeService: IExternalHomeService {
         return response.status == .ok
     }
     
+    func addItem(name: String, label: String, type: String) async throws -> Item {
+        let header = HTTPHeaders([("Authorization", "Bearer \(accessToken)")])
+        let uri = URI(string: "\(baseURL)/items/\(name)")
+        
+        let body = CreateItemData(type: type, name: name, label: label)
+        let response = try await httpClient.put(uri, headers: header) { request in
+            try request.content.encode(body)
+        }
+        
+        return try decodeClientResponse(response: response).first!
+    }
+    
+    func linkItemToChannel(itemName: String, channelId: String) async throws -> Bool {
+        let header = HTTPHeaders([("Authorization", "Bearer \(accessToken)")])
+        let uri = URI(string: "\(baseURL)/links/\(itemName)/\(channelId)")
+        
+        let body = CreateLinkData(itemName: itemName, channelId: channelId)
+        let response = try await httpClient.put(uri, headers: headers) { request in
+            try request.content.encode(body)
+        }
+        
+        return response.status == .ok
+    }
+    
     private func decodeClientResponse<T: Decodable>(response: ClientResponse) throws -> [T] {
         guard response.status == .ok else { throw Abort(.unauthorized) }
         guard let buffer = response.body else { throw Abort(.badRequest) }
@@ -85,4 +109,15 @@ class ExternalHomeService: IExternalHomeService {
             throw Abort(.badRequest)
         }
     }
+}
+
+struct CreateItemData: Encodable {
+    let type: String
+    let name: String
+    let label: String
+}
+
+struct CreateLinkData: Encodable {
+    let itemName: String
+    let channelId: String
 }

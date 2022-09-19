@@ -17,4 +17,8 @@ protocol IExternalHomeService {
     func getItemState(name: String) async throws -> String
     
     func switchItem(name: String) async throws -> Bool
+    
+    func addItem(name: String, label: String, type: String) async throws -> Item
+    
+    func linkItemToChannel(itemName: String, channelId: String) async throws -> Bool
 }
