@@ -73,6 +73,17 @@ class ExternalHomeService: IExternalHomeService {
         return response.status == .ok
     }
     
+    func setItemState(name: String, newState: String) async throws -> Bool {
+        let header = HTTPHeaders([("Authorization", "Bearer \(accessToken)")])
+        let uri = URI(string: "\(baseURL)/items/\(name)")
+        
+        let response = try await httpClient.post(uri, headers: header) { request in
+            try request.content.encode(newState)
+        }
+        
+        return response.status == .ok
+    }
+    
     func addItem(name: String, label: String, type: String) async throws -> Item {
         let header = HTTPHeaders([("Authorization", "Bearer \(accessToken)")])
         let uri = URI(string: "\(baseURL)/items/\(name)")
@@ -90,7 +101,7 @@ class ExternalHomeService: IExternalHomeService {
         let uri = URI(string: "\(baseURL)/links/\(itemName)/\(channelId)")
         
         let body = CreateLinkData(itemName: itemName, channelId: channelId)
-        let response = try await httpClient.put(uri, headers: headers) { request in
+        let response = try await httpClient.put(uri, headers: header) { request in
             try request.content.encode(body)
         }
         
@@ -111,13 +122,13 @@ class ExternalHomeService: IExternalHomeService {
     }
 }
 
-struct CreateItemData: Encodable {
+struct CreateItemData: Content, Encodable {
     let type: String
     let name: String
     let label: String
 }
 
-struct CreateLinkData: Encodable {
+struct CreateLinkData: Content, Encodable {
     let itemName: String
     let channelId: String
 }

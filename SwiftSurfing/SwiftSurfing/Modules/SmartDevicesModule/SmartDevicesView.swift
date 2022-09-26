@@ -10,19 +10,30 @@ import SwiftUI
 struct SmartDevicesView: View {
     @ObservedObject var presenter: SmartDevicesPresenter
     
+    init(presenter: SmartDevicesPresenter) {
+        self.presenter = presenter
+    }
+    
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
     
     var body: some View {
-        ScrollView {
+        NavigationView {
             ForEach($presenter.devices, id: \.self) { item in
                 HStack {
                     Text(item.couchAddress.wrappedValue)
                         .font(.title2)
                     
                     Spacer()
+                    
+                    self.presenter.linkBuilderForNewDevice(content: {
+                        Image(systemName: "plus.circle.fill")
+                            .resizable()
+                            .clipped()
+                            .frame(width: 25, height: 25)
+                    })
                 }
                 .padding()
                 

@@ -12,5 +12,11 @@ protocol IHomeService {
     
     func switchItem(configurationId: String?) async throws -> HomeConfiguration
     
-    func addHomeConfiguration(couchId: String?, name: String, type: String) async throws -> Bool
+    func addHomeConfiguration(configuration: HomeConfiguration) async throws -> Bool
+    
+    func getConfigurationTypes() async throws -> [ConfigurationType]
+    
+    func getConfigurationTypeProperties() async throws -> [Channel]
+    
+    func saveItems(configurationName: String, items: [Item]) async throws -> Bool
 }

@@ -25,7 +25,9 @@ struct HomeConfigurationMigration: AsyncMigration {
             .schema("homeConfigurations")
             .id()
             .field("couchId", .uuid, .required, .references("couches", "id"))
+            .field("name", .string, .required)
             .field("configType", type, .required)
+            .field("itemNames", .array(of: .string))
             .field("state", state, .required)
             .create()
     }

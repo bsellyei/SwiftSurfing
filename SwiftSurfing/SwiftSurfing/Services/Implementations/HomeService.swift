@@ -23,4 +23,16 @@ class HomeService: HomeServiceProtocol {
             }
         })
     }
+    
+    func getDeviceTypes(completion: @escaping ([String]) -> Void) {
+        completion([])
+    }
+    
+    func getDeviceTypeProperties(completion: @escaping ([Channel]) -> Void) {
+        completion([])
+    }
+    
+    func addNewDevice(device: Device, completion: @escaping (Bool) -> Void) {
+        completion(true)
+    }
 }

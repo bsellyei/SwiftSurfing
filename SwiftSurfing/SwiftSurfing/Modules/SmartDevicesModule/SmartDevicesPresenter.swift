@@ -6,10 +6,12 @@
 //
 
 import Foundation
-import CloudKit
+import SwiftUI
+import Combine
 
 class SmartDevicesPresenter: ObservableObject {
     private var interactor: SmartDevicesInteractor
+    private let router = SmartDevicesRouter()
     
     @Published var devices: [CouchWithSmartDevicesData] = []
     
@@ -40,6 +42,14 @@ class SmartDevicesPresenter: ObservableObject {
     func switchItem(id: String) {
         DispatchQueue.global(qos: .background).async {
             self.interactor.switchItem(id: id, completion: { _ in })
+        }
+    }
+    
+    func linkBuilderForNewDevice<Content: View>(@ViewBuilder content: () -> Content)
+        -> some View
+    {
+        NavigationLink(destination: router.makeNewDeviceView()) {
+            content()
         }
     }
     

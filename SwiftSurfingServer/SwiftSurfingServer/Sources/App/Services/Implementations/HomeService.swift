@@ -25,26 +25,59 @@ class HomeService: IHomeService {
         return try await homeConfigurationService.switchState(id: configurationId)
     }
     
-    func addHomeConfiguration(couchId: String?, name: String, type: String) async throws -> Bool {
-        _ = try await homeConfigurationService.createHomeConfigurations(configuration: HomeConfiguration(couchId: couch.id!, type: ConfigurationType.init(rawValue: type)!, state: .off))
-        let things = await externalHomeService.getAllThings()
+    func getConfigurationTypes() async throws -> [ConfigurationType] {
+        return ConfigurationType.allCases
+    }
+    
+    func getConfigurationTypeProperties() async throws -> [Channel] {
+        let things = try await externalHomeService.getAllThings()
         if !things.isEmpty {
             let thing = things.first!
-            if !thing.channels?.isEmpty {
-                let channels = thing.channels!
-                for channel in channels {
-                    if channel.itemType! == "Switch" || channel.itemType! == "Number:Temperature" {
-                        let item = try await externalHomeService.addItem(name: name + "_" + channel.id,
-                                                               label: channel.label!,
-                                                               type: channel.itemType!)
-                        
-                        let success = try await externalHomeService.linkItemToChannel(itemName: item.name, channelId: channel.uid!)
-                        if !success {
-                            return success
-                        }
-                    }
+            if let channels = thing.channels {
+                if !channels.isEmpty {
+                    return channels
                 }
             }
+        }
+        
+        return []
+    }
+    
+    func addHomeConfiguration(configuration: HomeConfiguration) async throws -> Bool {
+        _ = try await homeConfigurationService.createHomeConfigurations(configuration: configuration)
+        
+        return try await linkItemsToChannel(configurationName: configuration.name)
+    }
+    
+    private func linkItemsToChannel(configurationName: String) async throws -> Bool {
+        let channels = try await getConfigurationTypeProperties()
+        for channel in channels {
+            if channel.itemType! == "Switch" || channel.itemType! == "Number:Temperature" {
+                let item = try await externalHomeService.addItem(name: configurationName + "_" + channel.id!,
+                                                                 label: channel.label!,
+                                                                 type: channel.itemType!)
+                        
+                let success = try await externalHomeService.linkItemToChannel(itemName: item.name!, channelId: channel.uid!)
+                if !success {
+                    return success
+                }
+            }
+        }
+        
+        return true
+    }
+    
+    func saveItems(configurationName: String, items: [Item]) async throws -> Bool {
+        var success = false
+        for item in items {
+            if let itemName = item.name {
+                let fullItemName = configurationName + "_" + itemName
+                if let itemState = item.state {
+                    success = try await self.externalHomeService.setItemState(name: fullItemName, newState: itemState)
+                }
+            }
+            
+            if !success { return success }
         }
         
         return success

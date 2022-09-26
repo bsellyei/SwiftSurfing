@@ -11,4 +11,10 @@ protocol HomeServiceProtocol {
     func getAllItems(couchId: String, completion: @escaping ([HomeConfiguration]) -> Void)
     
     func switchItem(id: String, completion: @escaping (Bool) -> Void)
+    
+    func getDeviceTypes(completion: @escaping ([String]) -> Void)
+    
+    func getDeviceTypeProperties(completion: @escaping ([Channel]) -> Void)
+    
+    func addNewDevice(device: Device, completion: @escaping (Bool) -> Void)
 }

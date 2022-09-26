@@ -136,6 +136,10 @@
 		DBEB14B925FAD5A70046CB30 /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEB14B825FAD5A70046CB30 /* RegisterPresenter.swift */; };
 		DBEB14BC25FAD5B60046CB30 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEB14BB25FAD5B60046CB30 /* RegisterView.swift */; };
 		DBEB14BF25FAD7290046CB30 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEB14BE25FAD7290046CB30 /* LoginRouter.swift */; };
+		DBF9A50528DDDEA4006E214F /* SmartDevicesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF9A50428DDDEA4006E214F /* SmartDevicesRouter.swift */; };
+		DBF9A50828DDDEFE006E214F /* NewSmartDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF9A50728DDDEFE006E214F /* NewSmartDeviceView.swift */; };
+		DBF9A50A28DDDF12006E214F /* NewSmartDevicePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF9A50928DDDF12006E214F /* NewSmartDevicePresenter.swift */; };
+		DBF9A50C28DDDF29006E214F /* NewSmartDeviceInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF9A50B28DDDF29006E214F /* NewSmartDeviceInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -284,6 +288,10 @@
 		DBEB14B825FAD5A70046CB30 /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
 		DBEB14BB25FAD5B60046CB30 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		DBEB14BE25FAD7290046CB30 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		DBF9A50428DDDEA4006E214F /* SmartDevicesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartDevicesRouter.swift; sourceTree = "<group>"; };
+		DBF9A50728DDDEFE006E214F /* NewSmartDeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSmartDeviceView.swift; sourceTree = "<group>"; };
+		DBF9A50928DDDF12006E214F /* NewSmartDevicePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSmartDevicePresenter.swift; sourceTree = "<group>"; };
+		DBF9A50B28DDDF29006E214F /* NewSmartDeviceInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSmartDeviceInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -634,6 +642,7 @@
 				DBBF29C0283C065A0009D5D8 /* SmartDevicesView.swift */,
 				DBBF29C2283C220A0009D5D8 /* SmartDevicesPresenter.swift */,
 				DBBF29C4283C22190009D5D8 /* SmartDevicesInteractor.swift */,
+				DBF9A50428DDDEA4006E214F /* SmartDevicesRouter.swift */,
 			);
 			path = SmartDevicesModule;
 			sourceTree = "<group>";
@@ -672,6 +681,7 @@
 		DBEB149F25F950C10046CB30 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				DBF9A50628DDDEE0006E214F /* NewSmartDeviceModule */,
 				DBBF29BF283C06320009D5D8 /* SmartDevicesModule */,
 				DB4344692728328100997D93 /* RatingsModule */,
 				DB19FB7F2715FB92001F25EB /* MessagesModule */,
@@ -708,6 +718,16 @@
 				DBEB14BB25FAD5B60046CB30 /* RegisterView.swift */,
 			);
 			path = RegisterModule;
+			sourceTree = "<group>";
+		};
+		DBF9A50628DDDEE0006E214F /* NewSmartDeviceModule */ = {
+			isa = PBXGroup;
+			children = (
+				DBF9A50728DDDEFE006E214F /* NewSmartDeviceView.swift */,
+				DBF9A50928DDDF12006E214F /* NewSmartDevicePresenter.swift */,
+				DBF9A50B28DDDF29006E214F /* NewSmartDeviceInteractor.swift */,
+			);
+			path = NewSmartDeviceModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -897,6 +917,7 @@
 				DB19FB682715B045001F25EB /* ConversationsView.swift in Sources */,
 				DBBF04152704D1EF00110DEC /* ConversationService.swift in Sources */,
 				DB834E4C25E5C1B200E94268 /* SwiftSurfingApp.swift in Sources */,
+				DBF9A50828DDDEFE006E214F /* NewSmartDeviceView.swift in Sources */,
 				DBA0B9D9260BE79800474B7C /* CouchService.swift in Sources */,
 				DB0970A4260141E60052EC09 /* CouchesInteractor.swift in Sources */,
 				DBBF29AC283B9F5F0009D5D8 /* ReservationsAPI.swift in Sources */,
@@ -951,6 +972,7 @@
 				DBEB14BF25FAD7290046CB30 /* LoginRouter.swift in Sources */,
 				DBBF29B8283B9F5F0009D5D8 /* APIRating.swift in Sources */,
 				DB19FB7C2715B600001F25EB /* ConversationListRow.swift in Sources */,
+				DBF9A50A28DDDF12006E214F /* NewSmartDevicePresenter.swift in Sources */,
 				DBBF29AB283B9F5F0009D5D8 /* ConversationAPI.swift in Sources */,
 				DBA0B9DD260BE86700474B7C /* CouchServiceProtocol.swift in Sources */,
 				DBEB14BC25FAD5B60046CB30 /* RegisterView.swift in Sources */,
@@ -961,6 +983,7 @@
 				DBBF03E326FAFEE500110DEC /* MDPModel.swift in Sources */,
 				DB19FB742715B06C001F25EB /* ConversationsRouter.swift in Sources */,
 				DBEB14A225F952A90046CB30 /* LoginInteractor.swift in Sources */,
+				DBF9A50C28DDDF29006E214F /* NewSmartDeviceInteractor.swift in Sources */,
 				DB43446527282AC900997D93 /* RatingService.swift in Sources */,
 				DB43445D2728291000997D93 /* RatingServiceProtocol.swift in Sources */,
 				DBBF03F627025E0200110DEC /* ReservationInteractor.swift in Sources */,
@@ -977,6 +1000,7 @@
 				DBBF03EC26FAFF2800110DEC /* MDPMonthYearPickerButton.swift in Sources */,
 				DBA0B9C8260146EB00474B7C /* NewCouchView.swift in Sources */,
 				DBBF29B3283B9F5F0009D5D8 /* APIMessage.swift in Sources */,
+				DBF9A50528DDDEA4006E214F /* SmartDevicesRouter.swift in Sources */,
 				DBBF040F2704B6B500110DEC /* Conversation.swift in Sources */,
 				DBA0B9E5260BE93200474B7C /* DIContainer.swift in Sources */,
 				DBBF29C3283C220A0009D5D8 /* SmartDevicesPresenter.swift in Sources */,

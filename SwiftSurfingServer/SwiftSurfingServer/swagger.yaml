@@ -442,6 +442,66 @@ paths:
           description: ""
           schema:
             $ref: "#/definitions/HomeConfiguration"
+    
+  /home/types/:
+    get:
+      tags:
+      - "home"
+      summary: "Get all home device types"
+      description: ""
+      operationId: "getAllHomeDeviceTypes"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ConfigurationType"
+              
+  /home/properties/:
+    get:
+      tags:
+      - "home"
+      summary: "Get all home device properties"
+      description: ""
+      operationId: "getAllHomeDeviceProperties"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Channel"
+              
+  /home/items/:
+    post:
+      tags:
+      - "home"
+      summary: "Create Home Configuration"
+      description: ""
+      operationId: "createHomeConfiguration"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Home Configuration object that needs to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/HomeConfiguration"
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/HomeConfiguration"
+      
+      
       
 definitions:
   ConfigurationType:
@@ -462,10 +522,25 @@ definitions:
         type: "string"
       couch:
         $ref: "#/definitions/APICouch"
+      name:
+        type: "string"
       type:
         $ref: "#/definitions/ConfigurationType"
+      itemNames:
+        type: "array"
+        items:
+          type: "string"
       state:
         $ref: "#/definitions/State"
+  Channel:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      itemType:
+        type: "string"
+      label:
+        type: "string"
   APIReservation:
     type: "object"
     properties:

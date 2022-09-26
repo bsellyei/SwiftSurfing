@@ -47,9 +47,9 @@ struct CouchController: RouteCollection {
         
         _ = try await couchService.createCouch(couch: couch)
         
-        _ = try await homeConfigurationService.createHomeConfigurations(configuration: HomeConfiguration(couchId: couch.id!, type: .heating, state: .off))
+        /*_ = try await homeConfigurationService.createHomeConfigurations(configuration: HomeConfiguration(couchId: couch.id!, type: .heating, state: .off))
         _ = try await homeConfigurationService.createHomeConfigurations(configuration: HomeConfiguration(couchId: couch.id!, type: .cooling, state: .off))
-        _ = try await homeConfigurationService.createHomeConfigurations(configuration: HomeConfiguration(couchId: couch.id!, type: .weatherWatcher, state: .off))
+        _ = try await homeConfigurationService.createHomeConfigurations(configuration: HomeConfiguration(couchId: couch.id!, type: .weatherWatcher, state: .off))*/
         
         return couch
     }
