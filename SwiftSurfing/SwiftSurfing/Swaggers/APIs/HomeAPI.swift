@@ -12,6 +12,41 @@ import Alamofire
 
 open class HomeAPI {
     /**
+     Create Home Configuration
+     
+     - parameter body: (body) Home Configuration object that needs to be added 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func createHomeConfiguration(body: CreateHomeConfigurationData, completion: @escaping ((_ data: HomeConfiguration?,_ error: Error?) -> Void)) {
+        createHomeConfigurationWithRequestBuilder(body: body).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Create Home Configuration
+     - POST /home/items/
+     - 
+     - examples: [{contentType=application/json, example={"empty": false}}]
+     
+     - parameter body: (body) Home Configuration object that needs to be added 
+
+     - returns: RequestBuilder<HomeConfiguration> 
+     */
+    open class func createHomeConfigurationWithRequestBuilder(body: CreateHomeConfigurationData) -> RequestBuilder<HomeConfiguration> {
+        let path = "/home/items/"
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<HomeConfiguration>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
      Find all home items for couch
      
      - parameter couchId: (path) ID of couch whose items to return 
@@ -45,6 +80,70 @@ open class HomeAPI {
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<[HomeConfiguration]>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Get all home device properties
+     
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getAllHomeDeviceProperties(completion: @escaping ((_ data: [Channel]?,_ error: Error?) -> Void)) {
+        getAllHomeDevicePropertiesWithRequestBuilder().execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Get all home device properties
+     - GET /home/properties/
+     - 
+     - examples: [{contentType=application/json, example={}}]
+
+     - returns: RequestBuilder<[Channel]> 
+     */
+    open class func getAllHomeDevicePropertiesWithRequestBuilder() -> RequestBuilder<[Channel]> {
+        let path = "/home/properties/"
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<[Channel]>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Get all home device types
+     
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getAllHomeDeviceTypes(completion: @escaping ((_ data: [ConfigurationType]?,_ error: Error?) -> Void)) {
+        getAllHomeDeviceTypesWithRequestBuilder().execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Get all home device types
+     - GET /home/types/
+     - 
+     - examples: [{contentType=application/json, example={}}]
+
+     - returns: RequestBuilder<[ConfigurationType]> 
+     */
+    open class func getAllHomeDeviceTypesWithRequestBuilder() -> RequestBuilder<[ConfigurationType]> {
+        let path = "/home/types/"
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<[ConfigurationType]>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }

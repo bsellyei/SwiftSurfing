@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import Vapor
 
-struct Channel: Codable {
+struct Channel: Codable, Content {
 
   var uid      : String? = nil
   var id       : String? = nil

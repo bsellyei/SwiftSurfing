@@ -43,7 +43,7 @@ final class HomeConfiguration: Model, Content {
     }
 }
 
-enum ConfigurationType: String, Codable, CaseIterable {
+enum ConfigurationType: String, Codable, CaseIterable, Content {
     case heating = "heating"
     case cooling = "cooling"
     case weatherWatcher = "weatherWatcher"

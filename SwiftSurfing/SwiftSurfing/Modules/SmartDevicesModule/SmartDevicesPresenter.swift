@@ -20,6 +20,7 @@ class SmartDevicesPresenter: ObservableObject {
     }
     
     func getData() {
+        self.devices = []
         DispatchQueue.global(qos: .background).async {
             self.interactor.getCouches(completion: { couches in
                 for couch in couches {
@@ -32,7 +33,7 @@ class SmartDevicesPresenter: ObservableObject {
                                 state: self.convertState(state: device.state!)))
                         }
                         
-                        self.devices.append(CouchWithSmartDevicesData(couchAddress: couch.address, devices: smartDevices))
+                        self.devices.append(CouchWithSmartDevicesData(id: couch.id, couchAddress: couch.address, devices: smartDevices))
                     })
                 }
             })
@@ -69,12 +70,14 @@ class SmartDevicesPresenter: ObservableObject {
     }
 }
 
-struct CouchWithSmartDevicesData: Hashable {
+struct CouchWithSmartDevicesData: Identifiable {
+    var id: String
+    
     var couchAddress: String
     var devices: [SmartDevice]
 }
 
-struct SmartDevice: Hashable {
+struct SmartDevice: Identifiable {
     var id: String
     var type: String
     var state: Bool

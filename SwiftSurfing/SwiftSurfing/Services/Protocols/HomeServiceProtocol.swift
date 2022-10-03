@@ -16,5 +16,5 @@ protocol HomeServiceProtocol {
     
     func getDeviceTypeProperties(completion: @escaping ([Channel]) -> Void)
     
-    func addNewDevice(device: Device, completion: @escaping (Bool) -> Void)
+    func addNewDevice(body: CreateHomeConfigurationData, completion: @escaping (Bool) -> Void)
 }

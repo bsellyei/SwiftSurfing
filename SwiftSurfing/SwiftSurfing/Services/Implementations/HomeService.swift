@@ -25,14 +25,41 @@ class HomeService: HomeServiceProtocol {
     }
     
     func getDeviceTypes(completion: @escaping ([String]) -> Void) {
-        completion([])
+        HomeAPI.getAllHomeDeviceTypes(completion: { types, error in
+            if error == nil {
+                if let deviceTypes = types {
+                    var result: [String] = []
+                    for deviceType in deviceTypes {
+                        result.append(deviceType.rawValue)
+                    }
+                    
+                    completion(result)
+                }
+            } else {
+                completion([])
+            }
+        })
     }
     
     func getDeviceTypeProperties(completion: @escaping ([Channel]) -> Void) {
-        completion([])
+        HomeAPI.getAllHomeDeviceProperties(completion: { channels, error in
+            if error == nil {
+                if let result = channels {
+                    completion(result)
+                }
+            } else {
+                completion([])
+            }
+        })
     }
     
-    func addNewDevice(device: Device, completion: @escaping (Bool) -> Void) {
-        completion(true)
+    func addNewDevice(body: CreateHomeConfigurationData, completion: @escaping (Bool) -> Void) {
+        HomeAPI.createHomeConfiguration(body: body, completion: { result, error in
+            if error == nil {
+                completion(true)
+            } else {
+                completion(false)
+            }
+        })
     }
 }

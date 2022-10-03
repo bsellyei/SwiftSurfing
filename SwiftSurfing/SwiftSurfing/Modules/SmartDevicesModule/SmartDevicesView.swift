@@ -20,8 +20,8 @@ struct SmartDevicesView: View {
     ]
     
     var body: some View {
-        NavigationView {
-            ForEach($presenter.devices, id: \.self) { item in
+        ScrollView {
+            ForEach($presenter.devices) { item in
                 HStack {
                     Text(item.couchAddress.wrappedValue)
                         .font(.title2)
@@ -38,7 +38,7 @@ struct SmartDevicesView: View {
                 .padding()
                 
                 LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(item.devices, id: \.self) { device in
+                    ForEach(item.devices) { device in
                         CardView(data: device.wrappedValue, onToggle: { id in presenter.switchItem(id: id) })
                     }
                 }
@@ -54,7 +54,7 @@ struct CardView: View {
     var data: SmartDevice
     let onToggle: (String) -> Void
     
-    @State var isOn = false
+    @State var isOn: Bool
     
     init(data: SmartDevice, onToggle: @escaping (String) -> Void) {
         self.data = data

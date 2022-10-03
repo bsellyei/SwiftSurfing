@@ -19,7 +19,7 @@ class NewSmartDevicePresenter: ObservableObject {
     @Published var deviceTypes: [String]
     @Published var selectedDeviceType: String
     
-    private var channels: [Channel]
+    //private var channels: [Channel]
     @Published var switchesList: [SwitchItem]
     @Published var valuesList: [NumberItem]
     
@@ -37,7 +37,6 @@ class NewSmartDevicePresenter: ObservableObject {
         self.deviceTypes = []
         self.selectedDeviceType = ""
         
-        self.channels = []
         self.switchesList = []
         self.valuesList = []
         
@@ -50,13 +49,15 @@ class NewSmartDevicePresenter: ObservableObject {
     }
     
     private func getCouchNames() {
-        couchAddressesToIds = interactor.getCouchAddressesToIds()
-        
-        for (address, _) in couchAddressesToIds {
-            couchAddresses.append(address)
-        }
-        
-        selectedCouchAddress = couchAddresses[0]
+        interactor.getCouchAddressesToIds(completion: { couchAddressesToIds in
+            self.couchAddressesToIds = couchAddressesToIds
+            
+            for (address, _) in self.couchAddressesToIds {
+                self.couchAddresses.append(address)
+            }
+            
+            self.selectedCouchAddress = self.couchAddresses[0]
+        })
     }
     
     private func getDeviceTypes() {
@@ -70,13 +71,20 @@ class NewSmartDevicePresenter: ObservableObject {
     }
     
     func getDeviceTypeProperties() {
+        switchesList.removeAll()
+        valuesList.removeAll()
         DispatchQueue.global(qos: .background).async {
             self.interactor.getDeviceTypeProperties(completion: { channels in
                 for channel in channels {
-                    if channel.type == "Switch" {
-                        self.switchesList.append(SwitchItem(id: channel.id, label: channel.label))
-                    } else if channel.type == "Number:Temperature" {
-                        self.valuesList.append(NumberItem(id: channel.id, label: channel.label))
+                    if channel.itemType == "Switch" {
+                        if let channelLabel = channel.label, let channelId = channel._id {
+                            self.switchesList.append(SwitchItem(id: channelId, label: channelLabel))
+                        }
+                        
+                    } else if channel.itemType == "Number:Temperature" {
+                        if let channelLabel = channel.label, let channelId = channel._id {
+                            self.valuesList.append(NumberItem(id: channelId, label: channelLabel))
+                        }
                     }
                 }
             })
@@ -85,17 +93,39 @@ class NewSmartDevicePresenter: ObservableObject {
     
     func addNewDevice() {
         if let couchId = couchAddressesToIds[selectedCouchAddress] {
-            let device = Device(couchId: couchId, name: name, type: selectedDeviceType, items: switchesList + valuesList)
+            let data = CreateHomeConfigurationData(couchId: couchId, name: name, type: selectedDeviceType, items: convertItems())
             DispatchQueue.global(qos: .background).async {
-                self.interactor.addNewDevice(device: device, completion: { success in
+                self.interactor.addNewDevice(createHomeConfigData: data, completion: { success in
                     self.showAlert = !success
                 })
             }
         }
     }
+    
+    private func convertItems() -> [APIItem] {
+        var result: [APIItem] = []
+        for item in switchesList {
+            var state = ""
+            if item.isOn {
+                state = "on"
+            } else {
+                state = "off"
+            }
+            
+            result.append(APIItem(name: item.id, type: item.type, label: item.label, state: state))
+        }
+        
+        for item in valuesList {
+            if let value = String(intValue: item.value) {
+                result.append(APIItem(name: item.id, type: item.type, label: item.label, state: value))
+            }
+        }
+        
+        return result
+    }
 }
 
-class Channel: Identifiable {
+class Item: Identifiable {
     var id: String
     var type: String
     var label: String
@@ -107,7 +137,7 @@ class Channel: Identifiable {
     }
 }
 
-class SwitchItem: Channel {
+class SwitchItem: Item {
     var isOn: Bool
     
     init(id: String, label: String, isOn: Bool = false) {
@@ -117,7 +147,7 @@ class SwitchItem: Channel {
     }
 }
 
-class NumberItem: Channel {
+class NumberItem: Item {
     var value: Int
     
     init(id: String, label: String, value: Int = 20) {

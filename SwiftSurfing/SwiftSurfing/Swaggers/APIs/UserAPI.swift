@@ -68,9 +68,9 @@ open class UserAPI {
      - Returns a single user
      - examples: [{contentType=application/json, example={"empty": false}}]
      
-     - parameter externalId: (path) ID of user to return 
+     - parameter externalId: (path) ID of user to return
 
-     - returns: RequestBuilder<APIUser> 
+     - returns: RequestBuilder<APIUser>
      */
     open class func getUserByExternalIdWithRequestBuilder(externalId: String) -> RequestBuilder<APIUser> {
         var path = "/users/external/{externalId}"

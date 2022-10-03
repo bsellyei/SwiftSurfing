@@ -64,6 +64,9 @@
 		DBA0B9E1260BE8D000474B7C /* DIContainerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA0B9E0260BE8D000474B7C /* DIContainerProtocol.swift */; };
 		DBA0B9E5260BE93200474B7C /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA0B9E4260BE93200474B7C /* DIContainer.swift */; };
 		DBA264D42630C1B900C63431 /* CouchAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA264D32630C1B900C63431 /* CouchAnnotation.swift */; };
+		DBB204AA28EAF01B0083DE7D /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB204A928EAF01B0083DE7D /* Channel.swift */; };
+		DBB204AD28EB154F0083DE7D /* APIItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB204AB28EB154F0083DE7D /* APIItem.swift */; };
+		DBB204AE28EB154F0083DE7D /* CreateHomeConfigurationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB204AC28EB154F0083DE7D /* CreateHomeConfigurationData.swift */; };
 		DBB559A52714AE42009AE705 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB559A42714AE42009AE705 /* ProfileView.swift */; };
 		DBB559AB2714AF56009AE705 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB559AA2714AF56009AE705 /* ProfilePresenter.swift */; };
 		DBB559AF2714AF62009AE705 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB559AE2714AF62009AE705 /* ProfileInteractor.swift */; };
@@ -216,6 +219,9 @@
 		DBA0B9E0260BE8D000474B7C /* DIContainerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainerProtocol.swift; sourceTree = "<group>"; };
 		DBA0B9E4260BE93200474B7C /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		DBA264D32630C1B900C63431 /* CouchAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouchAnnotation.swift; sourceTree = "<group>"; };
+		DBB204A928EAF01B0083DE7D /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		DBB204AB28EB154F0083DE7D /* APIItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIItem.swift; sourceTree = "<group>"; };
+		DBB204AC28EB154F0083DE7D /* CreateHomeConfigurationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateHomeConfigurationData.swift; sourceTree = "<group>"; };
 		DBB559A42714AE42009AE705 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		DBB559AA2714AF56009AE705 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		DBB559AE2714AF62009AE705 /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
@@ -623,6 +629,9 @@
 		DBBF2997283B9F5F0009D5D8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DBB204AB28EB154F0083DE7D /* APIItem.swift */,
+				DBB204AC28EB154F0083DE7D /* CreateHomeConfigurationData.swift */,
+				DBB204A928EAF01B0083DE7D /* Channel.swift */,
 				DBBF2998283B9F5F0009D5D8 /* APIUser.swift */,
 				DBBF2999283B9F5F0009D5D8 /* APIMessage.swift */,
 				DBBF299A283B9F5F0009D5D8 /* APICouch.swift */,
@@ -898,6 +907,7 @@
 				DB09709025FD509C0052EC09 /* MapView.swift in Sources */,
 				DB19FB8B2715FBC2001F25EB /* MessagesInteractor.swift in Sources */,
 				DBBF04092704B4A500110DEC /* MessageService.swift in Sources */,
+				DBB204AD28EB154F0083DE7D /* APIItem.swift in Sources */,
 				DB1EE43A263B0C51005C4AD1 /* ImageManager.swift in Sources */,
 				DBBF29C9283C240D0009D5D8 /* HomeService.swift in Sources */,
 				DB19FB702715B062001F25EB /* ConversationsInteractor.swift in Sources */,
@@ -916,6 +926,7 @@
 				DB09709325FD50A90052EC09 /* MapInteractor.swift in Sources */,
 				DB19FB682715B045001F25EB /* ConversationsView.swift in Sources */,
 				DBBF04152704D1EF00110DEC /* ConversationService.swift in Sources */,
+				DBB204AA28EAF01B0083DE7D /* Channel.swift in Sources */,
 				DB834E4C25E5C1B200E94268 /* SwiftSurfingApp.swift in Sources */,
 				DBF9A50828DDDEFE006E214F /* NewSmartDeviceView.swift in Sources */,
 				DBA0B9D9260BE79800474B7C /* CouchService.swift in Sources */,
@@ -948,6 +959,7 @@
 				DBB559AB2714AF56009AE705 /* ProfilePresenter.swift in Sources */,
 				DBE36B0D264EFE1100755851 /* CouchDetailsInteractor.swift in Sources */,
 				DBBF29C7283C23AB0009D5D8 /* HomeServiceProtocol.swift in Sources */,
+				DBB204AE28EB154F0083DE7D /* CreateHomeConfigurationData.swift in Sources */,
 				DB0970A8260142080052EC09 /* CouchesPresenter.swift in Sources */,
 				DBBF29B5283B9F5F0009D5D8 /* State.swift in Sources */,
 				DBBF29BC283B9F5F0009D5D8 /* JSONEncodingHelper.swift in Sources */,

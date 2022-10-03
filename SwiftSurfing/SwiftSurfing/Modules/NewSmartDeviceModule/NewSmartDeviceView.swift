@@ -17,23 +17,27 @@ struct NewSmartDeviceView: View {
     }
     
     var body: some View {
-        NavigationView {
+        ScrollView {
             VStack {
                 TextField("Name", text: $presenter.name)
                     .padding()
                     .background(lightGreyColor)
                     .cornerRadius(5.0)
                     .disableAutocorrection(true)
-                
-                List {
+                    
+                HStack {
+                    Text("Couch: ")
+                        
                     Picker("Couches", selection: $presenter.selectedCouchAddress) {
                         ForEach(presenter.couchAddresses, id: \.self) {
                             Text($0)
                         }
                     }
                 }
-                
-                List {
+                    
+                HStack {
+                    Text("Device type: ")
+                        
                     Picker("Device type", selection: $presenter.selectedDeviceType) {
                         ForEach(presenter.deviceTypes, id: \.self) {
                             Text($0)
@@ -43,15 +47,16 @@ struct NewSmartDeviceView: View {
                         presenter.getDeviceTypeProperties()
                     })
                 }
-                
+                    
+                    
                 ForEach($presenter.switchesList) { $item in
                     Toggle("\(item.label)", isOn: $item.isOn)
                 }
-                
+                    
                 ForEach($presenter.valuesList) { $item in
                     Stepper("\(item.label): \(item.value)", value: $item.value, in: 0...30)
                 }
-                
+                    
                 Spacer()
             }
             .padding()

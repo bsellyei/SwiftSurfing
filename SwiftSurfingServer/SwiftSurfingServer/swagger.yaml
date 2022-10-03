@@ -494,7 +494,7 @@ paths:
         description: "Home Configuration object that needs to be added"
         required: true
         schema:
-          $ref: "#/definitions/HomeConfiguration"
+          $ref: "#/definitions/CreateHomeConfigurationData"
       responses:
         "200":
           description: ""
@@ -504,6 +504,30 @@ paths:
       
       
 definitions:
+  CreateHomeConfigurationData:
+    type: "object"
+    properties:
+      couchId:
+        type: "string"
+      name:
+        type: "string"
+      type:
+        type: "string"
+      items:
+        type: "array"
+        items:
+          $ref: "#/definitions/APIItem"
+  APIItem:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      type:
+        type: "string"
+      label:
+        type: "string"
+      state:
+        type: "string"
   ConfigurationType:
     type: "string"
     enum:

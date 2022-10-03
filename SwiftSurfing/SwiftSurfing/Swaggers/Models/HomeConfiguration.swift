@@ -13,20 +13,26 @@ public struct HomeConfiguration: Codable {
 
     public var _id: String?
     public var couch: APICouch?
+    public var name: String?
     public var type: ConfigurationType?
+    public var itemNames: [String]?
     public var state: ItemState?
 
-    public init(_id: String?, couch: APICouch?, type: ConfigurationType?, state: ItemState?) {
+    public init(_id: String?, couch: APICouch?, name: String?, type: ConfigurationType?, itemNames: [String]?, state: ItemState?) {
         self._id = _id
         self.couch = couch
+        self.name = name
         self.type = type
+        self.itemNames = itemNames
         self.state = state
     }
 
     public enum CodingKeys: String, CodingKey { 
         case _id = "id"
         case couch
+        case name
         case type
+        case itemNames
         case state
     }
 

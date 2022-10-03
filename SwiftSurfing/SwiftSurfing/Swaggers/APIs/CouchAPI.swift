@@ -107,7 +107,7 @@ open class CouchAPI {
     /**
      Find all couch by city excluding userId's couch
      - GET /couches/city/{cityName}/{userId}
-     - 
+     -
      - examples: [{contentType=application/json, example={}}]
      
      - parameter cityName: (path) name of a city 

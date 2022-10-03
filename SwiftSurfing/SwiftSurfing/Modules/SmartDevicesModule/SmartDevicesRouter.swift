@@ -10,7 +10,7 @@ import SwiftUI
 
 class SmartDevicesRouter {
     func makeNewDeviceView() -> some View {
-        let interactor = NewSmartDeviceInteractor(couchService: DIContainer.instance.resolve(type: CouchServiceProtocol.self)!)
+        let interactor = NewSmartDeviceInteractor(couchService: DIContainer.instance.resolve(type: CouchServiceProtocol.self)!, homeService: DIContainer.instance.resolve(type: HomeServiceProtocol.self)!)
         let presenter = NewSmartDevicePresenter(interactor: interactor)
         return NewSmartDeviceView(presenter: presenter)
     }

@@ -93,7 +93,18 @@ class ExternalHomeService: IExternalHomeService {
             try request.content.encode(body)
         }
         
-        return try decodeClientResponse(response: response).first!
+        var item = Item()
+        if response.status == .created {
+            item = Item()
+            item.name = name
+            item.label = label
+            item.type = type
+            item.state = ""
+        } else if response.status == .ok {
+            item = try decodeClientResponse(response: response).first!
+        }
+        
+        return item
     }
     
     func linkItemToChannel(itemName: String, channelId: String) async throws -> Bool {
