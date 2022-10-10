@@ -47,6 +47,7 @@
 		DB5AA3B62713166E009F8E73 /* SwiftSurfingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5AA3B52713166E009F8E73 /* SwiftSurfingTests.swift */; };
 		DB5AA3C027131704009F8E73 /* CouchServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5AA3BF27131704009F8E73 /* CouchServiceTests.swift */; };
 		DB5F6A9526282C6300C83F5A /* CouchListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5F6A9426282C6300C83F5A /* CouchListRow.swift */; };
+		DB69AD5628ECACD300510E76 /* SmartDeviceDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB69AD5528ECACD300510E76 /* SmartDeviceDetailsView.swift */; };
 		DB791BDE27273A1000B745F0 /* RatingSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB791BDD27273A1000B745F0 /* RatingSummaryView.swift */; };
 		DB834E4C25E5C1B200E94268 /* SwiftSurfingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB834E4B25E5C1B200E94268 /* SwiftSurfingApp.swift */; };
 		DB834E4E25E5C1B200E94268 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB834E4D25E5C1B200E94268 /* ContentView.swift */; };
@@ -129,6 +130,8 @@
 		DBCBEA2925FBF25500E74A8D /* PublisherExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCBEA2825FBF25500E74A8D /* PublisherExtension.swift */; };
 		DBD60E1A27230F8200A13AC9 /* NotificationManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD60E1927230F8200A13AC9 /* NotificationManagerProtocol.swift */; };
 		DBD60E1E27230FA200A13AC9 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD60E1D27230FA200A13AC9 /* NotificationManager.swift */; };
+		DBDEDA8D28F03EAD00640F59 /* SmartDeviceDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDEDA8C28F03EAD00640F59 /* SmartDeviceDetailsPresenter.swift */; };
+		DBDEDA8F28F03EBB00640F59 /* SmartDeviceDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDEDA8E28F03EBB00640F59 /* SmartDeviceDetailsInteractor.swift */; };
 		DBE36B0D264EFE1100755851 /* CouchDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE36B0A264EFE1100755851 /* CouchDetailsInteractor.swift */; };
 		DBE36B0E264EFE1100755851 /* CouchDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE36B0B264EFE1100755851 /* CouchDetailsView.swift */; };
 		DBE36B0F264EFE1100755851 /* CouchDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE36B0C264EFE1100755851 /* CouchDetailsPresenter.swift */; };
@@ -200,6 +203,7 @@
 		DB5AA3B72713166E009F8E73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB5AA3BF27131704009F8E73 /* CouchServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouchServiceTests.swift; sourceTree = "<group>"; };
 		DB5F6A9426282C6300C83F5A /* CouchListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouchListRow.swift; sourceTree = "<group>"; };
+		DB69AD5528ECACD300510E76 /* SmartDeviceDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartDeviceDetailsView.swift; sourceTree = "<group>"; };
 		DB791BDD27273A1000B745F0 /* RatingSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingSummaryView.swift; sourceTree = "<group>"; };
 		DB834E4825E5C1B200E94268 /* SwiftSurfing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftSurfing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB834E4B25E5C1B200E94268 /* SwiftSurfingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftSurfingApp.swift; sourceTree = "<group>"; };
@@ -284,6 +288,8 @@
 		DBCBEA2825FBF25500E74A8D /* PublisherExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherExtension.swift; sourceTree = "<group>"; };
 		DBD60E1927230F8200A13AC9 /* NotificationManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManagerProtocol.swift; sourceTree = "<group>"; };
 		DBD60E1D27230FA200A13AC9 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		DBDEDA8C28F03EAD00640F59 /* SmartDeviceDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartDeviceDetailsPresenter.swift; sourceTree = "<group>"; };
+		DBDEDA8E28F03EBB00640F59 /* SmartDeviceDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartDeviceDetailsInteractor.swift; sourceTree = "<group>"; };
 		DBE36B0A264EFE1100755851 /* CouchDetailsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CouchDetailsInteractor.swift; path = CouchDetailsModule/CouchDetailsInteractor.swift; sourceTree = "<group>"; };
 		DBE36B0B264EFE1100755851 /* CouchDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CouchDetailsView.swift; path = CouchDetailsModule/CouchDetailsView.swift; sourceTree = "<group>"; };
 		DBE36B0C264EFE1100755851 /* CouchDetailsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CouchDetailsPresenter.swift; path = CouchDetailsModule/CouchDetailsPresenter.swift; sourceTree = "<group>"; };
@@ -419,6 +425,16 @@
 				DB5AA3B72713166E009F8E73 /* Info.plist */,
 			);
 			path = SwiftSurfingTests;
+			sourceTree = "<group>";
+		};
+		DB69AD5428ECACB400510E76 /* SmartDeviceDetailsModule */ = {
+			isa = PBXGroup;
+			children = (
+				DB69AD5528ECACD300510E76 /* SmartDeviceDetailsView.swift */,
+				DBDEDA8C28F03EAD00640F59 /* SmartDeviceDetailsPresenter.swift */,
+				DBDEDA8E28F03EBB00640F59 /* SmartDeviceDetailsInteractor.swift */,
+			);
+			path = SmartDeviceDetailsModule;
 			sourceTree = "<group>";
 		};
 		DB834E3F25E5C1B100E94268 = {
@@ -690,6 +706,7 @@
 		DBEB149F25F950C10046CB30 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				DB69AD5428ECACB400510E76 /* SmartDeviceDetailsModule */,
 				DBF9A50628DDDEE0006E214F /* NewSmartDeviceModule */,
 				DBBF29BF283C06320009D5D8 /* SmartDevicesModule */,
 				DB4344692728328100997D93 /* RatingsModule */,
@@ -908,6 +925,7 @@
 				DB19FB8B2715FBC2001F25EB /* MessagesInteractor.swift in Sources */,
 				DBBF04092704B4A500110DEC /* MessageService.swift in Sources */,
 				DBB204AD28EB154F0083DE7D /* APIItem.swift in Sources */,
+				DB69AD5628ECACD300510E76 /* SmartDeviceDetailsView.swift in Sources */,
 				DB1EE43A263B0C51005C4AD1 /* ImageManager.swift in Sources */,
 				DBBF29C9283C240D0009D5D8 /* HomeService.swift in Sources */,
 				DB19FB702715B062001F25EB /* ConversationsInteractor.swift in Sources */,
@@ -938,6 +956,7 @@
 				DBBF29B7283B9F5F0009D5D8 /* ConfigurationType.swift in Sources */,
 				DB404FBF2816BE8400AE5CC9 /* User.swift in Sources */,
 				DBEB14B525FAD59A0046CB30 /* RegisterInteractor.swift in Sources */,
+				DBDEDA8D28F03EAD00640F59 /* SmartDeviceDetailsPresenter.swift in Sources */,
 				DB1EE44026432912005C4AD1 /* UserServiceProtocol.swift in Sources */,
 				DBA264D42630C1B900C63431 /* CouchAnnotation.swift in Sources */,
 				DBE36B0E264EFE1100755851 /* CouchDetailsView.swift in Sources */,
@@ -959,6 +978,7 @@
 				DBB559AB2714AF56009AE705 /* ProfilePresenter.swift in Sources */,
 				DBE36B0D264EFE1100755851 /* CouchDetailsInteractor.swift in Sources */,
 				DBBF29C7283C23AB0009D5D8 /* HomeServiceProtocol.swift in Sources */,
+				DBDEDA8F28F03EBB00640F59 /* SmartDeviceDetailsInteractor.swift in Sources */,
 				DBB204AE28EB154F0083DE7D /* CreateHomeConfigurationData.swift in Sources */,
 				DB0970A8260142080052EC09 /* CouchesPresenter.swift in Sources */,
 				DBBF29B5283B9F5F0009D5D8 /* State.swift in Sources */,

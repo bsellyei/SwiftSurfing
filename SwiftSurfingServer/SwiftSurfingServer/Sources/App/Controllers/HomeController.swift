@@ -19,16 +19,25 @@ struct HomeController: RouteCollection {
     func boot(routes: RoutesBuilder) throws {
         let home = routes.grouped("home")
         home.get("items", ":couchId", use: getAllItems)
+        home.get("item", ":configurationId", use: getItem)
         home.post("switch", ":itemId", use: switchItem)
         
         home.get("types", use: getConfigurationTypes)
         home.get("properties", use: getConfigurationTypeProperties)
+        home.get("properties", ":configurationId", use: getConfigurationProperties)
+        home.post("properties", use: setPropertyState)
         
         home.post("items", use: createHomeConfiguration)
     }
     
     func getAllItems(req: Request) async throws -> [HomeConfiguration] {
         return try await homeService.getHomeConfigurations(couchId: req.parameters.get("couchId"))
+    }
+    
+    func getItem(req: Request) async throws -> HomeConfiguration {
+        let found = try await homeService.getHomeConfiguration(configurationId: req.parameters.get("configurationId"))
+        guard let item = found else { throw Abort(.notFound) }
+        return item
     }
     
     func switchItem(req: Request) async throws -> HomeConfiguration {
@@ -41,6 +50,17 @@ struct HomeController: RouteCollection {
     
     func getConfigurationTypeProperties(req: Request) async throws -> [Channel] {
         return try await homeService.getConfigurationTypeProperties()
+    }
+    
+    func getConfigurationProperties(req: Request) async throws -> [Item] {
+        return try await homeService.getItemsByHomeConfiguration(configurationId: req.parameters.get("configurationId"))
+    }
+    
+    func setPropertyState(req: Request) async throws -> HTTPStatus {
+        let data = try req.content.decode(Item.self)
+        let success = try await homeService.setItemState(item: data)
+        
+        return success ? .ok : .internalServerError
     }
     
     func createHomeConfiguration(req: Request) async throws -> HomeConfiguration {

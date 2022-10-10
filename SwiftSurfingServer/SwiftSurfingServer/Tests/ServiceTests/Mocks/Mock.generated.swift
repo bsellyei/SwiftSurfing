@@ -1,4 +1,4 @@
-// Generated using Sourcery 1.8.1 — https://github.com/krzysztofzablocki/Sourcery
+// Generated using Sourcery 1.9.0 — https://github.com/krzysztofzablocki/Sourcery
 // DO NOT EDIT
 
 
@@ -715,6 +715,21 @@ open class IHomeConfigurationServiceMock: IHomeConfigurationService, Mock {
 		return __value
     }
 
+    open func getHomeConfiguration(configurationId: String?) throws -> HomeConfiguration? {
+        addInvocation(.m_getHomeConfiguration__configurationId_configurationId(Parameter<String?>.value(`configurationId`)))
+		let perform = methodPerformValue(.m_getHomeConfiguration__configurationId_configurationId(Parameter<String?>.value(`configurationId`))) as? (String?) -> Void
+		perform?(`configurationId`)
+		var __value: HomeConfiguration? = nil
+		do {
+		    __value = try methodReturnValue(.m_getHomeConfiguration__configurationId_configurationId(Parameter<String?>.value(`configurationId`))).casted()
+		} catch MockError.notStubed {
+			// do nothing
+		} catch {
+		    throw error
+		}
+		return __value
+    }
+
     open func createHomeConfigurations(configuration: HomeConfiguration) throws -> HomeConfiguration {
         addInvocation(.m_createHomeConfigurations__configuration_configuration(Parameter<HomeConfiguration>.value(`configuration`)))
 		let perform = methodPerformValue(.m_createHomeConfigurations__configuration_configuration(Parameter<HomeConfiguration>.value(`configuration`))) as? (HomeConfiguration) -> Void
@@ -766,6 +781,7 @@ open class IHomeConfigurationServiceMock: IHomeConfigurationService, Mock {
 
     fileprivate enum MethodType {
         case m_getHomeConfigurations__couchId_couchId(Parameter<String?>)
+        case m_getHomeConfiguration__configurationId_configurationId(Parameter<String?>)
         case m_createHomeConfigurations__configuration_configuration(Parameter<HomeConfiguration>)
         case m_switchState__id_id(Parameter<String?>)
         case m_getHomeConfigurationsByType__type_typestate_state(Parameter<ConfigurationType>, Parameter<State>)
@@ -775,6 +791,11 @@ open class IHomeConfigurationServiceMock: IHomeConfigurationService, Mock {
             case (.m_getHomeConfigurations__couchId_couchId(let lhsCouchid), .m_getHomeConfigurations__couchId_couchId(let rhsCouchid)):
 				var results: [Matcher.ParameterComparisonResult] = []
 				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsCouchid, rhs: rhsCouchid, with: matcher), lhsCouchid, rhsCouchid, "couchId"))
+				return Matcher.ComparisonResult(results)
+
+            case (.m_getHomeConfiguration__configurationId_configurationId(let lhsConfigurationid), .m_getHomeConfiguration__configurationId_configurationId(let rhsConfigurationid)):
+				var results: [Matcher.ParameterComparisonResult] = []
+				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsConfigurationid, rhs: rhsConfigurationid, with: matcher), lhsConfigurationid, rhsConfigurationid, "configurationId"))
 				return Matcher.ComparisonResult(results)
 
             case (.m_createHomeConfigurations__configuration_configuration(let lhsConfiguration), .m_createHomeConfigurations__configuration_configuration(let rhsConfiguration)):
@@ -799,6 +820,7 @@ open class IHomeConfigurationServiceMock: IHomeConfigurationService, Mock {
         func intValue() -> Int {
             switch self {
             case let .m_getHomeConfigurations__couchId_couchId(p0): return p0.intValue
+            case let .m_getHomeConfiguration__configurationId_configurationId(p0): return p0.intValue
             case let .m_createHomeConfigurations__configuration_configuration(p0): return p0.intValue
             case let .m_switchState__id_id(p0): return p0.intValue
             case let .m_getHomeConfigurationsByType__type_typestate_state(p0, p1): return p0.intValue + p1.intValue
@@ -807,6 +829,7 @@ open class IHomeConfigurationServiceMock: IHomeConfigurationService, Mock {
         func assertionName() -> String {
             switch self {
             case .m_getHomeConfigurations__couchId_couchId: return ".getHomeConfigurations(couchId:)"
+            case .m_getHomeConfiguration__configurationId_configurationId: return ".getHomeConfiguration(configurationId:)"
             case .m_createHomeConfigurations__configuration_configuration: return ".createHomeConfigurations(configuration:)"
             case .m_switchState__id_id: return ".switchState(id:)"
             case .m_getHomeConfigurationsByType__type_typestate_state: return ".getHomeConfigurationsByType(type:state:)"
@@ -826,6 +849,9 @@ open class IHomeConfigurationServiceMock: IHomeConfigurationService, Mock {
         public static func getHomeConfigurations(couchId: Parameter<String?>, willReturn: [HomeConfiguration]...) -> MethodStub {
             return Given(method: .m_getHomeConfigurations__couchId_couchId(`couchId`), products: willReturn.map({ StubProduct.return($0 as Any) }))
         }
+        public static func getHomeConfiguration(configurationId: Parameter<String?>, willReturn: HomeConfiguration?...) -> MethodStub {
+            return Given(method: .m_getHomeConfiguration__configurationId_configurationId(`configurationId`), products: willReturn.map({ StubProduct.return($0 as Any) }))
+        }
         public static func createHomeConfigurations(configuration: Parameter<HomeConfiguration>, willReturn: HomeConfiguration...) -> MethodStub {
             return Given(method: .m_createHomeConfigurations__configuration_configuration(`configuration`), products: willReturn.map({ StubProduct.return($0 as Any) }))
         }
@@ -842,6 +868,16 @@ open class IHomeConfigurationServiceMock: IHomeConfigurationService, Mock {
             let willThrow: [Error] = []
 			let given: Given = { return Given(method: .m_getHomeConfigurations__couchId_couchId(`couchId`), products: willThrow.map({ StubProduct.throw($0) })) }()
 			let stubber = given.stubThrows(for: ([HomeConfiguration]).self)
+			willProduce(stubber)
+			return given
+        }
+        public static func getHomeConfiguration(configurationId: Parameter<String?>, willThrow: Error...) -> MethodStub {
+            return Given(method: .m_getHomeConfiguration__configurationId_configurationId(`configurationId`), products: willThrow.map({ StubProduct.throw($0) }))
+        }
+        public static func getHomeConfiguration(configurationId: Parameter<String?>, willProduce: (StubberThrows<HomeConfiguration?>) -> Void) -> MethodStub {
+            let willThrow: [Error] = []
+			let given: Given = { return Given(method: .m_getHomeConfiguration__configurationId_configurationId(`configurationId`), products: willThrow.map({ StubProduct.throw($0) })) }()
+			let stubber = given.stubThrows(for: (HomeConfiguration?).self)
 			willProduce(stubber)
 			return given
         }
@@ -881,6 +917,7 @@ open class IHomeConfigurationServiceMock: IHomeConfigurationService, Mock {
         fileprivate var method: MethodType
 
         public static func getHomeConfigurations(couchId: Parameter<String?>) -> Verify { return Verify(method: .m_getHomeConfigurations__couchId_couchId(`couchId`))}
+        public static func getHomeConfiguration(configurationId: Parameter<String?>) -> Verify { return Verify(method: .m_getHomeConfiguration__configurationId_configurationId(`configurationId`))}
         public static func createHomeConfigurations(configuration: Parameter<HomeConfiguration>) -> Verify { return Verify(method: .m_createHomeConfigurations__configuration_configuration(`configuration`))}
         public static func switchState(id: Parameter<String?>) -> Verify { return Verify(method: .m_switchState__id_id(`id`))}
         public static func getHomeConfigurationsByType(type: Parameter<ConfigurationType>, state: Parameter<State>) -> Verify { return Verify(method: .m_getHomeConfigurationsByType__type_typestate_state(`type`, `state`))}
@@ -892,6 +929,9 @@ open class IHomeConfigurationServiceMock: IHomeConfigurationService, Mock {
 
         public static func getHomeConfigurations(couchId: Parameter<String?>, perform: @escaping (String?) -> Void) -> Perform {
             return Perform(method: .m_getHomeConfigurations__couchId_couchId(`couchId`), performs: perform)
+        }
+        public static func getHomeConfiguration(configurationId: Parameter<String?>, perform: @escaping (String?) -> Void) -> Perform {
+            return Perform(method: .m_getHomeConfiguration__configurationId_configurationId(`configurationId`), performs: perform)
         }
         public static func createHomeConfigurations(configuration: Parameter<HomeConfiguration>, perform: @escaping (HomeConfiguration) -> Void) -> Perform {
             return Perform(method: .m_createHomeConfigurations__configuration_configuration(`configuration`), performs: perform)

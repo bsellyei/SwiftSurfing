@@ -267,6 +267,7 @@ paths:
             type: "array"
             items:
               $ref: "#/definitions/APIConversation"
+              
   /conversations:
     post:
       tags:
@@ -310,6 +311,7 @@ paths:
       responses:
         "405":
           description: "Invalid input"
+          
   /messages/{conversationId}:
     get:
       tags:
@@ -354,6 +356,7 @@ paths:
       responses:
         "405":
           description: "Invalid input"
+          
   /reservations/user/{userId}:
     get:
       tags:
@@ -421,6 +424,27 @@ paths:
             type: "array"
             items:
               $ref: "#/definitions/HomeConfiguration"
+  
+  /home/item/{configurationId}:
+    get:
+      tags:
+      - "home"
+      summary: "Find home item by ID"
+      description: ""
+      operationId: "findHomeItemByID"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "configurationId"
+        in: "path"
+        description: "ID of home configuration to return"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/HomeConfiguration"
               
   /home/switch/{itemId}:
     post:
@@ -476,6 +500,51 @@ paths:
             type: "array"
             items:
               $ref: "#/definitions/Channel"
+    post:
+      tags:
+      - "home"
+      summary: "Update device property state"
+      description: ""
+      operationId: "updateDevicePropertyState"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Item object that needs to be updated"
+        required: true
+        schema:
+          $ref: "#/definitions/APIItem"
+      responses:
+        "200":
+          description: ""
+        "500":
+          description: "Operation failed"
+              
+  /home/properties/{configurationId}:
+    get:
+      tags:
+      - "home"
+      summary: "Get all home device properties for device ID"
+      description: ""
+      operationId: "getAllHomeDevicePropertiesForDeviceID"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "configurationId"
+        in: "path"
+        description: "ID of home configuration to return"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/APIItem"
               
   /home/items/:
     post:
@@ -500,7 +569,6 @@ paths:
           description: ""
           schema:
             $ref: "#/definitions/HomeConfiguration"
-      
       
       
 definitions:

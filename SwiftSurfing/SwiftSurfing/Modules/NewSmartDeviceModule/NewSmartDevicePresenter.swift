@@ -116,9 +116,7 @@ class NewSmartDevicePresenter: ObservableObject {
         }
         
         for item in valuesList {
-            if let value = String(intValue: item.value) {
-                result.append(APIItem(name: item.id, type: item.type, label: item.label, state: value))
-            }
+            result.append(APIItem(name: item.id, type: item.type, label: item.label, state: "\(item.value)"))
         }
         
         return result

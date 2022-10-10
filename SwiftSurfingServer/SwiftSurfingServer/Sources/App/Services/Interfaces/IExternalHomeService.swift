@@ -10,13 +10,7 @@ import Foundation
 protocol IExternalHomeService {
     func getAllThings() async throws -> [Thing]
     
-    func getAllItems() async throws -> [Item]
-    
     func getItem(name: String) async throws -> Item
-    
-    func getItemState(name: String) async throws -> String
-    
-    func switchItem(name: String) async throws -> Bool
     
     func setItemState(name: String, newState: String) async throws -> Bool
     

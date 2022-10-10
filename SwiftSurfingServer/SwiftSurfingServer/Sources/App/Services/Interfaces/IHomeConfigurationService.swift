@@ -11,6 +11,8 @@ import Foundation
 protocol IHomeConfigurationService {
     func getHomeConfigurations(couchId: String?) async throws -> [HomeConfiguration]
     
+    func getHomeConfiguration(configurationId: String?) async throws -> HomeConfiguration?
+    
     func createHomeConfigurations(configuration: HomeConfiguration) async throws -> HomeConfiguration
     
     func switchState(id: String?) async throws -> HomeConfiguration

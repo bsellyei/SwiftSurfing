@@ -21,6 +21,10 @@ class HomeService: IHomeService {
         return try await homeConfigurationService.getHomeConfigurations(couchId: couchId)
     }
     
+    func getHomeConfiguration(configurationId: String?) async throws -> HomeConfiguration? {
+        return try await homeConfigurationService.getHomeConfiguration(configurationId: configurationId)
+    }
+    
     func switchItem(configurationId: String?) async throws -> HomeConfiguration {
         return try await homeConfigurationService.switchState(id: configurationId)
     }
@@ -81,5 +85,26 @@ class HomeService: IHomeService {
         }
         
         return success
+    }
+    
+    func getItemsByHomeConfiguration(configurationId: String?) async throws -> [Item] {
+        let homeConfiguration = try await getHomeConfiguration(configurationId: configurationId)
+        var items: [Item] = []
+        if let configuration = homeConfiguration {
+            for name in configuration.itemNames {
+                let item = try await externalHomeService.getItem(name: name)
+                items.append(item)
+            }
+        }
+        
+        return items
+    }
+    
+    func setItemState(item: Item) async throws -> Bool {
+        if let itemName = item.name, let itemState = item.state {
+            return try await externalHomeService.setItemState(name: itemName, newState: itemState.uppercased())
+        }
+        
+        return false
     }
 }

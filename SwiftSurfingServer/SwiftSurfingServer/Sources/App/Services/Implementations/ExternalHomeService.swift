@@ -26,51 +26,12 @@ class ExternalHomeService: IExternalHomeService {
         return try decodeClientResponse(response: response)
     }
     
-    func getAllItems() async throws -> [Item] {
-        let header = HTTPHeaders([("Authorization", "Bearer \(accessToken)")])
-        let uri = URI(string: "\(baseURL)/items?recursive=false")
-        
-        let response = try await httpClient.get(uri, headers: header)
-        return try decodeClientResponse(response: response)
-    }
-    
     func getItem(name: String) async throws -> Item {
         let header = HTTPHeaders([("Authorization", "Bearer \(accessToken)")])
         let uri = URI(string: "\(baseURL)/items/\(name)")
         
         let response = try await httpClient.get(uri, headers: header)
-        return try decodeClientResponse(response: response).first!
-    }
-    
-    func getItemState(name: String) async throws -> String {
-        let header = HTTPHeaders([("Authorization", "Bearer \(accessToken)")])
-        let uri = URI(string: "\(baseURL)/items/\(name)/state")
-        
-        let response = try await httpClient.get(uri, headers: header)
-        guard response.status == .ok else { throw Abort(.notFound) }
-        guard let buffer = response.body else { throw Abort(.badRequest) }
-        guard let data = String(buffer: buffer).data(using: .utf8) else { throw Abort(.badRequest) }
-        
-        return String(decoding: data, as: UTF8.self)
-    }
-    
-    func switchItem(name: String) async throws -> Bool {
-        let header = HTTPHeaders([("Authorization", "Bearer \(accessToken)")])
-        let uri = URI(string: "\(baseURL)/items/\(name)")
-        
-        let state = try await getItemState(name: name)
-        var newState: String = ""
-        if state == "ON" {
-            newState = "OFF"
-        } else if state == "OFF" {
-            newState = "ON"
-        }
-        
-        let response = try await httpClient.post(uri, headers: header) { request in
-            try request.content.encode(newState)
-        }
-        
-        return response.status == .ok
+        return try decodeItem(response: response)
     }
     
     func setItemState(name: String, newState: String) async throws -> Bool {
@@ -127,7 +88,22 @@ class ExternalHomeService: IExternalHomeService {
         let decoder: JSONDecoder = JSONDecoder()
         do {
             return try decoder.decode([T].self, from: data)
-        } catch {
+        } catch let error {
+            print(error)
+            throw Abort(.badRequest)
+        }
+    }
+    
+    private func decodeItem(response: ClientResponse) throws -> Item {
+        guard response.status == .ok else { throw Abort(.unauthorized) }
+        guard let buffer = response.body else { throw Abort(.badRequest) }
+        guard let data = String(buffer: buffer).data(using: .utf8) else { throw Abort(.badRequest) }
+        
+        let decoder: JSONDecoder = JSONDecoder()
+        do {
+            return try decoder.decode(Item.self, from: data)
+        } catch let error {
+            print(error)
             throw Abort(.badRequest)
         }
     }

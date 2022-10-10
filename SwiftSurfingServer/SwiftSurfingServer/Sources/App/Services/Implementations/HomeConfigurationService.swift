@@ -23,6 +23,15 @@ class HomeConfigurationService: IHomeConfigurationService {
             .all()
     }
     
+    func getHomeConfiguration(configurationId: String?) async throws -> HomeConfiguration? {
+        let uuid = UUID(uuidString: configurationId!)
+        let found = try await HomeConfiguration.find(uuid, on: db)
+        guard let homeConfiguration = found else { return nil }
+        
+        return homeConfiguration
+            
+    }
+    
     func createHomeConfigurations(configuration: HomeConfiguration) async throws -> HomeConfiguration {
         try await configuration.save(on: db)
         return configuration

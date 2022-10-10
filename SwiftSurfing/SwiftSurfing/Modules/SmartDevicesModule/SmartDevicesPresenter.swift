@@ -29,6 +29,7 @@ class SmartDevicesPresenter: ObservableObject {
                         for device in devices {
                             smartDevices.append(SmartDevice(
                                 id: device._id!,
+                                name: device._id!,
                                 type: self.convertType(type: device.type!),
                                 state: self.convertState(state: device.state!)))
                         }
@@ -50,6 +51,14 @@ class SmartDevicesPresenter: ObservableObject {
         -> some View
     {
         NavigationLink(destination: router.makeNewDeviceView()) {
+            content()
+        }
+    }
+    
+    func linkBuilderForDetails<Content: View>(id: String, @ViewBuilder content: () -> Content)
+        -> some View
+    {
+        NavigationLink(destination: router.makeDetailsView(homeConfigurationId: id)) {
             content()
         }
     }
@@ -79,6 +88,7 @@ struct CouchWithSmartDevicesData: Identifiable {
 
 struct SmartDevice: Identifiable {
     var id: String
+    var name: String
     var type: String
     var state: Bool
 }

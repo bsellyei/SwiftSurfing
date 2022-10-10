@@ -38,8 +38,17 @@ struct SmartDevicesView: View {
                 .padding()
                 
                 LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(item.devices) { device in
-                        CardView(data: device.wrappedValue, onToggle: { id in presenter.switchItem(id: id) })
+                    ForEach(item.devices) { data in
+                        CardView(data: data.wrappedValue,
+                                 buttonView: {
+                            self.presenter.linkBuilderForDetails(id: data.wrappedValue.name, content: {
+                                        Image(systemName: "arrowshape.turn.up.right")
+                                            .resizable()
+                                            .clipped()
+                                            .frame(width: 20, height: 20)
+                                    })
+                                 },
+                                 onToggle: { id in self.presenter.switchItem(id: id) })
                     }
                 }
                 .padding(.horizontal)
@@ -50,22 +59,32 @@ struct SmartDevicesView: View {
     }
 }
 
-struct CardView: View {
+struct CardView<Content: View>: View {
     var data: SmartDevice
     let onToggle: (String) -> Void
+    let buttonView: () -> Content
     
     @State var isOn: Bool
     
-    init(data: SmartDevice, onToggle: @escaping (String) -> Void) {
+    init(data: SmartDevice, @ViewBuilder buttonView: @escaping () -> Content, onToggle: @escaping (String) -> Void) {
         self.data = data
         self.onToggle = onToggle
-        isOn = data.state
+        self.buttonView = buttonView
+        
+        self.isOn = data.state
     }
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(data.type)
-                .font(.system(size: 22, weight: .semibold)).lineLimit(2)
+            HStack {
+                Text(data.type)
+                    .font(.system(size: 22, weight: .semibold)).lineLimit(2)
+                
+                Spacer()
+                
+                buttonView()
+            }
+            
             HStack {
                 if isOn {
                    Text("On")

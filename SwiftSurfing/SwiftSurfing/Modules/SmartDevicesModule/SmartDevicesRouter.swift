@@ -14,4 +14,10 @@ class SmartDevicesRouter {
         let presenter = NewSmartDevicePresenter(interactor: interactor)
         return NewSmartDeviceView(presenter: presenter)
     }
+    
+    func makeDetailsView(homeConfigurationId: String) -> some View {
+        let interactor = SmartDeviceDetailsInteractor(homeService: DIContainer.instance.resolve(type: HomeServiceProtocol.self)!, couchService: DIContainer.instance.resolve(type: CouchServiceProtocol.self)!)
+        let presenter = SmartDeviceDetailsPresenter(interactor: interactor, deviceId: homeConfigurationId)
+        return SmartDeviceDetailsView(presenter: presenter)
+    }
 }

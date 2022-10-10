@@ -85,6 +85,44 @@ open class HomeAPI {
     }
 
     /**
+     Find home item by ID
+     
+     - parameter configurationId: (path) ID of home configuration to return 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func findHomeItemByID(configurationId: String, completion: @escaping ((_ data: HomeConfiguration?,_ error: Error?) -> Void)) {
+        findHomeItemByIDWithRequestBuilder(configurationId: configurationId).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Find home item by ID
+     - GET /home/item/{configurationId}
+     - 
+     - examples: [{contentType=application/json, example={"empty": false}}]
+     
+     - parameter configurationId: (path) ID of home configuration to return 
+
+     - returns: RequestBuilder<HomeConfiguration> 
+     */
+    open class func findHomeItemByIDWithRequestBuilder(configurationId: String) -> RequestBuilder<HomeConfiguration> {
+        var path = "/home/item/{configurationId}"
+        let configurationIdPreEscape = "\(configurationId)"
+        let configurationIdPostEscape = configurationIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{configurationId}", with: configurationIdPostEscape, options: .literal, range: nil)
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<HomeConfiguration>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
      Get all home device properties
      
      - parameter completion: completion handler to receive the data and the error objects
@@ -112,6 +150,44 @@ open class HomeAPI {
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<[Channel]>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Get all home device properties for device ID
+     
+     - parameter configurationId: (path) ID of home configuration to return 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getAllHomeDevicePropertiesForDeviceID(configurationId: String, completion: @escaping ((_ data: [APIItem]?,_ error: Error?) -> Void)) {
+        getAllHomeDevicePropertiesForDeviceIDWithRequestBuilder(configurationId: configurationId).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Get all home device properties for device ID
+     - GET /home/properties/{configurationId}
+     - 
+     - examples: [{contentType=application/json, example={}}]
+     
+     - parameter configurationId: (path) ID of home configuration to return 
+
+     - returns: RequestBuilder<[APIItem]> 
+     */
+    open class func getAllHomeDevicePropertiesForDeviceIDWithRequestBuilder(configurationId: String) -> RequestBuilder<[APIItem]> {
+        var path = "/home/properties/{configurationId}"
+        let configurationIdPreEscape = "\(configurationId)"
+        let configurationIdPostEscape = configurationIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{configurationId}", with: configurationIdPostEscape, options: .literal, range: nil)
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<[APIItem]>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -184,6 +260,44 @@ open class HomeAPI {
         let requestBuilder: RequestBuilder<HomeConfiguration>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Update device property state
+     
+     - parameter body: (body) Item object that needs to be updated 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func updateDevicePropertyState(body: APIItem, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        updateDevicePropertyStateWithRequestBuilder(body: body).execute { (response, error) -> Void in
+            if error == nil {
+                completion((), error)
+            } else {
+                completion(nil, error)
+            }
+        }
+    }
+
+
+    /**
+     Update device property state
+     - POST /home/properties/
+     - 
+     
+     - parameter body: (body) Item object that needs to be updated 
+
+     - returns: RequestBuilder<Void> 
+     */
+    open class func updateDevicePropertyStateWithRequestBuilder(body: APIItem) -> RequestBuilder<Void> {
+        let path = "/home/properties/"
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
 
 }
