@@ -484,7 +484,7 @@ paths:
             items:
               $ref: "#/definitions/ConfigurationType"
               
-  /home/properties/:
+  /home/types/properties/{configurationType}:
     get:
       tags:
       - "home"
@@ -493,6 +493,12 @@ paths:
       operationId: "getAllHomeDeviceProperties"
       produces:
       - "application/json"
+      parameters:
+      - name: "configurationType"
+        in: "path"
+        description: "Type of configuration which properties to return"
+        required: true
+        type: "string"
       responses:
         "200":
           description: "successful operation"
@@ -500,6 +506,8 @@ paths:
             type: "array"
             items:
               $ref: "#/definitions/Channel"
+  
+  /home/properties/:
     post:
       tags:
       - "home"
@@ -602,6 +610,7 @@ definitions:
       - heating
       - cooling
       - weatherWatcher
+      - lock
   State:
     type: "string"
     enum:

@@ -12,7 +12,7 @@ struct Thing: Codable, Content {
   var label      : String?     = nil
   var bridgeUID  : String?     = nil
   var UID        : String?     = nil
-  var channels   : [Channel]?  = []
+  var channels   : [HomeChannel]?  = []
   var statusInfo : StatusInfo? = StatusInfo()
 
   enum CodingKeys: String, CodingKey {
@@ -29,7 +29,7 @@ struct Thing: Codable, Content {
     label      = try values.decodeIfPresent(String.self     , forKey: .label      )
     bridgeUID  = try values.decodeIfPresent(String.self     , forKey: .bridgeUID  )
     UID        = try values.decodeIfPresent(String.self     , forKey: .UID        )
-    channels   = try values.decodeIfPresent([Channel].self  , forKey: .channels   )
+    channels   = try values.decodeIfPresent([HomeChannel].self  , forKey: .channels   )
     statusInfo = try values.decodeIfPresent(StatusInfo.self , forKey: .statusInfo )
   }
 

@@ -47,6 +47,43 @@ final class CouchTests: XCTestCase {
         })
     }
     
+    func testGetAllCouchesForCity() throws {
+        let user1 = try User.create(on: app.db)
+        let user2 = try User.create(on: app.db)
+        let couch1 = try Couch.create(user: user1, name: couchName, address: address, city: city, country: country, latitude: latitude, longitude: longitude, maxGuests: maxGuests, on: app.db)
+        let couch2 = try Couch.create(user: user2, name: "Bape Store", address: "24-25 Conduit St", city: city, country: country, latitude: 51.511900, longitude: -0.142570, maxGuests: maxGuests, on: app.db)
+        
+        try app.test(.GET, "\(couchesURI)city/\(city)/\(user2.id!)", afterResponse: { response in
+            let couches = try response.content.decode([Couch].self)
+            
+            XCTAssertEqual(couches.count, 1)
+            XCTAssertEqual(couches[0].id, couch1.id)
+            XCTAssertEqual(couches[0].$user.id, couch1.$user.id)
+            XCTAssertEqual(couches[0].name, couchName)
+            XCTAssertEqual(couches[0].address, address)
+            XCTAssertEqual(couches[0].city, city)
+            XCTAssertEqual(couches[0].country, country)
+            XCTAssertEqual(couches[0].latitude, latitude)
+            XCTAssertEqual(couches[0].longitude, longitude)
+            XCTAssertEqual(couches[0].maxGuests, maxGuests)
+        })
+        
+        try app.test(.GET, "\(couchesURI)city/\(city)/\(user1.id!)", afterResponse: { response in
+            let couches = try response.content.decode([Couch].self)
+            
+            XCTAssertEqual(couches.count, 1)
+            XCTAssertEqual(couches[0].id, couch2.id)
+            XCTAssertEqual(couches[0].$user.id, couch2.$user.id)
+            XCTAssertEqual(couches[0].name, "Bape Store")
+            XCTAssertEqual(couches[0].address, "24-25 Conduit St")
+            XCTAssertEqual(couches[0].city, city)
+            XCTAssertEqual(couches[0].country, country)
+            XCTAssertEqual(couches[0].latitude, 51.511900)
+            XCTAssertEqual(couches[0].longitude, -0.142570)
+            XCTAssertEqual(couches[0].maxGuests, maxGuests)
+        })
+    }
+    
     func testGetSingleCouch() throws {
         let user1 = try User.create(on: app.db)
         let couch1 = try Couch.create(user: user1, name: couchName, address: address, city: city, country: country, latitude: latitude, longitude: longitude, maxGuests: maxGuests, on: app.db)
@@ -70,8 +107,6 @@ final class CouchTests: XCTestCase {
         let user1 = try User.create(on: app.db)
         let couch1 = CreateCouchData(userId: user1.id!, name: couchName, address: address, city: city, country: country, latitude: latitude, longitude: longitude, maxGuests: maxGuests, description: "")
         
-        var couchId = UUID()
-        
         try app.test(.POST, couchesURI, beforeRequest: { request in
             try request.content.encode(couch1)
         }, afterResponse: { response in
@@ -86,17 +121,6 @@ final class CouchTests: XCTestCase {
             XCTAssertEqual(couch.latitude, latitude)
             XCTAssertEqual(couch.longitude, longitude)
             XCTAssertEqual(couch.maxGuests, maxGuests)
-            
-            couchId = couch.id!
-        })
-        
-        try app.test(.GET, "/home/items/\(couchId)", afterResponse: { response in
-            let configurations = try response.content.decode([HomeConfiguration].self)
-            
-            XCTAssertEqual(configurations.count, 3)
-            XCTAssertEqual(configurations[0].type, .heating)
-            XCTAssertEqual(configurations[1].type, .cooling)
-            XCTAssertEqual(configurations[2].type, .weatherWatcher)
         })
     }
     

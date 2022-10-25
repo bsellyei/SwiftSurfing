@@ -7,6 +7,7 @@
 
 import Foundation
 
+//sourcery: AutoMockable
 protocol IExternalHomeService {
     func getAllThings() async throws -> [Thing]
     

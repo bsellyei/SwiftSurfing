@@ -655,6 +655,369 @@ open class ICouchServiceMock: ICouchService, Mock {
     }
 }
 
+// MARK: - IExternalHomeService
+
+open class IExternalHomeServiceMock: IExternalHomeService, Mock {
+    public init(sequencing sequencingPolicy: SequencingPolicy = .lastWrittenResolvedFirst, stubbing stubbingPolicy: StubbingPolicy = .wrap, file: StaticString = #file, line: UInt = #line) {
+        SwiftyMockyTestObserver.setup()
+        self.sequencingPolicy = sequencingPolicy
+        self.stubbingPolicy = stubbingPolicy
+        self.file = file
+        self.line = line
+    }
+
+    var matcher: Matcher = Matcher.default
+    var stubbingPolicy: StubbingPolicy = .wrap
+    var sequencingPolicy: SequencingPolicy = .lastWrittenResolvedFirst
+
+    private var queue = DispatchQueue(label: "com.swiftymocky.invocations", qos: .userInteractive)
+    private var invocations: [MethodType] = []
+    private var methodReturnValues: [Given] = []
+    private var methodPerformValues: [Perform] = []
+    private var file: StaticString?
+    private var line: UInt?
+
+    public typealias PropertyStub = Given
+    public typealias MethodStub = Given
+    public typealias SubscriptStub = Given
+
+    /// Convenience method - call setupMock() to extend debug information when failure occurs
+    public func setupMock(file: StaticString = #file, line: UInt = #line) {
+        self.file = file
+        self.line = line
+    }
+
+    /// Clear mock internals. You can specify what to reset (invocations aka verify, givens or performs) or leave it empty to clear all mock internals
+    public func resetMock(_ scopes: MockScope...) {
+        let scopes: [MockScope] = scopes.isEmpty ? [.invocation, .given, .perform] : scopes
+        if scopes.contains(.invocation) { invocations = [] }
+        if scopes.contains(.given) { methodReturnValues = [] }
+        if scopes.contains(.perform) { methodPerformValues = [] }
+    }
+
+
+
+
+
+    open func getAllThings() throws -> [Thing] {
+        addInvocation(.m_getAllThings)
+		let perform = methodPerformValue(.m_getAllThings) as? () -> Void
+		perform?()
+		var __value: [Thing]
+		do {
+		    __value = try methodReturnValue(.m_getAllThings).casted()
+		} catch MockError.notStubed {
+			onFatalFailure("Stub return value not specified for getAllThings(). Use given")
+			Failure("Stub return value not specified for getAllThings(). Use given")
+		} catch {
+		    throw error
+		}
+		return __value
+    }
+
+    open func getItem(name: String) throws -> Item {
+        addInvocation(.m_getItem__name_name(Parameter<String>.value(`name`)))
+		let perform = methodPerformValue(.m_getItem__name_name(Parameter<String>.value(`name`))) as? (String) -> Void
+		perform?(`name`)
+		var __value: Item
+		do {
+		    __value = try methodReturnValue(.m_getItem__name_name(Parameter<String>.value(`name`))).casted()
+		} catch MockError.notStubed {
+			onFatalFailure("Stub return value not specified for getItem(name: String). Use given")
+			Failure("Stub return value not specified for getItem(name: String). Use given")
+		} catch {
+		    throw error
+		}
+		return __value
+    }
+
+    open func setItemState(name: String, newState: String) throws -> Bool {
+        addInvocation(.m_setItemState__name_namenewState_newState(Parameter<String>.value(`name`), Parameter<String>.value(`newState`)))
+		let perform = methodPerformValue(.m_setItemState__name_namenewState_newState(Parameter<String>.value(`name`), Parameter<String>.value(`newState`))) as? (String, String) -> Void
+		perform?(`name`, `newState`)
+		var __value: Bool
+		do {
+		    __value = try methodReturnValue(.m_setItemState__name_namenewState_newState(Parameter<String>.value(`name`), Parameter<String>.value(`newState`))).casted()
+		} catch MockError.notStubed {
+			onFatalFailure("Stub return value not specified for setItemState(name: String, newState: String). Use given")
+			Failure("Stub return value not specified for setItemState(name: String, newState: String). Use given")
+		} catch {
+		    throw error
+		}
+		return __value
+    }
+
+    open func addItem(name: String, label: String, type: String) throws -> Item {
+        addInvocation(.m_addItem__name_namelabel_labeltype_type(Parameter<String>.value(`name`), Parameter<String>.value(`label`), Parameter<String>.value(`type`)))
+		let perform = methodPerformValue(.m_addItem__name_namelabel_labeltype_type(Parameter<String>.value(`name`), Parameter<String>.value(`label`), Parameter<String>.value(`type`))) as? (String, String, String) -> Void
+		perform?(`name`, `label`, `type`)
+		var __value: Item
+		do {
+		    __value = try methodReturnValue(.m_addItem__name_namelabel_labeltype_type(Parameter<String>.value(`name`), Parameter<String>.value(`label`), Parameter<String>.value(`type`))).casted()
+		} catch MockError.notStubed {
+			onFatalFailure("Stub return value not specified for addItem(name: String, label: String, type: String). Use given")
+			Failure("Stub return value not specified for addItem(name: String, label: String, type: String). Use given")
+		} catch {
+		    throw error
+		}
+		return __value
+    }
+
+    open func linkItemToChannel(itemName: String, channelId: String) throws -> Bool {
+        addInvocation(.m_linkItemToChannel__itemName_itemNamechannelId_channelId(Parameter<String>.value(`itemName`), Parameter<String>.value(`channelId`)))
+		let perform = methodPerformValue(.m_linkItemToChannel__itemName_itemNamechannelId_channelId(Parameter<String>.value(`itemName`), Parameter<String>.value(`channelId`))) as? (String, String) -> Void
+		perform?(`itemName`, `channelId`)
+		var __value: Bool
+		do {
+		    __value = try methodReturnValue(.m_linkItemToChannel__itemName_itemNamechannelId_channelId(Parameter<String>.value(`itemName`), Parameter<String>.value(`channelId`))).casted()
+		} catch MockError.notStubed {
+			onFatalFailure("Stub return value not specified for linkItemToChannel(itemName: String, channelId: String). Use given")
+			Failure("Stub return value not specified for linkItemToChannel(itemName: String, channelId: String). Use given")
+		} catch {
+		    throw error
+		}
+		return __value
+    }
+
+
+    fileprivate enum MethodType {
+        case m_getAllThings
+        case m_getItem__name_name(Parameter<String>)
+        case m_setItemState__name_namenewState_newState(Parameter<String>, Parameter<String>)
+        case m_addItem__name_namelabel_labeltype_type(Parameter<String>, Parameter<String>, Parameter<String>)
+        case m_linkItemToChannel__itemName_itemNamechannelId_channelId(Parameter<String>, Parameter<String>)
+
+        static func compareParameters(lhs: MethodType, rhs: MethodType, matcher: Matcher) -> Matcher.ComparisonResult {
+            switch (lhs, rhs) {
+            case (.m_getAllThings, .m_getAllThings): return .match
+
+            case (.m_getItem__name_name(let lhsName), .m_getItem__name_name(let rhsName)):
+				var results: [Matcher.ParameterComparisonResult] = []
+				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsName, rhs: rhsName, with: matcher), lhsName, rhsName, "name"))
+				return Matcher.ComparisonResult(results)
+
+            case (.m_setItemState__name_namenewState_newState(let lhsName, let lhsNewstate), .m_setItemState__name_namenewState_newState(let rhsName, let rhsNewstate)):
+				var results: [Matcher.ParameterComparisonResult] = []
+				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsName, rhs: rhsName, with: matcher), lhsName, rhsName, "name"))
+				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsNewstate, rhs: rhsNewstate, with: matcher), lhsNewstate, rhsNewstate, "newState"))
+				return Matcher.ComparisonResult(results)
+
+            case (.m_addItem__name_namelabel_labeltype_type(let lhsName, let lhsLabel, let lhsType), .m_addItem__name_namelabel_labeltype_type(let rhsName, let rhsLabel, let rhsType)):
+				var results: [Matcher.ParameterComparisonResult] = []
+				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsName, rhs: rhsName, with: matcher), lhsName, rhsName, "name"))
+				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsLabel, rhs: rhsLabel, with: matcher), lhsLabel, rhsLabel, "label"))
+				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsType, rhs: rhsType, with: matcher), lhsType, rhsType, "type"))
+				return Matcher.ComparisonResult(results)
+
+            case (.m_linkItemToChannel__itemName_itemNamechannelId_channelId(let lhsItemname, let lhsChannelid), .m_linkItemToChannel__itemName_itemNamechannelId_channelId(let rhsItemname, let rhsChannelid)):
+				var results: [Matcher.ParameterComparisonResult] = []
+				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsItemname, rhs: rhsItemname, with: matcher), lhsItemname, rhsItemname, "itemName"))
+				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsChannelid, rhs: rhsChannelid, with: matcher), lhsChannelid, rhsChannelid, "channelId"))
+				return Matcher.ComparisonResult(results)
+            default: return .none
+            }
+        }
+
+        func intValue() -> Int {
+            switch self {
+            case .m_getAllThings: return 0
+            case let .m_getItem__name_name(p0): return p0.intValue
+            case let .m_setItemState__name_namenewState_newState(p0, p1): return p0.intValue + p1.intValue
+            case let .m_addItem__name_namelabel_labeltype_type(p0, p1, p2): return p0.intValue + p1.intValue + p2.intValue
+            case let .m_linkItemToChannel__itemName_itemNamechannelId_channelId(p0, p1): return p0.intValue + p1.intValue
+            }
+        }
+        func assertionName() -> String {
+            switch self {
+            case .m_getAllThings: return ".getAllThings()"
+            case .m_getItem__name_name: return ".getItem(name:)"
+            case .m_setItemState__name_namenewState_newState: return ".setItemState(name:newState:)"
+            case .m_addItem__name_namelabel_labeltype_type: return ".addItem(name:label:type:)"
+            case .m_linkItemToChannel__itemName_itemNamechannelId_channelId: return ".linkItemToChannel(itemName:channelId:)"
+            }
+        }
+    }
+
+    open class Given: StubbedMethod {
+        fileprivate var method: MethodType
+
+        private init(method: MethodType, products: [StubProduct]) {
+            self.method = method
+            super.init(products)
+        }
+
+
+        public static func getAllThings(willReturn: [Thing]...) -> MethodStub {
+            return Given(method: .m_getAllThings, products: willReturn.map({ StubProduct.return($0 as Any) }))
+        }
+        public static func getItem(name: Parameter<String>, willReturn: Item...) -> MethodStub {
+            return Given(method: .m_getItem__name_name(`name`), products: willReturn.map({ StubProduct.return($0 as Any) }))
+        }
+        public static func setItemState(name: Parameter<String>, newState: Parameter<String>, willReturn: Bool...) -> MethodStub {
+            return Given(method: .m_setItemState__name_namenewState_newState(`name`, `newState`), products: willReturn.map({ StubProduct.return($0 as Any) }))
+        }
+        public static func addItem(name: Parameter<String>, label: Parameter<String>, type: Parameter<String>, willReturn: Item...) -> MethodStub {
+            return Given(method: .m_addItem__name_namelabel_labeltype_type(`name`, `label`, `type`), products: willReturn.map({ StubProduct.return($0 as Any) }))
+        }
+        public static func linkItemToChannel(itemName: Parameter<String>, channelId: Parameter<String>, willReturn: Bool...) -> MethodStub {
+            return Given(method: .m_linkItemToChannel__itemName_itemNamechannelId_channelId(`itemName`, `channelId`), products: willReturn.map({ StubProduct.return($0 as Any) }))
+        }
+        public static func getAllThings(willThrow: Error...) -> MethodStub {
+            return Given(method: .m_getAllThings, products: willThrow.map({ StubProduct.throw($0) }))
+        }
+        public static func getAllThings(willProduce: (StubberThrows<[Thing]>) -> Void) -> MethodStub {
+            let willThrow: [Error] = []
+			let given: Given = { return Given(method: .m_getAllThings, products: willThrow.map({ StubProduct.throw($0) })) }()
+			let stubber = given.stubThrows(for: ([Thing]).self)
+			willProduce(stubber)
+			return given
+        }
+        public static func getItem(name: Parameter<String>, willThrow: Error...) -> MethodStub {
+            return Given(method: .m_getItem__name_name(`name`), products: willThrow.map({ StubProduct.throw($0) }))
+        }
+        public static func getItem(name: Parameter<String>, willProduce: (StubberThrows<Item>) -> Void) -> MethodStub {
+            let willThrow: [Error] = []
+			let given: Given = { return Given(method: .m_getItem__name_name(`name`), products: willThrow.map({ StubProduct.throw($0) })) }()
+			let stubber = given.stubThrows(for: (Item).self)
+			willProduce(stubber)
+			return given
+        }
+        public static func setItemState(name: Parameter<String>, newState: Parameter<String>, willThrow: Error...) -> MethodStub {
+            return Given(method: .m_setItemState__name_namenewState_newState(`name`, `newState`), products: willThrow.map({ StubProduct.throw($0) }))
+        }
+        public static func setItemState(name: Parameter<String>, newState: Parameter<String>, willProduce: (StubberThrows<Bool>) -> Void) -> MethodStub {
+            let willThrow: [Error] = []
+			let given: Given = { return Given(method: .m_setItemState__name_namenewState_newState(`name`, `newState`), products: willThrow.map({ StubProduct.throw($0) })) }()
+			let stubber = given.stubThrows(for: (Bool).self)
+			willProduce(stubber)
+			return given
+        }
+        public static func addItem(name: Parameter<String>, label: Parameter<String>, type: Parameter<String>, willThrow: Error...) -> MethodStub {
+            return Given(method: .m_addItem__name_namelabel_labeltype_type(`name`, `label`, `type`), products: willThrow.map({ StubProduct.throw($0) }))
+        }
+        public static func addItem(name: Parameter<String>, label: Parameter<String>, type: Parameter<String>, willProduce: (StubberThrows<Item>) -> Void) -> MethodStub {
+            let willThrow: [Error] = []
+			let given: Given = { return Given(method: .m_addItem__name_namelabel_labeltype_type(`name`, `label`, `type`), products: willThrow.map({ StubProduct.throw($0) })) }()
+			let stubber = given.stubThrows(for: (Item).self)
+			willProduce(stubber)
+			return given
+        }
+        public static func linkItemToChannel(itemName: Parameter<String>, channelId: Parameter<String>, willThrow: Error...) -> MethodStub {
+            return Given(method: .m_linkItemToChannel__itemName_itemNamechannelId_channelId(`itemName`, `channelId`), products: willThrow.map({ StubProduct.throw($0) }))
+        }
+        public static func linkItemToChannel(itemName: Parameter<String>, channelId: Parameter<String>, willProduce: (StubberThrows<Bool>) -> Void) -> MethodStub {
+            let willThrow: [Error] = []
+			let given: Given = { return Given(method: .m_linkItemToChannel__itemName_itemNamechannelId_channelId(`itemName`, `channelId`), products: willThrow.map({ StubProduct.throw($0) })) }()
+			let stubber = given.stubThrows(for: (Bool).self)
+			willProduce(stubber)
+			return given
+        }
+    }
+
+    public struct Verify {
+        fileprivate var method: MethodType
+
+        public static func getAllThings() -> Verify { return Verify(method: .m_getAllThings)}
+        public static func getItem(name: Parameter<String>) -> Verify { return Verify(method: .m_getItem__name_name(`name`))}
+        public static func setItemState(name: Parameter<String>, newState: Parameter<String>) -> Verify { return Verify(method: .m_setItemState__name_namenewState_newState(`name`, `newState`))}
+        public static func addItem(name: Parameter<String>, label: Parameter<String>, type: Parameter<String>) -> Verify { return Verify(method: .m_addItem__name_namelabel_labeltype_type(`name`, `label`, `type`))}
+        public static func linkItemToChannel(itemName: Parameter<String>, channelId: Parameter<String>) -> Verify { return Verify(method: .m_linkItemToChannel__itemName_itemNamechannelId_channelId(`itemName`, `channelId`))}
+    }
+
+    public struct Perform {
+        fileprivate var method: MethodType
+        var performs: Any
+
+        public static func getAllThings(perform: @escaping () -> Void) -> Perform {
+            return Perform(method: .m_getAllThings, performs: perform)
+        }
+        public static func getItem(name: Parameter<String>, perform: @escaping (String) -> Void) -> Perform {
+            return Perform(method: .m_getItem__name_name(`name`), performs: perform)
+        }
+        public static func setItemState(name: Parameter<String>, newState: Parameter<String>, perform: @escaping (String, String) -> Void) -> Perform {
+            return Perform(method: .m_setItemState__name_namenewState_newState(`name`, `newState`), performs: perform)
+        }
+        public static func addItem(name: Parameter<String>, label: Parameter<String>, type: Parameter<String>, perform: @escaping (String, String, String) -> Void) -> Perform {
+            return Perform(method: .m_addItem__name_namelabel_labeltype_type(`name`, `label`, `type`), performs: perform)
+        }
+        public static func linkItemToChannel(itemName: Parameter<String>, channelId: Parameter<String>, perform: @escaping (String, String) -> Void) -> Perform {
+            return Perform(method: .m_linkItemToChannel__itemName_itemNamechannelId_channelId(`itemName`, `channelId`), performs: perform)
+        }
+    }
+
+    public func given(_ method: Given) {
+        methodReturnValues.append(method)
+    }
+
+    public func perform(_ method: Perform) {
+        methodPerformValues.append(method)
+        methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
+    }
+
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+        let fullMatches = matchingCalls(method, file: file, line: line)
+        let success = count.matches(fullMatches)
+        let assertionName = method.method.assertionName()
+        let feedback: String = {
+            guard !success else { return "" }
+            return Utils.closestCallsMessage(
+                for: self.invocations.map { invocation in
+                    matcher.set(file: file, line: line)
+                    defer { matcher.clearFileAndLine() }
+                    return MethodType.compareParameters(lhs: invocation, rhs: method.method, matcher: matcher)
+                },
+                name: assertionName
+            )
+        }()
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+    }
+
+    private func addInvocation(_ call: MethodType) {
+        self.queue.sync { invocations.append(call) }
+    }
+    private func methodReturnValue(_ method: MethodType) throws -> StubProduct {
+        matcher.set(file: self.file, line: self.line)
+        defer { matcher.clearFileAndLine() }
+        let candidates = sequencingPolicy.sorted(methodReturnValues, by: { $0.method.intValue() > $1.method.intValue() })
+        let matched = candidates.first(where: { $0.isValid && MethodType.compareParameters(lhs: $0.method, rhs: method, matcher: matcher).isFullMatch })
+        guard let product = matched?.getProduct(policy: self.stubbingPolicy) else { throw MockError.notStubed }
+        return product
+    }
+    private func methodPerformValue(_ method: MethodType) -> Any? {
+        matcher.set(file: self.file, line: self.line)
+        defer { matcher.clearFileAndLine() }
+        let matched = methodPerformValues.reversed().first { MethodType.compareParameters(lhs: $0.method, rhs: method, matcher: matcher).isFullMatch }
+        return matched?.performs
+    }
+    private func matchingCalls(_ method: MethodType, file: StaticString?, line: UInt?) -> [MethodType] {
+        matcher.set(file: file ?? self.file, line: line ?? self.line)
+        defer { matcher.clearFileAndLine() }
+        return invocations.filter { MethodType.compareParameters(lhs: $0, rhs: method, matcher: matcher).isFullMatch }
+    }
+    private func matchingCalls(_ method: Verify, file: StaticString?, line: UInt?) -> Int {
+        return matchingCalls(method.method, file: file, line: line).count
+    }
+    private func givenGetterValue<T>(_ method: MethodType, _ message: String) -> T {
+        do {
+            return try methodReturnValue(method).casted()
+        } catch {
+            onFatalFailure(message)
+            Failure(message)
+        }
+    }
+    private func optionalGivenGetterValue<T>(_ method: MethodType, _ message: String) -> T? {
+        do {
+            return try methodReturnValue(method).casted()
+        } catch {
+            return nil
+        }
+    }
+    private func onFatalFailure(_ message: String) {
+        guard let file = self.file, let line = self.line else { return } // Let if fail if cannot handle gratefully
+        SwiftyMockyTestObserver.handleFatalError(message: message, file: file, line: line)
+    }
+}
+
 // MARK: - IHomeConfigurationService
 
 open class IHomeConfigurationServiceMock: IHomeConfigurationService, Mock {

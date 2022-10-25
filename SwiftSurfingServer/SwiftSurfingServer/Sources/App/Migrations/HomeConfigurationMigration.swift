@@ -19,12 +19,13 @@ struct HomeConfigurationMigration: AsyncMigration {
             .case("heating")
             .case("cooling")
             .case("weatherWatcher")
+            .case("lock")
             .create()
         
         try await database
             .schema("homeConfigurations")
             .id()
-            .field("couchId", .uuid, .required, .references("couches", "id"))
+            .field("couchId", .uuid, .required, .references("couches", "id", onDelete: .cascade))
             .field("name", .string, .required)
             .field("configType", type, .required)
             .field("itemNames", .array(of: .string))

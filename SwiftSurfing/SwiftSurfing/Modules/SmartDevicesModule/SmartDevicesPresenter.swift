@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import Combine
+import LocalAuthentication
 
 class SmartDevicesPresenter: ObservableObject {
     private var interactor: SmartDevicesInteractor
@@ -41,9 +42,33 @@ class SmartDevicesPresenter: ObservableObject {
         }
     }
     
-    func switchItem(id: String) {
-        DispatchQueue.global(qos: .background).async {
-            self.interactor.switchItem(id: id, completion: { _ in })
+    func switchItem(id: String, onCompletion: @escaping () -> Void) {
+        for device in devices {
+            for realDevice in device.devices {
+                if realDevice.id == id && realDevice.type == "Lock" {
+                    self.authenticate(onCompletion: { success in
+                        if success {
+                            DispatchQueue.global(qos: .background).async {
+                                self.interactor.switchItem(id: id, completion: { success in
+                                    if success {
+                                        onCompletion()
+                                    }
+                                })
+                            }
+                        }
+                    })
+                    break
+                } else if realDevice.id == id {
+                    DispatchQueue.global(qos: .background).async {
+                        self.interactor.switchItem(id: id, completion: { success in
+                            if success {
+                                onCompletion()
+                            }
+                        })
+                    }
+                    break
+                }
+            }
         }
     }
     
@@ -68,6 +93,7 @@ class SmartDevicesPresenter: ObservableObject {
             case .heating: return "Heating"
             case .cooling: return "Cooling"
             case .weatherwatcher: return "WeatherWatcher"
+            case .lock: return "Lock"
         }
     }
     
@@ -75,6 +101,20 @@ class SmartDevicesPresenter: ObservableObject {
         switch state {
             case .on: return true
             case .off: return false
+        }
+    }
+    
+    private func authenticate(onCompletion: @escaping (Bool) -> Void) {
+        let context = LAContext()
+        var error: NSError?
+
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "We need to unlock your data."
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, _ in
+                onCompletion(success)
+            }
+        } else {
+            onCompletion(false)
         }
     }
 }

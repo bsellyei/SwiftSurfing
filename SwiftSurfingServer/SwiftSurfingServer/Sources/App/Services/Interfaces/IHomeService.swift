@@ -18,7 +18,7 @@ protocol IHomeService {
     
     func getConfigurationTypes() async throws -> [ConfigurationType]
     
-    func getConfigurationTypeProperties() async throws -> [Channel]
+    func getConfigurationTypeProperties(configType: ConfigurationType) async throws -> [HomeChannel]
     
     func saveItems(configurationName: String, items: [Item]) async throws -> Bool
     

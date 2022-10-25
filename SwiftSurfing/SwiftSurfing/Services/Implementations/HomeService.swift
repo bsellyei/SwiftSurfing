@@ -42,8 +42,8 @@ class HomeService: HomeServiceProtocol {
         })
     }
     
-    func getDeviceTypeProperties(completion: @escaping ([Channel]) -> Void) {
-        HomeAPI.getAllHomeDeviceProperties(completion: { channels, error in
+    func getDeviceTypeProperties(type: String, completion: @escaping ([Channel]) -> Void) {
+        HomeAPI.getAllHomeDeviceProperties(configurationType: type, completion: { channels, error in
             if error == nil {
                 if let result = channels {
                     completion(result)

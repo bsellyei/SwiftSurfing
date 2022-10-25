@@ -7,7 +7,6 @@
 
 @testable import App
 import XCTVapor
-import ServiceTests
 
 final class JobTests: XCTestCase {
     func testWeatherWatcherHeatingTurningOn() throws {

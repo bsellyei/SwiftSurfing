@@ -33,8 +33,8 @@ class NewSmartDeviceInteractor {
         })
     }
     
-    func getDeviceTypeProperties(completion: @escaping ([Channel]) -> Void) {
-        homeService.getDeviceTypeProperties(completion: { channels in
+    func getDeviceTypeProperties(type: String, completion: @escaping ([Channel]) -> Void) {
+        homeService.getDeviceTypeProperties(type: type, completion: { channels in
             completion(channels)
         })
     }

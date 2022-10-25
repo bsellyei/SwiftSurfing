@@ -125,10 +125,11 @@ open class HomeAPI {
     /**
      Get all home device properties
      
+     - parameter configurationType: (path) Type of configuration which properties to return 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getAllHomeDeviceProperties(completion: @escaping ((_ data: [Channel]?,_ error: Error?) -> Void)) {
-        getAllHomeDevicePropertiesWithRequestBuilder().execute { (response, error) -> Void in
+    open class func getAllHomeDeviceProperties(configurationType: String, completion: @escaping ((_ data: [Channel]?,_ error: Error?) -> Void)) {
+        getAllHomeDevicePropertiesWithRequestBuilder(configurationType: configurationType).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -136,14 +137,19 @@ open class HomeAPI {
 
     /**
      Get all home device properties
-     - GET /home/properties/
+     - GET /home/types/properties/{configurationType}
      - 
      - examples: [{contentType=application/json, example={}}]
+     
+     - parameter configurationType: (path) Type of configuration which properties to return 
 
      - returns: RequestBuilder<[Channel]> 
      */
-    open class func getAllHomeDevicePropertiesWithRequestBuilder() -> RequestBuilder<[Channel]> {
-        let path = "/home/properties/"
+    open class func getAllHomeDevicePropertiesWithRequestBuilder(configurationType: String) -> RequestBuilder<[Channel]> {
+        var path = "/home/types/properties/{configurationType}"
+        let configurationTypePreEscape = "\(configurationType)"
+        let configurationTypePostEscape = configurationTypePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{configurationType}", with: configurationTypePostEscape, options: .literal, range: nil)
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
         

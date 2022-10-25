@@ -18,7 +18,6 @@ let latitude = 51.51290774880793
 let longitude = -0.13393321581721043
 let maxGuests = 5
 
-
 final class CouchServiceTests: XCTestCase {
     
     override func setUp() {

@@ -13,8 +13,8 @@ struct MessageMigration: AsyncMigration {
         try await database
             .schema("messages")
             .id()
-            .field("userId", .uuid, .required, .references("users", "id"))
-            .field("conversationId", .uuid, .required, .references("conversations", "id"))
+            .field("userId", .uuid, .required, .references("users", "id", onDelete: .cascade))
+            .field("conversationId", .uuid, .required, .references("conversations", "id", onDelete: .cascade))
             .field("text", .string, .required)
             .field("sendDate", .datetime, .required)
             .create()

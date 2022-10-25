@@ -6,6 +6,7 @@
 //
 
 @testable import App
+import Vapor
 import Fluent
 import Foundation
 

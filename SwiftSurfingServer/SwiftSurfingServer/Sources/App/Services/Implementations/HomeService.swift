@@ -33,13 +33,22 @@ class HomeService: IHomeService {
         return ConfigurationType.allCases
     }
     
-    func getConfigurationTypeProperties() async throws -> [Channel] {
-        let things = try await externalHomeService.getAllThings()
-        if !things.isEmpty {
-            let thing = things.first!
-            if let channels = thing.channels {
-                if !channels.isEmpty {
-                    return channels
+    func getConfigurationTypeProperties(configType: ConfigurationType) async throws -> [HomeChannel] {
+        if configType == .lock {
+            var channel = HomeChannel()
+            channel.uid = "lock"
+            channel.id = "Lock"
+            channel.label = "Lock"
+            channel.itemType = "Switch"
+            return [channel]
+        } else {
+            let things = try await externalHomeService.getAllThings()
+            if !things.isEmpty {
+                let thing = things.first!
+                if let channels = thing.channels {
+                    if !channels.isEmpty {
+                        return channels
+                    }
                 }
             }
         }
@@ -50,20 +59,22 @@ class HomeService: IHomeService {
     func addHomeConfiguration(configuration: HomeConfiguration) async throws -> Bool {
         _ = try await homeConfigurationService.createHomeConfigurations(configuration: configuration)
         
-        return try await linkItemsToChannel(configurationName: configuration.name)
+        return try await linkItemsToChannel(configurationName: configuration.name, configType: configuration.type)
     }
     
-    private func linkItemsToChannel(configurationName: String) async throws -> Bool {
-        let channels = try await getConfigurationTypeProperties()
+    private func linkItemsToChannel(configurationName: String, configType: ConfigurationType) async throws -> Bool {
+        let channels = try await getConfigurationTypeProperties(configType: configType)
         for channel in channels {
             if channel.itemType! == "Switch" || channel.itemType! == "Number:Temperature" {
                 let item = try await externalHomeService.addItem(name: configurationName + "_" + channel.id!,
                                                                  label: channel.label!,
                                                                  type: channel.itemType!)
-                        
-                let success = try await externalHomeService.linkItemToChannel(itemName: item.name!, channelId: channel.uid!)
-                if !success {
-                    return success
+                
+                if configType != .lock {
+                    let success = try await externalHomeService.linkItemToChannel(itemName: item.name!, channelId: channel.uid!)
+                    if !success {
+                        return success
+                    }
                 }
             }
         }

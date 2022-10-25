@@ -47,6 +47,7 @@ enum ConfigurationType: String, Codable, CaseIterable, Content {
     case heating = "heating"
     case cooling = "cooling"
     case weatherWatcher = "weatherWatcher"
+    case lock = "lock"
 }
 
 enum State: String, Codable {

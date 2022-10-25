@@ -39,16 +39,20 @@ struct SmartDevicesView: View {
                 
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(item.devices) { data in
-                        CardView(data: data.wrappedValue,
-                                 buttonView: {
-                            self.presenter.linkBuilderForDetails(id: data.wrappedValue.name, content: {
-                                        Image(systemName: "arrowshape.turn.up.right")
-                                            .resizable()
-                                            .clipped()
-                                            .frame(width: 20, height: 20)
-                                    })
-                                 },
-                                 onToggle: { id in self.presenter.switchItem(id: id) })
+                        if data.wrappedValue.type != "Lock" {
+                            CardView(data: data.wrappedValue,
+                                     buttonView: {
+                                self.presenter.linkBuilderForDetails(id: data.wrappedValue.name, content: {
+                                            Image(systemName: "arrowshape.turn.up.right")
+                                                .resizable()
+                                                .clipped()
+                                                .frame(width: 20, height: 20)
+                                        })
+                                     },
+                                     onToggle: { id in self.presenter.switchItem(id: id, onCompletion: {}) })
+                        } else {
+                            LockCardView(data: data.wrappedValue, onToggle: { id, onCompletion in self.presenter.switchItem(id: id, onCompletion: onCompletion) })
+                        }
                     }
                 }
                 .padding(.horizontal)
@@ -104,5 +108,56 @@ struct CardView<Content: View>: View {
             RoundedRectangle(cornerRadius: 10)
                 .stroke(self.isOn ? Color.green : Color.gray, lineWidth: 2)
         )
+    }
+}
+
+struct LockCardView: View {
+    var data: SmartDevice
+    let onToggle: (String, @escaping () -> Void) -> Void
+    
+    @State var isOn: Bool
+    
+    init(data: SmartDevice, onToggle: @escaping (String, @escaping () -> Void) -> Void) {
+        self.data = data
+        self.onToggle = onToggle
+        
+        self.isOn = data.state
+    }
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            HStack {
+                Text(data.type)
+                    .font(.system(size: 22, weight: .semibold)).lineLimit(2)
+                
+                Spacer()
+            }
+            
+            HStack {
+                if isOn {
+                   Text("Unlocked")
+                } else {
+                    Text("Locked")
+                }
+                
+                Spacer()
+                
+                Image(systemName: isOn ? "lock.open" : "lock")
+                    .resizable()
+                    .clipped()
+                    .frame(width: 25, height: 25)
+            }
+        }
+        .frame(width: 120)
+        .padding()
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(self.isOn ? Color.green : Color.gray, lineWidth: 2)
+        )
+        .onTapGesture {
+            onToggle(data.id, {
+                isOn.toggle()
+            })
+        }
     }
 }

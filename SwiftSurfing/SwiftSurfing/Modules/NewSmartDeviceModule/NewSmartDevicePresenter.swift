@@ -74,7 +74,7 @@ class NewSmartDevicePresenter: ObservableObject {
         switchesList.removeAll()
         valuesList.removeAll()
         DispatchQueue.global(qos: .background).async {
-            self.interactor.getDeviceTypeProperties(completion: { channels in
+            self.interactor.getDeviceTypeProperties(type: self.selectedDeviceType, completion: { channels in
                 for channel in channels {
                     if channel.itemType == "Switch" {
                         if let channelLabel = channel.label, let channelId = channel._id {

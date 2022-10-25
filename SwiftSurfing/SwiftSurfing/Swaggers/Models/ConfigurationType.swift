@@ -12,5 +12,5 @@ public enum ConfigurationType: String, Codable {
     case heating = "heating"
     case cooling = "cooling"
     case weatherwatcher = "weatherWatcher"
-
+    case lock = "lock"
 }

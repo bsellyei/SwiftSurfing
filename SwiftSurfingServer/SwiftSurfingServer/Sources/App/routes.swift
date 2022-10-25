@@ -2,10 +2,6 @@ import Fluent
 import Vapor
 
 func routes(_ app: Application) throws {
-    app.get { req in
-        return "It works!"
-    }
-    
     let userService = UserService(db: app.db)
     let couchService = CouchService(db: app.db)
     let ratingService = RatingService(db: app.db)

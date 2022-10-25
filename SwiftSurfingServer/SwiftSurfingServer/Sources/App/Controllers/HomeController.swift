@@ -23,7 +23,7 @@ struct HomeController: RouteCollection {
         home.post("switch", ":itemId", use: switchItem)
         
         home.get("types", use: getConfigurationTypes)
-        home.get("properties", use: getConfigurationTypeProperties)
+        home.get("types", "properties", ":configurationType", use: getConfigurationTypeProperties)
         home.get("properties", ":configurationId", use: getConfigurationProperties)
         home.post("properties", use: setPropertyState)
         
@@ -48,8 +48,18 @@ struct HomeController: RouteCollection {
         return try await homeService.getConfigurationTypes()
     }
     
-    func getConfigurationTypeProperties(req: Request) async throws -> [Channel] {
-        return try await homeService.getConfigurationTypeProperties()
+    func getConfigurationTypeProperties(req: Request) async throws -> [HomeChannel] {
+        let data = req.parameters.get("configurationType")
+        if let value = data {
+            let configType = ConfigurationType(rawValue: value)
+            if let type = configType {
+                return try await homeService.getConfigurationTypeProperties(configType: type)
+            } else {
+                throw Abort(.internalServerError)
+            }
+        } else {
+            throw Abort(.internalServerError)
+        }
     }
     
     func getConfigurationProperties(req: Request) async throws -> [Item] {

@@ -12,7 +12,7 @@ struct CouchMigration: AsyncMigration {
         try await database
             .schema("couches")
             .id()
-            .field("userId", .uuid, .required, .references("users", "id"))
+            .field("userId", .uuid, .required, .references("users", "id", onDelete: .cascade))
             .field("name", .string)
             .field("address", .string, .required)
             .field("city", .string, .required)

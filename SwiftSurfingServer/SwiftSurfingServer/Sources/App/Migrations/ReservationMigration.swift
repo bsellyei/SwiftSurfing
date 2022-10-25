@@ -13,8 +13,8 @@ struct ReservationMigration: AsyncMigration {
         try await database
             .schema("reservations")
             .id()
-            .field("userId", .uuid, .required, .references("users", "id"))
-            .field("couchId", .uuid, .required, .references("couches", "id"))
+            .field("userId", .uuid, .required, .references("users", "id", onDelete: .cascade))
+            .field("couchId", .uuid, .required, .references("couches", "id", onDelete: .cascade))
             .field("guestsNum", .int, .required)
             .field("start", .datetime, .required)
             .field("end", .datetime, .required)
