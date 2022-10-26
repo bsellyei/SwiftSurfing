@@ -28,8 +28,6 @@ mint run swiftymocky generate
 - [x] (5.hét-6.hét) okt.5. - okt.12.: módosítási feature befejezése
 - [x] (6.hét-7.hét) okt.12. - okt.19.: okos zár integráció jogosultságkezeléssel, faceID/touchID használatával
 - [x] (7.hét-8.hét) okt.19. - okt.26.: okos zár integráció jogosultságkezeléssel, faceID/touchID használatával
-~~- (8.hét-9.hét) okt.26. - nov.2.: okos lámpa integráció, jelenlétszimuláció~~
-~~- (9.hét-10.hét) nov.2. - nov.9.: okos lámpa integráció, jelenlétszimuláció~~
 - [ ] (8.hét-9.hét) okt.26. - nov.2.: tesztírás, bugfix
 - [ ] (9.hét-10.hét) nov.2. - nov.9.: tesztírás, bugfix
 
