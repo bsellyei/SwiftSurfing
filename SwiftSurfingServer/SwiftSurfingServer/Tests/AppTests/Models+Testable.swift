@@ -121,13 +121,13 @@ extension Reservation {
 }
 
 extension HomeConfiguration {
-    static func create(couch: Couch? = nil, type: ConfigurationType = .heating, state: State = .off, on database: Database) throws -> HomeConfiguration {
+    static func create(couch: Couch? = nil, type: ConfigurationType = .heating, itemNames: [String] = ["item1"], state: State = .off, on database: Database) throws -> HomeConfiguration {
         var place = couch
         if place == nil {
             place = try Couch.create(on: database)
         }
         
-        let configuration = HomeConfiguration(couchId: place!.id!, name: "homeConfiguration", type: type, state: state)
+        let configuration = HomeConfiguration(couchId: place!.id!, name: "homeConfiguration", type: type, itemNames: itemNames, state: state)
         try configuration.save(on: database).wait()
         return configuration
     }

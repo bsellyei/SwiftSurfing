@@ -7,8 +7,10 @@ ServiceMocks:    # Name of your mock
         - ./Sources/App
     exclude: []     # You can exclude files as well
   output:           # Generated mock file location and name
+    ./Tests/AppTests/Mocks/Mock.generated.swift
     ./Tests/ServiceTests/Mocks/Mock.generated.swift
   targets:          # Specify XCodeproj targets for your mock. Used for linting
+    - AppTests
     - ServiceTests
   testable:         # Specify  list of imported/@testable modules referenced in mock
     - App
