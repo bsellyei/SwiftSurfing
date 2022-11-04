@@ -7,6 +7,7 @@
 
 import XCTVapor
 @testable import App
+import XCTQueues
 
 extension Application {
     static func testable() throws -> Application {
@@ -45,9 +46,7 @@ extension Application {
         app.logger.logLevel = .debug
         
         // Jobs
-        //try app.queues.use(.redis(url: "redis://127.0.0.1:6379"))
-        //app.queues.schedule(WeatherJob(weatherService: WeatherService(httpClient: app.client), homeConfigurationService: HomeConfigurationService(db: app.db))).hourly().at(5)
-        //try app.queues.startScheduledJobs()
+        app.queues.use(.test)
         
         // Other
         app.http.server.configuration.port = 8081

@@ -215,4 +215,106 @@ final class HomeTests: XCTestCase {
             XCTAssertEqual(response.status, .internalServerError)
         })
     }
+    
+    func testCreateHomeConfiguration() throws {
+        let couch = try Couch.create(on: app.db)
+        
+        var item1 = Item()
+        item1.name = "On"
+        item1.label = "Power"
+        item1.state = "on"
+        item1.type = "Switch"
+        
+        var channel1 = HomeChannel()
+        channel1.uid = "on"
+        channel1.id = "On"
+        channel1.label = "Power"
+        channel1.itemType = "Switch"
+        
+        var thing = Thing()
+        thing.channels = [channel1]
+        
+        var itemReference1 = Item()
+        itemReference1.name = "Heating_On"
+        itemReference1.label = "Power"
+        itemReference1.state = "OFF"
+        itemReference1.type = "Switch"
+        
+        Given(externalHomeService, .getAllThings(willReturn: [thing]))
+        Given(externalHomeService, .addItem(name: "Heating_On", label: "Power", type: "Switch", willReturn: itemReference1))
+        Given(externalHomeService, .linkItemToChannel(itemName: "Heating_On", channelId: "on", willReturn: true))
+        Given(externalHomeService, .setItemState(name: "Heating_On", newState: "on", willReturn: true))
+        
+        let homeConfigurationData = CreateConfigurationData(couchId: couch.id!, name: "Heating", type: "heating", items: [item1])
+        
+        try app.test(.POST, "\(homeURI)items", beforeRequest: { request in
+            try request.content.encode(homeConfigurationData)
+        }, afterResponse: { response in
+            let configuration = try response.content.decode(HomeConfiguration.self)
+            
+            XCTAssertEqual(configuration.name, "Heating")
+            XCTAssertEqual(configuration.$couch.id, couch.id!)
+            XCTAssertEqual(configuration.type, ConfigurationType.heating)
+            XCTAssertEqual(configuration.itemNames, ["Heating_On"])
+        })
+    }
+    
+    func testCreateHomeConfigurationWithFailure() throws {
+        let couch = try Couch.create(on: app.db)
+        
+        var item1 = Item()
+        item1.name = "On"
+        item1.label = "Power"
+        item1.state = "on"
+        item1.type = "Switch"
+        
+        var item2 = Item()
+        item2.name = "Temperature"
+        item2.label = "Temperature"
+        item2.state = "20"
+        item2.type = "Number:Temperature"
+        
+        var channel1 = HomeChannel()
+        channel1.uid = "on"
+        channel1.id = "On"
+        channel1.label = "Power"
+        channel1.itemType = "Switch"
+        
+        var channel2 = HomeChannel()
+        channel2.uid = "temperature"
+        channel2.id = "Temperature"
+        channel2.label = "Temperature"
+        channel2.itemType = "Number:Temperature"
+        
+        var thing = Thing()
+        thing.channels = [channel1, channel2]
+        
+        var itemReference1 = Item()
+        itemReference1.name = "Heating_On"
+        itemReference1.label = "Power"
+        itemReference1.state = "OFF"
+        itemReference1.type = "Switch"
+        
+        var itemReference2 = Item()
+        itemReference2.name = "Heating_Temperature"
+        itemReference2.label = "Temperature"
+        itemReference2.state = "20"
+        itemReference2.type = "Number:Temperature"
+        
+        Given(externalHomeService, .getAllThings(willReturn: [thing]))
+        Given(externalHomeService, .addItem(name: "Heating_On", label: "Power", type: "Switch", willReturn: itemReference1))
+        Given(externalHomeService, .addItem(name: "Heating_Temperature", label: "Temperature", type: "Number:Temperature", willReturn: itemReference2))
+        Given(externalHomeService, .linkItemToChannel(itemName: "Heating_On", channelId: "on", willReturn: true))
+        Given(externalHomeService, .linkItemToChannel(itemName: "Heating_Temperature", channelId: "temperature", willReturn: false))
+        Given(externalHomeService, .setItemState(name: "Heating_On", newState: "on", willReturn: true))
+        Given(externalHomeService, .setItemState(name: "Heating_Temperature", newState: "20", willReturn: true))
+        
+        let homeConfigurationData = CreateConfigurationData(couchId: couch.id!, name: "Heating", type: "heating", items: [item1, item2])
+        
+        try app.test(.POST, "\(homeURI)items", beforeRequest: { request in
+            try request.content.encode(homeConfigurationData)
+        }, afterResponse: { response in
+            
+        })
+    }
 }

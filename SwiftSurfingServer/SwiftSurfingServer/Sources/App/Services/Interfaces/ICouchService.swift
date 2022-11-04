@@ -12,7 +12,9 @@ import Fluent
 protocol ICouchService {
     func getAllCouchesForUser(userId: String?) async throws -> [Couch]
     
-    func getAllCouchesByCity(city: String?, userId: String?) async throws -> [Couch]
+    func getAllCouchesByCityExcludeUser(city: String?, userId: String?) async throws -> [Couch]
+    
+    func getAllCouchesByCity(city: String?) async throws -> [Couch]
     
     func getCouch(id: String?) async throws -> Couch?
     

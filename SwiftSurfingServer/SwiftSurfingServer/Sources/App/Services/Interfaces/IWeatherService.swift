@@ -7,6 +7,7 @@
 
 import Foundation
 
+//sourcery: AutoMockable
 protocol IWeatherService {
     func getWeather(cityName: String) async throws -> Int
 }

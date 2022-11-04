@@ -32,7 +32,7 @@ struct CouchController: RouteCollection {
     }
     
     func getAllCouchesByCityExceptUserId(req: Request) async throws -> [Couch] {
-        return try await couchService.getAllCouchesByCity(city: req.parameters.get("city"), userId: req.parameters.get("userId"))
+        return try await couchService.getAllCouchesByCityExcludeUser(city: req.parameters.get("city"), userId: req.parameters.get("userId"))
     }
     
     func getCouch(req: Request) async throws -> Couch {

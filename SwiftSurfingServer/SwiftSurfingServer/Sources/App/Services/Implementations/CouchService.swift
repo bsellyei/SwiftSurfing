@@ -22,11 +22,17 @@ class CouchService: ICouchService {
             .all()
     }
     
-    func getAllCouchesByCity(city: String?, userId: String?) async throws -> [Couch] {
+    func getAllCouchesByCityExcludeUser(city: String?, userId: String?) async throws -> [Couch] {
         let uuid = UUID(uuidString: userId!)
         return try await Couch.query(on: db)
             .filter(\.$city == city!)
             .filter(\.$user.$id != uuid!)
+            .all()
+    }
+    
+    func getAllCouchesByCity(city: String?) async throws -> [Couch] {
+        return try await Couch.query(on: db)
+            .filter(\.$city == city!)
             .all()
     }
     

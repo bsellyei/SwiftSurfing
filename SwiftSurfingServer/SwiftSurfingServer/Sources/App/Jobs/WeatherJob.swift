@@ -12,23 +12,28 @@ import Queues
 class WeatherJob: AsyncScheduledJob {
     let weatherService: IWeatherService
     let homeConfigurationService: IHomeConfigurationService
+    let couchService: ICouchService
     
-    init(weatherService: IWeatherService, homeConfigurationService: IHomeConfigurationService) {
+    init(weatherService: IWeatherService, homeConfigurationService: IHomeConfigurationService, couchService: ICouchService) {
         self.weatherService = weatherService
         self.homeConfigurationService = homeConfigurationService
+        self.couchService = couchService
     }
     
     func run(context: QueueContext) async throws {
         let configurations = try await homeConfigurationService.getHomeConfigurationsByType(type: .weatherWatcher, state: .on)
         var dictionary = [String:Int]()
         for config in configurations {
-            if dictionary[config.couch.city] != nil {
-                continue
+            let configCouch = try await couchService.getCouch(id: config.$couch.id.uuidString)
+            if let couch = configCouch {
+                if dictionary[couch.city] != nil {
+                    continue
+                }
+                
+                dictionary[couch.city] = try await weatherService.getWeather(cityName: couch.city)
             }
-            
-            dictionary[config.couch.city] = try await weatherService.getWeather(cityName: config.couch.city)
         }
         
-        //context.queue.dispatch()
+        try await context.queue.dispatch(WeatherWatcherJob.self, .init(cityWeatherDictionary: dictionary))
     }
 }
