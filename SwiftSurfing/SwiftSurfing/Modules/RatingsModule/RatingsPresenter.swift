@@ -35,9 +35,9 @@ class RatingsPresenter: ObservableObject {
                 self.ratings = ratings
                 self.summary = ctx
                 
-                self.interactor.getUsers(ratings: ratings, completion: { users in
+                /*self.interactor.getUsers(ratings: ratings, completion: { users in
                     self.users = users
-                })
+                })*/
             })
         }
     }

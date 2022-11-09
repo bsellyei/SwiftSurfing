@@ -17,7 +17,7 @@ open class ReservationsAPI {
      - parameter body: (body) Reservation object that needs to be added 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addReservation(body: APIReservation, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func addReservation(body: CreateReservationData, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
         addReservationWithRequestBuilder(body: body).execute { (response, error) -> Void in
             if error == nil {
                 completion((), error)
@@ -37,7 +37,7 @@ open class ReservationsAPI {
 
      - returns: RequestBuilder<Void> 
      */
-    open class func addReservationWithRequestBuilder(body: APIReservation) -> RequestBuilder<Void> {
+    open class func addReservationWithRequestBuilder(body: CreateReservationData) -> RequestBuilder<Void> {
         let path = "/reservations"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)

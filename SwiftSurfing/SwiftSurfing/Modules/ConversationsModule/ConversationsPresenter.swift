@@ -24,8 +24,7 @@ class ConversationsPresenter: ObservableObject {
     func getConversations() {
         DispatchQueue.global(qos: .background).async {
             self.interactor.getConversations(completion: { conversations in
-                self.conversations = conversations
-                self.interactor.getLastMessages(conversations: conversations, completion: { conversationId, lastMessage in
+                /*self.interactor.getLastMessages(conversations: conversations, completion: { conversationId, lastMessage in
                     if let message = lastMessage {
                         if message.isInvitation {
                             message.message = "This is an invitation from \(message.senderId)"
@@ -33,9 +32,10 @@ class ConversationsPresenter: ObservableObject {
                         
                         self.lastMessages[conversationId] = lastMessage
                     }
-                })
+                })*/
                 
                 self.interactor.getUserNames(conversations: conversations, completion: { conversationId, userName in
+                    self.conversations = conversations
                     self.userNames[conversationId] = userName
                 })
             })

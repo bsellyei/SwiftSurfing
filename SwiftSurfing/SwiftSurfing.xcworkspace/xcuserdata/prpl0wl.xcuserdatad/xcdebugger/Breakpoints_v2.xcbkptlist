@@ -3,4 +3,118 @@
    uuid = "0DC4788A-602D-456E-92D9-19B8A7EF6CFB"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E355C6FF-B274-4F97-9FF2-0C0DA0B864B5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftSurfing/Services/Implementations/ReservationService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "transformForCreation(reservation:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D4A7A26B-0682-4033-BAD3-371F02CBE9BF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftSurfing/Services/Implementations/ConversationService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "getAllConversations(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0967321A-4700-490D-ADD1-8EC4CA64936D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftSurfing/Services/Implementations/ConversationService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "transformToClientModel(conversation:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CE697795-0622-441B-9AFB-FDFA10059A7D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftSurfing/Modules/ConversationsModule/ConversationsPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "getConversations()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "CE697795-0622-441B-9AFB-FDFA10059A7D - b9465d64d171dc31"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;SwiftSurfing.Conversation&gt;) -&gt; () in closure #1 () -&gt; () in SwiftSurfing.ConversationsPresenter.getConversations() -&gt; ()"
+                  moduleName = "SwiftSurfing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prpl0wl/Documents/SwiftSurfing/SwiftSurfing/SwiftSurfing/Modules/ConversationsModule/ConversationsPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "42">
+               </Location>
+               <Location
+                  uuid = "CE697795-0622-441B-9AFB-FDFA10059A7D - 60cd0381c0e672af"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.String, Swift.String) -&gt; () in closure #1 (Swift.Array&lt;SwiftSurfing.Conversation&gt;) -&gt; () in closure #1 () -&gt; () in SwiftSurfing.ConversationsPresenter.getConversations() -&gt; ()"
+                  moduleName = "SwiftSurfing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prpl0wl/Documents/SwiftSurfing/SwiftSurfing/SwiftSurfing/Modules/ConversationsModule/ConversationsPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "119">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E501005D-2EB0-4B29-A878-00905AD1EFDE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftSurfing/Services/Implementations/CouchService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "addNew(couch:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

@@ -135,6 +135,7 @@
 		DBE36B0D264EFE1100755851 /* CouchDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE36B0A264EFE1100755851 /* CouchDetailsInteractor.swift */; };
 		DBE36B0E264EFE1100755851 /* CouchDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE36B0B264EFE1100755851 /* CouchDetailsView.swift */; };
 		DBE36B0F264EFE1100755851 /* CouchDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE36B0C264EFE1100755851 /* CouchDetailsPresenter.swift */; };
+		DBE7E18929193377003E2E53 /* CreateReservationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE7E18829193377003E2E53 /* CreateReservationData.swift */; };
 		DBEB14A225F952A90046CB30 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEB14A125F952A90046CB30 /* LoginInteractor.swift */; };
 		DBEB14A925F98A630046CB30 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEB14A825F98A630046CB30 /* LoginPresenter.swift */; };
 		DBEB14B025F98B760046CB30 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEB14AF25F98B760046CB30 /* LoginView.swift */; };
@@ -293,6 +294,7 @@
 		DBE36B0A264EFE1100755851 /* CouchDetailsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CouchDetailsInteractor.swift; path = CouchDetailsModule/CouchDetailsInteractor.swift; sourceTree = "<group>"; };
 		DBE36B0B264EFE1100755851 /* CouchDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CouchDetailsView.swift; path = CouchDetailsModule/CouchDetailsView.swift; sourceTree = "<group>"; };
 		DBE36B0C264EFE1100755851 /* CouchDetailsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CouchDetailsPresenter.swift; path = CouchDetailsModule/CouchDetailsPresenter.swift; sourceTree = "<group>"; };
+		DBE7E18829193377003E2E53 /* CreateReservationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateReservationData.swift; sourceTree = "<group>"; };
 		DBEB14A125F952A90046CB30 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		DBEB14A825F98A630046CB30 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		DBEB14AF25F98B760046CB30 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -645,6 +647,7 @@
 		DBBF2997283B9F5F0009D5D8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DBE7E18829193377003E2E53 /* CreateReservationData.swift */,
 				DBB204AB28EB154F0083DE7D /* APIItem.swift */,
 				DBB204AC28EB154F0083DE7D /* CreateHomeConfigurationData.swift */,
 				DBB204A928EAF01B0083DE7D /* Channel.swift */,
@@ -967,6 +970,7 @@
 				DBBF04062704B49300110DEC /* MessageServiceProtocol.swift in Sources */,
 				DBBF29AF283B9F5F0009D5D8 /* CodableHelper.swift in Sources */,
 				DBBF29AE283B9F5F0009D5D8 /* MessagesAPI.swift in Sources */,
+				DBE7E18929193377003E2E53 /* CreateReservationData.swift in Sources */,
 				DBBF29B2283B9F5F0009D5D8 /* APIUser.swift in Sources */,
 				DBA0B9C5260146B600474B7C /* NewCouchPresenter.swift in Sources */,
 				DBBF29B9283B9F5F0009D5D8 /* APIConversation.swift in Sources */,

@@ -16,7 +16,7 @@ class ConversationService: IConversationService {
     }
     
     func getConversations(user: User) async throws -> [Conversation] {
-        return try await user.$conversations.query(on: db).all()
+        return try await user.$conversations.query(on: db).with(\.$users).all()
     }
     
     func getConversation(id: String?) async throws -> Conversation? {

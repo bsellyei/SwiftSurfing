@@ -11,6 +11,7 @@ import CoreData
 import LMGeocoderSwift
 import FirebaseAuth
 import Alamofire
+import CoreLocation
 
 class CouchService: CouchServiceProtocol {
     var databaseRef: DatabaseReference?
@@ -32,7 +33,7 @@ class CouchService: CouchServiceProtocol {
                 
                 couch.userId = userId!
             
-                Geocoder.shared.geocodeAddressString(couch.address, service: .google, alternativeService: .apple) { (results, error) in
+                /*Geocoder.shared.geocodeAddressString(couch.address, service: .google) { (results, error) in
                     if let address = results?.first, error == nil {
                         couch.latitude = address.coordinate?.latitude ?? 0
                         couch.longitude = address.coordinate?.longitude ?? 0
@@ -49,7 +50,38 @@ class CouchService: CouchServiceProtocol {
                             completion(false)
                         }
                     }
-                }
+                }*/
+                
+                let geocoder = CLGeocoder()
+                geocoder.geocodeAddressString(couch.address, completionHandler: { (result, error) in
+                    if error == nil {
+                        if let places = result {
+                            for place in places {
+                                couch.latitude = place.location?.coordinate.latitude ?? 0
+                                couch.longitude = place.location?.coordinate.longitude ?? 0
+                                
+                                break
+                            }
+                            
+                            let newCouch = CouchTransformator.transformToAPIModel(couch: couch)
+                            CouchAPI.addCouch(body: newCouch, completion: { _, _ in
+                                DispatchQueue.main.async {
+                                    completion(true)
+                                }
+                            })
+                        } else {
+                            print("getting coordinates failed from addNewCouch")
+                            DispatchQueue.main.async {
+                                completion(false)
+                            }
+                        }
+                    } else {
+                        print("getting coordinates failed from addNewCouch")
+                        DispatchQueue.main.async {
+                            completion(false)
+                        }
+                    }
+                })
             })
         }
         

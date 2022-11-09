@@ -39,7 +39,7 @@ class ReservationService: ReservationServiceProtocol {
                     return
                 }
                 
-                ReservationsAPI.addReservation(body: ReservationTransformator.transformToAPIModel(reservation: reservation), completion: { _, _ in
+                ReservationsAPI.addReservation(body: ReservationTransformator.transformForCreation(reservation: reservation), completion: { _, _ in
                     DispatchQueue.main.async {
                         completion(true)
                     }
@@ -55,7 +55,7 @@ class ReservationService: ReservationServiceProtocol {
             return
         }
         
-        ReservationsAPI.addReservation(body: ReservationTransformator.transformToAPIModel(reservation: reservation), completion: { _, _ in
+        ReservationsAPI.addReservation(body: ReservationTransformator.transformForCreation(reservation: reservation), completion: { _, _ in
             DispatchQueue.main.async {
                 completion(true)
             }
@@ -86,18 +86,22 @@ class ReservationService: ReservationServiceProtocol {
             return result
         }
         
-        static func transformToAPIModel(reservation: Reservation) -> APIReservation {
-            let result = APIReservation(_id: reservation.id, user: APIUser(_id: reservation.guestId, fullName: "", email: ""), couch: APICouch(_id: reservation.couchId, name: "", address: "", city: "", country: "", latitude: 0, longitude: 0, maxGuests: 0, _description: "", imageUrls: [], ratingAverage: 0, ratingCount: 0, user: APIUser(_id: "", fullName: "", email: "")), guestsNum: reservation.guestsNum, start: reservation.date.lowerBound, end: reservation.date.upperBound)
-            
-            return result
-        }
-        
         static func transformToClientModel(reservations: [APIReservation]) -> [Reservation] {
             var result: [Reservation] = []
             for reservation in reservations {
                 result.append(ReservationTransformator.transformToClientModel(reservation: reservation))
             }
             
+            return result
+        }
+        
+        static func transformForCreation(reservation: Reservation) -> CreateReservationData {
+            let dateformatter = DateFormatter()
+            dateformatter.dateFormat = "YY/MM/DD"
+            let start = dateformatter.string(from: reservation.date.lowerBound)
+            let end = dateformatter.string(from: reservation.date.upperBound)
+            let result = CreateReservationData(guestId: reservation.guestId, couchId: reservation.couchId, guestsNum: reservation.guestsNum, start: start, end: end)
+
             return result
         }
     }

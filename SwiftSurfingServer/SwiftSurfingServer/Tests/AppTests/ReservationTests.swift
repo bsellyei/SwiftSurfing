@@ -31,7 +31,7 @@ final class ReservationTests: XCTestCase {
         let date1 = formatter.date(from: "2022/05/02")
         let date2 = formatter.date(from: "2022/05/09")
         
-        let createData = CreateReservationData(guestId: guest.id!, couchId: couch.id!, guestsNum: 2, start: date1!, end: date2!)
+        let createData = CreateReservationData(guestId: guest.id!, couchId: couch.id!, guestsNum: 2, start: "2022/05/02", end: "2022/05/09")
         try app.test(.POST, reservationsURI, beforeRequest: { request in
             try request.content.encode(createData)
         }, afterResponse: { response in

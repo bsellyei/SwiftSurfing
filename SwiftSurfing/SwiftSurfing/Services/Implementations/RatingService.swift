@@ -67,8 +67,8 @@ class RatingService: RatingServiceProtocol {
         static func transformToClientModel(rating: APIRating) -> Rating {
             let result = Rating()
             result.id = rating._id!
-            result.userId = rating.userId!
-            result.couchId = rating.couchId!
+            //result.userId = rating.userId!
+            //result.couchId = rating.couchId!
             result.value = rating.value!
             result.comment = rating.comment!
             return result

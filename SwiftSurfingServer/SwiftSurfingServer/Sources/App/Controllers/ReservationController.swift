@@ -32,14 +32,21 @@ struct ReservationController: RouteCollection {
     
     func createReservation(req: Request) async throws -> Reservation {
         let data = try req.content.decode(CreateReservationData.self)
-        let reservation = Reservation(guestId: data.guestId, couchId: data.couchId, guestsNum: data.guestsNum, start: data.start, end: data.end)
         
-        let couch = try await couchService.getCouch(id: data.couchId.uuidString)
-        
-        let _ = try await reservationService.createReservation(reservation: reservation)
-        _ = try await createConversationAndMessage(ownerId: (couch?.$user.id.uuidString)!, guestId: data.guestId.uuidString)
-        
-        return reservation
+        let dateformatter = DateFormatter()
+        dateformatter.dateFormat = "YY/MM/DD"
+        if let start = dateformatter.date(from: data.start), let end = dateformatter.date(from: data.end) {
+            let reservation = Reservation(guestId: data.guestId, couchId: data.couchId, guestsNum: data.guestsNum, start: start, end: end)
+            
+            let couch = try await couchService.getCouch(id: data.couchId.uuidString)
+            
+            let _ = try await reservationService.createReservation(reservation: reservation)
+            _ = try await createConversationAndMessage(ownerId: (couch?.$user.id.uuidString)!, guestId: data.guestId.uuidString)
+            
+            return reservation
+        } else {
+            throw Abort(.internalServerError)
+        }
     }
     
     func getReservationsForUser(req: Request) async throws -> [Reservation] {
@@ -75,6 +82,6 @@ struct CreateReservationData: Content {
     let guestId: UUID
     let couchId: UUID
     let guestsNum: Int
-    let start: Date
-    let end: Date
+    let start: String
+    let end: String
 }
