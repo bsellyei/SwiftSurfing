@@ -42,7 +42,7 @@ struct RatingsView: View {
             List(presenter.ratings) { item in
                 VStack {
                     HStack {
-                        Label(presenter.getUserName(userId: item.userId), systemImage: "person.fill")
+                        Label(presenter.userNames[item.id] ?? "", systemImage: "person.fill")
                         
                         Spacer()
                         

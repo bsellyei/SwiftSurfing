@@ -56,4 +56,16 @@ class CouchService: ICouchService {
         
         return true
     }
+    
+    func updateWithNewRating(id: String?, value: Int) async throws -> Bool {
+        let found = try await getCouch(id: id)
+        guard let couch = found else { return false }
+        
+        let sum = couch.ratingCount == 0 ? value : couch.ratingAverage * couch.ratingCount
+        couch.ratingCount += 1
+        couch.ratingAverage = sum / (couch.ratingCount)
+        
+        try await couch.save(on: db)
+        return true
+    }
 }

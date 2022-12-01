@@ -29,32 +29,19 @@ class MessageService: MessageServiceProtocol {
                 
                 message.senderId = userId!
                 
-                MessagesAPI.addMessage(body: MessageTransformator.transformToAPIModel(message: message), completion: { _, _ in
+                MessagesAPI.addMessage(body: MessageTransformator.transfromForCreation(message: message), completion: { _, _ in
                     DispatchQueue.main.async {
                         completion(true)
                     }
                 })
             })
         }
-        
-        MessagesAPI.addMessage(body: MessageTransformator.transformToAPIModel(message: message), completion: { _, _ in
-            DispatchQueue.main.async {
-                completion(true)
-            }
-        })
-        
-        //let messageRef = self.databaseRef?.child(message.id)
-        //messageRef?.setValue(message.toAnyObject())
     }
     
     func get(id: String, completion: @escaping (Message?) -> Void) {
-        let messageRef = databaseRef?.child(id)
-        messageRef?.observeSingleEvent(of: .value, with: { snapshot in
-            let message = Message(snapshot: snapshot)
-            DispatchQueue.main.async {
-                completion(message)
-            }
-        })
+        DispatchQueue.main.async {
+            completion(nil)
+        }
     }
     
     func getAllMessages(conversationId: String, completion: @escaping ([Message]) -> Void) {
@@ -63,15 +50,6 @@ class MessageService: MessageServiceProtocol {
                 completion(MessageTransformator.transformToClientModel(messages: messages!))
             }
         })
-        
-        /*databaseRef?.queryOrdered(byChild: "conversationId").queryEqual(toValue: conversationId)
-            .observeSingleEvent(of: .value, with: { (snapshot) in
-                guard let snapshot = snapshot.children.allObjects as? [DataSnapshot] else {
-                    return
-                }
-                
-                let messages = snapshot.reversed().compactMap(Message.init)
-        })*/
     }
     
     class MessageTransformator {
@@ -86,6 +64,12 @@ class MessageService: MessageServiceProtocol {
         
         static func transformToAPIModel(message: Message) -> APIMessage {
             let result = APIMessage(_id: message.id, user: APIUser(_id: message.senderId, fullName: "", email: ""), conversation: APIConversation(_id: message.conversationId, users: [], messages: []), text: message.message)
+            
+            return result
+        }
+        
+        static func transfromForCreation(message: Message) -> CreateMessageData {
+            let result = CreateMessageData(userId: message.senderId, conversationId: message.conversationId, text: message.message)
             
             return result
         }

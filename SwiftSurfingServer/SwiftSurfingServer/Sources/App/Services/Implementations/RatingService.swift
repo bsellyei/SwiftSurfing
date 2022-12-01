@@ -10,20 +10,26 @@ import Fluent
 
 class RatingService: IRatingService {
     var db: Database
+    let couchService: ICouchService
     
-    init(db: Database) {
+    init(couchService: ICouchService, db: Database) {
         self.db = db
+        self.couchService = couchService
     }
     
     func getRatings(couchId: String?) async throws -> [Rating] {
         let uuid = UUID(uuidString: couchId!)
         return try await Rating.query(on: db)
             .filter(\.$couch.$id == uuid!)
+            .with(\.$user)
             .all()
     }
     
     func createRating(rating: Rating) async throws -> Rating {
         try await rating.save(on: db)
+        
+        _ = try await couchService.updateWithNewRating(id: rating.$couch.id.uuidString, value: rating.value)
+        
         return rating
     }
     

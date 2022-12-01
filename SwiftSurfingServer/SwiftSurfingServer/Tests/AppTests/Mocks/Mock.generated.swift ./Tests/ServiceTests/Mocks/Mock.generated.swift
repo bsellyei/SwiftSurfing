@@ -432,6 +432,22 @@ open class ICouchServiceMock: ICouchService, Mock {
 		return __value
     }
 
+    open func updateWithNewRating(id: String?, value: Int) throws -> Bool {
+        addInvocation(.m_updateWithNewRating__id_idvalue_value(Parameter<String?>.value(`id`), Parameter<Int>.value(`value`)))
+		let perform = methodPerformValue(.m_updateWithNewRating__id_idvalue_value(Parameter<String?>.value(`id`), Parameter<Int>.value(`value`))) as? (String?, Int) -> Void
+		perform?(`id`, `value`)
+		var __value: Bool
+		do {
+		    __value = try methodReturnValue(.m_updateWithNewRating__id_idvalue_value(Parameter<String?>.value(`id`), Parameter<Int>.value(`value`))).casted()
+		} catch MockError.notStubed {
+			onFatalFailure("Stub return value not specified for updateWithNewRating(id: String?, value: Int). Use given")
+			Failure("Stub return value not specified for updateWithNewRating(id: String?, value: Int). Use given")
+		} catch {
+		    throw error
+		}
+		return __value
+    }
+
 
     fileprivate enum MethodType {
         case m_getAllCouchesForUser__userId_userId(Parameter<String?>)
@@ -440,6 +456,7 @@ open class ICouchServiceMock: ICouchService, Mock {
         case m_getCouch__id_id(Parameter<String?>)
         case m_createCouch__couch_couch(Parameter<Couch>)
         case m_deleteCouch__id_id(Parameter<String?>)
+        case m_updateWithNewRating__id_idvalue_value(Parameter<String?>, Parameter<Int>)
 
         static func compareParameters(lhs: MethodType, rhs: MethodType, matcher: Matcher) -> Matcher.ComparisonResult {
             switch (lhs, rhs) {
@@ -473,6 +490,12 @@ open class ICouchServiceMock: ICouchService, Mock {
 				var results: [Matcher.ParameterComparisonResult] = []
 				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsId, rhs: rhsId, with: matcher), lhsId, rhsId, "id"))
 				return Matcher.ComparisonResult(results)
+
+            case (.m_updateWithNewRating__id_idvalue_value(let lhsId, let lhsValue), .m_updateWithNewRating__id_idvalue_value(let rhsId, let rhsValue)):
+				var results: [Matcher.ParameterComparisonResult] = []
+				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsId, rhs: rhsId, with: matcher), lhsId, rhsId, "id"))
+				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsValue, rhs: rhsValue, with: matcher), lhsValue, rhsValue, "value"))
+				return Matcher.ComparisonResult(results)
             default: return .none
             }
         }
@@ -485,6 +508,7 @@ open class ICouchServiceMock: ICouchService, Mock {
             case let .m_getCouch__id_id(p0): return p0.intValue
             case let .m_createCouch__couch_couch(p0): return p0.intValue
             case let .m_deleteCouch__id_id(p0): return p0.intValue
+            case let .m_updateWithNewRating__id_idvalue_value(p0, p1): return p0.intValue + p1.intValue
             }
         }
         func assertionName() -> String {
@@ -495,6 +519,7 @@ open class ICouchServiceMock: ICouchService, Mock {
             case .m_getCouch__id_id: return ".getCouch(id:)"
             case .m_createCouch__couch_couch: return ".createCouch(couch:)"
             case .m_deleteCouch__id_id: return ".deleteCouch(id:)"
+            case .m_updateWithNewRating__id_idvalue_value: return ".updateWithNewRating(id:value:)"
             }
         }
     }
@@ -525,6 +550,9 @@ open class ICouchServiceMock: ICouchService, Mock {
         }
         public static func deleteCouch(id: Parameter<String?>, willReturn: Bool...) -> MethodStub {
             return Given(method: .m_deleteCouch__id_id(`id`), products: willReturn.map({ StubProduct.return($0 as Any) }))
+        }
+        public static func updateWithNewRating(id: Parameter<String?>, value: Parameter<Int>, willReturn: Bool...) -> MethodStub {
+            return Given(method: .m_updateWithNewRating__id_idvalue_value(`id`, `value`), products: willReturn.map({ StubProduct.return($0 as Any) }))
         }
         public static func getAllCouchesForUser(userId: Parameter<String?>, willThrow: Error...) -> MethodStub {
             return Given(method: .m_getAllCouchesForUser__userId_userId(`userId`), products: willThrow.map({ StubProduct.throw($0) }))
@@ -586,6 +614,16 @@ open class ICouchServiceMock: ICouchService, Mock {
 			willProduce(stubber)
 			return given
         }
+        public static func updateWithNewRating(id: Parameter<String?>, value: Parameter<Int>, willThrow: Error...) -> MethodStub {
+            return Given(method: .m_updateWithNewRating__id_idvalue_value(`id`, `value`), products: willThrow.map({ StubProduct.throw($0) }))
+        }
+        public static func updateWithNewRating(id: Parameter<String?>, value: Parameter<Int>, willProduce: (StubberThrows<Bool>) -> Void) -> MethodStub {
+            let willThrow: [Error] = []
+			let given: Given = { return Given(method: .m_updateWithNewRating__id_idvalue_value(`id`, `value`), products: willThrow.map({ StubProduct.throw($0) })) }()
+			let stubber = given.stubThrows(for: (Bool).self)
+			willProduce(stubber)
+			return given
+        }
     }
 
     public struct Verify {
@@ -597,6 +635,7 @@ open class ICouchServiceMock: ICouchService, Mock {
         public static func getCouch(id: Parameter<String?>) -> Verify { return Verify(method: .m_getCouch__id_id(`id`))}
         public static func createCouch(couch: Parameter<Couch>) -> Verify { return Verify(method: .m_createCouch__couch_couch(`couch`))}
         public static func deleteCouch(id: Parameter<String?>) -> Verify { return Verify(method: .m_deleteCouch__id_id(`id`))}
+        public static func updateWithNewRating(id: Parameter<String?>, value: Parameter<Int>) -> Verify { return Verify(method: .m_updateWithNewRating__id_idvalue_value(`id`, `value`))}
     }
 
     public struct Perform {
@@ -620,6 +659,9 @@ open class ICouchServiceMock: ICouchService, Mock {
         }
         public static func deleteCouch(id: Parameter<String?>, perform: @escaping (String?) -> Void) -> Perform {
             return Perform(method: .m_deleteCouch__id_id(`id`), performs: perform)
+        }
+        public static func updateWithNewRating(id: Parameter<String?>, value: Parameter<Int>, perform: @escaping (String?, Int) -> Void) -> Perform {
+            return Perform(method: .m_updateWithNewRating__id_idvalue_value(`id`, `value`), performs: perform)
         }
     }
 

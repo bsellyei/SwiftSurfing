@@ -37,15 +37,6 @@ class ConversationService: ConversationServiceProtocol {
                 }
             })
         }
-        
-        //let conversationRef = self.databaseRef?.child(conversation.id)
-        //conversationRef?.setValue(conversation.toAnyObject())
-        
-        ConversationAPI.addConversation(body: ConversationTransformator.transformToAPIModel(conversation: conversation), completion: { _, _ in
-            DispatchQueue.main.async {
-                completion(true)
-            }
-        })
     }
     
     func update(conversation: Conversation, completion: @escaping (Bool) -> Void) {
@@ -65,46 +56,30 @@ class ConversationService: ConversationServiceProtocol {
                 return
             }
             
-            //let semaphore = DispatchSemaphore(value: 0)
             var conversations: [Conversation] = []
             ConversationAPI.getAllConversationsForUser(userId: userId!, completion: { result, _ in
                 conversations = ConversationTransformator.transformToClientModel(conversations: result!)
-                //semaphore.signal()
+                for conversation in conversations {
+                    if conversation.toId == userId! {
+                        conversation.toId = ""
+                    } else if conversation.fromId == userId! {
+                        conversation.fromId = ""
+                    }
+                }
                 
                 DispatchQueue.main.async {
                     completion(conversations)
                 }
             })
         })
-        
-        /*databaseRef?.queryOrdered(byChild: "toId").queryEqual(toValue: userId).observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let snapshot = snapshot.children.allObjects as? [DataSnapshot] else {
-                return
-            }
-            
-            conversations = snapshot.reversed().compactMap(Conversation.init)
-            semaphore.signal()
-        })*/
-        
-        /*databaseRef?.queryOrdered(byChild: "fromId").queryEqual(toValue: userId).observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let snapshot = snapshot.children.allObjects as? [DataSnapshot] else {
-                return
-            }
-            
-            
-            
-            let tempConversations = snapshot.reversed().compactMap(Conversation.init)
-            semaphore.wait()
-            DispatchQueue.main.async {
-                completion(conversations + tempConversations)
-            }
-        })*/
     }
     
     class ConversationTransformator {
         static func transformToClientModel(conversation: APIConversation) -> Conversation {
             let result = Conversation()
             result.id = conversation._id!
+            result.fromId = (conversation.users?[0]._id)!
+            result.toId = (conversation.users?[1]._id)!
             
             return result
         }

@@ -31,10 +31,10 @@ class MapPresenter: ObservableObject {
     func getCouches() {
         DispatchQueue.global(qos: .background).async {
             self.interactor.getCouches(completion: { couches in
-                self.couches = couches
-                self.annotations = self.makeCouchAnnotations(couches: couches)
-                
                 self.interactor.getUserNames(couches: couches, completion: { couchId, userName in
+                    self.couches = couches
+                    self.annotations = self.makeCouchAnnotations(couches: couches)
+                    
                     self.userNames[couchId] = userName
                 })
             })

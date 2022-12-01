@@ -29,33 +29,16 @@ class RatingService: RatingServiceProtocol {
                 
                 rating.userId = userId!
                 
-                RatingAPI.createRating(body: RatingTransformator.transformToAPIModel(rating: rating), completion: { _, _ in
+                RatingAPI.createRating(body: RatingTransformator.transformForCreation(rating: rating), completion: { _, _ in
                     DispatchQueue.main.async {
                         completion(true)
                     }
                 })
             })
         }
-        
-        RatingAPI.createRating(body: RatingTransformator.transformToAPIModel(rating: rating), completion: { _, _ in
-            DispatchQueue.main.async {
-                completion(true)
-            }
-        })
     }
     
-    func getAllRatings(couchId: String, completion: @escaping ([Rating]) -> Void) {
-        /*databaseRef?.queryOrdered(byChild: "couchId").queryEqual(toValue: couchId).observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let snapshot = snapshot.children.allObjects as? [DataSnapshot] else {
-                return
-            }
-            
-            let ratings = snapshot.reversed().compactMap(Rating.init)
-            DispatchQueue.main.async {
-                completion(ratings)
-            }
-        })*/
-        
+    func getAllRatings(couchId: String, completion: @escaping ([Rating]) -> Void) {        
         RatingAPI.getRatings(_id: couchId, completion: { ratings, _ in
             DispatchQueue.main.async {
                 completion(RatingTransformator.transformToClientModel(ratings: ratings!))
@@ -67,15 +50,15 @@ class RatingService: RatingServiceProtocol {
         static func transformToClientModel(rating: APIRating) -> Rating {
             let result = Rating()
             result.id = rating._id!
-            //result.userId = rating.userId!
-            //result.couchId = rating.couchId!
+            result.userId = (rating.user?._id)!
+            result.couchId = (rating.couch?._id)!
             result.value = rating.value!
             result.comment = rating.comment!
             return result
         }
         
         static func transformToAPIModel(rating: Rating) -> APIRating {
-            let result = APIRating(_id: rating.id, userId: rating.userId, couchId: rating.couchId, value: rating.value, comment: rating.comment)
+            let result = APIRating(_id: rating.id, user: APIUser(_id: rating.userId, fullName: "", email: ""), couch: APICouch(_id: rating.couchId, name: "", address: "", city: "", country: "", latitude: nil, longitude: nil, maxGuests: nil, _description: "", imageUrls: [], ratingAverage: nil, ratingCount: nil, user: nil), value: rating.value, comment: rating.comment)
             return result
         }
         
@@ -85,6 +68,11 @@ class RatingService: RatingServiceProtocol {
                 result.append(RatingTransformator.transformToClientModel(rating: rating))
             }
             
+            return result
+        }
+        
+        static func transformForCreation(rating: Rating) -> CreateRatingData {
+            let result = CreateRatingData(userId: rating.userId, couchId: rating.couchId, value: rating.value, comment: rating.comment)
             return result
         }
     }

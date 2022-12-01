@@ -17,7 +17,7 @@ open class CouchAPI {
      - parameter body: (body) Couch object that needs to be added 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addCouch(body: APICouch, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func addCouch(body: CreateCouchData, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
         addCouchWithRequestBuilder(body: body).execute { (response, error) -> Void in
             if error == nil {
                 completion((), error)
@@ -37,7 +37,7 @@ open class CouchAPI {
 
      - returns: RequestBuilder<Void> 
      */
-    open class func addCouchWithRequestBuilder(body: APICouch) -> RequestBuilder<Void> {
+    open class func addCouchWithRequestBuilder(body: CreateCouchData) -> RequestBuilder<Void> {
         let path = "/couches"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)

@@ -25,7 +25,7 @@ struct ConversationListRow: View {
     
     var body: some View {
         HStack {
-            Image(systemName: "nosign")
+            Image(systemName: "person.crop.circle.fill")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 75, height: 75, alignment: .leading)

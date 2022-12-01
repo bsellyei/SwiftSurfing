@@ -121,18 +121,15 @@ class RatingsInteractor {
         })
     }
     
-    func getUsers(ratings: [Rating], completion: @escaping ([User]) -> Void) {
-        var users: [User] = []
+    func getUsers(ratings: [Rating], completion: @escaping (String, String) -> Void) {        
         for rating in ratings {
             self.userService.get(id: rating.userId, completion: { user in
-                if user != nil {
-                    users.append(user!)
+                guard let userName = user else { return }
+                
+                DispatchQueue.main.async {
+                    completion(rating.id, userName.fullName)
                 }
             })
-        }
-        
-        DispatchQueue.main.async {
-            completion(users)
         }
     }
 }

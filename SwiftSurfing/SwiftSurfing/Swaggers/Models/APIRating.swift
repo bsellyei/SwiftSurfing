@@ -12,23 +12,23 @@ import Foundation
 public struct APIRating: Codable {
 
     public var _id: String?
-    public var userId: String?
-    public var couchId: String?
+    public var user: APIUser?
+    public var couch: APICouch?
     public var value: Int?
     public var comment: String?
 
-    public init(_id: String?, userId: String?, couchId: String?, value: Int?, comment: String?) {
+    public init(_id: String?, user: APIUser?, couch: APICouch?, value: Int?, comment: String?) {
         self._id = _id
-        self.userId = userId
-        self.couchId = couchId
+        self.user = user
+        self.couch = couch
         self.value = value
         self.comment = comment
     }
 
     public enum CodingKeys: String, CodingKey { 
         case _id = "id"
-        case userId
-        case couchId
+        case user
+        case couch
         case value
         case comment
     }

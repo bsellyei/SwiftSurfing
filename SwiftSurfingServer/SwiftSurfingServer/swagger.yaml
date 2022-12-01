@@ -39,7 +39,7 @@ paths:
         description: "Couch object that needs to be added"
         required: true
         schema:
-          $ref: "#/definitions/APICouch"
+          $ref: "#/definitions/CreateCouchData"
       responses:
         "405":
           description: "Invalid input"
@@ -192,7 +192,7 @@ paths:
         description: "Rating object that needs to be added"
         required: true
         schema:
-          $ref: "#/definitions/APIRating"
+          $ref: "#/definitions/CreateRatingData"
       responses:
         "200":
           description: "successful operation"
@@ -307,7 +307,7 @@ paths:
         description: "Message object that needs to be added"
         required: true
         schema:
-          $ref: "#/definitions/APIMessage"
+          $ref: "#/definitions/CreateMessageData"
       responses:
         "405":
           description: "Invalid input"
@@ -352,7 +352,7 @@ paths:
         description: "Reservation object that needs to be added"
         required: true
         schema:
-          $ref: "#/definitions/APIReservation"
+          $ref: "#/definitions/CreateReservationData"
       responses:
         "405":
           description: "Invalid input"
@@ -642,6 +642,22 @@ definitions:
         type: "string"
       label:
         type: "string"
+  CreateReservationData:
+    type: "object"
+    properties:
+      guestId:
+        type: "string"
+      couchId:
+        type: "string"
+      guestsNum:
+        type: "integer"
+        format: "int32"
+      start:
+        type: "string"
+        format: "date"
+      end:
+        type: "string"
+        format: "date"
   APIReservation:
     type: "object"
     properties:
@@ -673,6 +689,15 @@ definitions:
         type: "array"
         items:
           $ref: "#/definitions/APIMessage"
+  CreateMessageData:
+    type: "object"
+    properties:
+      userId:
+        type: "string"
+      conversationId:
+        type: "string"
+      text:
+        type: "string"
   APIMessage:
     type: "object"
     properties:
@@ -684,11 +709,9 @@ definitions:
         $ref: "#/definitions/APIConversation"
       text:
         type: "string"
-  APIRating:
+  CreateRatingData:
     type: "object"
     properties:
-      id:
-        type: "string"
       userId:
         type: "string"
       couchId:
@@ -697,6 +720,44 @@ definitions:
         type: "integer"
         format: "int32"
       comment:
+        type: "string"
+  APIRating:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      user:
+        $ref: "#/definitions/APIUser"
+      couch:
+        $ref: "#/definitions/APICouch"
+      value:
+        type: "integer"
+        format: "int32"
+      comment:
+        type: "string"
+  CreateCouchData:
+    type: "object"
+    properties:
+      userId:
+        type: "string"
+      name:
+        type: "string"
+      address:
+        type: "string"
+      city:
+        type: "string"
+      country:
+        type: "string"
+      latitude:
+        type: "number"
+        format: "double"
+      longitude:
+        type: "number"
+        format: "double"
+      maxGuests:
+        type: "integer"
+        format: "int32"
+      description:
         type: "string"
   APICouch:
     type: "object"

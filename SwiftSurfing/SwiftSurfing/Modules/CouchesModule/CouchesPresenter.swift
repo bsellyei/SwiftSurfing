@@ -23,9 +23,8 @@ class CouchesPresenter: ObservableObject {
     func getCouches() {
         DispatchQueue.global(qos: .background).async {
             self.interactor.getCouches(completion: { couches in
-                self.couches = couches
-                
                 self.interactor.getUserName(completion: { name in
+                    self.couches = couches
                     self.userName = name
                 })
             })

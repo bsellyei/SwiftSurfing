@@ -34,30 +34,15 @@ class ConversationsInteractor {
     }
     
     func getUserNames(conversations: [Conversation], completion: @escaping (String, String) -> Void) {
-        let currentUser = Auth.auth().currentUser
-        
         for conversation in conversations {
-            if conversation.toId == currentUser?.uid {
-                userService.get(id: conversation.fromId, completion: { user in
-                    guard
-                        let userName = user
-                    else { return }
-                    
-                    DispatchQueue.main.async {
-                        completion(conversation.id, userName.fullName)
-                    }
-                })
-            } else {
-                userService.get(id: conversation.toId, completion: { user in
-                    guard
-                        let userName = user
-                    else { return }
-                    
-                    DispatchQueue.main.async {
-                        completion(conversation.id, userName.fullName)
-                    }
-                })
-            }
+            let userId = conversation.toId.isEmpty ? conversation.fromId : conversation.toId
+            userService.get(id: userId, completion: { user in
+                guard let userName = user else { return }
+                
+                DispatchQueue.main.async {
+                    completion(conversation.id, userName.fullName)
+                }
+            })
         }
     }
 }

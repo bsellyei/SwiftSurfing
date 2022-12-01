@@ -130,6 +130,9 @@
 		DBCBEA2925FBF25500E74A8D /* PublisherExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCBEA2825FBF25500E74A8D /* PublisherExtension.swift */; };
 		DBD60E1A27230F8200A13AC9 /* NotificationManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD60E1927230F8200A13AC9 /* NotificationManagerProtocol.swift */; };
 		DBD60E1E27230FA200A13AC9 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD60E1D27230FA200A13AC9 /* NotificationManager.swift */; };
+		DBDA808E29393A81000D7C41 /* CreateCouchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDA808D29393A81000D7C41 /* CreateCouchData.swift */; };
+		DBDA809029393A8A000D7C41 /* CreateMessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDA808F29393A8A000D7C41 /* CreateMessageData.swift */; };
+		DBDA809229396C43000D7C41 /* CreateRatingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDA809129396C43000D7C41 /* CreateRatingData.swift */; };
 		DBDEDA8D28F03EAD00640F59 /* SmartDeviceDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDEDA8C28F03EAD00640F59 /* SmartDeviceDetailsPresenter.swift */; };
 		DBDEDA8F28F03EBB00640F59 /* SmartDeviceDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDEDA8E28F03EBB00640F59 /* SmartDeviceDetailsInteractor.swift */; };
 		DBE36B0D264EFE1100755851 /* CouchDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE36B0A264EFE1100755851 /* CouchDetailsInteractor.swift */; };
@@ -289,6 +292,9 @@
 		DBCBEA2825FBF25500E74A8D /* PublisherExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherExtension.swift; sourceTree = "<group>"; };
 		DBD60E1927230F8200A13AC9 /* NotificationManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManagerProtocol.swift; sourceTree = "<group>"; };
 		DBD60E1D27230FA200A13AC9 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		DBDA808D29393A81000D7C41 /* CreateCouchData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCouchData.swift; sourceTree = "<group>"; };
+		DBDA808F29393A8A000D7C41 /* CreateMessageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateMessageData.swift; sourceTree = "<group>"; };
+		DBDA809129396C43000D7C41 /* CreateRatingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRatingData.swift; sourceTree = "<group>"; };
 		DBDEDA8C28F03EAD00640F59 /* SmartDeviceDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartDeviceDetailsPresenter.swift; sourceTree = "<group>"; };
 		DBDEDA8E28F03EBB00640F59 /* SmartDeviceDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartDeviceDetailsInteractor.swift; sourceTree = "<group>"; };
 		DBE36B0A264EFE1100755851 /* CouchDetailsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CouchDetailsInteractor.swift; path = CouchDetailsModule/CouchDetailsInteractor.swift; sourceTree = "<group>"; };
@@ -647,6 +653,9 @@
 		DBBF2997283B9F5F0009D5D8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DBDA809129396C43000D7C41 /* CreateRatingData.swift */,
+				DBDA808F29393A8A000D7C41 /* CreateMessageData.swift */,
+				DBDA808D29393A81000D7C41 /* CreateCouchData.swift */,
 				DBE7E18829193377003E2E53 /* CreateReservationData.swift */,
 				DBB204AB28EB154F0083DE7D /* APIItem.swift */,
 				DBB204AC28EB154F0083DE7D /* CreateHomeConfigurationData.swift */,
@@ -971,6 +980,7 @@
 				DBBF29AF283B9F5F0009D5D8 /* CodableHelper.swift in Sources */,
 				DBBF29AE283B9F5F0009D5D8 /* MessagesAPI.swift in Sources */,
 				DBE7E18929193377003E2E53 /* CreateReservationData.swift in Sources */,
+				DBDA808E29393A81000D7C41 /* CreateCouchData.swift in Sources */,
 				DBBF29B2283B9F5F0009D5D8 /* APIUser.swift in Sources */,
 				DBA0B9C5260146B600474B7C /* NewCouchPresenter.swift in Sources */,
 				DBBF29B9283B9F5F0009D5D8 /* APIConversation.swift in Sources */,
@@ -988,6 +998,7 @@
 				DBBF29B5283B9F5F0009D5D8 /* State.swift in Sources */,
 				DBBF29BC283B9F5F0009D5D8 /* JSONEncodingHelper.swift in Sources */,
 				DBB559A52714AE42009AE705 /* ProfileView.swift in Sources */,
+				DBDA809029393A8A000D7C41 /* CreateMessageData.swift in Sources */,
 				DB1EE44326432984005C4AD1 /* UserService.swift in Sources */,
 				DBBF03FD27025E2A00110DEC /* ReservationView.swift in Sources */,
 				DBA0B9E1260BE8D000474B7C /* DIContainerProtocol.swift in Sources */,
@@ -1021,6 +1032,7 @@
 				DBEB14A225F952A90046CB30 /* LoginInteractor.swift in Sources */,
 				DBF9A50C28DDDF29006E214F /* NewSmartDeviceInteractor.swift in Sources */,
 				DB43446527282AC900997D93 /* RatingService.swift in Sources */,
+				DBDA809229396C43000D7C41 /* CreateRatingData.swift in Sources */,
 				DB43445D2728291000997D93 /* RatingServiceProtocol.swift in Sources */,
 				DBBF03F627025E0200110DEC /* ReservationInteractor.swift in Sources */,
 				DBA0B9C12601469F00474B7C /* NewCouchInteractor.swift in Sources */,

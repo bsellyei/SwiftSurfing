@@ -58,7 +58,7 @@ extension Application {
     static func routesTest(_ app: Application) throws {
         let userService = UserService(db: app.db)
         let couchService = CouchService(db: app.db)
-        let ratingService = RatingService(db: app.db)
+        let ratingService = RatingService(couchService: couchService, db: app.db)
         let messageService = MessageService(db: app.db)
         let conversationService = ConversationService(db: app.db)
         let reservationService = ReservationService(db: app.db)

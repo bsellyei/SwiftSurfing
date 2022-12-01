@@ -17,7 +17,7 @@ open class RatingAPI {
      - parameter body: (body) Rating object that needs to be added 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func createRating(body: APIRating, completion: @escaping ((_ data: APIRating?,_ error: Error?) -> Void)) {
+    open class func createRating(body: CreateRatingData, completion: @escaping ((_ data: APIRating?,_ error: Error?) -> Void)) {
         createRatingWithRequestBuilder(body: body).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -34,7 +34,7 @@ open class RatingAPI {
 
      - returns: RequestBuilder<APIRating> 
      */
-    open class func createRatingWithRequestBuilder(body: APIRating) -> RequestBuilder<APIRating> {
+    open class func createRatingWithRequestBuilder(body: CreateRatingData) -> RequestBuilder<APIRating> {
         let path = "/ratings"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)

@@ -18,21 +18,7 @@ class UserService: UserServiceProtocol {
         self.databaseRef = Database.database(url: databaseUrl).reference(withPath: "User")
     }
     
-    func addNew(user: User, completion: @escaping (Bool) -> Void) {
-        /*let userRef = databaseRef?.child(user.id)
-        userRef?.setValue(user.toAnyObject()) { (error, ref) in
-            if error != nil {
-                return completion(false)
-            }
-            
-            userRef?.observeSingleEvent(of: .value, with: { snapshot in
-                let _ = User(snapshot: snapshot)
-                DispatchQueue.main.async {
-                    completion(true)
-                }
-            })
-        }*/
-        
+    func addNew(user: User, completion: @escaping (Bool) -> Void) {        
         UserAPI.addUser(body: UserTransformator.transformToAPIModel(user: user), completion: { _, _ in
             DispatchQueue.main.async {
                 completion(true)
@@ -41,14 +27,6 @@ class UserService: UserServiceProtocol {
     }
     
     func get(id: String, completion: @escaping (User?) -> Void) {
-        /*let userRef = databaseRef?.child(id)
-        userRef?.observeSingleEvent(of: .value, with: { snapshot in
-            let user = User(snapshot: snapshot)
-            DispatchQueue.main.async {
-                completion(user)
-            }
-        })*/
-        
         UserAPI.getUserById(_id: id, completion: { user, _ in
             DispatchQueue.main.async {
                 completion(UserTransformator.transformToClientModel(user: user!))

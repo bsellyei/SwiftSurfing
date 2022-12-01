@@ -46,23 +46,6 @@ class ReservationService: ReservationServiceProtocol {
                 })
             })
         }
-        
-        if reservation.ownerId == currentUserId {
-            DispatchQueue.main.async {
-                print("owner and guest are the same")
-                completion(false)
-            }
-            return
-        }
-        
-        ReservationsAPI.addReservation(body: ReservationTransformator.transformForCreation(reservation: reservation), completion: { _, _ in
-            DispatchQueue.main.async {
-                completion(true)
-            }
-        })
-        
-        //let reservationRef = self.databaseRef?.child(reservation.id)
-        //reservationRef?.setValue(reservation.toAnyObject())
     }
     
     func get(id: String, completion: @escaping (Reservation?) -> Void) {

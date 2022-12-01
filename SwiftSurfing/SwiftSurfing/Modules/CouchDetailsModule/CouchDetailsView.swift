@@ -110,7 +110,12 @@ struct CouchDetailsView: View {
                 Button(action: {
                     toolbarLinkSelected = true
                 }) {
-                    ButtonContent(text: "Reserve")
+                    Text("Reserve")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .frame(width: 150, height: 35)
+                        .background(Color.blue)
+                        .cornerRadius(15.0)
                 }
                 .disabled(presenter.disableReserve)
             }

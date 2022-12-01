@@ -16,30 +16,39 @@ class MessagesPresenter: ObservableObject {
     @Published var name: String = ""
     @Published var messages: [Message] = []
     
-    @State var text: String = ""
+    @Published var text: String
     
     init(interactor: MessagesInteractor, conversation: Conversation) {
         self.interactor = interactor
         self.conversation = conversation
+        
+        self.text = ""
     }
     
     func sendMessage() {
+        let message = Message()
+        message.isSentByCurrentUser = true
+        message.sendTime = Date()
+        message.message = text
+        message.conversationId = conversation.id
         
+        messages.append(message)
+        messages.sort(by: { $0.sendTime > $1.sendTime })
+        
+        text = ""
+        
+        self.interactor.sendMessage(message: message, completion: { _ in })
     }
     
     func getMessages() {
+        let neededUserId = conversation.fromId.isEmpty ? conversation.toId : conversation.fromId
         self.interactor.getMessages(conversationId: conversation.id, completion: { messages in
-            self.messages = messages
-        })
-        
-        self.interactor.getUser(userIds: [conversation.fromId, conversation.toId], completion: { user in
-            guard
-                let userName = user
-            else {
-                return
-            }
+            self.interactor.getUser(userId: neededUserId, completion: { user in
+                guard let userName = user else { return }
                 
-            self.name = userName.fullName
+                self.messages = messages
+                self.name = userName.fullName
+            })
         })
     }
 }

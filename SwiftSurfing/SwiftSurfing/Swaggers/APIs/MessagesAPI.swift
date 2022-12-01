@@ -17,7 +17,7 @@ open class MessagesAPI {
      - parameter body: (body) Message object that needs to be added 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addMessage(body: APIMessage, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func addMessage(body: CreateMessageData, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
         addMessageWithRequestBuilder(body: body).execute { (response, error) -> Void in
             if error == nil {
                 completion((), error)
@@ -37,7 +37,7 @@ open class MessagesAPI {
 
      - returns: RequestBuilder<Void> 
      */
-    open class func addMessageWithRequestBuilder(body: APIMessage) -> RequestBuilder<Void> {
+    open class func addMessageWithRequestBuilder(body: CreateMessageData) -> RequestBuilder<Void> {
         let path = "/messages"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)

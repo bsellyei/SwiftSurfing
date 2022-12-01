@@ -12,7 +12,9 @@ class RatingsPresenter: ObservableObject {
     private var interactor: RatingsInteractor
     
     private let couchId: String
-    var users: [User] = []
+    
+    @Published var userNames: [String:String] = [:]
+    
     @Published var ratings: [Rating] = []
     @Published var summary: RatingSummaryViewContext
     
@@ -32,12 +34,12 @@ class RatingsPresenter: ObservableObject {
     func getRatings() {
         DispatchQueue.global(qos: .background).async {
             self.interactor.getRatings(couchId: self.couchId, completion: { ratings, ctx in
-                self.ratings = ratings
-                self.summary = ctx
-                
-                /*self.interactor.getUsers(ratings: ratings, completion: { users in
-                    self.users = users
-                })*/
+                self.interactor.getUsers(ratings: ratings, completion: { ratingId, userName in
+                    self.ratings = ratings
+                    self.summary = ctx
+                    
+                    self.userNames[ratingId] = userName
+                })
             })
         }
     }
@@ -54,15 +56,5 @@ class RatingsPresenter: ObservableObject {
                 self.summary = ctx
             })
         }
-    }
-    
-    func getUserName(userId: String) -> String {
-        for user in users {
-            if user.id == userId {
-                return user.fullName
-            }
-        }
-        
-        return ""
     }
 }

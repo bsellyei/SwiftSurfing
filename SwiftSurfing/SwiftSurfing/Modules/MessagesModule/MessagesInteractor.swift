@@ -19,29 +19,25 @@ class MessagesInteractor {
     
     func getMessages(conversationId: String, completion: @escaping ([Message]) -> Void) {
         messageService.getAllMessages(conversationId: conversationId, completion: { messages in
-            let user = Auth.auth().currentUser
-            if let userId = user?.uid {
+            AuthenticationManager.shared.getCurrentUserId(completion: { userId in
                 for message in messages {
                     message.isSentByCurrentUser = message.senderId == userId
-                    
-                    if message.isInvitation {
-                        message.message = "This is an invitation from \(message.senderId)"
-                    }
                 }
-            }
-            
-            DispatchQueue.main.async {
-                completion(messages)
-            }
+                
+                var sorted = messages
+                sorted.sort(by: { $0.sendTime > $1.sendTime })
+                DispatchQueue.main.async {
+                    completion(sorted)
+                }
+            })
         })
     }
     
-    func getUser(userIds: [String], completion: @escaping (User?) -> Void) {
-        let user = Auth.auth().currentUser
-        if userIds[0] == user?.uid {
-            self.userService.get(id: userIds[1], completion: completion)
-        } else {
-            self.userService.get(id: userIds[0], completion: completion)
-        }
+    func getUser(userId: String, completion: @escaping (User?) -> Void) {
+        userService.get(id: userId, completion: completion)
+    }
+    
+    func sendMessage(message: Message, completion: @escaping (Bool) -> Void) {
+        messageService.send(message: message, completion: completion)
     }
 }

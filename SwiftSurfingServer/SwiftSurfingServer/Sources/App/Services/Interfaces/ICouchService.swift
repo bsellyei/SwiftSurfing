@@ -21,4 +21,6 @@ protocol ICouchService {
     func createCouch(couch: Couch) async throws -> Couch
     
     func deleteCouch(id: String?) async throws -> Bool
+    
+    func updateWithNewRating(id: String?, value: Int) async throws -> Bool
 }
