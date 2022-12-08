@@ -9,7 +9,7 @@ import Foundation
 import Vapor
 
 class ExternalHomeService: IExternalHomeService {
-    let accessToken = "oh.token1.OeBR0gE05A01XKRIz7DnYVl5BMMMRQLLGMk0nvA7D1QQXp0TkH3gjpcHkd5lorQAdeyWT3xpzyiUsds3bGKA"
+    let accessToken = "PUT-YOUR-API-TOKEN-HERE"
     let baseURL = "http://localhost:8080/rest/"
     
     let httpClient: Client

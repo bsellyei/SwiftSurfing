@@ -26,7 +26,11 @@ class HomeService: IHomeService {
     }
     
     func switchItem(configurationId: String?) async throws -> HomeConfiguration {
-        return try await homeConfigurationService.switchState(id: configurationId)
+        let homeConfiguration = try await homeConfigurationService.switchState(id: configurationId)
+        let itemName = homeConfiguration.itemNames[0]
+        let itemState = homeConfiguration.state.rawValue
+        let _ = try await externalHomeService.setItemState(name: itemName, newState: itemState.uppercased())
+        return homeConfiguration
     }
     
     func getConfigurationTypes() async throws -> [ConfigurationType] {
